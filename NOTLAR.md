@@ -35,3 +35,5 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - `.claude/hooks/session-start.sh` + `.claude/settings.json`: her cloud oturumunda
   OmniRoute eksikse otomatik kurulur (sunucu başlatılmaz).
 - Hook'un varsayılan branch'e merge edilmesi sonrası tüm yeni oturumlar kullanır.
+
+- `claude-code-setup` eklentisi settings.json ile etkinleştirildi (bkz. CLAUDE.md).
