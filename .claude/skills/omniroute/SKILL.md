@@ -14,6 +14,9 @@ sağlayıcısına bağlar; limit/çökme durumunda otomatik fallback yapar.
   eksikse `npm install -g omniroute` ile kurar. Komut: `omniroute`.
 - Sunucu otomatik BAŞLATILMAZ. Gerektiğinde `omniroute` ile başlat,
   `omniroute --version` ile sürümü kontrol et.
+- Panel: `http://localhost:20128`, API: `http://localhost:20128/v1`.
+- Güvenli başlatma: `OMNIROUTE_SERVER_HOST=127.0.0.1 omniroute serve`
+  (varsayılan 0.0.0.0 ve API anahtarsız dinler).
 - Headless mod: `omniroute serve --headless`.
 
 ## Kurallar

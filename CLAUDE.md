@@ -9,6 +9,11 @@
 - Kullanıcı claude-mem denedi; cloud container geçici olduğu için kalıcı değil.
   Kalıcılık dosyalarla (CLAUDE.md, NOTLAR.md) sağlanır.
 
+## OmniRoute paneli
+- Panel / API adresi: `http://localhost:20128` (API: `http://localhost:20128/v1`).
+- Başlatma: `OMNIROUTE_SERVER_HOST=127.0.0.1 omniroute serve` (yalnızca yerel erişim;
+  varsayılan 0.0.0.0 + API anahtarsız olduğu için güvensiz).
+
 ## Eklentiler
 - `claude-code-setup` (Anthropic resmi eklentisi): Projeyi analiz edip uygun
   hook, skill, MCP sunucusu ve subagent önerileri üretir
