@@ -1,0 +1,11 @@
+[
+ {"id":"L1","text":"Did you know your body can heal itself?","voice":"af_heart","speed":0.95},
+ {"id":"L2","text":"Cut your finger, and within seconds, platelets rush in to plug the leak.","voice":"af_heart","speed":0.95},
+ {"id":"L3","text":"Over the next few days, new skin cells crawl across the gap, until it closes.","voice":"af_heart","speed":0.95},
+ {"id":"L4","text":"Break a bone, and your body builds a bridge across the crack, then turns it back into solid bone.","voice":"af_heart","speed":0.95},
+ {"id":"L4b","text":"Many breaks heal in about six to eight weeks.","voice":"af_heart","speed":0.95},
+ {"id":"L5","text":"Your liver can do something even stranger.","voice":"af_heart","speed":0.92},
+ {"id":"L6","text":"Surgeons can remove up to two thirds of a healthy liver, and it grows back.","voice":"af_heart","speed":0.95},
+ {"id":"L7","text":"Skin, bone, liver. Every day, your body is quietly repairing itself.","voice":"af_heart","speed":0.93},
+ {"id":"L8","text":"That little scar? Proof that it works.","voice":"af_heart","speed":0.92}
+]
