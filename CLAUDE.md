@@ -43,7 +43,7 @@
 - İlk video: `videos/body-heals/` ("Did you know your body can heal itself?", Watercolor Brush, 1080×1920, 50.5 s, İngilizce ses + altyazı).
 - Bu container'da çalıştırma notları: `PLAYWRIGHT_CHROME=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`;
   sistem ffmpeg'i 6.1 → pip `imageio-ffmpeg` (ffmpeg 9) PATH'e konur; asset paketleri GitHub release'inden iner;
-  huggingface.co engelli → Whisper ses kontrolü (asr_check) çalışmaz.
+  Whisper (asr_check) çalışır: "Ilk-depom" cloud ortamı huggingface.co ve CDN adreslerine izin veriyor (Default ortamda engelli).
 - Microscope Story gibi gerçek görüntü isteyen stiller burada zor; kodla çizilen stiller (Watercolor, Whiteboard…) tercih edilir.
 
 ## onetake (skill)
