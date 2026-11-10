@@ -7,6 +7,12 @@
 - **Videolarda anlatım:** Sıkıcı olmasın. Daha enerjik, merak uyandıran, akıcı bir anlatım; güçlü kanca, daha canlı ses
   ve tempo; düz ders anlatımı gibi olmasın.
 - Lemo-Opuscar animasyonlarını beğendi; video işlerinde bu kütüphaneyi kullan.
+- **Tam ekran video:** Görüntü ekranın TAMAMINI kaplasın. Kağıt kenar boşluğu / beyaz sayfa / çerçeve YOK
+  (Woodcut'taki "paper margin" kuralını uygulama). Altyazılar görüntünün üzerinde, okunur şekilde.
+- **Daha akıcı ve hareketli:** Kesik kesik değil; karakter animasyonu akıcı (her karede hareket, "on twos" yok),
+  bol kamera hareketi, sahneler arası kesintisiz/akan geçişler, durağan plan az.
+- **Motivasyon videoları:** Kullanıcı "motivasyon videosu" dediğinde HER ZAMAN `characters/hooded-figure/` karakterini
+  kullan (kapüşonlu figür, göğsünde turuncu kor). Tasarımını değiştirme.
 - Kullanıcı Türkçe konuşur; Türkçe ve kısa yanıt ver.
 - Kullanıcı konuşmaların kaybolmasını istemez: önemli kararları ve bilgileri
   bu dosyaya / `NOTLAR.md`'ye yaz, commit et ve branch'e push et.
