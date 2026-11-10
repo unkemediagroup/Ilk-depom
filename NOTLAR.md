@@ -28,3 +28,10 @@ yüzlerce (~380) AI sağlayıcısına bağlar.
 
 Uyarı: Ücretsiz kotalar her sağlayıcıya aittir; kendi hesaplarınızı bağlamanız
 ve her sağlayıcının kullanım şartlarına uymanız gerekir.
+
+## Kalıcılık ayarları (eklendi)
+- `CLAUDE.md`: kullanıcı tercihleri her oturumda otomatik yüklenir.
+- `.claude/skills/omniroute/SKILL.md`: OmniRoute yeteneği.
+- `.claude/hooks/session-start.sh` + `.claude/settings.json`: her cloud oturumunda
+  OmniRoute eksikse otomatik kurulur (sunucu başlatılmaz).
+- Hook'un varsayılan branch'e merge edilmesi sonrası tüm yeni oturumlar kullanır.
