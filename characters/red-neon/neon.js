@@ -21,6 +21,9 @@ const PI = Math.PI;
 export const POSE = {
   stand:   { lean: .03, head: .05, a1: .1, a2: -.12, f1: -.05, f2: -.15, q1: -.03, k1: .05, q2: .05, k2: .04 },
   despair: { armsFront: 1, lean: .85, head: .35, a1: -4.25, a2: 2.55, f1: -2.71, f2: -.5, q1: -1.62, k1: 1.62, q2: -1.5, k2: 1.55, y: 152 },   // the reference: seated, head in hands
+  sitFloor: { lean: .35, head: .35, a1: -.75, a2: -.6, f1: -.6, f2: -.7, q1: -1.25, k1: 2.35, q2: -1.15, k2: 2.25, y: 250 },
+  hang:    { lean: 0, head: -.1, a1: -3.05, a2: -.04, f1: -3.12, f2: .02, q1: -.18, k1: .45, q2: -.05, k2: .5 },
+  top:     { lean: .05, head: -.15, a1: .55, a2: -3.7, f1: .5, f2: -3.65, q1: -.3, k1: .55, q2: -.12, k2: .6 },
   sitTall: { lean: .1, head: -.05, a1: -.55, a2: -.9, f1: -.45, f2: -1.0, q1: -1.57, k1: 1.57, q2: -1.5, k2: 1.5, y: 152 },
   walkA:   { lean: .1, head: .02, a1: .45, a2: -.25, f1: -.45, f2: -.35, q1: -.42, k1: .22, q2: .3, k2: .35 },
   walkB:   { lean: .1, head: .02, a1: -.45, a2: -.35, f1: .45, f2: -.25, q1: .3, k1: .35, q2: -.42, k2: .22 },
@@ -28,7 +31,7 @@ export const POSE = {
   runB:    { lean: .35, head: -.05, a1: -1.1, a2: -1.4, f1: .9, f2: -1.5, q1: .55, k1: 1.4, q2: -1.15, k2: .9, y: 20 },
   push:    { lean: .7, head: -.25, a1: -1.45, a2: -.15, f1: -1.35, f2: -.25, q1: -.7, k1: .45, q2: .55, k2: .15, y: 40 },
   kneel:   { lean: .25, head: .45, a1: .2, a2: -.4, f1: .05, f2: -.5, q1: -1.5, k1: 1.55, q2: .1, k2: 1.65, y: 120 },
-  victory: { lean: -.12, head: -.45, a1: -2.15, a2: .2, f1: -2.95, f2: -.25, q1: -.15, k1: .1, q2: .2, k2: .05 },
+  victory: { lean: -.12, head: -.45, a1: -2.55, a2: .15, f1: -3.65, f2: -.1, q1: -.15, k1: .1, q2: .2, k2: .05 },
   jump:    { lean: -.05, head: -.35, a1: -2.5, a2: .25, f1: -2.9, f2: -.15, q1: -1.0, k1: 1.7, q2: -.55, k2: 1.5, y: -60 },
 };
 export const mixPose = (A, B, u) => { const o = {}; for (const k of new Set([...Object.keys(A), ...Object.keys(B)])) o[k] = (A[k] ?? 0) + ((B[k] ?? 0) - (A[k] ?? 0)) * u; return o; };
@@ -60,34 +63,34 @@ export function skeleton(P0) {
 
 // ---------- drawing ----------
 // draw a group of parts as one neon-rimmed silhouette: glow → neon rim → black fill (internal seams vanish)
-function neonGroup(g, build, s, glow) {
+function neonGroup(g, build, s, glow, C = COL) {
   g.save(); g.lineJoin = 'round'; g.lineCap = 'round';
   g.beginPath(); build(g);
   if (glow > 0) {
-    g.shadowColor = COL.glow + (.95 * glow) + ')'; g.shadowBlur = 34 * s * glow; g.strokeStyle = COL.glow + (.55 * glow) + ')'; g.lineWidth = 14 * s; g.stroke();
-    g.shadowBlur = 12 * s * glow; g.strokeStyle = COL.rim; g.lineWidth = 9 * s; g.stroke();
+    g.shadowColor = C.glow + (.95 * glow) + ')'; g.shadowBlur = 34 * s * glow; g.strokeStyle = C.glow + (.55 * glow) + ')'; g.lineWidth = 14 * s; g.stroke();
+    g.shadowBlur = 12 * s * glow; g.strokeStyle = C.rim; g.lineWidth = 9 * s; g.stroke();
   }
-  g.shadowBlur = 0; g.strokeStyle = COL.rim; g.lineWidth = 7 * s; g.stroke();
-  g.strokeStyle = COL.hot; g.lineWidth = 1.6 * s; g.globalAlpha = .55; g.stroke(); g.globalAlpha = 1;
-  g.fillStyle = COL.body; g.fill('nonzero');
+  g.shadowBlur = 0; g.strokeStyle = C.rim; g.lineWidth = 7 * s; g.stroke();
+  g.strokeStyle = C.hot; g.lineWidth = 1.6 * s; g.globalAlpha = .55; g.stroke(); g.globalAlpha = 1;
+  g.fillStyle = C.body; g.fill('nonzero');
   g.restore();
 }
 export function drawNeon(g, x, y, scale, pose, o = {}) {
-  const k = skeleton(pose), D = DIM, glow = o.glow ?? 1, s = 1 / scale;      // line widths stay constant on screen
+  const k = skeleton(pose), D = DIM, glow = o.glow ?? 1, s = 1 / scale, C = { ...COL, ...(o.col || {}) };   // o.col: other characters (never red: red is ours)
   g.save(); g.translate(x, y); g.scale(o.flip ? -scale : scale, scale);
   // far arm and far leg (behind; a pose with armsFront brings the far arm forward, e.g. hands on the head)
-  const farArm = () => neonGroup(g, c => { pill(c, k.sh, k.A2.el, D.armW, D.armW * .95); pill(c, k.A2.el, k.A2.wr, D.armW * .95, D.armW * .9); }, s * .9, glow * .8);
+  const farArm = () => neonGroup(g, c => { pill(c, k.sh, k.A2.el, D.armW, D.armW * .95); pill(c, k.A2.el, k.A2.wr, D.armW * .95, D.armW * .9); }, s * .9, glow * .8, C);
   if (!k.P.armsFront) farArm();
-  neonGroup(g, c => { pill(c, k.hip, k.L2.knee, D.legW, D.legW * .95); pill(c, k.L2.knee, k.L2.ank, D.legW * .95, D.legW * .85); pill(c, k.L2.ank, k.L2.toe, D.legW * .7, D.legW * .55); }, s * .9, glow * .8);
+  neonGroup(g, c => { pill(c, k.hip, k.L2.knee, D.legW, D.legW * .95); pill(c, k.L2.knee, k.L2.ank, D.legW * .95, D.legW * .85); pill(c, k.L2.ank, k.L2.toe, D.legW * .7, D.legW * .55); }, s * .9, glow * .8, C);
   // body: torso + head + near leg as one silhouette
   neonGroup(g, c => {
     pill(c, k.hip, k.shoulder, D.torsoW1, D.torsoW0);
     c.moveTo(k.head[0] + D.head, k.head[1]); c.arc(k.head[0], k.head[1], D.head, 0, PI * 2);
     pill(c, k.neck, add(k.neck, rot(0, 6, k.P.lean)), D.armW * .9);
     pill(c, k.hip, k.L1.knee, D.legW, D.legW * .95); pill(c, k.L1.knee, k.L1.ank, D.legW * .95, D.legW * .85); pill(c, k.L1.ank, k.L1.toe, D.legW * .7, D.legW * .55);
-  }, s, glow);
+  }, s, glow, C);
   // signature: short red ticks down the spine (the back edge of the torso)
-  g.save(); g.strokeStyle = COL.rim; g.lineWidth = 2.4 * s; g.shadowColor = COL.glow + '.9)'; g.shadowBlur = 6 * s * glow; g.lineCap = 'round';
+  g.save(); g.strokeStyle = C.rim; g.lineWidth = 2.4 * s; g.shadowColor = C.glow + '.9)'; g.shadowBlur = 6 * s * glow; g.lineCap = 'round';
   const back = rot(-1, 0, k.P.lean), dir = rot(0, -1, k.P.lean);
   for (let i = 1; i <= 9; i++) {
     const u = i / 10, c = add(k.hip, [dir[0] * D.torso * u + back[0] * (D.torsoW1 / 2 - 2), dir[1] * D.torso * u + back[1] * (D.torsoW1 / 2 - 2)]);
@@ -96,7 +99,7 @@ export function drawNeon(g, x, y, scale, pose, o = {}) {
   g.restore();
   if (k.P.armsFront) farArm();
   // near arm in front, with its own rim
-  neonGroup(g, c => { pill(c, k.sh, k.A1.el, D.armW, D.armW * .95); pill(c, k.A1.el, k.A1.wr, D.armW * .95, D.armW * .9); }, s, glow);
+  neonGroup(g, c => { pill(c, k.sh, k.A1.el, D.armW, D.armW * .95); pill(c, k.A1.el, k.A1.wr, D.armW * .95, D.armW * .9); }, s, glow, C);
   g.restore();
   return k;
 }

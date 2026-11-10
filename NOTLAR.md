@@ -47,3 +47,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - HyperFrames eklentisi eklendi (Apache-2.0).
 - 2026-11-10: "Nobody Is Coming to Save You" Shorts videosu: `videos/nobody/` (Woodcut Print, kullanıcının sesi, 29.6 sn).
 - İmza karakter kaydedildi: `characters/red-neon/` (Kırmızı Neon).
+- "Motivation / Discipline / Obsession" videosu (Kırmızı Neon, sessiz, 27 sn): `videos/obsession/`.
