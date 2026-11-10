@@ -46,6 +46,13 @@
   huggingface.co engelli → Whisper ses kontrolü (asr_check) çalışmaz.
 - Microscope Story gibi gerçek görüntü isteyen stiller burada zor; kodla çizilen stiller (Watercolor, Whiteboard…) tercih edilir.
 
+## onetake (skill)
+- `.claude/skills/onetake/` — https://github.com/feitangyuan/onetake (commit abb6d17), kesintisiz "tek plan" ürün/tanıtım
+  hareketli videoları (10–60 sn). Örnek videolar (mp4/gif) ve 3 MB üstü dosyalar repoya alınmadı.
+- **Lisans: PolyForm Noncommercial** — yalnızca ticari olmayan kullanım. Para kazanılan / müşteri işi için ücretli
+  Pro lisans gerekir; ticari bir işte kullanmadan önce kullanıcıyı uyar.
+- Gereken: python3 + playwright (chromium), numpy, scipy, Pillow, matplotlib.
+
 ## Ortam
 - Node 22 / npm 10, Python 3.13 / pip 24 kurulu.
 - Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
