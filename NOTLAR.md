@@ -45,3 +45,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - onetake skill eklendi (`.claude/skills/onetake`, ticari olmayan lisans).
 - gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).
 - HyperFrames eklentisi eklendi (Apache-2.0).
+- 2026-11-10: "Nobody Is Coming to Save You" Shorts videosu: `videos/nobody/` (Woodcut Print, kullanıcının sesi, 29.6 sn).
