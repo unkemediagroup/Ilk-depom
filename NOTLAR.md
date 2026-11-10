@@ -39,3 +39,5 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - `claude-code-setup` eklentisi settings.json ile etkinleştirildi (bkz. CLAUDE.md).
 
 - agency-agents kuruldu: 92 ajan `.claude/agents/` altında (engineering, testing, project-management, design).
+
+- 2026-11-10: İlk Shorts videosu üretildi: `videos/body-heals/body-heals.mp4` (Lemo-Opuscar, Watercolor Brush).

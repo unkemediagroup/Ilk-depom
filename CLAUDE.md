@@ -31,6 +31,14 @@
   `./scripts/install.sh --tool claude-code --division <bölüm> --path <proje>/.claude/agents --no-interactive`
 - Not: ajan sayısı arttıkça her oturumun bağlamı şişer; yalnızca gerekenleri ekle.
 
+## Video üretimi (Lemo-Opuscar)
+- Kütüphane: https://github.com/lemomo-ai/lemo-opuscar (MIT) — kodla film stilleri; talimatlar AGENTS.md / DIRECTOR.md / TECHNIQUE.md.
+- İlk video: `videos/body-heals/` ("Did you know your body can heal itself?", Watercolor Brush, 1080×1920, 50.5 s, İngilizce ses + altyazı).
+- Bu container'da çalıştırma notları: `PLAYWRIGHT_CHROME=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`;
+  sistem ffmpeg'i 6.1 → pip `imageio-ffmpeg` (ffmpeg 9) PATH'e konur; asset paketleri GitHub release'inden iner;
+  huggingface.co engelli → Whisper ses kontrolü (asr_check) çalışmaz.
+- Microscope Story gibi gerçek görüntü isteyen stiller burada zor; kodla çizilen stiller (Watercolor, Whiteboard…) tercih edilir.
+
 ## Ortam
 - Node 22 / npm 10, Python 3.13 / pip 24 kurulu.
 - Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
