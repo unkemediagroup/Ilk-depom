@@ -41,3 +41,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - agency-agents kuruldu: 92 ajan `.claude/agents/` altında (engineering, testing, project-management, design).
 
 - 2026-11-10: İlk Shorts videosu üretildi: `videos/body-heals/body-heals.mp4` (Lemo-Opuscar, Watercolor Brush).
+- Kullanıcı geri bildirimi: animasyonlar beğenildi; çizim sesleri (cızırtı) ve sıkıcı anlatım beğenilmedi. Lemo-Opuscar eklenti olarak kalıcı kaydedildi.

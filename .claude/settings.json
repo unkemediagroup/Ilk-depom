@@ -17,9 +17,16 @@
         "source": "github",
         "repo": "anthropics/claude-plugins-official"
       }
+    },
+    "lemolab": {
+      "source": {
+        "source": "github",
+        "repo": "lemomo-ai/lemo-opuscar"
+      }
     }
   },
   "enabledPlugins": {
-    "claude-code-setup@claude-plugins-official": true
+    "claude-code-setup@claude-plugins-official": true,
+    "lemo-opuscar@lemolab": true
   }
 }

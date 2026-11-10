@@ -1,6 +1,12 @@
 # Proje Notları (Claude için)
 
 ## Kullanıcı tercihleri
+- **Kısa iletişim:** Yaptıklarını uzun uzun açıklama. İşi en iyi şekilde yap, sonunda yalnızca kısa bir özet ver.
+- **Videolarda ses:** Çizim/boyama sırasında cızırtı, kalem, fırça hışırtısı gibi efektler İSTEMİYOR. Bu tür foley'i
+  ya hiç koyma ya da neredeyse duyulmayacak kadar kıs; ses temiz olsun (anlatım + müzik ön planda).
+- **Videolarda anlatım:** Sıkıcı olmasın. Daha enerjik, merak uyandıran, akıcı bir anlatım; güçlü kanca, daha canlı ses
+  ve tempo; düz ders anlatımı gibi olmasın.
+- Lemo-Opuscar animasyonlarını beğendi; video işlerinde bu kütüphaneyi kullan.
 - Kullanıcı Türkçe konuşur; Türkçe ve kısa yanıt ver.
 - Kullanıcı konuşmaların kaybolmasını istemez: önemli kararları ve bilgileri
   bu dosyaya / `NOTLAR.md`'ye yaz, commit et ve branch'e push et.
@@ -32,6 +38,7 @@
 - Not: ajan sayısı arttıkça her oturumun bağlamı şişer; yalnızca gerekenleri ekle.
 
 ## Video üretimi (Lemo-Opuscar)
+- Eklenti olarak kalıcı kurulu: `lemo-opuscar@lemolab` (`.claude/settings.json`).
 - Kütüphane: https://github.com/lemomo-ai/lemo-opuscar (MIT) — kodla film stilleri; talimatlar AGENTS.md / DIRECTOR.md / TECHNIQUE.md.
 - İlk video: `videos/body-heals/` ("Did you know your body can heal itself?", Watercolor Brush, 1080×1920, 50.5 s, İngilizce ses + altyazı).
 - Bu container'da çalıştırma notları: `PLAYWRIGHT_CHROME=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`;
