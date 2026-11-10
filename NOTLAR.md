@@ -43,3 +43,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-10: İlk Shorts videosu üretildi: `videos/body-heals/body-heals.mp4` (Lemo-Opuscar, Watercolor Brush).
 - Kullanıcı geri bildirimi: animasyonlar beğenildi; çizim sesleri (cızırtı) ve sıkıcı anlatım beğenilmedi. Lemo-Opuscar eklenti olarak kalıcı kaydedildi.
 - onetake skill eklendi (`.claude/skills/onetake`, ticari olmayan lisans).
+- gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).

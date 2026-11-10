@@ -53,6 +53,12 @@
   Pro lisans gerekir; ticari bir işte kullanmadan önce kullanıcıyı uyar.
 - Gereken: python3 + playwright (chromium), numpy, scipy, Pillow, matplotlib.
 
+## gbro-collage-broll (skill)
+- `.claude/skills/gbro-collage-broll/` — https://github.com/pyang5166/gbro-collage-broll (commit a1a4ee2, MIT).
+  ~5 sn'lik bir cümleden 9:16 yarım-ton kağıt kolaj B-roll klibi (720×1280, 5 sn, sessiz).
+- Gereken: `GEMINI_API_KEY` (ücretli, kullanım başına) ve görsel üretim aracı (Codex `image_gen`; Claude Code'da yok,
+  alternatif gerekir). Anahtar repoya/sohbete yazılmaz, `request_credential` ile alınır.
+
 ## Ortam
 - Node 22 / npm 10, Python 3.13 / pip 24 kurulu.
 - Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
