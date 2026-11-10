@@ -37,3 +37,5 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - Hook'un varsayılan branch'e merge edilmesi sonrası tüm yeni oturumlar kullanır.
 
 - `claude-code-setup` eklentisi settings.json ile etkinleştirildi (bkz. CLAUDE.md).
+
+- agency-agents kuruldu: 92 ajan `.claude/agents/` altında (engineering, testing, project-management, design).

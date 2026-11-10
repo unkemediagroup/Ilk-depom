@@ -20,6 +20,17 @@
   (skill: `claude-automation-recommender`). `.claude/settings.json` içinde
   etkinleştirildi. Kullanım: "projem için Claude Code otomasyonları öner".
 
+## Agency Agents (uzman ajanlar)
+- Kaynak: https://github.com/msitarzewski/agency-agents (commit 8ae6164, MIT).
+- `.claude/agents/` altında 92 ajan kurulu: engineering, testing,
+  project-management, design. Uygun işte ilgili ajanı kullan
+  (örn. frontend, backend, test, UI tasarım).
+- Diğer bölümler (marketing, security, product, sales, specialized vb.) kullanıcı
+  isterse eklenir:
+  `git clone --depth 1 https://github.com/msitarzewski/agency-agents` ardından
+  `./scripts/install.sh --tool claude-code --division <bölüm> --path <proje>/.claude/agents --no-interactive`
+- Not: ajan sayısı arttıkça her oturumun bağlamı şişer; yalnızca gerekenleri ekle.
+
 ## Ortam
 - Node 22 / npm 10, Python 3.13 / pip 24 kurulu.
 - Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
