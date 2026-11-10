@@ -9,6 +9,10 @@
 - Lemo-Opuscar animasyonlarını beğendi; video işlerinde bu kütüphaneyi kullan.
 - **Tam ekran video:** Görüntü ekranın TAMAMINI kaplasın. Kağıt kenar boşluğu / beyaz sayfa / çerçeve YOK
   (Woodcut'taki "paper margin" kuralını uygulama). Altyazılar görüntünün üzerinde, okunur şekilde.
+- **İMZA KARAKTER — Kırmızı Neon:** Tüm videolarda ana karakter `characters/red-neon/` (siyah siluet, yüzsüz yuvarlak kafa,
+  kalın hap uzuvlar, neon kırmızı kontur ve parıltı, sırtta kırmızı çentikler). Ana formatını bozma; detay/renk canlılığı
+  artırılabilir. Başarı anlarında etrafa kırmızı havai fişek kıvılcımları. Karşılaştırmalarda diğer karakterler başka renk.
+  Kullanıcının referansındaki ortamı kopyalama — sadece karakter esas.
 - **Daha akıcı ve hareketli:** Kesik kesik değil; karakter animasyonu akıcı (her karede hareket, "on twos" yok),
   bol kamera hareketi, sahneler arası kesintisiz/akan geçişler, durağan plan az.
 - Kullanıcı Türkçe konuşur; Türkçe ve kısa yanıt ver.
