@@ -25,3 +25,8 @@ Model sayfası: `model-sheet.jpg`.
 - `mixPose(A, B, u)` poz geçişi (akıcı animasyon için her karede ara değer).
 - `sparks(ctx, x, y, age, {seed, scale})` kırmızı havai fişek; `floorGlow(...)` yerdeki kırmızı ışık havuzu.
 - Ayaklar y=0'da, yukarı −y, ayakta boy ≈ 600 birim.
+
+## Bilinen eksik
+- `neon.js` şu an yalnızca PROFİL görünüm. Barfiks gibi önden görülen hareketler için **önden görünüm rig'i** gerekir
+  (simetrik gövde, iki kol yanlara/yukarı, dirsekler dışa; aynı siyah siluet + kırmızı neon kontur + yüzsüz yuvarlak kafa).
+  Sırttaki kırmızı çentikler önden görünmez; önden görünümde göğüs ortasına dikey çentik dizisi düşünülebilir.

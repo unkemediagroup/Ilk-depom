@@ -79,6 +79,20 @@
   HTML'den video üretir (ürün tanıtımı, altyazı, overlay, hareket); 9 skill, ana skill `/hyperframes:hyperframes`.
 - Render için CLI: `npx hyperframes` (npm'den iner). Ücretsiz; Studio'nun Pro planı ayrıca ücretli modeller ekler.
 
+## Video dersleri (kullanıcı geri bildirimi — tekrarlama)
+"Motivation / Discipline / Obsession" videosu (`videos/obsession/`) BEĞENİLMEDİ. Hatalar:
+1. **Barfiks yandan (profil) çizildi — YANLIŞ.** Barfiks ÖNDEN çekilir: karakter kameraya bakar, eller barı omuzdan
+   geniş tutar, dirsekler yana açılır, yukarı çıkarken çene/baş barın ÜSTÜNE geçer, bacaklar birlikte sarkar.
+   Hareketi gerçek hayattaki/örnek videodaki açıdan çiz; açıyı varsayma, örneğe bak.
+2. Karakter sadece profilden kodluydu → hareketin gerektirdiği açı (önden/arkadan/3/4) için ayrı rig yaz.
+3. Eller bara net kenetlenmiyordu, çekiş hareketi okunmuyordu (gövde az yükseliyor, kollar arkada kalıyordu).
+4. Karakterler kadraja göre çok küçük, ekranın büyük kısmı boştu.
+5. Hareketler robotik: hepsi aynı easing; karakterlerin kişiliği/ritmi farklı değildi; düşme-kalkma ikna etmedi.
+6. Hikâye anları zayıf ("Nah." çok küçük), kartlar düz koyu zeminde jenerik kaldı.
+7. Tam render'dan önce hareketi kare şeridiyle (0.1–0.2 sn aralık, büyütülmüş) ÖRNEKLE KARŞILAŞTIRARAK kontrol etmedim;
+   sadece tek tük kareye baktım. Bundan sonra: önce kritik hareketin kısa testini render et, örnekle yan yana koy, sonra devam.
+8. Örneği taklit ederken ana aksiyonun (barfiks) nasıl göründüğünü kare kare incelemeden işe başladım.
+
 ## Ortam
 - Node 22 / npm 10, Python 3.13 / pip 24 kurulu.
 - Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
