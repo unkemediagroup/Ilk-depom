@@ -44,3 +44,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - Kullanıcı geri bildirimi: animasyonlar beğenildi; çizim sesleri (cızırtı) ve sıkıcı anlatım beğenilmedi. Lemo-Opuscar eklenti olarak kalıcı kaydedildi.
 - onetake skill eklendi (`.claude/skills/onetake`, ticari olmayan lisans).
 - gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).
+- HyperFrames eklentisi eklendi (Apache-2.0).
