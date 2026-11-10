@@ -11,8 +11,6 @@
   (Woodcut'taki "paper margin" kuralını uygulama). Altyazılar görüntünün üzerinde, okunur şekilde.
 - **Daha akıcı ve hareketli:** Kesik kesik değil; karakter animasyonu akıcı (her karede hareket, "on twos" yok),
   bol kamera hareketi, sahneler arası kesintisiz/akan geçişler, durağan plan az.
-- **Motivasyon videoları:** Kullanıcı "motivasyon videosu" dediğinde HER ZAMAN `characters/hooded-figure/` karakterini
-  kullan (kapüşonlu figür, göğsünde turuncu kor). Tasarımını değiştirme.
 - Kullanıcı Türkçe konuşur; Türkçe ve kısa yanıt ver.
 - Kullanıcı konuşmaların kaybolmasını istemez: önemli kararları ve bilgileri
   bu dosyaya / `NOTLAR.md`'ye yaz, commit et ve branch'e push et.
