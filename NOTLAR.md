@@ -45,3 +45,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - onetake skill eklendi (`.claude/skills/onetake`, ticari olmayan lisans).
 - gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).
 - HyperFrames eklentisi eklendi (Apache-2.0).
+- 2026-11-11: Motivasyon kanalındaki genel video tercihleri/dersleri (karakter hariç) Body Hacks kanalı için CLAUDE.md'ye aktarıldı. Ajan/skill/eklentiler zaten main'de.

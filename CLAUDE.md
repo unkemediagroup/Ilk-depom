@@ -1,6 +1,14 @@
 # Proje Notları (Claude için)
 
 ## Kullanıcı tercihleri
+- **Çalışırken anlatma:** Video/iş yaparken adım adım açıklama yazma; sadece bitince kısa özet.
+- **Müzik:** Videolara müzik KOYMA (kullanıcı sonradan ekler); kendi seslendirmesini verirse onu kullan. Foley/cızırtı yok.
+- **Tam ekran video:** Görüntü ekranın TAMAMINI kaplasın. Kağıt kenar boşluğu / beyaz sayfa / çerçeve YOK.
+  Altyazılar görüntünün üzerinde, okunur şekilde.
+- **Daha akıcı ve hareketli:** Kesik kesik değil; animasyon akıcı (her karede hareket, "on twos" yok),
+  bol kamera hareketi, sahneler arası kesintisiz/akan geçişler, durağan plan az.
+- **Motivasyon karakteri bu kanalda KULLANILMAZ** ("Kırmızı Neon" yalnızca motivasyon kanalına ait; `characters/` alınmadı).
+  Body Hacks kanalı için ayrı görsel kimlik/karakter gerekirse kullanıcıya sor.
 - **Kısa iletişim:** Yaptıklarını uzun uzun açıklama. İşi en iyi şekilde yap, sonunda yalnızca kısa bir özet ver.
 - **Videolarda ses:** Çizim/boyama sırasında cızırtı, kalem, fırça hışırtısı gibi efektler İSTEMİYOR. Bu tür foley'i
   ya hiç koyma ya da neredeyse duyulmayacak kadar kıs; ses temiz olsun (anlatım + müzik ön planda).
@@ -43,7 +51,9 @@
 - İlk video: `videos/body-heals/` ("Did you know your body can heal itself?", Watercolor Brush, 1080×1920, 50.5 s, İngilizce ses + altyazı).
 - Bu container'da çalıştırma notları: `PLAYWRIGHT_CHROME=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`;
   sistem ffmpeg'i 6.1 → pip `imageio-ffmpeg` (ffmpeg 9) PATH'e konur; asset paketleri GitHub release'inden iner;
-  huggingface.co engelli → Whisper ses kontrolü (asr_check) çalışmaz.
+  Whisper (asr_check) çalışır: "Ilk-depom" cloud ortamı huggingface.co ve CDN adreslerine izin veriyor (Default ortamda engelli).
+- Türkçe/İngilizce TTS: Kokoro-82M (kokoro-onnx, Apache-2.0; model `core/tts/kokoro-v1.0.onnx`, ses örn. `am_puck`).
+  Kullanıcı kendi sesini verirse onu kullan. CREDITS dosyasına ses/font/araç lisanslarını yaz.
 - Microscope Story gibi gerçek görüntü isteyen stiller burada zor; kodla çizilen stiller (Watercolor, Whiteboard…) tercih edilir.
 
 ## onetake (skill)
@@ -63,6 +73,19 @@
 - `hyperframes@hyperframes` eklentisi `.claude/settings.json`'da açık — https://github.com/heygen-com/hyperframes (Apache-2.0).
   HTML'den video üretir (ürün tanıtımı, altyazı, overlay, hareket); 9 skill, ana skill `/hyperframes:hyperframes`.
 - Render için CLI: `npx hyperframes` (npm'den iner). Ücretsiz; Studio'nun Pro planı ayrıca ücretli modeller ekler.
+
+## Video dersleri (motivasyon kanalından, genel — tekrarlama)
+Bir videoda beğenilmeyen hatalar: (1) hareketin açısı yanlış çizildi — açıyı varsayma, örnek/gerçek hayata bak
+(ör. barfiks önden); (2) tek açılı rig — hareket başka açı gerektiriyorsa ayrı rig yaz; (3) nesne/el teması ve ana
+hareket okunmuyordu; (4) karakter/nesneler kadraja göre çok küçük, ekran boş; (5) robotik hareket — hepsi aynı easing,
+kişilik/ritim yok; (6) hikâye anları zayıf, kartlar düz ve jenerik; (7) tam render'dan ÖNCE kritik hareketin kısa
+testini render et, kare şeridiyle (0.1–0.2 sn, büyütülmüş) örnekle karşılaştır, sonra devam et.
+Sağlık/vücut konularında bilgi doğruluğu esas: iddialar bilimsel olarak savunulabilir olsun, tıbbi tavsiye/tedavi vaadi verme.
+
+## Body Hacks kanalı (bu repo)
+- YT Shorts sağlık ve vücut hileleri kanalı. Video araçları: Lemo-Opuscar, HyperFrames, onetake, gbro-collage-broll,
+  agency-agents ajanları, `yt-shorts-master-generator` yeteneği. Örnek çıktı: `videos/body-heals/`.
+- Kullanıcı konu verince video yaptırılacak.
 
 ## Ortam
 - Node 22 / npm 10, Python 3.13 / pip 24 kurulu.
