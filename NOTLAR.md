@@ -51,3 +51,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: "How Do Our Wounds Actually Heal?" Shorts (Kırmızı Neon + neon mikro dünya, TTS am_puck, müziksiz, 35.8 sn): `videos/wounds/`.
 - 2026-11-11: "Nobody Is Coming to Save You" (Kırmızı Neon, siyah evren, kullanıcının sesi, 29 sn, senaryo tablosu SCRIPT.md): `videos/nobody-red/`.
 - 2026-11-11: "Nobody Is Coming to Save You" Kül ve Ateş versiyonu (erimiş altın çatlaklı figür, kömür karası zemin): `videos/nobody-forge/`.
+- 2026-11-11: "Nobody Is Coming to Save You" Gölge Kitle & Kül-Ateş versiyonu (4 sütunlu senaryo): `videos/nobody-crowd/`.
