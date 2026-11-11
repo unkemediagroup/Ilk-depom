@@ -58,3 +58,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: Body Hacks 'Why Do Our Eyes See Better in the Dark?' (kullanıcının sesi, müziksiz, 45 sn, teaser: kalp atışı): `videos/dark-vision/`.
 - 2026-11-11: Body Hacks 'How Many Times Does Your Heart Beat in a Day?' (kullanıcının sesi, müziksiz, 57 sn, teaser: ikinci beyin bağırsak): `videos/heartbeat/`.
 - 2026-11-11: Body Hacks 'Why Is the Gut Called the Second Brain?' (kullanıcının sesi, müziksiz, 47 sn, teaser: vücut elektriği): `videos/gut-brain/`.
+- 2026-11-11: Body Hacks 'Why Does Our Body Produce Electricity?' (kullanıcının sesi, müziksiz, 42 sn, teaser: kemik vs çelik): `videos/body-electricity/`.
