@@ -49,3 +49,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - İmza karakter kaydedildi: `characters/red-neon/` (Kırmızı Neon).
 - "Motivation / Discipline / Obsession" videosu (Kırmızı Neon, sessiz, 27 sn): `videos/obsession/`.
 - 2026-11-11: "How Do Our Wounds Actually Heal?" Shorts (Kırmızı Neon + neon mikro dünya, TTS am_puck, müziksiz, 35.8 sn): `videos/wounds/`.
+- 2026-11-11: "Nobody Is Coming to Save You" (Kırmızı Neon, siyah evren, kullanıcının sesi, 29 sn, senaryo tablosu SCRIPT.md): `videos/nobody-red/`.
