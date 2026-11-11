@@ -54,3 +54,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: Body Hacks 'Why Is Yawning Contagious?' (kullanıcının sesi, müziksiz, 40 sn, teaser: hıçkırık): `videos/yawning/`.
 - 2026-11-11: Body Hacks 'Why Do We Get Hiccups?' (kullanıcının sesi, müziksiz, 41 sn, teaser: tüy diken): `videos/hiccups/`.
 - 2026-11-11: Body Hacks 'Why Do We Get Goosebumps?' (kullanıcının sesi, müziksiz, 44 sn, teaser: uykuda salya): `videos/goosebumps/`.
+- 2026-11-11: Body Hacks 'Why Does Saliva Flow While Sleeping?' (kullanıcının sesi, müziksiz, 48 sn, teaser: karanlıkta görme): `videos/drool/`.
