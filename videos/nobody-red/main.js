@@ -120,7 +120,9 @@ const F = {
   week(t, a, b) {          // dutch angle: sitting with the head in the hands
     void_(t, .2); cam(560, 1300, lerp(1.25, 1.4, seg(t, a, b)), lerp(.2, .14, seg(t, a, b)));
     g.strokeStyle = 'rgba(255,255,255,.35)'; g.lineWidth = 3; g.beginPath(); g.moveTo(-500, 1500); g.lineTo(1600, 1500); g.stroke();
-    drawNeon(g, 520, 1500, 1.0, POSE.despair, { glow: .9 });
+    // sitting on the floor, arms around the knees, head sinking onto them (a small breath of motion)
+    const sink = ss(seg(t, a, a + .7)), br = Math.sin(t * 3) * .03;
+    drawNeon(g, 500, 1500, 1.0, { lean: lerp(.35, .62, sink) + br, head: lerp(.3, .85, sink), a1: -.55, a2: -1.05, f1: -.45, f2: -1.15, q1: -1.05, k1: 2.45, q2: -.95, k2: 2.35, y: 262 }, { glow: .9 });
   },
   stars(t, a, b) {         // stars line up… and shatter
     void_(t, .1); cam(540, 900, lerp(1.0, 1.1, seg(t, a, b)));
