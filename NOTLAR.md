@@ -52,3 +52,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: Body Hacks 'Why Are Our Eyes Always Wet?' (kodla anatomik çizim, kullanıcının sesi, müziksiz, 47 sn): `videos/tear-film/`.
 - 2026-11-11: Body Hacks gözyaşı filmi 2. versiyon (3 katman, teaser: esneme) (56 sn): `videos/tear-film-2/`. Not: istem başlığı 'joints popping' yazıyordu ama metin/ses gözyaşı filmiydi; sese göre yapıldı.
 - 2026-11-11: Body Hacks 'Why Is Yawning Contagious?' (kullanıcının sesi, müziksiz, 40 sn, teaser: hıçkırık): `videos/yawning/`.
+- 2026-11-11: Body Hacks 'Why Do We Get Hiccups?' (kullanıcının sesi, müziksiz, 41 sn, teaser: tüy diken): `videos/hiccups/`.
