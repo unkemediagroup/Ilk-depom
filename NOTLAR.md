@@ -48,3 +48,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: Motivasyon kanalındaki genel video tercihleri/dersleri (karakter hariç) Body Hacks kanalı için CLAUDE.md'ye aktarıldı. Ajan/skill/eklentiler zaten main'de.
 - 2026-11-11: Body Hacks 'How Do Our Wounds Actually Heal?' (kodla çizilmiş anatomik mikro dünya, kullanıcının sesi, müziksiz, 42 sn): `videos/wounds-heal/` (render: node render.cjs, ffmpeg ile mux).
 - 2026-11-11: Body Hacks 'Why Doesn't Your Stomach Digest Itself?' (kodla anatomik çizim, kullanıcının sesi, müziksiz, 62 sn): `videos/stomach-acid/` (render.cjs + ffmpeg mux).
+- 2026-11-11: Body Hacks 'Why Do Your Fingers Wrinkle in Water?' (kodla anatomik çizim, kullanıcının sesi, müziksiz, 41 sn): `videos/fingers-wrinkle/`.
