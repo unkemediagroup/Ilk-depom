@@ -50,3 +50,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: Body Hacks 'Why Doesn't Your Stomach Digest Itself?' (kodla anatomik çizim, kullanıcının sesi, müziksiz, 62 sn): `videos/stomach-acid/` (render.cjs + ffmpeg mux).
 - 2026-11-11: Body Hacks 'Why Do Your Fingers Wrinkle in Water?' (kodla anatomik çizim, kullanıcının sesi, müziksiz, 41 sn): `videos/fingers-wrinkle/`.
 - 2026-11-11: Body Hacks 'Why Are Our Eyes Always Wet?' (kodla anatomik çizim, kullanıcının sesi, müziksiz, 47 sn): `videos/tear-film/`.
+- 2026-11-11: Body Hacks gözyaşı filmi 2. versiyon (3 katman, teaser: esneme) (56 sn): `videos/tear-film-2/`. Not: istem başlığı 'joints popping' yazıyordu ama metin/ses gözyaşı filmiydi; sese göre yapıldı.
