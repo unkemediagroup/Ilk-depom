@@ -59,3 +59,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: Body Hacks 'How Many Times Does Your Heart Beat in a Day?' (kullanıcının sesi, müziksiz, 57 sn, teaser: ikinci beyin bağırsak): `videos/heartbeat/`.
 - 2026-11-11: Body Hacks 'Why Is the Gut Called the Second Brain?' (kullanıcının sesi, müziksiz, 47 sn, teaser: vücut elektriği): `videos/gut-brain/`.
 - 2026-11-11: Body Hacks 'Why Does Our Body Produce Electricity?' (kullanıcının sesi, müziksiz, 42 sn, teaser: kemik vs çelik): `videos/body-electricity/`.
+- 2026-11-11: Body Hacks 'Are Our Bones Stronger Than Steel?' (kullanıcının sesi, müziksiz, 38 sn, teaser: yutkunurken nefes): `videos/bone-steel/`.
