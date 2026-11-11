@@ -11,7 +11,7 @@
 | 0:10–0:12 | "But instead of letting that terrify you," | Giant grey shadow figures lean over the kneeling molten figure; two lightning strikes, screen shake. |
 | 0:12–0:14 | "let it set you free." | The chest ignites: molten gold light rays tear the darkness apart, the shadows shatter into shards, arms thrown up, golden sparks and embers explode. |
 | 0:14–0:15 | "The moment you realize no one else" | Low angle, on one knee, the inner ember pulsing; head slowly lifts. |
-| 0:15–0:17 | "is going to build the life you want," | Crane up as the figure rises to full height under a amber spotlight. |
+| 0:15–0:17 | "is going to build the life you want," | Crane up as the figure rises to full height under an amber spotlight. |
 | 0:17–0:19 | "you stop waiting and start grinding." | Tracking shot: walk turns into a sprint, dark pillars streaming past. |
 | 0:19–0:20 | "…grinding." | Tight, fast: running in place, white and amber speed lines, sparks trailing, camera shake. |
 | 0:20–0:22 | "Stop making excuses," | Runs straight through a grey wall that reads EXCUSES — it shatters on impact. |
