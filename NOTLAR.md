@@ -55,3 +55,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: Body Hacks 'Why Do We Get Hiccups?' (kullanıcının sesi, müziksiz, 41 sn, teaser: tüy diken): `videos/hiccups/`.
 - 2026-11-11: Body Hacks 'Why Do We Get Goosebumps?' (kullanıcının sesi, müziksiz, 44 sn, teaser: uykuda salya): `videos/goosebumps/`.
 - 2026-11-11: Body Hacks 'Why Does Saliva Flow While Sleeping?' (kullanıcının sesi, müziksiz, 48 sn, teaser: karanlıkta görme): `videos/drool/`.
+- 2026-11-11: Body Hacks 'Why Do Our Eyes See Better in the Dark?' (kullanıcının sesi, müziksiz, 45 sn, teaser: kalp atışı): `videos/dark-vision/`.
