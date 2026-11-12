@@ -63,3 +63,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-12: "Your Habits Create Your Future" (AYAZ; hook: GOALS çizgisine yetişemeyen sıçrayış; 29.2 sn): `videos/habits/`.
 - 2026-11-12: `videos/early/` — "Why Successful People Wake Up Early" (59 sn, AYAZ kırmızı, 26 sahne, müzik yok; Tim Cook satırı logosuz anonim figürle).
 - 2026-11-12: `videos/fear/` — "Overcoming Fear of Failure" (57 sn, AYAZ kırmızı, 25 sahne, hayalet = korku ana motifi; ses dosyasında metin 2 kez okunmuştu, ilk okuma kullanıldı).
+- 2026-11-12: `videos/moment/` — "Stop Waiting for the Perfect Moment" (45 sn, AYAZ kırmızı, 21 sahne: su altı hook, sıra fişi, tren, yanan REALITY duvarı, kum dolu yumruk, megafonlar, atlama kulesi→kanat→bulut, kum saatine crash-zoom).
