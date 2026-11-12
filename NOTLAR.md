@@ -54,3 +54,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: "Nobody Is Coming to Save You" Gölge Kitle & Kül-Ateş versiyonu (4 sütunlu senaryo): `videos/nobody-crowd/`.
 - 2026-11-12: PR #2 (AYAZ, kor rengi) bu branch'e birleştirildi; Kırmızı Neon (`characters/red-neon/`) silindi. Motivasyon videolarında ana karakter artık AYAZ (`characters/ayaz/ayaz.js` + `ayaz-karakter` skill).
 - 2026-11-12: AYAZ ile ilk video "Nobody Is Coming to Save You": `videos/nobody-ayaz/` (kül→kor→zirvede altın ritüeli).
+- 2026-11-12: AYAZ (sadece kırmızı) ile yeni kurgu: her cümle kendi somut görseli (fişek, takvim, NO yıldızları, zincir, blueprint, çekiç, bahane baloncukları, merdiven): `videos/nobody-ayaz2/`. Önceki AYAZ kurgusu beğenilmedi.
