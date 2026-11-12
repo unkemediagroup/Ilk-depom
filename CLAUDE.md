@@ -70,16 +70,15 @@
 
 Ayrıntılı geçmiş: `NOTLAR.md`
 
-## Kanal ana karakteri: KOR
-- Motivasyon YT Shorts kanalının ana karakteri: `characters/kor/` (karakter sayfası PNG, şeffaf hero PNG, kaynak `sheet.html` — pozlar `P` nesnesinde, `fig(poz,x,y,ölçek,'red'|'gold')`).
-- İmza: mat siyah gövde + ateş kırmızısı neon dış hat (#FF1A30), göğüste altın kintsugi çatlağı, altın alın bandı + iki alev kuyruğu, tek eğik altın göz.
-- "Uyanış modu": videonun zirve anında karakter kırmızıdan altına (#FFB81F) döner. Kalabalık hep gri ve bantsız.
-- Alternatif karakter adayları (kullanıcı henüz seçmedi): `characters/ayaz/` (AYAZ — buz mavisi, köşeli, kukuleta+pelerin, göğüste kum saati)
-  ve `characters/nova/` (NOVA — mor+limon, halka kafa içinde yıldız, yörünge, iri yumruklar). Kaynak: `characters/sheet2.html#ayaz|#nova`.
-- **Seçilen ana karakter: AYAZ** (kullanıcı çok beğendi, KOR/NOVA elendi). v2 kaynağı: `characters/ayaz/ayaz.html`
-  (`#sheet` karakter sayfası, `#colors` 6 renk modu, `#anim` 8.5 sn tanıtım klibi — `draw(t)` ile kare kare render).
-  v2 imzaları: donan zemin, çift katlı pelerin + buz kıymıkları, kristal gövde, çerçeveli kum saati (zirvede ters döner), kol bantları, vizör.
-  Renk modları: BUZ (ana), KOR, ALTIN, ZEHİR, MOR GECE, HAYALET (zirve). Siluet hiç değişmez.
-- KOR da geliştirildi (kullanıcı istedi; AYAZ ile KOR arasında nihai seçim henüz net değil): `characters/kor/kor.html`
-  (`#sheet` v2 sayfası, `#colors` 6 örnek: KOR, ALTIN UYANIŞ, MAVİ ALEV, KÜL, ZÜMRÜT, MOR ALEV). v2: kor çekirdek + yayılan kintsugi,
-  üç dilli alev bandı, altın kol sargıları, yanan zemin, yumruk pozu.
+## İMZA KARAKTER — AYAZ (kor rengi)  ← kullanıcının nihai kararı (2026-11-12)
+- Motivasyon YT Shorts kanalının ana karakteri **AYAZ, kor renginde** (kontur `#ff2a3c`, vurgu altın `#ffb81f`).
+  Eski "Kırmızı Neon" (`characters/red-neon/`) ve yt-shorts-master-generator'daki "kırmızı neon gölge silüet" tarifi GEÇERSİZ.
+- Skill: `.claude/skills/ayaz-karakter` — motivasyon videosu üretirken önce onu uygula.
+- Kod: `characters/ayaz/ayaz.js` (Canvas 2D, eski `neon.js` ile birebir uyumlu; videoya `neon.js` adıyla kopyalanır).
+  Ayrıntı: `characters/ayaz/README.md`, model sayfası `characters/ayaz/model-sheet.jpg`.
+- Sabit siluet: sivri kukuleta + altın vizör, yırtık çift katlı pelerin, kristal gövde, göğüste kum saati, kol bantları, kor zemin.
+  Kalabalık gri/yuvarlak/pelerinsiz. Zirve ritüeli: kum saati döner + renk altına kayar + kıvılcım.
+- Renk modları: `kor` (ana), `altin` (zirve), `kul` (tükenmişlik), `buz`.
+- Tasarım süreci arşivi: `characters/kor/` (ilk aday, yuvarlak figür — renk paleti buradan alındı), `characters/nova/` (elendi),
+  `characters/ayaz/ayaz.html` (SVG karakter sayfası, renk modları, tanıtım klibi), `characters/sheet2.html`.
+- Motivasyon videoları `claude/node-version-check-dka4rk` branch'inde üretiliyor; AYAZ dosyaları oraya/main'e birleştirilmeli.

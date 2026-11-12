@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset='utf-8'></head><body style="margin:0;background:#04050a"><canvas id="c" width="2160" height="2700"></canvas><script type="module">
+import {drawNeon,POSE,emberGround,sparks,MODES,mixMode} from './ayaz.js';
+const g=document.getElementById('c').getContext('2d');g.fillStyle='#04050a';g.fillRect(0,0,2160,2700);
+const t=+(new URLSearchParams(location.search).get('t')||.4);
+g.font='900 150px Arial';g.fillStyle='#fff';g.shadowColor='#ff2a3c';g.shadowBlur=40;g.fillText('AYAZ',90,190);g.shadowBlur=0;g.font='700 34px Arial';g.fillStyle='#ffb81f';g.fillText('K O R   R E N G İ   ·   K A N A L I N   A N A   K A R A K T E R İ',96,250);
+emberGround(g,620,1380,1.5,1);drawNeon(g,620,1380,1.5,POSE.hero,{t});
+const SH={rim:'#34343e',hot:'#4a4a55',glow:'rgba(80,80,100,'};
+[[1250,.9],[1480,1.0],[1720,.85],[1950,.95]].forEach(([x,s],i)=>drawNeon(g,x,1380,s,{...POSE.stand,head:.4,lean:.12},{col:SH,glow:.4}));
+g.font='700 30px Arial';g.fillStyle='#8a8a92';g.fillText('KALABALIK: gri, yuvarlak, pelerinsiz',1240,760);
+const names=['kneel','walkA','runA','push','jump','victory'];
+names.forEach((n,i)=>{const x=200+i*350;emberGround(g,x,2020,.7,POSE[n].y<0||n=='runA'?0:1,{seed:i});drawNeon(g,x,2020,.7,POSE[n],{t:t+i});g.font='700 28px Arial';g.fillStyle='#8a8a92';g.textAlign='center';g.fillText(n,x,2090);});
+[['kor','KOR · ana'],['altin','ALTIN · zirve'],['kul','KÜL · tükenmiş'],['buz','BUZ']].forEach(([m,l],i)=>{const x=300+i*520;emberGround(g,x,2600,.62,1,{mode:m,seed:i+9});drawNeon(g,x,2600,.62,i==1?POSE.victory:i==2?POSE.kneel:POSE.hero,{t:t+i,mode:m,hourglass:i==1?1:0});g.fillStyle=MODES[m].rim;g.font='900 34px Arial';g.fillText(l,x,2670);});
+sparks(g,820,2180,.5,{seed:2,scale:.8});
+document.title='ok';
+</script></body></html>
