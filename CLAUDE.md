@@ -80,3 +80,6 @@ Ayrıntılı geçmiş: `NOTLAR.md`
   (`#sheet` karakter sayfası, `#colors` 6 renk modu, `#anim` 8.5 sn tanıtım klibi — `draw(t)` ile kare kare render).
   v2 imzaları: donan zemin, çift katlı pelerin + buz kıymıkları, kristal gövde, çerçeveli kum saati (zirvede ters döner), kol bantları, vizör.
   Renk modları: BUZ (ana), KOR, ALTIN, ZEHİR, MOR GECE, HAYALET (zirve). Siluet hiç değişmez.
+- KOR da geliştirildi (kullanıcı istedi; AYAZ ile KOR arasında nihai seçim henüz net değil): `characters/kor/kor.html`
+  (`#sheet` v2 sayfası, `#colors` 6 örnek: KOR, ALTIN UYANIŞ, MAVİ ALEV, KÜL, ZÜMRÜT, MOR ALEV). v2: kor çekirdek + yayılan kintsugi,
+  üç dilli alev bandı, altın kol sargıları, yanan zemin, yumruk pozu.
