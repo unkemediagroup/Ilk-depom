@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
 *{margin:0;box-sizing:border-box}
 body{width:1350px;height:1800px;background:#050506;color:#fff;font-family:"Montserrat","Arial Black","DejaVu Sans",Arial,sans-serif;overflow:hidden;position:relative}
-body.hero{background:transparent}
+body.hero{background:#050506}
 h1{position:absolute;left:60px;top:48px;font-size:120px;font-weight:900;letter-spacing:6px;line-height:1}
 h1 span{color:#ff1a30;text-shadow:0 0 30px #ff1a30aa}
 .sub{position:absolute;left:66px;top:178px;font-size:21px;letter-spacing:5px;color:#ffb81f;font-weight:700}
@@ -57,7 +57,7 @@ function fig(pose,x,y,sc,mode){
  limb([p.neck,p.hip],27);
  // crack
  const dx=p.hip[0]-p.neck[0],dy=p.hip[1]-p.neck[1],L=Math.hypot(dx,dy),u=[dx/L,dy/L],v=[-u[1],u[0]];
- const q=(a,c)=>[(p.neck[0]+u[0]*a+v[0]*c).toFixed(1),(p.neck[1]+u[1]*a+v[1]*c).toFixed(1)].join(',');
+ const q=(a,c0)=>{const c=c0-5;return [(p.neck[0]+u[0]*a+v[0]*c).toFixed(1),(p.neck[1]+u[1]*a+v[1]*c).toFixed(1)].join(",")};
  const cr=gold?`M${q(4,-2)}L${q(14,5)}L${q(24,-4)}L${q(34,5)}L${q(46,-3)}L${q(60,3)} M${q(24,-4)}L${q(28,-12)} M${q(34,5)}L${q(40,12)} M${q(14,5)}L${q(12,12)} M${q(46,-3)}L${q(50,-11)}`
   :`M${q(10,-3)}L${q(18,4)}L${q(26,-3)}L${q(35,4)}L${q(44,-1)} M${q(26,-3)}L${q(29,-10)} M${q(35,4)}L${q(39,10)}`;
  o+=`<path d="${cr}" stroke="${A}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".45"/><path d="${cr}" stroke="${gold?'#fff':'#ffd76a'}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
