@@ -61,3 +61,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-12: "The Power of Being Alone" (AYAZ, güçlü hook: ilk karede koşu + kovalayan sessizlik dalgası; 28.6 sn): `videos/alone/`.
 - 2026-11-12: "One Year Can Change Everything" (AYAZ; hook: dönen 365 sayacı → 1 YEAR + kahraman inişi; 28.1 sn): `videos/oneyear/`.
 - 2026-11-12: "Your Habits Create Your Future" (AYAZ; hook: GOALS çizgisine yetişemeyen sıçrayış; 29.2 sn): `videos/habits/`.
+- 2026-11-12: `videos/early/` — "Why Successful People Wake Up Early" (59 sn, AYAZ kırmızı, 26 sahne, müzik yok; Tim Cook satırı logosuz anonim figürle).
