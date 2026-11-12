@@ -56,3 +56,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-12: AYAZ ile ilk video "Nobody Is Coming to Save You": `videos/nobody-ayaz/` (kül→kor→zirvede altın ritüeli).
 - 2026-11-12: AYAZ (sadece kırmızı) ile yeni kurgu: her cümle kendi somut görseli (fişek, takvim, NO yıldızları, zincir, blueprint, çekiç, bahane baloncukları, merdiven): `videos/nobody-ayaz2/`. Önceki AYAZ kurgusu beğenilmedi.
 - 2026-11-12: "Discipline Over Motivation" (AYAZ kırmızı, cümle başına somut görsel, 28.4 sn): `videos/discipline/`.
+- 2026-11-12: "Your 20s Are Your Foundation" (AYAZ kırmızı, 29.8 sn): `videos/twenties/`.

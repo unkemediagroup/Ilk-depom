@@ -108,7 +108,7 @@ Ayrıntılı geçmiş: `NOTLAR.md`
 - Kod: `characters/ayaz/ayaz.js` (Canvas 2D, eski `neon.js` ile birebir uyumlu; videoya `neon.js` adıyla kopyalanır).
   Ayrıntı: `characters/ayaz/README.md`, model sayfası `characters/ayaz/model-sheet.jpg`.
 - Sabit siluet: sivri kukuleta + altın vizör, yırtık çift katlı pelerin, kristal gövde, göğüste kum saati, kol bantları, kor zemin.
-  Kalabalık gri/yuvarlak/pelerinsiz. Zirve ritüeli: kum saati döner + renk altına kayar + kıvılcım.
+  Kalabalık gri/yuvarlak/pelerinsiz. Zirve ritüeli: kum saati döner + kıvılcım (renk kırmızı kalır — üstteki kural).
 - Renk modları: `kor` (ana), `altin` (zirve), `kul` (tükenmişlik), `buz`.
 - Tasarım süreci arşivi: `characters/kor/` (ilk aday, yuvarlak figür — renk paleti buradan alındı), `characters/nova/` (elendi),
   `characters/ayaz/ayaz.html` (SVG karakter sayfası, renk modları, tanıtım klibi), `characters/sheet2.html`.
