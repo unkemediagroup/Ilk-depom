@@ -74,3 +74,5 @@ Ayrıntılı geçmiş: `NOTLAR.md`
 - Motivasyon YT Shorts kanalının ana karakteri: `characters/kor/` (karakter sayfası PNG, şeffaf hero PNG, kaynak `sheet.html` — pozlar `P` nesnesinde, `fig(poz,x,y,ölçek,'red'|'gold')`).
 - İmza: mat siyah gövde + ateş kırmızısı neon dış hat (#FF1A30), göğüste altın kintsugi çatlağı, altın alın bandı + iki alev kuyruğu, tek eğik altın göz.
 - "Uyanış modu": videonun zirve anında karakter kırmızıdan altına (#FFB81F) döner. Kalabalık hep gri ve bantsız.
+- Alternatif karakter adayları (kullanıcı henüz seçmedi): `characters/ayaz/` (AYAZ — buz mavisi, köşeli, kukuleta+pelerin, göğüste kum saati)
+  ve `characters/nova/` (NOVA — mor+limon, halka kafa içinde yıldız, yörünge, iri yumruklar). Kaynak: `characters/sheet2.html#ayaz|#nova`.
