@@ -69,3 +69,8 @@
 - Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
 
 Ayrıntılı geçmiş: `NOTLAR.md`
+
+## Kanal ana karakteri: KOR
+- Motivasyon YT Shorts kanalının ana karakteri: `characters/kor/` (karakter sayfası PNG, şeffaf hero PNG, kaynak `sheet.html` — pozlar `P` nesnesinde, `fig(poz,x,y,ölçek,'red'|'gold')`).
+- İmza: mat siyah gövde + ateş kırmızısı neon dış hat (#FF1A30), göğüste altın kintsugi çatlağı, altın alın bandı + iki alev kuyruğu, tek eğik altın göz.
+- "Uyanış modu": videonun zirve anında karakter kırmızıdan altına (#FFB81F) döner. Kalabalık hep gri ve bantsız.
