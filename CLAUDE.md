@@ -12,6 +12,8 @@
   (çekiçle kule, zirveye bayrak, takvim, zincir, bank vb.) tekrar etme, konuya özgü yeni metaforlar bul.
   Animasyonlara dikkat: ayak yerde, poz mantıklı, nesneler el/vücutla gerçekten etkileşsin; "uydurma"/yarım iş görsel yok.
   Render'dan önce her sahneyi kare kare kontrol et.
+- **YT Shorts hook (ilk 3 sn):** Video ilk karede hareketle başlasın (ör. karakter zaten koşuyor, ilk karede kırmızı vuruş/flaş,
+  kovalanma, sarsıntı); 1. saniyede güçlü bir aksiyon/dönüş, yavaş açılış yok.
 - **Kısa iletişim:** Yaptıklarını uzun uzun açıklama. İşi en iyi şekilde yap, sonunda yalnızca kısa bir özet ver.
 - **Videolarda ses:** Çizim/boyama sırasında cızırtı, kalem, fırça hışırtısı gibi efektler İSTEMİYOR. Bu tür foley'i
   ya hiç koyma ya da neredeyse duyulmayacak kadar kıs; ses temiz olsun (anlatım + müzik ön planda).

@@ -58,3 +58,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-12: "Discipline Over Motivation" (AYAZ kırmızı, cümle başına somut görsel, 28.4 sn): `videos/discipline/`.
 - 2026-11-12: "Your 20s Are Your Foundation" (AYAZ kırmızı, 29.8 sn): `videos/twenties/`.
 - 2026-11-12: "Stop Comparing Your Life to Others" (AYAZ kırmızı, 30.2 sn, yeni görsel dil: kitaplar, sosyal medya akışı, film şeridi, ilerleme çubukları, şerit metre, dünkü-ben hayaleti, koşu kulvarı): `videos/compare/`.
+- 2026-11-12: "The Power of Being Alone" (AYAZ, güçlü hook: ilk karede koşu + kovalayan sessizlik dalgası; 28.6 sn): `videos/alone/`.
