@@ -1,0 +1,129 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;box-sizing:border-box}
+body{background:#04060a;color:#fff;font-family:"Montserrat","Arial Black","DejaVu Sans",Arial,sans-serif;overflow:hidden;position:relative}
+h1{position:absolute;left:60px;top:48px;font-size:120px;font-weight:900;letter-spacing:6px;line-height:1;text-shadow:0 0 34px #19e3ff}
+h1 small{font-size:30px;color:#19e3ff;letter-spacing:3px;margin-left:14px;text-shadow:none}
+.sub{position:absolute;left:66px;top:178px;font-size:21px;letter-spacing:5px;font-weight:700;color:#19e3ff}
+.lbl{position:absolute;font-size:15px;letter-spacing:3px;color:#8a8a92;font-weight:700;text-transform:uppercase}
+.note{position:absolute;font-size:17px;line-height:1.5;color:#d6d6dc;font-weight:400;font-family:"DejaVu Sans",Arial,sans-serif}
+.note b{color:#19e3ff}
+.cw{position:absolute;width:400px;text-align:center}
+.cw .n{font-size:30px;font-weight:900;letter-spacing:4px}
+.cw .d{font-family:"DejaVu Sans",Arial,sans-serif;font-size:15px;color:#c9c9d0;margin-top:4px}
+.cw .h{font-family:monospace;font-size:13px;color:#8a8a92;margin-top:3px}
+svg{position:absolute;left:0;top:0}
+</style></head><body><svg id="s"></svg><div id="ui"></div>
+<script>
+const S=document.getElementById('s'),UI=document.getElementById('ui');
+const P={
+ stand:{head:[2,-186],neck:[0,-160],hip:[0,-95],kb:[-9,-48],fb:[-12,0],kf:[9,-48],ff:[12,0],eb:[15,-127],hb:[21,-94],ef:[-16,-127],hf:[-17,-93],tail:[-1,.25]},
+ run:{head:[38,-176],neck:[24,-153],hip:[0,-95],kb:[-28,-60],fb:[-66,-48],kf:[40,-74],ff:[34,-26],eb:[2,-122],hb:[-24,-104],ef:[50,-128],hf:[70,-152],tail:[-1.35,-.05]},
+ win:{head:[3,-188],neck:[0,-160],hip:[0,-95],kb:[-14,-48],fb:[-22,0],kf:[14,-48],ff:[22,0],eb:[-24,-132],hb:[-6,-108],ef:[22,-184],hf:[30,-226],tail:[-1,.45]},
+ rise:{head:[22,-140],neck:[10,-116],hip:[-8,-58],kb:[-14,-6],fb:[-58,-5],kf:[36,-56],ff:[38,0],eb:[-4,-82],hb:[-2,-46],ef:[34,-92],hf:[38,-62],tail:[-1,.6]},
+ climb:{head:[16,-190],neck:[8,-164],hip:[-6,-102],kb:[-24,-58],fb:[-30,-10],kf:[34,-84],ff:[36,-38],eb:[-2,-136],hb:[26,-128],ef:[34,-190],hf:[44,-230],tail:[-.9,.7]},
+};
+P.run2={...P.run,kb:P.run.kf,fb:P.run.ff,kf:P.run.kb,ff:P.run.fb,eb:P.run.ef,hb:P.run.hf,ef:P.run.eb,hf:P.run.hb};
+P.pass={head:[30,-181],neck:[18,-157],hip:[0,-98],kf:[2,-50],ff:[-4,-4],kb:[30,-66],fb:[10,-40],ef:[14,-125],hf:[4,-100],eb:[10,-125],hb:[24,-108],tail:[-1.3,0]};
+P.pass2={...P.pass,kb:P.pass.kf,fb:P.pass.ff,kf:P.pass.kb,ff:P.pass.fb,eb:P.pass.ef,hb:P.pass.hf,ef:P.pass.eb,hf:P.pass.hb};
+const SEQ=[P.run,P.pass,P.run2,P.pass2];
+const runPose=t=>{const ph=(t-3.7)/.13,i=Math.floor(ph),f=ph-i;return lerpP(SEQ[i%4],SEQ[(i+1)%4],f*f*(3-2*f))};
+const PAL={
+ buz:{n:'BUZ',C:'#19e3ff',A:'#ffffff',d:'Ana renk · disiplin, odak, sabah 5'},
+ kor:{n:'KOR',C:'#ff2a3c',A:'#ffb81f',d:'Öfke, mücadele, “yeter artık” anları'},
+ altin:{n:'ALTIN',C:'#ffc21a',A:'#ffffff',d:'Zafer, başarı, hedefe varış'},
+ zehir:{n:'ZEHİR',C:'#3dff8a',A:'#eaffef',d:'Para, büyüme, hırs'},
+ gece:{n:'MOR GECE',C:'#a04dff',A:'#ff6ad5',d:'Hayal, yalnız gece çalışması'},
+ hayalet:{n:'HAYALET',C:'#ffffff',A:'#19e3ff',d:'Zirve modu · kum saati döndüğünde'}};
+const B='#05080c';
+const hx=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16));
+const mix=(a,b,t)=>{const x=hx(a),y=hx(b);return '#'+x.map((v,i)=>Math.round(v+(y[i]-v)*t).toString(16).padStart(2,'0')).join('')};
+const lerpP=(a,b,t)=>{const o={};for(const k in a)o[k]=[a[k][0]+(b[k][0]-a[k][0])*t,a[k][1]+(b[k][1]-a[k][1])*t];return o};
+const rnd=i=>{const x=Math.sin(i*127.1+3.7)*43758.5;return x-Math.floor(x)};
+const ease=t=>t<0?0:t>1?1:t*t*(3-2*t);
+function frost(C,A,g,sx=1){let o='';if(g<=0)return o;
+ for(let i=0;i<11;i++){const ang=(i/11)*Math.PI*2+rnd(i)*.4;let x=0,y=0,d=`M0,0`;const segs=5;
+  for(let k=1;k<=segs;k++){if(k/segs>g+.001)break;const r=26*sx*(.7+rnd(i*9+k)*.6),a=ang+(rnd(i*5+k)-.5)*.9;x+=Math.cos(a)*r;y+=Math.sin(a)*r*.2;d+=`L${x.toFixed(1)},${y.toFixed(1)}`;
+   if(k==2||k==4){const a2=a+(rnd(i+k)>.5?.9:-.9);d+=`M${x.toFixed(1)},${y.toFixed(1)}L${(x+Math.cos(a2)*14*sx).toFixed(1)},${(y+Math.sin(a2)*14*sx*.2).toFixed(1)}M${x.toFixed(1)},${y.toFixed(1)}`}}
+  o+=`<path d="${d}" stroke="${i%3?C:A}" stroke-width="${i%3?1.6:2.2}" fill="none" stroke-linejoin="miter" opacity="${.75*Math.min(1,g*2)}"/>`}
+ return `<g transform="translate(0,4)">${o}</g>`}
+function fig(p,o={}){
+ const C=o.C||PAL.buz.C,A=o.A||PAL.buz.A,t=o.t??.3,amp=o.wave??4,flip=o.flip||0;
+ const n=p.neck,h=p.hip,[tx,ty]=p.tail,[HX,HY]=p.head;
+ const dx=h[0]-n[0],dy=h[1]-n[1],L=Math.hypot(dx,dy),u=[dx/L,dy/L],v=[-u[1],u[0]];
+ const q=(a,c)=>[n[0]+u[0]*a+v[0]*c,n[1]+u[1]*a+v[1]*c];
+ const pt=a=>a.map(x=>x.toFixed(1)).join(',');
+ const wv=k=>Math.sin(t*5+k*1.3)*amp;
+ let s='';
+ const limb=(pts,w)=>{const d='M'+pts.map(pt).join('L'),a=`fill="none" stroke-linecap="square" stroke-linejoin="miter"`;
+  s+=`<path d="${d}" stroke="${C}" stroke-width="${w+6}" ${a}/><path d="${d}" stroke="${B}" stroke-width="${w}" ${a}/>`};
+ const toe=f=>[f[0]+12,f[1]+(f[1]>-8?0:3)];
+ const band=(e,hd)=>{const ax=hd[0]-e[0],ay=hd[1]-e[1],l=Math.hypot(ax,ay),nx=-ay/l,ny=ax/l;
+  [.45,.68].forEach(f=>{const cx=e[0]+ax*f,cy=e[1]+ay*f;s+=`<path d="M${(cx-nx*5).toFixed(1)},${(cy-ny*5).toFixed(1)}L${(cx+nx*5).toFixed(1)},${(cy+ny*5).toFixed(1)}" stroke="${A}" stroke-width="2.2"/>`})};
+ // cape
+ const c1=[[n[0]+3,n[1]-6],[n[0]+tx*86,n[1]+26+ty*60+wv(0)],[n[0]+tx*58,n[1]+50+ty*48+wv(1)*.6],[n[0]+tx*78,n[1]+84+ty*44+wv(2)],[n[0]+tx*46,n[1]+78+ty*26+wv(3)*.5],[n[0]+tx*52,n[1]+112+ty*24+wv(4)],[h[0]-4,h[1]-12]];
+ const c2=[[n[0]+1,n[1]-2],[n[0]+tx*50,n[1]+30+ty*40+wv(1)],[n[0]+tx*34,n[1]+48+ty*30+wv(2)*.5],[n[0]+tx*44,n[1]+72+ty*26+wv(3)],[h[0]-6,h[1]-22]];
+ s+=`<polygon points="${c1.map(pt).join(' ')}" fill="${mix(C,B,.84)}" stroke="${C}" stroke-width="2.4" stroke-linejoin="miter"/>`;
+ s+=`<path d="M${pt(c1[0])}L${pt(c1[2])}M${pt(c1[0])}L${pt(c1[4])}" stroke="${C}" stroke-width="1" opacity=".35"/>`;
+ s+=`<polygon points="${c2.map(pt).join(' ')}" fill="${mix(C,B,.66)}" stroke="${C}" stroke-width="1.8" stroke-linejoin="miter"/>`;
+ [c1[1],c1[3],c1[5]].forEach((tp,i)=>{for(let k=0;k<3;k++){const ph=(t*.55+i*.37+k/3)%1,x=tp[0]+tx*ph*58+Math.sin(ph*6+i)*4,y=tp[1]+ty*ph*20-ph*14+k*5,r=(1-ph)*4.2+.6;
+  s+=`<path d="M${x.toFixed(1)},${(y-r).toFixed(1)}l${r*.6},${r}l${-r*.6},${r}l${-r*.6},${-r}Z" fill="${k%2?A:C}" opacity="${(1-ph).toFixed(2)}"/>`}});
+ limb([n,p.eb,p.hb],10);band(p.eb,p.hb);limb([h,p.kb,p.fb,toe(p.fb)],11);
+ // torso
+ const T=[q(-3,-14),q(-3,13),q(L+5,8),q(L+5,-8)];
+ s+=`<polygon points="${T.map(pt).join(' ')}" fill="${B}" stroke="${C}" stroke-width="3.2" stroke-linejoin="miter"/>`;
+ s+=`<path d="M${pt(q(-3,13))}L${pt(q(L*.55,-11))}M${pt(q(L*.55,-11))}L${pt(q(L+5,8))}" stroke="${C}" stroke-width="1" opacity=".3"/>`;
+ // hourglass
+ const hc=q(31,-2),ang=Math.atan2(u[1],u[0])*180/Math.PI-90+flip*180,top=flip<.5;
+ s+=`<g transform="translate(${pt(hc)}) rotate(${ang.toFixed(1)})"><path d="M-8,-11H8M-8,11H8" stroke="${A}" stroke-width="2.4" stroke-linecap="square"/>
+ <path d="M-6.5,-10L6.5,-10L0,0Z" fill="${A}" stroke="${A}" stroke-width="1.4" stroke-linejoin="miter"/><path d="M-6.5,10L6.5,10L0,0Z" fill="none" stroke="${A}" stroke-width="1.4" stroke-linejoin="miter"/><path d="M0,0V9" stroke="${A}" stroke-width="1.2" stroke-dasharray="2 1.5"/></g>`;
+ // hood
+ const hp=[[-24,-12],[-10,-31],[15,-22],[24,1],[9,21],[-15,16]].map(a=>[HX+a[0],HY+a[1]]);
+ s+=`<polygon points="${hp.map(pt).join(' ')}" fill="${B}" stroke="${C}" stroke-width="4" stroke-linejoin="miter"/>`;
+ s+=`<path d="M${HX-10},${HY-31}L${HX-1},${HY-9}L${HX-15},${HY+16}" stroke="${C}" stroke-width="1.1" fill="none" opacity=".4"/>`;
+ s+=`<path d="M${HX+2},${HY-4}L${HX+22},${HY-1}" stroke="${A}" stroke-width="4.6" stroke-linecap="square"/>`;
+ limb([h,p.kf,p.ff,toe(p.ff)],11);limb([n,p.ef,p.hf],10);band(p.ef,p.hf);
+ return `<ellipse cx="0" cy="4" rx="110" ry="12" fill="${C}" opacity=".22" filter="url(#soft)"/><ellipse cx="0" cy="-105" rx="150" ry="150" fill="${C}" opacity=".07" filter="url(#soft)"/>${frost(C,A,o.frost??1,o.fs||1)}<g filter="url(#glow)">${s}</g>`;
+}
+const DEFS=`<defs><filter id="glow" x="-80%" y="-60%" width="260%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feGaussianBlur in="SourceGraphic" stdDeviation="2" result="c"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="soft" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="14"/></filter></defs>`;
+const place=(x,y,sc,inner)=>`<g transform="translate(${x},${y}) scale(${sc})">${inner}</g>`;
+function size(w,h){document.body.style.width=w+'px';document.body.style.height=h+'px';S.setAttribute('width',w);S.setAttribute('height',h);S.setAttribute('viewBox',`0 0 ${w} ${h}`)}
+const mode=(location.hash||'#sheet').slice(1);
+if(mode==='sheet'){size(1350,1800);
+ S.innerHTML=DEFS+place(660,950,3.4,fig(P.stand))+['rise','run','climb','win'].map((k,i)=>place(200+i*310,1365,1.45,fig(P[k],{wave:k=='run'?9:4}))).join('')
+  +place(620,1765,1.35,fig(P.win,{...PAL.hayalet,flip:1,fs:1.5}));
+ UI.innerHTML=`<h1>AYAZ<small>v2</small></h1><div class="sub">HERKES UYURKEN ÇALIŞAN GÖLGE</div>
+ <div class="lbl" style="left:820px;top:60px">v2 ile gelenler</div><div class="note" style="left:820px;top:92px;width:480px">
+ <b>1 · Donan zemin:</b> Bastığı yer çatlayarak donar. Sahneye girdiği an belli olur.<br>
+ <b>2 · Çift katlı pelerin:</b> Uçlarından buz kıymıkları kopup savrulur; koşarken iz bırakır.<br>
+ <b>3 · Kristal gövde:</b> Geniş omuz, dar bel, faset çizgileri — buzdan yontulmuş gibi.<br>
+ <b>4 · Çerçeveli kum saati:</b> Kum akışı görünür; zirve anında ters döner.<br>
+ <b>5 · Kol bantları:</b> Ön kollarda çift beyaz şerit.<br>
+ <b>6 · Vizör:</b> Tek ışık çizgisi, aynen korundu.</div>
+ <div class="lbl" style="left:60px;top:1010px">Pozlar</div><div class="lbl" style="left:60px;top:1425px">Zirve modu — “hayalet”</div>
+ <div class="note" style="left:60px;top:1457px;width:420px">Kum saati ters döner, kenar buz beyazına keser, zemindeki buz genişler.</div>
+ <div class="lbl" style="left:820px;top:1425px">Kullanım kuralı</div><div class="note" style="left:820px;top:1457px;width:480px">Siluet hiç değişmez: <b>kukuleta + pelerin + kum saati</b>. Renk yalnızca duyguya göre değişir (renk sayfasına bak). Kalabalık her zaman gri, yuvarlak ve pelerinsizdir.</div>`;
+}else if(mode==='colors'){size(1350,1800);const ks=Object.keys(PAL);
+ S.innerHTML=DEFS+ks.map((k,i)=>place(225+(i%3)*450,720+Math.floor(i/3)*790,2.25,fig(P[['stand','run','rise','climb','stand','win'][i]],{...PAL[k],flip:k=="hayalet"?1:0,wave:6,fs:.72}))).join('');
+ UI.innerHTML=`<h1 style="font-size:84px">AYAZ<small>renk modları</small></h1>`+ks.map((k,i)=>`<div class="cw" style="left:${25+(i%3)*450}px;top:${775+Math.floor(i/3)*790}px"><div class="n" style="color:${PAL[k].C};text-shadow:0 0 18px ${PAL[k].C}">${PAL[k].n}</div><div class="d">${PAL[k].d}</div><div class="h">${PAL[k].C.toUpperCase()} · ${PAL[k].A.toUpperCase()}</div></div>`).join('');
+}else{size(1080,1920);
+ document.body.style.background='radial-gradient(ellipse at 50% 62%,#0a1620 0%,#04060a 60%)';
+ UI.innerHTML=`<div id="tt" style="position:absolute;left:0;width:1080px;top:170px;text-align:center;font-size:190px;font-weight:900;letter-spacing:14px;opacity:0">AYAZ</div><div id="t2" style="position:absolute;left:0;width:1080px;top:400px;text-align:center;font-size:34px;font-weight:700;letter-spacing:9px;color:#19e3ff;opacity:0">ZAMAN AKIYOR</div>`;
+ window.draw=t=>{let p,wave=4,flip=ease((t-2.4)/.6),bob=0,C=PAL.buz.C,A=PAL.buz.A,fr=ease(t/1.2),fs=1,run=0,ex='';
+  if(t<1.4){p=P.rise;bob=Math.sin(t*3)*1.5}
+  else if(t<2.2)p=lerpP(P.rise,P.stand,ease((t-1.4)/.8));
+  else if(t<3.3)p=P.stand;
+  else if(t<3.7){p=lerpP(P.stand,P.run,ease((t-3.3)/.4));run=ease((t-3.3)/.4)}
+  else if(t<6.0){const ph=(t-3.7)/.26;p=runPose(t);bob=-Math.abs(Math.sin(ph*Math.PI))*7;wave=11;run=1}
+  else if(t<6.5){p=lerpP(runPose(6.0),P.win,ease((t-6)/.5));run=1-ease((t-6)/.5)}
+  else{p=P.win}
+  if(t>6.3){const k=ease((t-6.3)/.4);C=mix(PAL.buz.C,'#ffffff',k);A=mix('#ffffff',PAL.buz.C,k);fs=1+k*1.2}
+  if(run>0){fr=(1-run)*1;for(let i=0;i<14;i++){const yy=-rnd(i)*230+10,sp=500+rnd(i+50)*600,len=40+rnd(i+9)*120,x=((rnd(i+3)*900-t*sp)%900+900)%900-450;
+    ex+=`<path d="M${x.toFixed(0)},${yy.toFixed(0)}h${len.toFixed(0)}" stroke="${i%4?C:'#fff'}" stroke-width="${i%4?1.2:2}" opacity="${(.5*run).toFixed(2)}"/>`}
+   ex+=`<path d="M-140,5H140" stroke="${C}" stroke-width="1.5" opacity="${(.6*run).toFixed(2)}"/>`}
+  const fl=Math.max(0,1-Math.abs(t-3.0)/.18)*.5+Math.max(0,1-Math.abs(t-6.6)/.25)*.7;
+  S.innerHTML=DEFS+place(540,1450+bob*3.8,3.8,ex+fig(p,{C,A,t,wave,flip,frost:fr,fs}))+(fl>0?`<rect width="1080" height="1920" fill="${C}" opacity="${(fl*.5).toFixed(2)}"/>`:'');
+  const k=ease((t-6.7)/.5);tt.style.opacity=k;tt.style.textShadow=`0 0 50px ${PAL.buz.C}`;tt.style.transform=`scale(${1.15-.15*k})`;t2.style.opacity=ease((t-2.5)/.3)*(1-ease((t-3.3)/.3));
+  t2.textContent='ZAMAN AKIYOR';if(t>7.1){t2.style.opacity=ease((t-7.1)/.4);t2.textContent='SEN NE YAPIYORSUN?'}
+ };draw(7.8);
+}
+</script></body></html>

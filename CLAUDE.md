@@ -76,3 +76,7 @@ Ayrıntılı geçmiş: `NOTLAR.md`
 - "Uyanış modu": videonun zirve anında karakter kırmızıdan altına (#FFB81F) döner. Kalabalık hep gri ve bantsız.
 - Alternatif karakter adayları (kullanıcı henüz seçmedi): `characters/ayaz/` (AYAZ — buz mavisi, köşeli, kukuleta+pelerin, göğüste kum saati)
   ve `characters/nova/` (NOVA — mor+limon, halka kafa içinde yıldız, yörünge, iri yumruklar). Kaynak: `characters/sheet2.html#ayaz|#nova`.
+- **Seçilen ana karakter: AYAZ** (kullanıcı çok beğendi, KOR/NOVA elendi). v2 kaynağı: `characters/ayaz/ayaz.html`
+  (`#sheet` karakter sayfası, `#colors` 6 renk modu, `#anim` 8.5 sn tanıtım klibi — `draw(t)` ile kare kare render).
+  v2 imzaları: donan zemin, çift katlı pelerin + buz kıymıkları, kristal gövde, çerçeveli kum saati (zirvede ters döner), kol bantları, vizör.
+  Renk modları: BUZ (ana), KOR, ALTIN, ZEHİR, MOR GECE, HAYALET (zirve). Siluet hiç değişmez.
