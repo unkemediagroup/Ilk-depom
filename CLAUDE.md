@@ -8,6 +8,10 @@
   ardından hızlı whip-zoom geçişle kinetik tipografi kartları (kalın condensed yazı, anahtar kelime kırmızı vurgulu),
   sonda karakterin zaferi + kırmızı havai fişek. İzleyiciyi sıkmayan, sürekli hareketli. Her konuya değil, uygun olanlara.
   Örnek çıktı: `videos/obsession/`.
+- **Görsel çeşitlilik ve özen (2026-11-12):** Her videoda görseller FARKLI olsun; önceki videolardaki motifleri
+  (çekiçle kule, zirveye bayrak, takvim, zincir, bank vb.) tekrar etme, konuya özgü yeni metaforlar bul.
+  Animasyonlara dikkat: ayak yerde, poz mantıklı, nesneler el/vücutla gerçekten etkileşsin; "uydurma"/yarım iş görsel yok.
+  Render'dan önce her sahneyi kare kare kontrol et.
 - **Kısa iletişim:** Yaptıklarını uzun uzun açıklama. İşi en iyi şekilde yap, sonunda yalnızca kısa bir özet ver.
 - **Videolarda ses:** Çizim/boyama sırasında cızırtı, kalem, fırça hışırtısı gibi efektler İSTEMİYOR. Bu tür foley'i
   ya hiç koyma ya da neredeyse duyulmayacak kadar kıs; ses temiz olsun (anlatım + müzik ön planda).
