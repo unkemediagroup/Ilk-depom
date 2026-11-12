@@ -16,10 +16,9 @@
 - Lemo-Opuscar animasyonlarını beğendi; video işlerinde bu kütüphaneyi kullan.
 - **Tam ekran video:** Görüntü ekranın TAMAMINI kaplasın. Kağıt kenar boşluğu / beyaz sayfa / çerçeve YOK
   (Woodcut'taki "paper margin" kuralını uygulama). Altyazılar görüntünün üzerinde, okunur şekilde.
-- **İMZA KARAKTER — Kırmızı Neon:** Tüm videolarda ana karakter `characters/red-neon/` (siyah siluet, yüzsüz yuvarlak kafa,
-  kalın hap uzuvlar, neon kırmızı kontur ve parıltı, sırtta kırmızı çentikler). Ana formatını bozma; detay/renk canlılığı
-  artırılabilir. Başarı anlarında etrafa kırmızı havai fişek kıvılcımları. Karşılaştırmalarda diğer karakterler başka renk.
-  Kullanıcının referansındaki ortamı kopyalama — sadece karakter esas.
+- **İMZA KARAKTER — AYAZ (kor rengi):** Tüm motivasyon videolarında ana karakter AYAZ. Kod `characters/ayaz/ayaz.js`
+  (videoya `neon.js` adıyla kopyala), skill `.claude/skills/ayaz-karakter` — önce onu uygula. Ayrıntı en alttaki AYAZ bölümünde.
+  Eski "Kırmızı Neon" (`characters/red-neon/`) SİLİNDİ; kullanma.
 - **Daha akıcı ve hareketli:** Kesik kesik değil; karakter animasyonu akıcı (her karede hareket, "on twos" yok),
   bol kamera hareketi, sahneler arası kesintisiz/akan geçişler, durağan plan az.
 - Kullanıcı Türkçe konuşur; Türkçe ve kısa yanıt ver.
@@ -101,7 +100,8 @@ Ayrıntılı geçmiş: `NOTLAR.md`
 
 ## İMZA KARAKTER — AYAZ (kor rengi)  ← kullanıcının nihai kararı (2026-11-12)
 - Motivasyon YT Shorts kanalının ana karakteri **AYAZ, kor renginde** (kontur `#ff2a3c`, vurgu altın `#ffb81f`).
-  Eski "Kırmızı Neon" (`characters/red-neon/`) ve yt-shorts-master-generator'daki "kırmızı neon gölge silüet" tarifi GEÇERSİZ.
+  Eski "Kırmızı Neon" (`characters/red-neon/`, silindi) ve yt-shorts-master-generator'daki "kırmızı neon gölge silüet" tarifi GEÇERSİZ.
+  Not: `videos/` altındaki eski videolar kendi kopyaladıkları `neon.js` ile Kırmızı Neon'u kullanır; onlar arşivdir.
 - Skill: `.claude/skills/ayaz-karakter` — motivasyon videosu üretirken önce onu uygula.
 - Kod: `characters/ayaz/ayaz.js` (Canvas 2D, eski `neon.js` ile birebir uyumlu; videoya `neon.js` adıyla kopyalanır).
   Ayrıntı: `characters/ayaz/README.md`, model sayfası `characters/ayaz/model-sheet.jpg`.
@@ -110,4 +110,4 @@ Ayrıntılı geçmiş: `NOTLAR.md`
 - Renk modları: `kor` (ana), `altin` (zirve), `kul` (tükenmişlik), `buz`.
 - Tasarım süreci arşivi: `characters/kor/` (ilk aday, yuvarlak figür — renk paleti buradan alındı), `characters/nova/` (elendi),
   `characters/ayaz/ayaz.html` (SVG karakter sayfası, renk modları, tanıtım klibi), `characters/sheet2.html`.
-- Motivasyon videoları `claude/node-version-check-dka4rk` branch'inde üretiliyor; AYAZ dosyaları oraya/main'e birleştirilmeli.
+- AYAZ dosyaları (PR #2, `claude/happy-noether-3j6cdy`) `claude/node-version-check-dka4rk` branch'ine birleştirildi (2026-11-12).

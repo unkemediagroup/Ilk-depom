@@ -52,3 +52,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: "Nobody Is Coming to Save You" (Kırmızı Neon, siyah evren, kullanıcının sesi, 29 sn, senaryo tablosu SCRIPT.md): `videos/nobody-red/`.
 - 2026-11-11: "Nobody Is Coming to Save You" Kül ve Ateş versiyonu (erimiş altın çatlaklı figür, kömür karası zemin): `videos/nobody-forge/`.
 - 2026-11-11: "Nobody Is Coming to Save You" Gölge Kitle & Kül-Ateş versiyonu (4 sütunlu senaryo): `videos/nobody-crowd/`.
+- 2026-11-12: PR #2 (AYAZ, kor rengi) bu branch'e birleştirildi; Kırmızı Neon (`characters/red-neon/`) silindi. Motivasyon videolarında ana karakter artık AYAZ (`characters/ayaz/ayaz.js` + `ayaz-karakter` skill).
