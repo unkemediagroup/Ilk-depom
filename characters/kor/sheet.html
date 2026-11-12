@@ -1,0 +1,86 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;box-sizing:border-box}
+body{width:1350px;height:1800px;background:#050506;color:#fff;font-family:"Montserrat","Arial Black","DejaVu Sans",Arial,sans-serif;overflow:hidden;position:relative}
+body.hero{background:#050506}
+h1{position:absolute;left:60px;top:48px;font-size:120px;font-weight:900;letter-spacing:6px;line-height:1}
+h1 span{color:#ff1a30;text-shadow:0 0 30px #ff1a30aa}
+.sub{position:absolute;left:66px;top:178px;font-size:21px;letter-spacing:5px;color:#ffb81f;font-weight:700}
+.lbl{position:absolute;font-size:15px;letter-spacing:3px;color:#8a8a92;font-weight:700;text-transform:uppercase}
+.note{position:absolute;font-size:17px;line-height:1.5;color:#d6d6dc;font-weight:400;font-family:"DejaVu Sans",Arial,sans-serif}
+.note b{color:#ffb81f}
+.sw{position:absolute;width:120px;height:74px;border-radius:10px;font-size:13px;padding:48px 0 0 10px;font-family:monospace;font-weight:700}
+svg{position:absolute;left:0;top:0}
+</style></head><body>
+<svg id="s" width="1350" height="1800" viewBox="0 0 1350 1800"></svg>
+<div id="ui">
+<h1>K<span>O</span>R</h1>
+<div class="sub">İÇİNDEKİ ATEŞİ SÖNDÜRMEYEN ADAM</div>
+<div class="lbl" style="left:800px;top:60px">İmza detaylar</div>
+<div class="note" style="left:800px;top:92px;width:490px">
+<b>1 · Altın çatlak (kintsugi):</b> Göğsünde kırık izi var; kırıldığı yer altınla dolmuş. Kanalın mesajı tek imgede: <i>kırıldığın yerden parlarsın.</i><br>
+<b>2 · Alev bandı:</b> Alnında altın bant, arkasında iki alev kuyruğu. Siluetten bile tanınır; koşarken iz bırakır.<br>
+<b>3 · Tek eğik göz:</b> Yüz yok, sadece kararlı altın bir çizgi.<br>
+<b>4 · Kor kenar:</b> Mat siyah gövde, ateş kırmızısı neon dış hat.</div>
+<div class="lbl" style="left:60px;top:1010px">Pozlar</div>
+<div class="lbl" style="left:60px;top:1420px">Uyanış modu — videonun zirve anı</div>
+<div class="note" style="left:60px;top:1452px;width:420px">Hikâyenin dönüm noktasında çatlak büyür, altın tüm bedene yayılır: kırmızı <b>KOR</b> → altın <b>KOR</b>. Her videoda aynı ritüel = kanal imzası.</div>
+<div class="lbl" style="left:800px;top:1420px">Renkler</div>
+<div class="sw" style="left:800px;top:1452px;background:#ff1a30">#FF1A30</div>
+<div class="sw" style="left:930px;top:1452px;background:#ffb81f;color:#000">#FFB81F</div>
+<div class="sw" style="left:1060px;top:1452px;background:#0b0b0d;border:1px solid #333">#0B0B0D</div>
+<div class="sw" style="left:1190px;top:1452px;background:#fff3c4;color:#000;width:100px">#FFF3C4</div>
+<div class="note" style="left:800px;top:1548px;width:490px">Kırmızı = mücadele · Altın = değer / zafer · Siyah = sahne.<br>Kalabalık her zaman gri ve bantsız; yalnızca KOR parlar.</div>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg',S=document.getElementById('s');
+const P={
+ stand:{head:[2,-186],neck:[0,-160],hip:[0,-95],kb:[-9,-48],fb:[-12,0],kf:[9,-48],ff:[12,0],eb:[15,-127],hb:[21,-94],ef:[-16,-127],hf:[-17,-93],tail:[-1,.25]},
+ run:{head:[38,-176],neck:[24,-153],hip:[0,-95],kb:[-28,-60],fb:[-66,-48],kf:[40,-74],ff:[34,-26],eb:[2,-122],hb:[-24,-104],ef:[50,-128],hf:[70,-152],tail:[-1.35,-.05]},
+ win:{head:[3,-188],neck:[0,-160],hip:[0,-95],kb:[-14,-48],fb:[-22,0],kf:[14,-48],ff:[22,0],eb:[-24,-132],hb:[-6,-108],ef:[22,-184],hf:[30,-226],tail:[-1,.45]},
+ rise:{head:[22,-140],neck:[10,-116],hip:[-8,-58],kb:[-14,-6],fb:[-58,-5],kf:[36,-56],ff:[38,0],eb:[-4,-82],hb:[-2,-46],ef:[34,-92],hf:[38,-62],tail:[-1,.6]},
+ climb:{head:[16,-190],neck:[8,-164],hip:[-6,-102],kb:[-24,-58],fb:[-30,-10],kf:[34,-84],ff:[36,-38],eb:[-2,-136],hb:[26,-128],ef:[34,-190],hf:[44,-230],tail:[-.9,.7]},
+};
+let uid=0;
+function fig(pose,x,y,sc,mode){
+ const p=P[pose],gold=mode==='gold',id='f'+(uid++);
+ const C=gold?'#ffb81f':'#ff1a30',A=gold?'#fff3c4':'#ffb81f',B='#0b0b0d';
+ let o='';
+ const limb=(pts,w)=>{const d='M'+pts.map(q=>q.join(',')).join('L');
+  o+=`<path d="${d}" stroke="${C}" stroke-width="${w+7}" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" stroke="${B}" stroke-width="${w}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`};
+ const toe=(k,f)=>[f[0]+11,f[1]+ (f[1]>-8?0:3)];
+ // tails
+ const [hx,hy]=p.head,[tx,ty]=p.tail,kx=hx-19,ky=hy-9;
+ const tail=(len,dy,w,op)=>{const ex=kx+tx*len,ey=ky+ty*len+dy;const mx=(kx+ex)/2,my=(ky+ey)/2;
+  return `<path d="M${kx},${ky-w} Q${mx},${my-w*2.6-8} ${ex},${ey} Q${mx},${my+w*1.4+6} ${kx},${ky+w}Z" fill="url(#t${id})" opacity="${op}"/>`};
+ o+=tail(74,-6,4.2,1)+tail(54,14,3.4,.9);
+ limb([p.neck,p.eb,p.hb],12); limb([p.hip,p.kb,p.fb,toe(p.kb,p.fb)],13);
+ limb([p.neck,p.hip],27);
+ // crack
+ const dx=p.hip[0]-p.neck[0],dy=p.hip[1]-p.neck[1],L=Math.hypot(dx,dy),u=[dx/L,dy/L],v=[-u[1],u[0]];
+ const q=(a,c0)=>{const c=c0-5;return [(p.neck[0]+u[0]*a+v[0]*c).toFixed(1),(p.neck[1]+u[1]*a+v[1]*c).toFixed(1)].join(",")};
+ const cr=gold?`M${q(4,-2)}L${q(14,5)}L${q(24,-4)}L${q(34,5)}L${q(46,-3)}L${q(60,3)} M${q(24,-4)}L${q(28,-12)} M${q(34,5)}L${q(40,12)} M${q(14,5)}L${q(12,12)} M${q(46,-3)}L${q(50,-11)}`
+  :`M${q(10,-3)}L${q(18,4)}L${q(26,-3)}L${q(35,4)}L${q(44,-1)} M${q(26,-3)}L${q(29,-10)} M${q(35,4)}L${q(39,10)}`;
+ o+=`<path d="${cr}" stroke="${A}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".45"/><path d="${cr}" stroke="${gold?'#fff':'#ffd76a'}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+ // head
+ o+=`<circle cx="${hx}" cy="${hy}" r="23" fill="${C}"/><circle cx="${hx}" cy="${hy}" r="19.5" fill="${B}"/>`;
+ o+=`<path d="M${hx-19},${hy-8} Q${hx},${hy-15} ${hx+19},${hy-10}" stroke="${A}" stroke-width="5.5" fill="none" stroke-linecap="round"/>`;
+ o+=`<path d="M${hx+5},${hy+1} L${hx+15},${hy-3}" stroke="${gold?'#fff':'#ffd76a'}" stroke-width="3.6" stroke-linecap="round"/>`;
+ o+=`<circle cx="${kx}" cy="${ky}" r="4.2" fill="${A}"/>`;
+ limb([p.hip,p.kf,p.ff,toe(p.kf,p.ff)],13); limb([p.neck,p.ef,p.hf],12);
+ const g=document.createElementNS(NS,'g');
+ g.innerHTML=`<defs><linearGradient id="t${id}" gradientUnits="userSpaceOnUse" x1="${kx}" y1="0" x2="${kx+tx*70}" y2="0"><stop offset="0" stop-color="${A}"/><stop offset=".55" stop-color="${gold?'#ffb81f':'#ff5a1f'}"/><stop offset="1" stop-color="${C}" stop-opacity="0"/></linearGradient>
+ <filter id="g${id}" x="-60%" y="-40%" width="220%" height="180%"><feGaussianBlur stdDeviation="7" result="b"/><feGaussianBlur in="SourceGraphic" stdDeviation="2" result="c"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <radialGradient id="r${id}"><stop offset="0" stop-color="${C}" stop-opacity=".55"/><stop offset="1" stop-color="${C}" stop-opacity="0"/></radialGradient></defs>
+ <ellipse cx="0" cy="4" rx="95" ry="13" fill="url(#r${id})"/><ellipse cx="0" cy="-110" rx="170" ry="170" fill="url(#r${id})" opacity=".28"/>
+ <g filter="url(#g${id})">${o}</g>`;
+ g.setAttribute('transform',`translate(${x},${y}) scale(${sc})`);S.appendChild(g);
+}
+function crowd(x,y,sc){const g=document.createElementNS(NS,'g');g.innerHTML=`<g stroke="#2a2a31" stroke-width="2" fill="#0d0d10"><circle cx="0" cy="-184" r="19"/><rect x="-13" y="-162" width="26" height="72" rx="13"/><rect x="-13" y="-98" width="11" height="98" rx="5.5"/><rect x="2" y="-98" width="11" height="98" rx="5.5"/></g>`;g.setAttribute('transform',`translate(${x},${y}) scale(${sc})`);S.appendChild(g)}
+if(location.hash==='#hero'){document.body.className='hero';document.getElementById('ui').remove();fig('stand',675,1500,6.2,'red');}
+else{
+ [[330,.9],[470,1],[980,1.05],[1130,.92],[1250,.85]].forEach(c=>crowd(c[0],930,2.6*c[1]));
+ fig('stand',700,940,3.3,'red');
+ fig('rise',170,1360,1.45,'red');fig('run',430,1360,1.45,'red');fig('climb',700,1360,1.45,'red');fig('win',950,1360,1.45,'red');fig('stand',1190,1360,1.45,'red');
+ fig('win',600,1760,1.35,'gold');
+}
+</script></body></html>

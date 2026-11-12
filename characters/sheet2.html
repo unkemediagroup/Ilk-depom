@@ -1,0 +1,88 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;box-sizing:border-box}
+body{width:1350px;height:1800px;background:#050506;color:#fff;font-family:"Montserrat","Arial Black","DejaVu Sans",Arial,sans-serif;overflow:hidden;position:relative}
+h1{position:absolute;left:60px;top:48px;font-size:120px;font-weight:900;letter-spacing:6px;line-height:1}
+.sub{position:absolute;left:66px;top:178px;font-size:21px;letter-spacing:5px;font-weight:700}
+.lbl{position:absolute;font-size:15px;letter-spacing:3px;color:#8a8a92;font-weight:700;text-transform:uppercase}
+.note{position:absolute;font-size:17px;line-height:1.5;color:#d6d6dc;font-weight:400;font-family:"DejaVu Sans",Arial,sans-serif}
+.sw{position:absolute;width:120px;height:74px;border-radius:10px;font-size:13px;padding:48px 0 0 10px;font-family:monospace;font-weight:700;top:1452px}
+svg{position:absolute;left:0;top:0}
+</style></head><body>
+<svg id="s" width="1350" height="1800" viewBox="0 0 1350 1800"></svg><div id="ui"></div>
+<script>
+const NS='http://www.w3.org/2000/svg',S=document.getElementById('s');
+const P={
+ stand:{head:[2,-186],neck:[0,-160],hip:[0,-95],kb:[-9,-48],fb:[-12,0],kf:[9,-48],ff:[12,0],eb:[15,-127],hb:[21,-94],ef:[-16,-127],hf:[-17,-93],tail:[-1,.25]},
+ run:{head:[38,-176],neck:[24,-153],hip:[0,-95],kb:[-28,-60],fb:[-66,-48],kf:[40,-74],ff:[34,-26],eb:[2,-122],hb:[-24,-104],ef:[50,-128],hf:[70,-152],tail:[-1.35,-.05]},
+ win:{head:[3,-188],neck:[0,-160],hip:[0,-95],kb:[-14,-48],fb:[-22,0],kf:[14,-48],ff:[22,0],eb:[-24,-132],hb:[-6,-108],ef:[22,-184],hf:[30,-226],tail:[-1,.45]},
+ rise:{head:[22,-140],neck:[10,-116],hip:[-8,-58],kb:[-14,-6],fb:[-58,-5],kf:[36,-56],ff:[38,0],eb:[-4,-82],hb:[-2,-46],ef:[34,-92],hf:[38,-62],tail:[-1,.6]},
+ climb:{head:[16,-190],neck:[8,-164],hip:[-6,-102],kb:[-24,-58],fb:[-30,-10],kf:[34,-84],ff:[36,-38],eb:[-2,-136],hb:[26,-128],ef:[34,-190],hf:[44,-230],tail:[-.9,.7]},
+};
+const CH={
+ ayaz:{name:'AYAZ',hi:1,tag:'HERKES UYURKEN ÇALIŞAN GÖLGE',C:'#19e3ff',A:'#ffffff',C2:'#ffffff',A2:'#19e3ff',B:'#06090d',
+  sw:[['#19E3FF','#000'],['#FFFFFF','#000'],['#06090D','#fff'],['#0B3A4A','#fff']],
+  notes:`<b>1 · Kum saati:</b> Göğsünde akan bir kum saati var. Mesaj: <i>zaman akıyor, sen ne yapıyorsun?</i><br><b>2 · Sivri kukuleta + yırtık pelerin:</b> Köşeli, keskin siluet; yuvarlak hiçbir çizgi yok.<br><b>3 · Vizör:</b> Yüz yerine tek beyaz ışık çizgisi — soğukkanlı odak.<br><b>4 · Buz mavisi kenar:</b> Disiplin, sabah 5, sessiz emek.`,
+  peak:'Zirve anında kum saati ters döner, kenar <b>buz beyazına</b> keser: “artık vakit geldi.”',
+  col:'Camgöbeği = disiplin · Beyaz = netlik · Siyah = gece.<br>Disiplin, rutin, erken kalkma temalı videolara çok uyar.'},
+ nova:{name:'NOVA',hi:1,tag:'BOŞLUĞUN İÇİNDEKİ YILDIZ',C:'#8b3dff',A:'#d8ff3d',C2:'#d8ff3d',A2:'#ffffff',B:'#0a0710',
+  sw:[['#8B3DFF','#fff'],['#D8FF3D','#000'],['#0A0710','#fff'],['#FFFFFF','#000']],
+  notes:`<b>1 · Halka kafa:</b> Kafası içi boş bir halka; ortasında küçük bir yıldız yanıyor. Mesaj: <i>boşluk hissetsen de içinde ışık var.</i><br><b>2 · Yörünge:</b> Kafasının etrafında dönen ince halka ve uydu nokta.<br><b>3 · Dövüşçü yumrukları:</b> Limon yeşili parlayan iri yumruklar — pes etmeyen.<br><b>4 · Tıknaz gövde:</b> Kısa, güçlü, sevimli; maskot gibi akılda kalır.`,
+  peak:'Zirve anında yıldız patlar (süpernova): mor kenar <b>limon yeşiline</b> döner, ışınlar saçılır.',
+  col:'Mor = boşluk / şüphe · Limon = enerji / umut.<br>Shorts akışında çok az kanal bu ikiliyi kullanıyor; hemen ayırt edilir.'}
+};
+let uid=0;
+function chibi(p){const o={};for(const k in p){if(k==='tail'){o[k]=p[k];continue}const[x,y]=p[k];o[k]=[x*1.05,y>-95?y*.7:y+28.5]}
+ const dx=o.head[0]-o.neck[0],dy=o.head[1]-o.neck[1],l=Math.hypot(dx,dy);o.head=[o.head[0]+dx/l*18,o.head[1]+dy/l*18];return o}
+function fig(who,pose,x,y,sc,alt){
+ const c=CH[who],id='f'+(uid++),C=alt?c.C2:c.C,A=alt?c.A2:c.A,B=c.B,ay=who==='ayaz';
+ const p=ay?P[pose]:chibi(P[pose]);
+ const cap=ay?'square':'round',join=ay?'miter':'round',ow=ay?6:8;
+ let o='',pre='';
+ const limb=(pts,w)=>{const d='M'+pts.map(q=>q.join(',')).join('L');const a=`fill="none" stroke-linecap="${cap}" stroke-linejoin="${join}"`;
+  o+=`<path d="${d}" stroke="${C}" stroke-width="${w+ow}" ${a}/><path d="${d}" stroke="${B}" stroke-width="${w}" ${a}/>`};
+ const toe=f=>[f[0]+(ay?12:10),f[1]+(f[1]>-8?0:3)];
+ const [hx,hy]=p.head,[tx,ty]=p.tail,n=p.neck,h=p.hip;
+ const dx=h[0]-n[0],dy=h[1]-n[1],L=Math.hypot(dx,dy),u=[dx/L,dy/L],v=[-u[1],u[0]];
+ const q=(a,cc)=>[(n[0]+u[0]*a+v[0]*cc).toFixed(1),(n[1]+u[1]*a+v[1]*cc).toFixed(1)].join(',');
+ const LW=ay?10:17,TW=ay?22:34;
+ if(ay){ // cape
+  const pts=[[n[0]+2,n[1]-6],[n[0]+tx*78,n[1]+30+ty*55],[n[0]+tx*52,n[1]+52+ty*45],[n[0]+tx*70,n[1]+80+ty*40],[n[0]+tx*40,n[1]+74+ty*20],[n[0]+tx*44,n[1]+104+ty*20],[h[0]-4,h[1]-14]];
+  o+=`<polygon points="${pts.map(a=>a.join(',')).join(' ')}" fill="#082c3a" stroke="${C}" stroke-width="2.5" stroke-linejoin="miter" opacity=".95"/>`;
+ }
+ limb([n,p.eb,p.hb],LW); limb([h,p.kb,p.fb,toe(p.fb)],LW+1);
+ limb([n,h],TW);
+ if(ay){ const f=alt;
+  o+=`<path d="M${q(22,-10)}L${q(22,4)}L${q(34,-3)}Z" fill="${f?'none':A}" stroke="${A}" stroke-width="2" stroke-linejoin="miter"/><path d="M${q(46,-10)}L${q(46,4)}L${q(34,-3)}Z" fill="${f?A:'none'}" stroke="${A}" stroke-width="2" stroke-linejoin="miter"/>`;
+  const hp=[[-21,-8],[-9,-30],[15,-21],[23,1],[9,20],[-15,16]].map(a=>[hx+a[0],hy+a[1]].join(',')).join(' ');
+  o+=`<polygon points="${hp}" fill="${B}" stroke="${C}" stroke-width="4" stroke-linejoin="miter"/>`;
+  o+=`<path d="M${hx+1},${hy-4} L${hx+21},${hy-1}" stroke="${A}" stroke-width="4.5" stroke-linecap="square"/>`;
+ }else{
+  const star=(cx,cy,r,col)=>`<path d="M${cx},${cy-r} Q${cx+r*.18},${cy-r*.18} ${cx+r},${cy} Q${cx+r*.18},${cy+r*.18} ${cx},${cy+r} Q${cx-r*.18},${cy+r*.18} ${cx-r},${cy} Q${cx-r*.18},${cy-r*.18} ${cx},${cy-r}Z" fill="${col}"/>`;
+  o+=star(...q(34,-8).split(',').map(Number),7,A);
+  o+=`<circle cx="${hx}" cy="${hy}" r="29" fill="none" stroke="${C}" stroke-width="19"/><circle cx="${hx}" cy="${hy}" r="29" fill="none" stroke="${B}" stroke-width="11"/>`;
+  o+=star(hx+3,hy,alt?17:12,alt?'#fff':A);
+  if(alt){for(let i=0;i<12;i++){const a=i*Math.PI/6+.2,r1=50,r2=i%2?66:80;o+=`<path d="M${hx+Math.cos(a)*r1},${hy+Math.sin(a)*r1}L${hx+Math.cos(a)*r2},${hy+Math.sin(a)*r2}" stroke="${C}" stroke-width="3" stroke-linecap="round"/>`}}
+  o+=`<g transform="rotate(-18 ${hx} ${hy})"><ellipse cx="${hx}" cy="${hy}" rx="50" ry="13" fill="none" stroke="${A}" stroke-width="2.6"/><circle cx="${hx-48}" cy="${hy-4}" r="5.5" fill="${A}"/></g>`;
+ }
+ limb([h,p.kf,p.ff,toe(p.ff)],LW+1); limb([n,p.ef,p.hf],LW);
+ if(!ay){[p.hb,p.hf].forEach(f=>{o+=`<circle cx="${f[0]}" cy="${f[1]}" r="11" fill="${B}" stroke="${A}" stroke-width="4.5"/>`})}
+ const g=document.createElementNS(NS,'g');
+ g.innerHTML=`<defs><filter id="g${id}" x="-70%" y="-50%" width="240%" height="200%"><feGaussianBlur stdDeviation="7" result="b"/><feGaussianBlur in="SourceGraphic" stdDeviation="2" result="c"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <radialGradient id="r${id}"><stop offset="0" stop-color="${C}" stop-opacity=".5"/><stop offset="1" stop-color="${C}" stop-opacity="0"/></radialGradient></defs>
+ <ellipse cx="0" cy="4" rx="95" ry="13" fill="url(#r${id})"/><ellipse cx="0" cy="-105" rx="170" ry="170" fill="url(#r${id})" opacity=".26"/>
+ <g filter="url(#g${id})">${o}</g>`;
+ g.setAttribute('transform',`translate(${x},${y}) scale(${sc})`);S.appendChild(g);
+}
+const who=(location.hash||'#ayaz').slice(1),c=CH[who];
+document.getElementById('ui').innerHTML=`<h1 style="text-shadow:0 0 34px ${c.C}">${c.name}</h1><div class="sub" style="color:${c.A=='#ffffff'?c.C:c.A}">${c.tag}</div>
+<div class="lbl" style="left:800px;top:60px">İmza detaylar</div><div class="note" style="left:800px;top:92px;width:490px">${c.notes}</div>
+<div class="lbl" style="left:60px;top:1010px">Pozlar</div>
+<div class="lbl" style="left:60px;top:1420px">Zirve modu — videonun dönüm anı</div><div class="note" style="left:60px;top:1452px;width:420px">${c.peak}</div>
+<div class="lbl" style="left:800px;top:1420px">Renkler</div>${c.sw.map((s,i)=>`<div class="sw" style="left:${800+i*130}px;background:${s[0]};color:${s[1]};border:1px solid #333">${s[0]}</div>`).join('')}
+<div class="note" style="left:800px;top:1548px;width:490px">${c.col}</div>`;
+document.querySelectorAll('.note b').forEach(b=>b.style.color=c.A=='#ffffff'?c.C:c.A);
+const hs=who==='nova'?3.0:3.3;
+fig(who,'stand',680,940,hs);
+['rise','run','climb','win'].forEach((p,i)=>fig(who,p,200+i*310,1360,who==='nova'?1.6:1.45));
+fig(who,'win',620,1760,who==='nova'?1.5:1.35,true);
+</script></body></html>

@@ -98,3 +98,16 @@
 - Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
 
 Ayrıntılı geçmiş: `NOTLAR.md`
+
+## İMZA KARAKTER — AYAZ (kor rengi)  ← kullanıcının nihai kararı (2026-11-12)
+- Motivasyon YT Shorts kanalının ana karakteri **AYAZ, kor renginde** (kontur `#ff2a3c`, vurgu altın `#ffb81f`).
+  Eski "Kırmızı Neon" (`characters/red-neon/`) ve yt-shorts-master-generator'daki "kırmızı neon gölge silüet" tarifi GEÇERSİZ.
+- Skill: `.claude/skills/ayaz-karakter` — motivasyon videosu üretirken önce onu uygula.
+- Kod: `characters/ayaz/ayaz.js` (Canvas 2D, eski `neon.js` ile birebir uyumlu; videoya `neon.js` adıyla kopyalanır).
+  Ayrıntı: `characters/ayaz/README.md`, model sayfası `characters/ayaz/model-sheet.jpg`.
+- Sabit siluet: sivri kukuleta + altın vizör, yırtık çift katlı pelerin, kristal gövde, göğüste kum saati, kol bantları, kor zemin.
+  Kalabalık gri/yuvarlak/pelerinsiz. Zirve ritüeli: kum saati döner + renk altına kayar + kıvılcım.
+- Renk modları: `kor` (ana), `altin` (zirve), `kul` (tükenmişlik), `buz`.
+- Tasarım süreci arşivi: `characters/kor/` (ilk aday, yuvarlak figür — renk paleti buradan alındı), `characters/nova/` (elendi),
+  `characters/ayaz/ayaz.html` (SVG karakter sayfası, renk modları, tanıtım klibi), `characters/sheet2.html`.
+- Motivasyon videoları `claude/node-version-check-dka4rk` branch'inde üretiliyor; AYAZ dosyaları oraya/main'e birleştirilmeli.

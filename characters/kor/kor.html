@@ -1,0 +1,102 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;box-sizing:border-box}
+body{background:#060405;color:#fff;font-family:"Montserrat","Arial Black","DejaVu Sans",Arial,sans-serif;overflow:hidden;position:relative}
+h1{position:absolute;left:60px;top:48px;font-size:120px;font-weight:900;letter-spacing:6px;line-height:1;text-shadow:0 0 34px #ff1a30}
+h1 small{font-size:30px;color:#ffb81f;letter-spacing:3px;margin-left:14px;text-shadow:none}
+.sub{position:absolute;left:66px;top:178px;font-size:21px;letter-spacing:5px;font-weight:700;color:#ffb81f}
+.lbl{position:absolute;font-size:15px;letter-spacing:3px;color:#8a8a92;font-weight:700;text-transform:uppercase}
+.note{position:absolute;font-size:17px;line-height:1.5;color:#d6d6dc;font-weight:400;font-family:"DejaVu Sans",Arial,sans-serif}
+.note b{color:#ffb81f}
+.cw{position:absolute;width:400px;text-align:center}
+.cw .n{font-size:30px;font-weight:900;letter-spacing:4px}
+.cw .d{font-family:"DejaVu Sans",Arial,sans-serif;font-size:15px;color:#c9c9d0;margin-top:4px}
+.cw .h{font-family:monospace;font-size:13px;color:#8a8a92;margin-top:3px}
+svg{position:absolute;left:0;top:0}
+</style></head><body><svg id="s"></svg><div id="ui"></div>
+<script>
+const S=document.getElementById('s'),UI=document.getElementById('ui');
+const P={
+ stand:{head:[2,-186],neck:[0,-160],hip:[0,-95],kb:[-9,-48],fb:[-12,0],kf:[9,-48],ff:[12,0],eb:[15,-127],hb:[21,-94],ef:[-16,-127],hf:[-17,-93],tail:[-1,.25]},
+ run:{head:[38,-176],neck:[24,-153],hip:[0,-95],kb:[-28,-60],fb:[-66,-48],kf:[40,-74],ff:[34,-26],eb:[2,-122],hb:[-24,-104],ef:[50,-128],hf:[70,-152],tail:[-1.35,-.05]},
+ win:{head:[3,-188],neck:[0,-160],hip:[0,-95],kb:[-14,-48],fb:[-22,0],kf:[14,-48],ff:[22,0],eb:[-24,-132],hb:[-6,-108],ef:[22,-184],hf:[30,-226],tail:[-1,.45]},
+ rise:{head:[22,-140],neck:[10,-116],hip:[-8,-58],kb:[-14,-6],fb:[-58,-5],kf:[36,-56],ff:[38,0],eb:[-4,-82],hb:[-2,-46],ef:[34,-92],hf:[38,-62],tail:[-1,.6]},
+ climb:{head:[16,-190],neck:[8,-164],hip:[-6,-102],kb:[-24,-58],fb:[-30,-10],kf:[34,-84],ff:[36,-38],eb:[-2,-136],hb:[26,-128],ef:[34,-190],hf:[44,-230],tail:[-.9,.7]},
+ punch:{head:[20,-180],neck:[10,-156],hip:[-4,-94],kb:[-26,-50],fb:[-44,-2],kf:[22,-52],ff:[30,0],eb:[-12,-132],hb:[6,-142],ef:[42,-152],hf:[78,-154],tail:[-1.3,.1]},
+};
+const PAL={
+ kor:{n:'KOR',C:'#ff1a30',A:'#ffb81f',H:'#fff1c2',d:'Ana renk · mücadele, direnç'},
+ altin:{n:'ALTIN UYANIŞ',C:'#ffb81f',A:'#fff3c4',H:'#ffffff',d:'Zirve modu · çatlak tüm bedene yayılır'},
+ mavi:{n:'MAVİ ALEV',C:'#2a7bff',A:'#7df9ff',H:'#ffffff',d:'En sıcak alev · soğukkanlı öfke, odak'},
+ kul:{n:'KÜL',C:'#7d7d88',A:'#ff3a2a',H:'#ffb81f',d:'Tükenmişlik · sönmüş ama çatlağı hâlâ yanıyor'},
+ zumrut:{n:'ZÜMRÜT',C:'#17e08a',A:'#ffd76a',H:'#ffffff',d:'Para, büyüme, yeniden doğuş'},
+ mor:{n:'MOR ALEV',C:'#b23dff',A:'#ff8a3d',H:'#fff1c2',d:'Gece, hayal, yalnız emek'}};
+const B='#0b0b0d';
+const rnd=i=>{const x=Math.sin(i*127.1+3.7)*43758.5;return x-Math.floor(x)};
+let uid=0;
+function ground(C,A,sx){let o='';
+ for(let i=0;i<9;i++){const ang=(i/9)*Math.PI*2+rnd(i)*.5;let x=0,y=0,d='M0,0';
+  for(let k=1;k<=4;k++){const r=24*sx*(.6+rnd(i*9+k)*.7),a=ang+(rnd(i*5+k)-.5)*1.1;x+=Math.cos(a)*r;y+=Math.sin(a)*r*.2;d+=`L${x.toFixed(1)},${y.toFixed(1)}`}
+  o+=`<path d="${d}" stroke="${A}" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-linecap="round" opacity=".35"/><path d="${d}" stroke="${i%2?A:C}" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>`}
+ for(let i=0;i<16;i++){const x=(rnd(i+20)-.5)*190*sx,y=-rnd(i+40)*150-6,r=1+rnd(i+60)*2.4;o+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${i%3?A:C}" opacity="${(.85-(-y/170)).toFixed(2)}"/>`}
+ return `<g transform="translate(0,4)">${o}</g>`}
+function fig(p,o={}){
+ const C=o.C||PAL.kor.C,A=o.A||PAL.kor.A,H=o.H||PAL.kor.H,full=o.full,id='k'+(uid++);
+ const n=p.neck,h=p.hip,[tx,ty]=p.tail,[HX,HY]=p.head;
+ const dx=h[0]-n[0],dy=h[1]-n[1],L=Math.hypot(dx,dy),u=[dx/L,dy/L],v=[-u[1],u[0]];
+ const q=(a,c)=>[n[0]+u[0]*a+v[0]*c,n[1]+u[1]*a+v[1]*c];
+ const pt=a=>a.map(x=>x.toFixed(1)).join(',');
+ let s='';
+ const limb=(pts,w)=>{const d='M'+pts.map(pt).join('L'),a=`fill="none" stroke-linecap="round" stroke-linejoin="round"`;
+  s+=`<path d="${d}" stroke="${C}" stroke-width="${w+7}" ${a}/><path d="${d}" stroke="${B}" stroke-width="${w}" ${a}/>`};
+ const toe=f=>[f[0]+11,f[1]+(f[1]>-8?0:3)];
+ const crack=d=>{s+=`<path d="${d}" stroke="${A}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".4"/><path d="${d}" stroke="${H}" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`};
+ const zig=(a,b,f0,f1,seed)=>{const ax=b[0]-a[0],ay=b[1]-a[1],l=Math.hypot(ax,ay),nx=-ay/l,ny=ax/l;let d='';
+  for(let k=0;k<=4;k++){const f=f0+(f1-f0)*k/4,off=(k%2?1:-1)*(1.6+rnd(seed+k)*1.6);d+=(k?'L':'M')+(a[0]+ax*f+nx*off).toFixed(1)+','+(a[1]+ay*f+ny*off).toFixed(1)}crack(d)};
+ const wrap=(e,hd)=>{const ax=hd[0]-e[0],ay=hd[1]-e[1],l=Math.hypot(ax,ay),nx=-ay/l,ny=ax/l;
+  [.52,.7,.88].forEach(f=>{const cx=e[0]+ax*f,cy=e[1]+ay*f;s+=`<path d="M${(cx-nx*5.5-ax/l*1.5).toFixed(1)},${(cy-ny*5.5-ay/l*1.5).toFixed(1)}L${(cx+nx*5.5+ax/l*1.5).toFixed(1)},${(cy+ny*5.5+ay/l*1.5).toFixed(1)}" stroke="${A}" stroke-width="2.6" stroke-linecap="round"/>`})};
+ // flame tails
+ const kx=HX-19,ky=HY-9;
+ const tail=(len,dy2,w,op)=>{const ex=kx+tx*len,ey=ky+ty*len+dy2,mx=(kx+ex)/2,my=(ky+ey)/2;
+  return `<path d="M${kx},${ky-w} Q${mx},${my-w*2.6-8} ${ex},${ey} Q${mx},${my+w*1.4+6} ${kx},${ky+w}Z" fill="url(#t${id})" opacity="${op}"/>`};
+ s+=tail(96,-14,4.4,.95)+tail(74,4,4,1)+tail(52,22,3.2,.9);
+ for(let i=0;i<9;i++){const f=.5+rnd(i+id.length)*.9,x=kx+tx*100*f+(rnd(i+7)-.5)*14,y=ky+ty*100*f-18+rnd(i+13)*46,r=.9+rnd(i+3)*2;s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${i%2?A:C}" opacity="${(1.15-f*.7).toFixed(2)}"/>`}
+ limb([n,p.eb,p.hb],12);wrap(p.eb,p.hb);if(full)zig(n,p.eb,.3,.9,5);
+ limb([h,p.kb,p.fb,toe(p.fb)],13);if(full)zig(p.kb,p.fb,.1,.8,9);
+ limb([n,h],27);
+ // kintsugi from ember core
+ const cc=(a,c)=>pt(q(30+a,-4+c));
+ crack(`M${cc(0,0)}L${cc(-8,4)}L${cc(-15,-1)}L${cc(-23,4)} M${cc(0,0)}L${cc(8,-3)}L${cc(15,3)}L${cc(24,-2)}L${cc(31,3)} M${cc(0,0)}L${cc(3,7)}L${cc(-2,12)} M${cc(0,0)}L${cc(-4,-6)}L${cc(1,-9)} M${cc(15,3)}L${cc(18,9)} M${cc(-15,-1)}L${cc(-18,-7)}`);
+ const co=q(30,-4);s+=`<circle cx="${co[0].toFixed(1)}" cy="${co[1].toFixed(1)}" r="7" fill="${A}" opacity=".45"/><path d="M${co[0]},${co[1]-5.5}l4,5.5l-4,5.5l-4,-5.5Z" fill="${H}"/>`;
+ // head
+ s+=`<circle cx="${HX}" cy="${HY}" r="23" fill="${C}"/><circle cx="${HX}" cy="${HY}" r="19.5" fill="${B}"/>`;
+ crack(`M${HX-5},${HY-8}L${HX-9},${HY-1}L${HX-4},${HY+5}L${HX-8},${HY+13}`+(full?` M${HX-9},${HY-1}L${HX-15},${HY+2}`:''));
+ s+=`<path d="M${HX-19},${HY-8} Q${HX},${HY-15} ${HX+19},${HY-10}" stroke="${A}" stroke-width="5.5" fill="none" stroke-linecap="round"/>`;
+ s+=`<path d="M${HX+5},${HY+1} L${HX+15},${HY-3}" stroke="${H}" stroke-width="3.6" stroke-linecap="round"/><circle cx="${kx}" cy="${ky}" r="4.4" fill="${A}"/>`;
+ limb([h,p.kf,p.ff,toe(p.ff)],13);zig(h,p.kf,.3,.85,2);if(full)zig(p.kf,p.ff,.15,.75,14);
+ limb([n,p.ef,p.hf],12);wrap(p.ef,p.hf);
+ return `<defs><linearGradient id="t${id}" gradientUnits="userSpaceOnUse" x1="${kx}" y1="0" x2="${kx+tx*92}" y2="0"><stop offset="0" stop-color="${A}"/><stop offset=".5" stop-color="${C}"/><stop offset="1" stop-color="${C}" stop-opacity="0"/></linearGradient></defs>
+ <ellipse cx="0" cy="4" rx="110" ry="12" fill="${C}" opacity=".24" filter="url(#soft)"/><ellipse cx="0" cy="-105" rx="150" ry="150" fill="${C}" opacity=".08" filter="url(#soft)"/>${ground(C,A,o.gs||1)}<g filter="url(#glow)">${s}</g>`;
+}
+const DEFS=`<defs><filter id="glow" x="-80%" y="-60%" width="260%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feGaussianBlur in="SourceGraphic" stdDeviation="2" result="c"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="soft" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="14"/></filter></defs>`;
+const place=(x,y,sc,inner)=>`<g transform="translate(${x},${y}) scale(${sc})">${inner}</g>`;
+document.body.style.width='1350px';document.body.style.height='1800px';S.setAttribute('width',1350);S.setAttribute('height',1800);S.setAttribute('viewBox','0 0 1350 1800');
+const mode=(location.hash||'#sheet').slice(1);
+if(mode==='sheet'){
+ S.innerHTML=DEFS+place(680,950,3.4,fig(P.stand,{gs:1.2}))+['rise','run','punch','win'].map((k,i)=>place(190+i*320,1365,1.45,fig(P[k],{gs:.8}))).join('')
+  +place(620,1765,1.35,fig(P.win,{...PAL.altin,full:1,gs:1.4}));
+ UI.innerHTML=`<h1>KOR<small>v2</small></h1><div class="sub">İÇİNDEKİ ATEŞİ SÖNDÜRMEYEN ADAM</div>
+ <div class="lbl" style="left:820px;top:60px">v2 ile gelenler</div><div class="note" style="left:820px;top:92px;width:480px">
+ <b>1 · Kor çekirdek:</b> Göğsün ortasında yanan bir elmas; bütün altın çatlaklar oradan dallanıyor.<br>
+ <b>2 · Yayılan kintsugi:</b> Çatlak artık kafada ve bacakta da var — her yara altınla dolmuş.<br>
+ <b>3 · Üç dilli alev bandı:</b> Daha uzun, kıvılcım saçan kuyruklar.<br>
+ <b>4 · Dövüşçü sargıları:</b> Ön kollarda altın sargı şeritleri.<br>
+ <b>5 · Yanan zemin:</b> Bastığı yer kor gibi çatlar, kıvılcımlar yükselir.<br>
+ <b>6 · Yeni poz:</b> Yumruk — “bahaneleri kır”.</div>
+ <div class="lbl" style="left:60px;top:1010px">Pozlar</div><div class="lbl" style="left:60px;top:1425px">Zirve modu — “altın uyanış”</div>
+ <div class="note" style="left:60px;top:1457px;width:420px">Çatlaklar kollara ve bacaklara yayılır, dış hat kırmızıdan altına döner.</div>
+ <div class="lbl" style="left:820px;top:1425px">Kullanım kuralı</div><div class="note" style="left:820px;top:1457px;width:480px">Siluet sabit: <b>alev bandı + göğüs çatlağı + tek göz</b>. Renk yalnızca duyguya göre değişir (örnekler sayfasına bak). Kalabalık her zaman gri ve bantsızdır.</div>`;
+}else{const ks=Object.keys(PAL),ps=['stand','win','punch','rise','run','climb'];
+ S.innerHTML=DEFS+ks.map((k,i)=>place(235+(i%3)*450,720+Math.floor(i/3)*790,2.2,fig(P[ps[i]],{...PAL[k],full:k=='altin',gs:.7}))).join('');
+ UI.innerHTML=`<h1 style="font-size:84px">KOR<small>örnekler</small></h1>`+ks.map((k,i)=>`<div class="cw" style="left:${25+(i%3)*450}px;top:${775+Math.floor(i/3)*790}px"><div class="n" style="color:${PAL[k].C};text-shadow:0 0 18px ${PAL[k].C}">${PAL[k].n}</div><div class="d">${PAL[k].d}</div><div class="h">${PAL[k].C.toUpperCase()} · ${PAL[k].A.toUpperCase()}</div></div>`).join('');
+}
+</script></body></html>
