@@ -19,6 +19,8 @@
 - **İMZA KARAKTER — AYAZ (kor rengi):** Tüm motivasyon videolarında ana karakter AYAZ. Kod `characters/ayaz/ayaz.js`
   (videoya `neon.js` adıyla kopyala), skill `.claude/skills/ayaz-karakter` — önce onu uygula. Ayrıntı en alttaki AYAZ bölümünde.
   Eski "Kırmızı Neon" (`characters/red-neon/`) SİLİNDİ; kullanma.
+  **AYAZ videolarda HER ZAMAN sadece kırmızı (`mode:'kor'`)** — kül/altın/buz modlarına geçme (kullanıcı kararı 2026-11-12);
+  zirve ritüelinde kum saati dönsün + kıvılcım olsun ama renk kırmızı kalsın.
 - **Daha akıcı ve hareketli:** Kesik kesik değil; karakter animasyonu akıcı (her karede hareket, "on twos" yok),
   bol kamera hareketi, sahneler arası kesintisiz/akan geçişler, durağan plan az.
 - Kullanıcı Türkçe konuşur; Türkçe ve kısa yanıt ver.

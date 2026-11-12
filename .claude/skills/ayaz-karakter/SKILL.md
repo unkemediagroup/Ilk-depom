@@ -17,8 +17,8 @@ Kullanıcı kararı (2026-11-12): kanalın imza karakteri artık **AYAZ, kor ren
    Durağan planlarda `POSE.hero` kullan. Ayak bastığı sahnelerde `emberGround(...)` ekle.
 4. Kalabalık / %99 figürleri `drawNeon(..., { col: { rim:'#34343e', hot:'#4a4a55', glow:'rgba(80,80,100,' } })` ile çiz:
    gri, yuvarlak, pelerinsiz. Kor kırmızısı + altın yalnızca AYAZ'a aittir.
-5. Zirve anı ritüeli (her videoda aynı): kum saati döner (`hourglass` 0→1), renk `mixMode('kor','altin',u)` ile altına kayar,
-   `sparks(...)` patlar. Düşüş/tükenmişlik sahnesinde `mode:'kul'`.
+5. **Renk her zaman sadece kırmızı (`mode:'kor'`)** — kullanıcı kararı (2026-11-12): kül/altın/buz modlarını videolarda KULLANMA.
+   Zirve anı ritüeli: kum saati döner (`hourglass` 0→1) ve `sparks(...)` patlar; renk kırmızı kalır.
 6. Tipografide vurgu rengi: `#ff2a3c` (anahtar kelime) ve `#ffb81f` (ikincil).
 
 ## Değiştirme
