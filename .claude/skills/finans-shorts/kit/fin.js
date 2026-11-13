@@ -74,8 +74,8 @@ function lineChart(x, y, w, h, data, p, o = {}) {
   ctx.strokeStyle = col; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(e[0], e[1], 22 + (p * 30 % 1) * 20, 0, TAU); ctx.globalAlpha = 1 - (p * 30 % 1); ctx.stroke(); ctx.globalAlpha = 1;
   if (o.label) { const v = li < n ? lerp(data[li], data[li + 1], fr) : data[n]; tag(o.label(v), e[0], e[1] - 70, col); }
 }
-function tag(s, x, y, col = C.green, size = 46) {         // yuvarlak köşeli değer balonu
-  ctx.font = `900 ${size}px Montserrat`; const w = ctx.measureText(s).width + 44, h = size + 30, xx = clamp(x - w / 2, 20, W - w - 20);
+function tag(s, x, y, col = C.green, size = 46, free = false) {         // yuvarlak köşeli değer balonu
+  ctx.font = `900 ${size}px Montserrat`; const w = ctx.measureText(s).width + 44, h = size + 30, xx = free ? x - w / 2 : clamp(x - w / 2, 20, W - w - 20);
   ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(xx, y - h / 2, w, h, h / 2); ctx.fill(); txt(s, xx + w / 2, y + 2, size, C.ink, { align: 'center', stroke: 0 });
 }
 // Mum grafik (borsa). candles: [{o,h,l,c}]. p: kaç mumun göründüğü (0..1).
@@ -197,3 +197,41 @@ function subs(t, y = 1480, o = {}) {
 }
 // Kelimenin sesteki zamanını bul (görsel vuruşları sese kilitlemek için): at('million') → start sn
 function at(word, nth = 0) { const k = word.toLowerCase(); const hits = (typeof WORDS !== 'undefined' ? WORDS : []).filter(w => w[0].toLowerCase().replace(/[^a-z0-9$%']/g, '').startsWith(k)); return hits[nth] ? hits[nth][1] : null; }
+
+// ---------- hazır nesneler (bank-secret videosundan): kasa kapısı, banka, ev, fabrika, kredi kartı, kasa, X/yazı damgası, dünya, soru işareti, uçan banknot, hap etiket ----------
+function steel(x, y, r) { const g = ctx.createRadialGradient(x - r * .35, y - r * .4, r * .1, x, y, r); g.addColorStop(0, '#e8eef6'); g.addColorStop(.55, '#9aa7b8'); g.addColorStop(1, '#4b5566'); return g; }
+function vaultDoor(x, y, r, spin, open) {             // open: 0 kapalı → 1 menteşeden tamamen açık
+  ctx.save(); ctx.translate(x - r, y); ctx.scale(Math.max(.02, 1 - open * .93), 1); ctx.translate(r, 0);
+  ctx.fillStyle = steel(0, 0, r); ctx.beginPath(); ctx.arc(0, 0, r, 0, TAU); ctx.fill();
+  ctx.strokeStyle = '#3a4352'; ctx.lineWidth = r * .05; ctx.beginPath(); ctx.arc(0, 0, r * .86, 0, TAU); ctx.stroke(); ctx.beginPath(); ctx.arc(0, 0, r * .55, 0, TAU); ctx.stroke();
+  for (let i = 0; i < 16; i++) { const a = i / 16 * TAU; ctx.fillStyle = '#2d3440'; ctx.beginPath(); ctx.arc(Math.cos(a) * r * .93, Math.sin(a) * r * .93, r * .035, 0, TAU); ctx.fill(); }
+  ctx.save(); ctx.rotate(spin); ctx.strokeStyle = '#d6dde8'; ctx.lineWidth = r * .07; ctx.lineCap = 'round';
+  for (let i = 0; i < 3; i++) { const a = i / 3 * TAU; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(a) * r * .48, Math.sin(a) * r * .48); ctx.stroke(); ctx.fillStyle = '#c33'; ctx.beginPath(); ctx.arc(Math.cos(a) * r * .5, Math.sin(a) * r * .5, r * .06, 0, TAU); ctx.fill(); }
+  ctx.fillStyle = steel(0, 0, r * .15); ctx.beginPath(); ctx.arc(0, 0, r * .14, 0, TAU); ctx.fill(); ctx.restore();
+  ctx.restore();
+}
+function bank(x, y, s, o = {}) {                       // klasik banka binası; (x,y) = zemin ortası, s = genişlik
+  ctx.save(); ctx.translate(x, y); const h = s * .78, col = o.col || '#e9eef5', sh = o.shade || '#aeb8c8';
+  if (o.glow) { ctx.shadowColor = o.glow; ctx.shadowBlur = 80; }
+  ctx.fillStyle = sh; ctx.fillRect(-s * .55, -s * .06, s * 1.1, s * .06); ctx.fillRect(-s * .5, -s * .11, s, s * .05);
+  ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(-s * .55, -h * .78); ctx.lineTo(0, -h); ctx.lineTo(s * .55, -h * .78); ctx.closePath(); ctx.fill();
+  ctx.fillRect(-s * .5, -h * .78, s, s * .06); ctx.shadowBlur = 0;
+  for (let i = 0; i < 5; i++) { const cx = -s * .4 + i * s * .2; const g = ctx.createLinearGradient(cx - s * .05, 0, cx + s * .05, 0); g.addColorStop(0, sh); g.addColorStop(.5, col); g.addColorStop(1, sh); ctx.fillStyle = g; ctx.fillRect(cx - s * .045, -h * .78 + s * .06, s * .09, h * .78 - s * .17); }
+  txt(o.label || 'BANK', 0, -h * .855, s * .085, '#2a3344', { align: 'center', font: 'Anton', weight: 400, stroke: 0 });
+  ctx.fillStyle = '#ffc83d'; ctx.beginPath(); ctx.arc(0, -h * .86 - s * .0, 0, 0, TAU); ctx.fill();
+  ctx.restore();
+}
+function house(x, y, s, col = C.blue) { ctx.save(); ctx.translate(x, y); ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(-s * .5, -s * .1); ctx.lineTo(0, -s * .55); ctx.lineTo(s * .5, -s * .1); ctx.closePath(); ctx.fill(); ctx.fillRect(-s * .36, -s * .12, s * .72, s * .5); ctx.fillStyle = C.ink; ctx.fillRect(-s * .09, s * .1, s * .18, s * .28); ctx.fillRect(-s * .28, -s * .02, s * .13, s * .12); ctx.fillRect(s * .15, -s * .02, s * .13, s * .12); ctx.restore(); }
+function factory(x, y, s, col = C.violet) { ctx.save(); ctx.translate(x, y); ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(-s * .5, s * .38); ctx.lineTo(-s * .5, -s * .1); ctx.lineTo(-s * .2, s * .05); ctx.lineTo(-s * .2, -s * .1); ctx.lineTo(s * .1, s * .05); ctx.lineTo(s * .1, -s * .1); ctx.lineTo(s * .22, -s * .04); ctx.lineTo(s * .22, -s * .5); ctx.lineTo(s * .38, -s * .5); ctx.lineTo(s * .38, s * .0); ctx.lineTo(s * .5, s * .05); ctx.lineTo(s * .5, s * .38); ctx.closePath(); ctx.fill(); ctx.fillStyle = C.ink; for (let i = 0; i < 3; i++) ctx.fillRect(-s * .4 + i * s * .3, s * .14, s * .14, s * .12); ctx.restore(); }
+function card(x, y, s, rot = 0, col1 = '#ff5a6a', col2 = '#a3122a') { ctx.save(); ctx.translate(x, y); ctx.rotate(rot); const w = s, h = s * .63, g = ctx.createLinearGradient(-w / 2, -h / 2, w / 2, h / 2); g.addColorStop(0, col1); g.addColorStop(1, col2); ctx.fillStyle = g; ctx.beginPath(); ctx.roundRect(-w / 2, -h / 2, w, h, s * .06); ctx.fill(); ctx.fillStyle = '#ffd36b'; ctx.beginPath(); ctx.roundRect(-w * .38, -h * .15, w * .16, h * .24, 6); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,.85)'; for (let i = 0; i < 4; i++) ctx.fillRect(-w * .38 + i * w * .2, h * .2, w * .15, h * .07); ctx.restore(); }
+function safeBox(x, y, s) { ctx.save(); ctx.translate(x, y); ctx.fillStyle = steel(0, 0, s); ctx.beginPath(); ctx.roundRect(-s / 2, -s / 2, s, s, s * .06); ctx.fill(); ctx.strokeStyle = '#3a4352'; ctx.lineWidth = s * .03; ctx.strokeRect(-s * .4, -s * .4, s * .8, s * .8); ctx.fillStyle = '#2d3440'; ctx.beginPath(); ctx.arc(0, 0, s * .16, 0, TAU); ctx.fill(); ctx.fillStyle = '#c9d2de'; ctx.beginPath(); ctx.arc(0, 0, s * .1, 0, TAU); ctx.fill(); ctx.restore(); }
+function stampX(x, y, s, p) { if (p <= 0) return; const e = eback(clamp(p)); ctx.save(); ctx.translate(x, y); ctx.scale(2.2 - 1.2 * e, 2.2 - 1.2 * e); ctx.globalAlpha = clamp(p * 4); ctx.strokeStyle = C.red; ctx.lineWidth = s * .14; ctx.lineCap = 'round'; ctx.shadowColor = C.red; ctx.shadowBlur = 40; ctx.beginPath(); ctx.moveTo(-s / 2, -s / 2); ctx.lineTo(s / 2, s / 2); ctx.moveTo(s / 2, -s / 2); ctx.lineTo(-s / 2, s / 2); ctx.stroke(); ctx.restore(); }
+function stampText(s, x, y, size, col, p, rot = -.12) { if (p <= 0) return; const e = eback(clamp(p)); ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(2.4 - 1.4 * e, 2.4 - 1.4 * e); ctx.globalAlpha = clamp(p * 4); ctx.font = `400 ${size}px Anton`; const w = ctx.measureText(s).width + size * .6; ctx.strokeStyle = col; ctx.lineWidth = size * .09; ctx.beginPath(); ctx.roundRect(-w / 2, -size * .72, w, size * 1.44, size * .2); ctx.stroke(); txt(s, 0, 0, size, col, { align: 'center', font: 'Anton', weight: 400, stroke: 0, glow: col }); ctx.restore(); }
+function globe(x, y, r, t) { ctx.save(); ctx.translate(x, y); const g = ctx.createRadialGradient(-r * .3, -r * .3, r * .1, 0, 0, r); g.addColorStop(0, '#1d4f8f'); g.addColorStop(1, '#071a33'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, r, 0, TAU); ctx.fill(); ctx.save(); ctx.beginPath(); ctx.arc(0, 0, r, 0, TAU); ctx.clip(); ctx.strokeStyle = 'rgba(120,200,255,.45)'; ctx.lineWidth = 3;
+  for (let i = -3; i <= 3; i++) { ctx.beginPath(); ctx.ellipse(0, i * r * .27, Math.sqrt(1 - Math.pow(i * .27, 2)) * r, r * .04, 0, 0, TAU); ctx.stroke(); }
+  for (let i = 0; i < 8; i++) { const a = ((i / 8 + t * .05) % 1) * Math.PI; ctx.beginPath(); ctx.ellipse(0, 0, Math.abs(Math.cos(a)) * r, r, 0, 0, TAU); ctx.stroke(); }
+  ctx.restore(); ctx.strokeStyle = 'rgba(120,200,255,.8)'; ctx.lineWidth = 5; ctx.beginPath(); ctx.arc(0, 0, r, 0, TAU); ctx.stroke(); ctx.restore(); }
+function qmark(x, y, size, t, col = C.gold) { ctx.save(); ctx.translate(x, y); ctx.rotate(Math.sin(t * 3) * .08); txt('?', 0, 0, size, col, { align: 'center', font: 'Anton', weight: 400, glow: col, blur: 60 }); ctx.restore(); }
+function flyBill(x0, y0, x1, y1, p, w, seed) { if (p <= 0 || p >= 1) return; const e = eio(p), arc = Math.sin(p * Math.PI) * (-260 + seed % 3 * 120); bill(lerp(x0, x1, e) + Math.sin(p * 9 + seed) * 30, lerp(y0, y1, e) + arc, w * (1 - .45 * e), Math.sin(p * 7 + seed) * .9, { flip: Math.cos(p * 10 + seed) }); }
+function pill(s, x, y, size, col, p) { if (p <= 0) return; const e = eback(clamp(p)); ctx.save(); ctx.translate(x, y); ctx.scale(e, e); tag(s, 0, 0, col, size, true); ctx.restore(); }
+
