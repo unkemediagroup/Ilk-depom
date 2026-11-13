@@ -45,3 +45,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - onetake skill eklendi (`.claude/skills/onetake`, ticari olmayan lisans).
 - gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).
 - HyperFrames eklentisi eklendi (Apache-2.0).
+- 2026-11-13: Finans Shorts kanalı başladı. Diğer kanallardaki genel tercihler/dersler (AYAZ karakteri hariç) CLAUDE.md'ye aktarıldı; yeni skill `.claude/skills/finans-shorts` (fin.js: grafik, para, sayaç, istatistik, geçiş, altyazı). Kullanıcı metin+ses verecek, sadece görsel+render istenir. Referans: https://youtu.be/fTTGALaRZoc (ortamda YouTube engelli, izlenemedi).
