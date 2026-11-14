@@ -8,6 +8,7 @@
   ve tempo; düz ders anlatımı gibi olmasın.
 - Lemo-Opuscar animasyonlarını beğendi; video işlerinde bu kütüphaneyi kullan.
 - Kullanıcı Türkçe konuşur; Türkçe ve kısa yanıt ver.
+- Videolarda yapım aşamasını anlatma; yalnızca bitince kısa sonuç ve varsa problem bildir. Metin+sesler arka arkaya gelir, geliş sırasıyla 1.video, 2.video… olarak üret (`videos/zengin/`).
 - Kullanıcı konuşmaların kaybolmasını istemez: önemli kararları ve bilgileri
   bu dosyaya / `NOTLAR.md`'ye yaz, commit et ve branch'e push et.
 - Kullanıcı OmniRoute'un her oturumda hazır olmasını ister (bkz. `.claude/skills/omniroute`).
