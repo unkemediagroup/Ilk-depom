@@ -52,3 +52,9 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - Ortam: Pexels proxy anahtarı geçersiz (401), kullanıcı yeni anahtar formunu reddetti. Openverse/Unsplash/Pixabay engelli;
   Wikimedia Commons erişilebilir (API zaman zaman rate-limit). Gerekirse izin ekranda istenecek.
 - ffmpeg 9: `pip install imageio-ffmpeg`.
+- **Pexels API yerine (kullanıcı: "Pexels kodunu es geç"):** HuggingFace üzerinden gerçek Pexels medyası (erişim açık, hızlı):
+  - Fotoğraf: `ujin-song/pexels-image-60k` (58.5k foto, MIT). İndeks `tools/pexels_index.jsonl.gz` (caption+queries),
+    indirme `python3 tools/pexels_fetch.py <index.jsonl> <outdir> <id>...` (row-group paralel aralık isteği, ~15 sn/grup).
+  - Video: `zengxianyu/open-sora-pexels-subset` (9.750 klip, çoğu 1080×1920/4K). İndeks `tools/pexels_video_index.json.gz`,
+    indirme `python3 tools/pexels_video_fetch.py <index.json> <outdir> <sample_id>...`.
+  - Yedek: Wikimedia Commons (web sayfası açık, API/upload ortak IP yüzünden sık 429).
