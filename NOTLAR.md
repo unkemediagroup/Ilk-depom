@@ -45,3 +45,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - onetake skill eklendi (`.claude/skills/onetake`, ticari olmayan lisans).
 - gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).
 - HyperFrames eklentisi eklendi (Apache-2.0).
+- 2026-11-14: What If Shorts kanalı başladı (branch `claude/adoring-rubin-zhzsfa`). Diğer sohbetlerin yetenekleri (ana karakter hariç) aktarıldı: `finans-shorts` skill + kit, yeni `whatif-shorts` skill (kit + finans/body-hacks/tarih referansları), genel tercihler ve dersler CLAUDE.md'de. Whisper + Canvas render hattı test edildi. Pexels anahtarı geçersiz (401).

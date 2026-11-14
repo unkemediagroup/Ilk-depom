@@ -1,6 +1,13 @@
 # Proje Notları (Claude için)
 
 ## Kullanıcı tercihleri
+- **Video sonrası açıklama YOK:** Video bitince sahne listesi/uzun özet yazma; yalnızca dosya + tek satır. Başarısız olan varsa sadece onu yaz.
+- **Çalışırken anlatma:** Video/iş yaparken adım adım açıklama, ara mesaj yazma.
+- **Müzik:** Videolara müzik KOYMA (kullanıcı sonradan ekler); kendi seslendirmesini verirse onu kullan. Foley/cızırtı yok.
+- **Tam ekran video:** Görüntü ekranın TAMAMINI kaplasın; kenar boşluğu/çerçeve yok. Altyazılar görüntü üzerinde, okunur.
+- **Daha akıcı ve hareketli:** Her karede hareket ("on twos" yok), bol kamera hareketi, akan geçişler, durağan plan az.
+- **YT Shorts hook (ilk 3 sn):** Video ilk karede hareketle başlasın; 1. saniyede güçlü aksiyon, yavaş açılış yok.
+- **Görsel çeşitlilik:** Her videoda farklı görseller/metaforlar; önceki videoların motiflerini tekrar etme. Render'dan önce kareleri kontrol et.
 - **Kısa iletişim:** Yaptıklarını uzun uzun açıklama. İşi en iyi şekilde yap, sonunda yalnızca kısa bir özet ver.
 - **Videolarda ses:** Çizim/boyama sırasında cızırtı, kalem, fırça hışırtısı gibi efektler İSTEMİYOR. Bu tür foley'i
   ya hiç koyma ya da neredeyse duyulmayacak kadar kıs; ses temiz olsun (anlatım + müzik ön planda).
@@ -43,7 +50,8 @@
 - İlk video: `videos/body-heals/` ("Did you know your body can heal itself?", Watercolor Brush, 1080×1920, 50.5 s, İngilizce ses + altyazı).
 - Bu container'da çalıştırma notları: `PLAYWRIGHT_CHROME=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`;
   sistem ffmpeg'i 6.1 → pip `imageio-ffmpeg` (ffmpeg 9) PATH'e konur; asset paketleri GitHub release'inden iner;
-  huggingface.co engelli → Whisper ses kontrolü (asr_check) çalışmaz.
+  Whisper (faster-whisper / asr_check) bu ortamda çalışır (huggingface.co izinli; 2026-11-14 test edildi).
+- TTS gerekirse: Kokoro-82M (kokoro-onnx, Apache-2.0; ses örn. `am_puck`). Kullanıcı kendi sesini verirse onu kullan.
 - Microscope Story gibi gerçek görüntü isteyen stiller burada zor; kodla çizilen stiller (Watercolor, Whiteboard…) tercih edilir.
 
 ## onetake (skill)
@@ -64,8 +72,24 @@
   HTML'den video üretir (ürün tanıtımı, altyazı, overlay, hareket); 9 skill, ana skill `/hyperframes:hyperframes`.
 - Render için CLI: `npx hyperframes` (npm'den iner). Ücretsiz; Studio'nun Pro planı ayrıca ücretli modeller ekler.
 
+## WHAT IF SHORTS KANALI (bu oturum/branch: `claude/adoring-rubin-zhzsfa`)
+- YT Shorts "What If" (ya … olsaydı?) kanalı. Kullanıcı **metin + sesi hazır verir**; benden kod + animasyon + render istenir.
+- Skill: `.claude/skills/whatif-shorts` (kit: `fin.js` çizim motoru, render/prev/words/mux; `ref/`: finans örnek kurgu,
+  Body Hacks anatomi çizimleri, Tarih kanalının foto/PIL hattı). Finans kiti ayrıca `.claude/skills/finans-shorts`.
+- **Ana karakter (AYAZ / Kırmızı Neon) bu kanalda KULLANILMAZ** (`ayaz-karakter` skill'i ve `characters/` bilinçli olarak alınmadı).
+- **Toplu iş:** kullanıcı birden çok metin + ses gönderebilir (öneri: mesaj başına 5 çift, numaralı). Sesler Whisper'la yazıya
+  dökülüp içerikten metinle eşleştirilir; sıra `videos/_sira.md` dosyasında tutulur; videolar sırayla tek tek bitirilip gönderilir.
+- Pexels bağlı görünüyor ama anahtar geçersiz (401, 2026-11-14); varsayılan görsel kaynağı kodla çizim.
+
+## Video dersleri (diğer kanallardan, genel — tekrarlama)
+(1) Hareketin açısını varsayma, örneğe/gerçeğe bak; (2) gerekirse ayrı açı/rig yaz; (3) ana hareket ve nesne teması okunsun;
+(4) nesneler kadraja göre küçük kalmasın, ekran boş olmasın; (5) robotik hareket yok — farklı easing/ritim; (6) kartlar düz ve
+jenerik olmasın; (7) tam render'dan ÖNCE kritik sahneyi kare şeridiyle (0.1–0.2 sn) kontrol et.
+Bilimsel/sağlık iddiaları savunulabilir olsun; rakamları gerçekten hesapla; tıbbi/yatırım tavsiyesi verme.
+
 ## Ortam
 - Node 22 / npm 10, Python 3.13 / pip 24 kurulu.
-- Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
+- Branch'ler: what if `claude/adoring-rubin-zhzsfa`, motivasyon `claude/node-version-check-dka4rk`, body hacks
+  `claude/nifty-pascal-8uibtw`, finans `claude/adoring-lamport-m5jvyj`, tarih/gizem `claude/jolly-wozniak-yr11tz`. PR yalnızca istenirse aç.
 
 Ayrıntılı geçmiş: `NOTLAR.md`
