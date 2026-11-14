@@ -1,0 +1,5 @@
+out/
+voice16.wav
+__pycache__/
+arch/
+wk.log
