@@ -30,7 +30,7 @@ Kullanıcı **metin + sesi hazır verir**; iş: **görsel + kurgu + render**. An
   eşleşmeyen ya da aynı ses iki kez geldiyse üretmeden önce kullanıcıya sor.
 - `videos/_sira.md` dosyasına sıra tablosu yaz (No | Başlık | Ses dosyası | Klasör | Durum) ve her video bitince güncelle + push —
   bağlam özetlense bile sıra kaybolmaz.
-- Videoları **geliş sırasıyla, birer birer** bitir; biten her videoyu hemen gönder. Dosya adı `NN-<ad>.mp4` (NN = sıra no).
+- Videoları **geliş sırasıyla, birer birer** bitir; biten her videoyu hemen gönder. **Video adı = ses dosyasının adı** ("1.video ses" → `1.video.mp4`, "2.video ses" → `2.video.mp4`; adın sonundaki "ses" düşülür). Eşleşme ses adındaki numarayla yapılır.
 
 ## kit/fin.js parçaları
 - Arka plan: `bgFinance(t,{tint,seed,dot})`, `vignette()`

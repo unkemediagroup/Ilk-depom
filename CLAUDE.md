@@ -79,6 +79,7 @@
 - **Ana karakter (AYAZ / Kırmızı Neon) bu kanalda KULLANILMAZ** (`ayaz-karakter` skill'i ve `characters/` bilinçli olarak alınmadı).
 - **Toplu iş:** kullanıcı birden çok metin + ses gönderebilir (öneri: mesaj başına 5 çift, numaralı). Sesler Whisper'la yazıya
   dökülüp içerikten metinle eşleştirilir; sıra `videos/_sira.md` dosyasında tutulur; videolar sırayla tek tek bitirilip gönderilir.
+- **İsimlendirme (kullanıcı kuralı):** video, ses dosyasının adını alır: "1.video ses" → `1.video.mp4`, "2.video ses" → `2.video.mp4`.
 - Pexels bağlı görünüyor ama anahtar geçersiz (401, 2026-11-14); varsayılan görsel kaynağı kodla çizim.
 
 ## Video dersleri (diğer kanallardan, genel — tekrarlama)
