@@ -57,3 +57,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-14: What If #9: `videos/ai-rule/9.video.mp4` — "What If AI Controlled the Entire World?" (41 sn).
 - 2026-11-14: What If #10: `videos/sun-gone/10.video.mp4` — "What If the Sun Disappeared for 24 Hours?" (33 sn).
 - 2026-11-14: What If #11: `videos/ancient-tech/11.video.mp4` — "What If Ancient Civilizations Had Modern Technology?" (38 sn).
+- 2026-11-14: What If #12: `videos/underwater/12.video.mp4` — "What If Humans Could Breathe Underwater?" (42 sn).
