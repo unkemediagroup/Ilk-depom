@@ -45,3 +45,10 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - onetake skill eklendi (`.claude/skills/onetake`, ticari olmayan lisans).
 - gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).
 - HyperFrames eklentisi eklendi (Apache-2.0).
+
+## 2026-11-14: Zengin yaşamı YT Shorts serisi
+- Kullanıcı metin + ses yollayacak; her video sırasıyla `videos/zengin/1.video.mp4`, `2.video.mp4`… olarak adlandırılacak.
+- Görseller: gerçek fotoğraf öncelikli (animasyon yalnızca zorunluysa). Ana karakter kullanılmaz.
+- Ortam: Pexels proxy anahtarı geçersiz (401), kullanıcı yeni anahtar formunu reddetti. Openverse/Unsplash/Pixabay engelli;
+  Wikimedia Commons erişilebilir (API zaman zaman rate-limit). Gerekirse izin ekranda istenecek.
+- ffmpeg 9: `pip install imageio-ffmpeg`.

@@ -66,6 +66,6 @@
 
 ## Ortam
 - Node 22 / npm 10, Python 3.13 / pip 24 kurulu.
-- Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
+- Çalışma branch'i: `claude/magical-mccarthy-tcjaz8` (zengin yaşamı Shorts serisi, bkz. NOTLAR.md). PR yalnızca istenirse aç.
 
 Ayrıntılı geçmiş: `NOTLAR.md`
