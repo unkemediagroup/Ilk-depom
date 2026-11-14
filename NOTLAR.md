@@ -52,3 +52,8 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - Ortama `upload.wikimedia.org` + `commons.wikimedia.org` eklendi (arşiv foto). Wikimedia 429 verir → istekler arası 12 sn bekle;
   thumb URL'leri (thumb.wikimedia.org) engelli, orijinal URL indir.
 - Fontlar npm @fontsource paketlerinden (.woff, PIL okuyor).
+
+## Maya Shorts (videos/maya/) — "Why Did the Maya Civilization Collapse?"
+- Wikimedia saatlerce 429 verdi (Retry-After 600) → görseller `paint.py` ile prosedürel çizildi (painted/).
+  render.py önce raw/ (arşiv foto) arar, yoksa painted/ kullanır.
+- Kullanıcı: video bitince açıklama istemiyor; sadece video + varsa başarısız olan şey.

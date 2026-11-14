@@ -108,7 +108,7 @@ def grade_color(im, warm=1.0, sat=1.1, contrast=1.18, dark=0.0):
 
 def redgrade(im):
     g = ImageOps.autocontrast(im.convert('L'), cutoff=1)
-    return ImageOps.colorize(g, (12, 2, 2), (255, 170, 120)).convert('RGBA')
+    return ImageOps.colorize(g, (14, 0, 0), (255, 120, 80)).convert('RGBA')
 
 def loadimg(i, maxw=2400):
     for ext in ('.jpg', '.jpeg', '.png'):
@@ -117,7 +117,8 @@ def loadimg(i, maxw=2400):
             im = Image.open(p).convert('RGB')
             if im.width > maxw: im = im.resize((maxw, int(im.height * maxw / im.width)), Image.LANCZOS)
             return im
-    return None
+    p = os.path.join(HERE, 'painted', '%02d.jpg' % i)
+    return Image.open(p).convert('RGB') if os.path.exists(p) else None
 
 def load_assets():
     A = {}
@@ -312,7 +313,7 @@ def photo(A, key, t, t0, t1, z0, z1, cx0=.5, cx1=.5, cy0=.5, cy1=.5):
 
 # ---------------------------------------------------------------- scenes
 def sc_hook(A, t):  # 0 – 5.9 : Tikal temple, title
-    im = photo(A, 'tikal', t, 0, 5.9, 1.9, 1.25, .5, .5, .42, .5)
+    im = photo(A, 'tikal', t, 0, 5.9, 1.45, 1.08, .5, .5, .4, .5)
     topshade(im)
     slam(im, 'WHY DID THE MAYA', t, .1, 380, 130)
     slam(im, 'COLLAPSE?', t, .4, 530, 230, col=(255, 70, 45))
@@ -513,7 +514,9 @@ def sc_war(A, t):  # 53.4 – 59.7 : civil war
     topshade(im)
     slam(im, 'TURNED ON', t, 53.4, 330, 130, out=54.7)
     slam(im, 'EACH OTHER', t, 53.8, 470, 170, col=(255, 70, 45), out=54.7)
-    if t > 54.7:
+    if 54.7 < t < 56.55:
+        slam(im, 'BRUTAL', t, 54.72, 420, 260, col=(255, 60, 40))
+    if t > 56.55:
         slam(im, 'CIVIL', t, 56.6, 380, 230, col=(255, 255, 255))
         slam(im, 'WAR', t, 57.05, 580, 300, col=(255, 60, 40))
         put(im, text_img('APOCALYPTIC', 'oswald', 60, (255, 210, 170, 255), 0, track=12, shadow=4), W / 2, 270, 1, eo((t - 56.0) / .3))
