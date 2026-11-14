@@ -49,3 +49,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-14: What If #1: `videos/moon-gone/1.video.mp4` — "What If the Moon Suddenly Disappeared?" (35.5 sn, kullanıcının sesi, müziksiz; çatlayıp parçalanan ay hook, kopan çapa, gelgit kabuğu çalkalanır, 1 mil tsunami şehri yutar, dünya çapı kıyı alarmları, 23.4° eksen → topaç gibi sallanma, buz/ateş bölünmüş iklim + CHAOS, ay'sız gökte yalnız insan, yorum balonları + SUBSCRIBE + The Void Scenario kara delik logosu).
 - 2026-11-14: What If #2: `videos/earth-stop/2.video.mp4` (37.6 sn). Ortak çizimler kit'e `whatif.js` olarak taşındı (space, earth, moon, shards, cta…).
 - 2026-11-14: What If #3: `videos/no-sleep/3.video.mp4` (34.2 sn).
+- 2026-11-14: What If #4: `videos/dinosaurs/4.video.mp4` (35.8 sn; rex/raptor/anky çizimleri main.js içinde).
