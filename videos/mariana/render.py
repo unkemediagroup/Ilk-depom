@@ -2,7 +2,7 @@
 # Usage: python3 render.py [--preview t1,t2,...] [--workers N]
 import json, math, os, subprocess, sys, random
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps, ImageEnhance
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 W, H, FPS = 1080, 1920, 30
@@ -267,7 +267,29 @@ def load_assets():
     d.polygon([(0, H)] + [(int(x), float(fl[x])) for x in range(0, W, 3)] + [(W, H)], fill=(10, 16, 22, 255))
     for x in range(0, W - 3, 3): d.line((x, fl[x], x + 3, fl[x + 3]), fill=(40, 70, 90, 255), width=3)
     A['floor'] = floor
+    def ph(n, maxw=2400):
+        p = os.path.join(HERE, 'arch', n)
+        im = Image.open(p).convert('RGB')
+        if im.width > maxw: im = im.resize((maxw, int(im.height * maxw / im.width)), Image.LANCZOS)
+        return ImageEnhance.Contrast(im).enhance(1.12).convert('RGBA')
+    for n in ['rov', 'snailfish', 'amphipods', 'chimney', 'plume', 'tubeworms', 'vent2016', 'yellowrocks']:
+        A[n] = ph(n + '.jpg')
     return A
+
+_cc = {}
+def vclip(name, t, t0, speed=1.):
+    d = os.path.join(HERE, 'clips', name)
+    if name not in _cc: _cc[name] = len(os.listdir(d))
+    i = min(_cc[name], max(1, int((t - t0) * 30 * speed) + 1))
+    return Image.open(os.path.join(d, '%04d.jpg' % i)).convert('RGBA')
+
+def kb(A, key, t, t0, t1, z0, z1, cx=.5, cy=.5, cx1=None, cy1=None):
+    k = eio((t - t0) / (t1 - t0))
+    return cover(A[key], t, lerp(z0, z1, k), lerp(cx, cx1 if cx1 is not None else cx, k), lerp(cy, cy1 if cy1 is not None else cy, k))
+
+def srctag(im, t, txt, t0):
+    a = eo((t - t0 - .3) / .4)
+    if a > 0: put(im, text_img(txt, 'oswald', 28, (200, 235, 255, 255), 0, track=4, shadow=4), W / 2, 1265, 1, a * .85)
 
 # ---------------------------------------------------------------- deep particles
 def msnow(base, t, n=120, speed=40., alpha=1., col=(200, 230, 240)):
@@ -357,15 +379,15 @@ def submarine():
     return im
 
 # ---------------------------------------------------------------- scenes
-def sc_dive(A, t):  # 0 – 3.4 : plunge
-    k = eio(cl(t / 3.4)) ** .8
-    col = A['column']; y0 = int(k * (col.height - H))
-    im = col.crop((0, y0, W, y0 + H))
-    if t < 1.6: lightbeam(im, W / 2, -200, math.pi / 2, .5, 2400, int(90 * (1 - t / 1.6)))
-    msnow(im, t, 160, speed=900 * (1 - k * .6))
-    slam(im, 'WHAT LIES AT', t, .1, 640, 140)
-    slam(im, 'THE BOTTOM', t, .45, 790, 190, col=(120, 230, 255))
-    slam(im, 'OF THE OCEAN?', t, .8, 950, 150)
+def sc_dive(A, t):  # 0 – 3.4 : real deep-sea creature + title
+    im = vclip('jelly', t, 0, .9)
+    z = lerp(1.25, 1.0, eo(t / 3.4))
+    if z > 1.001: im = im.resize((int(W * z), int(H * z)), Image.BILINEAR).crop((int(W * (z - 1) / 2), int(H * (z - 1) / 2), int(W * (z - 1) / 2) + W, int(H * (z - 1) / 2) + H))
+    darken(im, .25); topshade(im)
+    slam(im, 'WHAT LIES AT', t, .1, 330, 140)
+    slam(im, 'THE BOTTOM', t, .45, 480, 190, col=(120, 230, 255))
+    slam(im, 'OF THE OCEAN?', t, .8, 640, 150)
+    srctag(im, t, 'REAL FOOTAGE · NOAA OCEAN EXPLORATION', 1.2)
     flash(im, pulse(t, 0, .2))
     return im
 
@@ -455,7 +477,7 @@ def sc_crush(A, t):  # 15.9 – 20.6 : submarine flattened
     return im, dx, dy
 
 def sc_hostile(A, t):  # 20.6 – 25.7
-    im = Image.new('RGBA', (W, H), (0, 0, 0, 255))
+    im = kb(A, 'rov', t, 20.6, 25.7, 1.0, 1.25, .58, .55); darken(im, .55)
     msnow(im, t, 60, speed=20, alpha=.6)
     items = [('TOTAL DARKNESS', '0% SUNLIGHT', 22.0, (230, 230, 230)), ('FREEZING', '1–4 °C', 22.96, (120, 210, 255)),
              ('CRUSHING', '1,000+ ATM', 24.24, (255, 80, 60))]
@@ -473,7 +495,8 @@ def sc_creatures(A, t):  # 25.7 – 35.4
     im = A['abyss'].copy(); darken(im, .3)
     biolum(im, t, 60)
     if t < 31.5:
-        for i, (x, y, c, ph) in enumerate([(260, 900, (120, 255, 230), 0), (800, 700, (200, 140, 255), 1.5), (640, 1240, (120, 200, 255), 3)]):
+        im = vclip('siph', t, 25.7); darken(im, .1)
+        for i, (x, y, c, ph) in enumerate([]) or enumerate([(260, 900, (120, 255, 230), 0), (800, 700, (200, 140, 255), 1.5), (640, 1240, (120, 200, 255), 3)]):
             a = eo((t - 26.9 - i * .4) / .8)
             if a <= 0: continue
             put(im, jelly(c), x + 30 * math.sin(t * .7 + ph), y - lt * 25 + 20 * math.sin(t * 1.3 + ph), .9, a * (.7 + .3 * math.sin(t * 2 + ph)))
@@ -481,25 +504,27 @@ def sc_creatures(A, t):  # 25.7 – 35.4
         slam(im, 'CREATURES', t, 29.18, 490, 160)
         if t > 29.98: label(im, 'FOUND NOWHERE ELSE ON EARTH', 620, t, 30.0, size=46, col=(220, 240, 245), bar=False)
     elif t < 33.4:
-        if not hasattr(sc_creatures, 'sf'): sc_creatures.sf = snailfish()
-        k = eo((t - 31.5) / 1.6)
-        lightbeam(im, -100, 600, .4, .3, 1600, 60)
-        put(im, sc_creatures.sf, lerp(-300, W / 2, k) + 10 * math.sin(t * 3), 1000 + 20 * math.sin(t * 2), 1.2)
+        im = kb(A, 'snailfish', t, 31.5, 33.4, 1.0, 1.2, .6, .3, .62, .3); darken(im, .15); topshade(im)
+        srctag(im, t, 'SNAILFISH · NOAA', 31.5)
         slam(im, 'GHOST FISH', t, 31.8, 330, 190, col=(255, 210, 220))
-        label(im, 'MARIANA SNAILFISH · 8,000 m', 470, t, 32.2, size=40, col=(220, 240, 245), bar=False)
+        label(im, 'LIVES DOWN TO 8,000 m', 470, t, 32.2, size=40, col=(220, 240, 245), bar=False)
     else:
-        if not hasattr(sc_creatures, 'am'): sc_creatures.am = amphipod()
-        k = eo((t - 33.4) / .8)
-        lightbeam(im, W + 100, 600, math.pi - .4, .3, 1600, 60)
-        put(im, sc_creatures.am, W / 2 + 6 * math.sin(t * 9), 1000, lerp(.6, 1.25, k))
+        im = kb(A, 'amphipods', t, 33.4, 35.4, 1.1, 1.6, .5, .45, .5, .35); darken(im, .2); topshade(im)
+        srctag(im, t, 'AMPHIPODS · NOAA', 33.4)
         slam(im, 'GIANT', t, 33.6, 300, 170, col=(255, 230, 190))
         slam(im, 'AMPHIPODS', t, 34.04, 450, 170)
-        label(im, 'UP TO 34 CM LONG', 580, t, 34.5, size=44, col=(220, 240, 245), bar=False)
+        label(im, 'GIANT ONES REACH 34 CM', 580, t, 34.5, size=44, col=(220, 240, 245), bar=False)
     flash(im, pulse(t, 25.7, 25.85))
     return im
 
 def sc_volcano(A, t):  # 35.4 – 42.0
     lt = t - 35.4
+    if t < 38.9:
+        im = vclip('orb', t, 35.4); darken(im, .15); topshade(im)
+        slam(im, 'STRANGER STILL…', t, 35.5, 330, 130)
+        srctag(im, t, 'UNIDENTIFIED "GOLDEN ORB" · NOAA, 2023', 35.5)
+        flash(im, pulse(t, 35.4, 35.55))
+        return im, 0, 0
     im = A['abyss'].copy(); d = ImageDraw.Draw(im)
     cx, base = W / 2, 1500
     d.polygon([(cx - 520, base), (cx - 110, 1020), (cx + 110, 1020), (cx + 520, base)], fill=(36, 30, 26, 255))
@@ -519,7 +544,7 @@ def sc_volcano(A, t):  # 35.4 – 42.0
         ring_glow(im, cx, 1040, 260 * k, (255, 220, 40), 200)
         ImageDraw.Draw(im).ellipse((cx - 160 * k, 1010, cx + 160 * k, 1060), fill=(255, 230, 60, 255))
     msnow(im, t, 60, speed=20, alpha=.6)
-    slam(im, 'STRANGER STILL…', t, 35.5, 330, 120, out=38.9)
+    flash(im, pulse(t, 38.9, 39.05))
     if t > 38.9:
         slam(im, 'MUD VOLCANOES', t, 39.14, 330, 150, col=(255, 255, 255))
     if t > 40.9:
@@ -529,6 +554,22 @@ def sc_volcano(A, t):  # 35.4 – 42.0
     return im, dx, dy
 
 def sc_vents(A, t):  # 42.0 – 47.5
+    lt = t - 42.0
+    if t < 45.3:
+        im = kb(A, 'chimney', t, 42.0, 45.3, 1.0, 1.25, .55, .5, .5, .4); topshade(im)
+        srctag(im, t, 'BLACK SMOKER · MARIANA ARC · NOAA', 42.0)
+    else:
+        im = kb(A, 'plume', t, 45.3, 47.5, 1.0, 1.2, .5, .55); topshade(im)
+        srctag(im, t, 'VENT LIFE · NOAA', 45.3)
+    slam(im, 'CHEMICAL', t, 42.6, 330, 170, col=(255, 160, 80), out=45.3)
+    slam(im, 'VENTS', t, 43.04, 490, 200, out=45.3)
+    if t > 45.3:
+        slam(im, 'LIFE WITHOUT', t, 45.4, 330, 140)
+        slam(im, 'SUNLIGHT', t, 46.3, 480, 200, col=(255, 210, 80))
+    flash(im, pulse(t, 42.0, 42.15), (255, 160, 80))
+    return im
+
+def _old_vents(A, t):
     lt = t - 42.0
     im = A['abyss'].copy(); d = ImageDraw.Draw(im)
     d.rectangle((0, 1560, W, H), fill=(18, 16, 14, 255))
@@ -560,16 +601,8 @@ def sc_vents(A, t):  # 42.0 – 47.5
 
 def sc_unknown(A, t):  # 47.5 – 53.3
     lt = t - 47.5
-    im = Image.new('RGBA', (W, H), (0, 2, 6, 255)); d = ImageDraw.Draw(im)
-    # canyon walls receding
-    for k in range(6):
-        s = 1 + k * .45 - lt * .12
-        if s <= .05: continue
-        c = int(30 / (k + 1))
-        d.polygon([(0, 0), (W * .45 / s, H * .3), (W * .45 / s, H * .8), (0, H)], fill=(c, c + 4, c + 8, 255))
-        d.polygon([(W, 0), (W - W * .45 / s, H * .3), (W - W * .45 / s, H * .8), (W, H)], fill=(c, c + 4, c + 8, 255))
-    ang = math.pi / 2 + .5 * math.sin(lt * .8)
-    lightbeam(im, W / 2, 300, ang, .22, 1700, 70)
+    im = kb(A, 'rov', t, 47.5, 53.3, 1.6, 1.0, .62, .6); darken(im, .2); d = ImageDraw.Draw(im)
+    srctag(im, t, 'ROV DEEP DISCOVERER · NOAA', 47.6)
     # glints in the dark
     for i, (x, y, tc) in enumerate([(300, 1200, 49.5), (760, 1350, 50.2), (540, 1500, 51.0)]):
         a = max(0, math.sin((t - tc) * 3)) if t > tc else 0
@@ -585,8 +618,7 @@ def sc_unknown(A, t):  # 47.5 – 53.3
 
 def sc_end(A, t):  # 53.3 – end
     lt = t - 53.3
-    im = A['abyss'].copy(); im.alpha_composite(A['floor']); biolum(im, t, 50)
-    msnow(im, t, 80, speed=25)
+    im = vclip('angler', t, 53.3); darken(im, .4)
     slam(im, 'WHAT DO', t, 53.35, 330, 150)
     slam(im, 'YOU THINK?', t, 53.6, 480, 200, col=(120, 230, 255))
     a = back((t - 53.6) / .45)

@@ -128,7 +128,14 @@ def load_assets():
         A[n] = grade_color(im) if im is not None else None
         A[n + '_raw'] = im
     A['war'] = redgrade(A['jaguar_raw'] if A['jaguar_raw'] is not None else A['tikal_raw'])
-    A['stela_red'] = redgrade(A['cath_stela_raw'])
+    A['stela_red'] = redgrade(loadimg(8))
+    def card(im, w=520):
+        im = im.copy(); im.thumbnail((w, int(w * 1.6)))
+        c = Image.new('RGBA', (im.width + 24, im.height + 24), (240, 230, 210, 255)); c.paste(im, (12, 12))
+        sh = Image.new('RGBA', (c.width + 80, c.height + 80), (0, 0, 0, 0)); ImageDraw.Draw(sh).rectangle((40, 50, c.width + 40, c.height + 50), fill=(0, 0, 0, 200))
+        sh = sh.filter(ImageFilter.GaussianBlur(18)); sh.alpha_composite(c, (40, 40)); return sh
+    A['chahk'] = card(loadimg(9), 400) if loadimg(9) is not None else None
+    A['king'] = card(loadimg(10), 480) if loadimg(10) is not None else None
     # night sky
     y = np.linspace(0, 1, H)[:, None]
     top = np.array([3, 6, 18]); bot = np.array([40, 28, 60])
@@ -312,13 +319,17 @@ def photo(A, key, t, t0, t1, z0, z1, cx0=.5, cx1=.5, cy0=.5, cy1=.5):
     return cover(A[key], t, lerp(z0, z1, k), lerp(cx0, cx1, k), lerp(cy0, cy1, k))
 
 # ---------------------------------------------------------------- scenes
+def archtag(im, t, txt, t0):
+    a = eo((t - t0 - .3) / .4)
+    if a > 0: put(im, text_img(txt, 'oswald', 30, (255, 236, 205, 255), 0, track=4, shadow=4), W / 2, 1265, 1, a * .9)
+
 def sc_hook(A, t):  # 0 – 5.9 : Tikal temple, title
-    im = photo(A, 'tikal', t, 0, 5.9, 1.45, 1.08, .5, .5, .4, .5)
+    im = photo(A, 'palenque', t, 0, 5.9, 1.5, 1.12, .45, .45, .3, .38)
     topshade(im)
     slam(im, 'WHY DID THE MAYA', t, .1, 380, 130)
     slam(im, 'COLLAPSE?', t, .4, 530, 230, col=(255, 70, 45))
     put(im, text_img('10 MILLION PEOPLE · GONE', 'oswald', 50, (255, 225, 170, 255), 0, track=6, shadow=4), W / 2, 250, 1, eo((t - 1.0) / .4))
-    if t > 3.3: label(im, 'TIKAL · GUATEMALA', 1640, t, 3.4, size=44, col=(255, 230, 190), bar=False)
+    if t > 3.3: label(im, 'TULUM · F. CATHERWOOD, 1844', 1660, t, 3.4, size=44, col=(255, 230, 190), bar=False)
     motes(im, t, 40)
     flash(im, pulse(t, 0, .18))
     return im
@@ -354,7 +365,8 @@ def sc_cosmos(A, t):  # 5.9 – 11.8 : astronomers, empire
 
 def sc_vanish(A, t):  # 11.8 – 15.5 : jungle swallows it
     lt = t - 11.8
-    im = photo(A, 'palenque', t, 11.8, 15.5, 1.15, 1.4, .5, .55)
+    im = photo(A, 'tikal', t, 11.8, 15.5, 1.05, 1.3, .5, .5, .45, .4)
+    archtag(im, t, 'TIKAL · PHOTO, 1923', 11.9)
     vines(im, t, 12.2, 16, seed=4)
     darken(im, .45 * seg(t, 13.5, 15.3))
     slam(im, '…THEN IT', t, 12.5, 360, 130)
@@ -366,14 +378,14 @@ def sc_spanish(A, t):  # 15.5 – 25.6 : found centuries later
     if t < 20.1:
         im = photo(A, 'cath_pal', t, 15.5, 20.1, 1.2, 1.45, .4, .6, .5, .5)
         topshade(im)
-        label(im, '1500s', 300, t, 15.7, size=70, col=(255, 210, 150))
+        label(im, '1500s', 300, t, 15.7, size=70, col=(255, 210, 150)); archtag(im, t, 'COPÁN · F. CATHERWOOD, 1844', 15.6)
         label(im, 'SPANISH CONQUISTADORS ARRIVE', 395, t, 16.2, size=46, col=(255, 255, 255), bar=False)
         motes(im, t, 30)
         flash(im, pulse(t, 15.5, 15.65))
         return im
     im = photo(A, 'cath_stela', t, 20.1, 25.6, 1.15, 1.45, .5, .5, .45, .4)
     topshade(im)
-    slam(im, 'EMPTY CITIES', t, 20.4, 360, 160, out=22.85)
+    slam(im, 'EMPTY CITIES', t, 20.4, 360, 160, out=22.85); archtag(im, t, 'STELA, COPÁN · 1844', 20.2)
     if t > 22.85:
         slam(im, 'NOT ONE', t, 22.9, 330, 140)
         slam(im, 'SOUL LEFT', t, 23.8, 480, 190, col=(255, 70, 45))
@@ -383,7 +395,7 @@ def sc_spanish(A, t):  # 15.5 – 25.6 : found centuries later
 
 def sc_question(A, t):  # 25.6 – 27.9
     lt = t - 25.6
-    im = photo(A, 'chichen', t, 25.6, 27.9, 1.5, 1.2, .5, .5, .5, .5)
+    im = photo(A, 'chichen', t, 25.6, 27.9, 1.3, 1.05, .5, .5, .5, .5)
     darken(im, .5)
     slam(im, 'WHAT', t, 25.7, 560, 200)
     slam(im, 'HAPPENED?', t, 25.95, 740, 230, col=(255, 70, 45))
@@ -448,7 +460,7 @@ def sc_stalag(A, t):  # 36.7 – 41.8
             pts.append((x0 + i / 80 * w, y0 + h * yv * .9))
         if len(pts) > 1: d.line(pts, fill=(255, 200, 90, 255), width=5)
         put(im, text_img('RAINFALL RECORD · 800–1000 AD', 'oswald', 30, (255, 230, 190, 255), 0, track=3), W / 2, y0 - 12, 1)
-    slam(im, 'CAVE', t, 37.9, 340, 150, out=41.6)
+    slam(im, 'CAVE', t, 37.9, 340, 150, out=41.6); archtag(im, t, 'BOLONCHÉN WATER CAVE · 1844', 36.8)
     slam(im, 'STALAGMITES', t, 38.3, 480, 170, col=(255, 196, 110), out=41.6)
     label(im, 'NATURE\'S CLIMATE DIARY', 610, t, 39.4, size=50, col=(255, 255, 255), bar=False)
     flash(im, pulse(t, 36.7, 36.85))
@@ -545,7 +557,8 @@ def sc_dynasty(A, t):  # 59.7 – 62.6 : dynasties collapsed
 
 def sc_abandon(A, t):  # 62.6 – 68.3
     lt = t - 62.6
-    im = photo(A, 'ruins86', t, 62.6, 68.3, 1.15, 1.45, .5, .5, .5, .5)
+    im = photo(A, 'ruins86', t, 62.6, 68.3, 1.05, 1.3, .5, .5, .5, .5)
+    archtag(im, t, 'PALENQUE PALACE · 1923', 62.7)
     vines(im, t, 63.2, 18, seed=9)
     topshade(im)
     slam(im, 'TEMPLES', t, 63.4, 340, 170)
@@ -576,6 +589,9 @@ def sc_theories(A, t):  # 68.3 – 76.75
         im.alpha_composite(g.filter(ImageFilter.GaussianBlur(90)))
         ImageDraw.Draw(im).ellipse((390, 650, 690, 950), fill=(255, 235, 170, 255))
         label(im, 'THEORY 1', 300, t, 68.4, size=48)
+        if A['chahk'] is not None:
+            put(im, A['chahk'], W / 2 + 230, 1060 + 20 * math.sin(t), back((t - 68.6) / .5) * .85, 1, 6)
+            put(im, text_img('CHAAHK · RAIN GOD', 'oswald', 34, (255, 235, 200, 255), 0, track=4, shadow=4), W / 2 + 230, 1300, 1, eo((t - 69.0) / .3))
         slam(im, 'CLIMATE', t, 69.3, 420, 180)
         slam(im, 'CATASTROPHE?', t, 69.65, 570, 150, col=(255, 140, 40))
         flash(im, pulse(t, 68.3, 68.45))
@@ -601,6 +617,8 @@ def sc_theories(A, t):  # 68.3 – 76.75
     im.alpha_composite(g.filter(ImageFilter.GaussianBlur(140)))
     put(im, A['pyr'], W / 2, H - 420, lerp(1.0, 1.25, eio(lt / 3.4)))
     label(im, 'THEORY 3', 300, t, 73.45, size=48)
+    if A['king'] is not None:
+        put(im, A['king'], W / 2, 1060, lerp(.75, .9, lt / 3.3), eo((t - 74.3) / .5) * .9)
     slam(im, 'OR SOMETHING', t, 73.5, 430, 150)
     if t > 74.0:
         gg = seg(t, 74.0, 74.45); jit = (rng(int(t * 30)).random() - .5) * 50 * (1 - gg)
