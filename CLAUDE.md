@@ -69,3 +69,13 @@
 - Çalışma branch'i: `claude/node-version-check-dka4rk`. PR yalnızca istenirse aç.
 
 Ayrıntılı geçmiş: `NOTLAR.md`
+
+## Tarih Shorts serisi (YT Shorts)
+- Kullanıcı tarih olayları üzerine **metin + ses dosyası** verir; görselleri Claude bulur/üretir ve 9:16 (1080×1920)
+  YT Shorts videosu hazırlar. Seri adları: "Gizemli Tarih" / "İmparatorluklara N'oldu".
+- **İlk 3 saniye hook şart:** izleyiciyi kilitleyen, merak uyandıran güçlü giriş (çarpıcı görsel + büyük kanca yazısı).
+- Sıkmayan, seyir zevki yüksek kurgu: hızlı tempo, sürekli hareket (zoom/pan/geçiş), sese senkron altyazı, temiz ses
+  (foley yok; anlatım + müzik ön planda).
+- Diğer sohbetlerdeki yetenekler (Lemo-Opuscar, HyperFrames, onetake vb.) gerektiğinde kullanılır;
+  **"ana karakter" yeteneği KULLANILMAZ.**
+- Çıktılar: `videos/<konu>/` altında.
