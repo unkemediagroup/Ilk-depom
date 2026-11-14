@@ -1,0 +1,4 @@
+out/
+voice16.wav
+__pycache__/
+arch/*.mp4
