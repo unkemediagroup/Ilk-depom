@@ -14,4 +14,4 @@
 | 11 | What If Ancient Civilizations Had Modern Technology? | 11.video ses | videos/ancient-tech | bitti → 11.video.mp4 |
 | 12 | What If Humans Could Breathe Underwater? | 12.video ses | videos/underwater | bitti → 12.video.mp4 |
 | 13 | What If an Asteroid Hit Earth Tomorrow? | 13.video ses | videos/asteroid | bitti → 13.video.mp4 |
-| 14 | What If Parallel Universes Were Real? | 14.video ses | videos/multiverse | sırada |
+| 14 | What If Parallel Universes Were Real? | 14.video ses | videos/multiverse | bitti → 14.video.mp4 |
