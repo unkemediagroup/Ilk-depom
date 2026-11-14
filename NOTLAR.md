@@ -58,3 +58,7 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
   - Video: `zengxianyu/open-sora-pexels-subset` (9.750 klip, çoğu 1080×1920/4K). İndeks `tools/pexels_video_index.json.gz`,
     indirme `python3 tools/pexels_video_fetch.py <index.json> <outdir> <sample_id>...`.
   - Yedek: Wikimedia Commons (web sayfası açık, API/upload ortak IP yüzünden sık 429).
+- 2026-11-14 izinler (kullanıcı onayladı): ortama incompetech.com, archive.org, fonts.googleapis/gstatic, pixabay eklendi
+  (pixabay Cloudflare yüzünden 403). Müzik: `tools/fetch_music.sh` → `assets/music/` (Kevin MacLeod, CC BY 4.0, açıklamaya kredi yaz).
+  Fontlar: `assets/fonts/` (Anton, Bebas Neue, Montserrat, Playfair Display). Altyazı zamanlaması: faster-whisper `medium` (HF'den iner).
+  Ortama setup script eklendi: pip paketleri + müzikler her yeni oturumda otomatik kurulur.
