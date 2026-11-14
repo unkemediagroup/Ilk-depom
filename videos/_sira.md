@@ -3,6 +3,6 @@
 |---|---|---|---|---|
 | 1 | What If the Moon Suddenly Disappeared? | 1.video ses | videos/moon-gone | bitti → 1.video.mp4 |
 | 2 | What If the Earth Stopped Spinning? | 2.video ses | videos/earth-stop | bitti → 2.video.mp4 |
-| 3 | What If Humans Never Needed Sleep? | 3.video ses | videos/no-sleep | sırada |
+| 3 | What If Humans Never Needed Sleep? | 3.video ses | videos/no-sleep | bitti → 3.video.mp4 |
 | 4 | What If Dinosaurs Never Went Extinct? | 4.video ses | videos/dinosaurs | sırada |
 | 5 | What If Humans Lived on Mars? | 5.video ses | videos/mars-life | sırada |
