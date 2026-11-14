@@ -6,3 +6,8 @@
 | 3 | What If Humans Never Needed Sleep? | 3.video ses | videos/no-sleep | bitti → 3.video.mp4 |
 | 4 | What If Dinosaurs Never Went Extinct? | 4.video ses | videos/dinosaurs | bitti → 4.video.mp4 |
 | 5 | What If Humans Lived on Mars? | 5.video ses | videos/mars-life | bitti → 5.video.mp4 |
+| 6 | What If Money Suddenly Became Worthless? | 6.video ses | videos/money-zero | sırada |
+| 7 | What If All the Oceans Disappeared? | 7.video ses | videos/no-oceans | sırada |
+| 8 | What If Humans Could Read Minds? | 8.video ses | videos/mind-read | sırada |
+| 9 | What If AI Controlled the Entire World? | 9.video ses | videos/ai-rule | sırada |
+| 10 | What If the Sun Disappeared for 24 Hours? | 10.video ses | videos/sun-gone | sırada |
