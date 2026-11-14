@@ -45,3 +45,10 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - onetake skill eklendi (`.claude/skills/onetake`, ticari olmayan lisans).
 - gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).
 - HyperFrames eklentisi eklendi (Apache-2.0).
+
+## Dyatlov Pass Shorts (videos/dyatlov/)
+- Kullanıcının metni + sesi (76.3 sn). Pipeline: faster-whisper (small.en, HF erişimi var) ile kelime zamanlaması →
+  `render.py` (PIL+numpy, 1080×1920 30fps, 4 işçi) → `mix.py` (sentez dark ambient + boom/riser, foley yok, -14 LUFS) → mux 9 Mbps.
+- Ortama `upload.wikimedia.org` + `commons.wikimedia.org` eklendi (arşiv foto). Wikimedia 429 verir → istekler arası 12 sn bekle;
+  thumb URL'leri (thumb.wikimedia.org) engelli, orijinal URL indir.
+- Fontlar npm @fontsource paketlerinden (.woff, PIL okuyor).
