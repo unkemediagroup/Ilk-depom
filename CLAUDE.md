@@ -79,3 +79,5 @@ Ayrıntılı geçmiş: `NOTLAR.md`
 - Diğer sohbetlerdeki yetenekler (Lemo-Opuscar, HyperFrames, onetake vb.) gerektiğinde kullanılır;
   **"ana karakter" yeteneği KULLANILMAZ.**
 - Çıktılar: `videos/<konu>/` altında.
+- **Video bitince açıklama YAPMA**; yalnızca videoyu gönder. Bir şey başarısız olduysa sadece onu yaz.
+- Kullanıcı videonun başlığını ayrıca verebilir (hook/kapak yazısında kullan).
