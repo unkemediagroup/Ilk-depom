@@ -52,3 +52,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-14: What If #4: `videos/dinosaurs/4.video.mp4` (35.8 sn; rex/raptor/anky çizimleri main.js içinde).
 - 2026-11-14: What If #5: `videos/mars-life/5.video.mp4` (38.4 sn). 2–5 tek mesajda (4 metin+ses) geldi, sırayla üretildi.
 - 2026-11-14: What If #6: `videos/money-zero/6.video.mp4` — "What If Money Suddenly Became Worthless?" (40 sn).
+- 2026-11-14: What If #7: `videos/no-oceans/7.video.mp4` — "What If All the Oceans Disappeared?" (37 sn).
