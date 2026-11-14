@@ -50,3 +50,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-14: What If #2: `videos/earth-stop/2.video.mp4` (37.6 sn). Ortak çizimler kit'e `whatif.js` olarak taşındı (space, earth, moon, shards, cta…).
 - 2026-11-14: What If #3: `videos/no-sleep/3.video.mp4` (34.2 sn).
 - 2026-11-14: What If #4: `videos/dinosaurs/4.video.mp4` (35.8 sn; rex/raptor/anky çizimleri main.js içinde).
+- 2026-11-14: What If #5: `videos/mars-life/5.video.mp4` (38.4 sn). 2–5 tek mesajda (4 metin+ses) geldi, sırayla üretildi.
