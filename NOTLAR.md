@@ -57,3 +57,6 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - Wikimedia saatlerce 429 verdi (Retry-After 600) → görseller `paint.py` ile prosedürel çizildi (painted/).
   render.py önce raw/ (arşiv foto) arar, yoksa painted/ kullanır.
 - Kullanıcı: video bitince açıklama istemiyor; sadece video + varsa başarısız olan şey.
+
+## Mariana Shorts (videos/mariana/) — "What Lies at the Deepest Point of the Ocean?"
+- Wikimedia hâlâ 429; tamamen kodla çizildi (Everest kıyası, basınç göstergesi, ezilen denizaltı, canlılar, volkan, bacalar).
