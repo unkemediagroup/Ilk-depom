@@ -8,6 +8,6 @@
 | 5 | What If Humans Lived on Mars? | 5.video ses | videos/mars-life | bitti → 5.video.mp4 |
 | 6 | What If Money Suddenly Became Worthless? | 6.video ses | videos/money-zero | bitti → 6.video.mp4 |
 | 7 | What If All the Oceans Disappeared? | 7.video ses | videos/no-oceans | bitti → 7.video.mp4 |
-| 8 | What If Humans Could Read Minds? | 8.video ses | videos/mind-read | sırada |
+| 8 | What If Humans Could Read Minds? | 8.video ses | videos/mind-read | bitti → 8.video.mp4 |
 | 9 | What If AI Controlled the Entire World? | 9.video ses | videos/ai-rule | sırada |
 | 10 | What If the Sun Disappeared for 24 Hours? | 10.video ses | videos/sun-gone | sırada |
