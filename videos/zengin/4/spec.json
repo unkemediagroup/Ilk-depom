@@ -1,0 +1,217 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Brain Dance.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../4.video.mp4",
+ "hook": {
+  "text": "WHAT DOES 1 HOUR IN A|PRIVATE JET COST?",
+  "gold": [
+   "PRIVATE",
+   "JET",
+   "COST?"
+  ],
+  "end": 3.3
+ },
+ "highlight": [
+  "BILLIONAIRE",
+  "BILLIONAIRE'S",
+  "MILLION",
+  "BILLION",
+  "$50",
+  "$50,000",
+  "JETS,",
+  "YACHTS,",
+  "MANSIONS",
+  "LIFETIME,",
+  "FASTER",
+  "SECRETS.",
+  "ANTILIA",
+  "AMBANI.",
+  "MUKESH",
+  "$5",
+  "$4.6",
+  "SKYSCRAPER",
+  "600",
+  "HELICOPTER",
+  "PALACE",
+  "$3,000",
+  "$20,000",
+  "G700.",
+  "GULFSTREAM",
+  "GOLD.",
+  "FUEL",
+  "$100,000",
+  "DUBAI,",
+  "ATLANTIS",
+  "ROYAL",
+  "BEYONCE",
+  "INFINITY",
+  "BUTLERS.",
+  "PENTHOUSE",
+  "CHEFS"
+ ],
+ "replace": {
+  "Sarai": "Palace",
+  "Beyonce": "Beyoncé"
+ },
+ "cta": {
+  "start": 39.3,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/gulfstream_g700_0.jpg",
+   "start": 0,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "src": "src/airport_security_queue_0.jpg",
+   "start": 3.9,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "src": "src/private_jet_interior_0.jpg",
+   "start": 7.9,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "src": "src/embraer_phenom_300_0.jpg",
+   "start": 10.6,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "tag": "LIGHT JET: ~$3,000 / HOUR"
+  },
+  {
+   "src": "src/private_jet_interior_1.jpg",
+   "start": 13.4,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/gulfstream_g700_1.jpg",
+   "start": 16.0,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "tag": "GULFSTREAM G700: $20,000+ / HOUR"
+  },
+  {
+   "src": "src/gulfstream_g700_3.jpg",
+   "start": 19.0,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "src": "src/aircraft_refueling_business_jet_0.jpg",
+   "start": 22.4,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "tag": "AVIATION FUEL"
+  },
+  {
+   "src": "src/1272392.jpg",
+   "start": 24.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "ELITE PILOT CREWS"
+  },
+  {
+   "src": "src/private_jet_airport_1.jpg",
+   "start": 25.7,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "tag": "LANDING FEES + MAINTENANCE"
+  },
+  {
+   "src": "src/gulfstream_cabin_1.jpg",
+   "start": 27.8,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/private_jet_interior_3.jpg",
+   "start": 31.6,
+   "zoom": [
+    1.1,
+    1.0
+   ]
+  },
+  {
+   "src": "src/386318.jpg",
+   "start": 33.3,
+   "zoom": [
+    1.0,
+    1.15
+   ]
+  },
+  {
+   "src": "src/gulfstream_g700_2.jpg",
+   "start": 34.9,
+   "mode": "fit",
+   "fit_w": 1.3,
+   "zoom": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "src": "src/53816.jpg",
+   "start": 36.4,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/3941.jpg",
+   "start": 39.3,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  }
+ ]
+}

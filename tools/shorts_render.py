@@ -31,7 +31,11 @@ F_HOOK = font("Anton-Regular.ttf", 112)
 F_CTA = font("Anton-Regular.ttf", 120)
 F_CTA2 = font("Montserrat.ttf", 50, 800)
 
-words = json.load(open(P(spec["words"])))
+words = []
+for w in json.load(open(P(spec["words"]))):  # "$50" ",000" / "multi" "-million" -> tek kelime
+    if words and re.match(r"^[,.\-]\w", w[2]): words[-1] = [words[-1][0], w[1], words[-1][2] + w[2]]
+    else: words.append(list(w))
+for w in words: w[2] = spec.get("replace", {}).get(w[2], w[2])
 dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", P(spec["voice"])], capture_output=True, text=True).stdout) + 0.6
 N = int(dur * FPS)
 shots = spec["shots"]
@@ -109,8 +113,8 @@ for w in words:
     if len(cur) >= 3 or len(txt) > 14 or re.search(r"[.,?!]$", w[2]):
         groups.append(cur); cur = []
 if cur: groups.append(cur)
-HL = {h.upper() for h in spec.get("highlight", [])}
-def clean(w): return re.sub(r"^[-]", "", w).upper()
+HL = {re.sub(r"[^A-Z0-9É]", "", h.upper()) for h in spec.get("highlight", [])}
+def clean(w): return w.upper()
 def caption_layer(t):
     g = next((g for g in groups if g[0][0] - 0.05 <= t < (g[-1][1] + 0.25)), None)
     if not g: return None, 0
@@ -118,7 +122,7 @@ def caption_layer(t):
     parts = []
     for i, (x, tok) in enumerate(zip(g, toks)):
         active = x[0] - 0.03 <= t
-        key = re.sub(r"[^A-Z]", "", tok)
+        key = re.sub(r"[^A-Z0-9É]", "", tok)
         col = GOLD if (key in HL or (active and t < x[1] + 0.05)) else (255, 255, 255)
         if not active: col = (255, 255, 255)
         parts.append(text_img(tok, F_CAP, col, 9))
@@ -184,7 +188,7 @@ for n in range(N):
     if hook_imgs and t < hook["end"]:
         a = min(1, t / 0.15, (hook["end"] - t) / 0.2); y = 360
         for i, h_im in enumerate(hook_imgs):
-            d = max(0, min(1, (t - i * 0.12) / 0.18)); paste(img, h_im, W / 2, y, 0.85 + 0.15 * d, a * d); y += h_im.height - 20
+            d = max(0, min(1, (t - i * 0.12) / 0.18)); fs_ = min(1.0, 1010 / h_im.width); paste(img, h_im, W / 2, y, (0.85 + 0.15 * d) * fs_, a * d); y += h_im.height * fs_ - 20
     if cta and t >= cta["start"]:
         lt2 = t - cta["start"]; a = min(1, lt2 / 0.25)
         paste(img, shadowed(text_img(cta["text"], F_CTA, GOLD, 10)), W / 2, 330, 0.9 + 0.1 * a, a)
