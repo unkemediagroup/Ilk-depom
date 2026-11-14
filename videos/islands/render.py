@@ -314,6 +314,14 @@ def scan(im, t):
         band = im.crop((0, y, W, min(H, y + h)))
         im.paste(band, (off, y))
 
+def bars(im, t, t0):
+    k = eo((t - t0) / .35)
+    if k <= 0: return
+    d = ImageDraw.Draw(im)
+    for i in range(7):
+        x = 80 + i * 155; d.rectangle((x, -20 + (1 - k) * -H, x + 34, H * k), fill=(20, 20, 22, 255))
+    d.rectangle((0, 900, W, 940), fill=(24, 24, 26, int(255 * k)))
+
 def stamp(im, t, t0, txt, x, y, rot=-10, col=(220, 30, 30)):
     if t < t0: return
     k = seg(t, t0, t0 + .18)
@@ -333,7 +341,7 @@ def waves(im, t, k=1.):
 
 # ---------------------------------------------------------------- scenes
 def sc_hook(A, t):  # 0 – 5.3
-    im = shot(A, ['hashima0', 'hashima1', 'hashima2'], t, 0, 5.3, 1.5, 1.1, .5, .5)
+    im = shot(A, ['loc_hall'], t, 0, 5.3, 1.6, 1.15, .5, .5)
     topshade(im); flicker(im, t)
     put(im, text_img("THE WORLD'S MOST MYSTERIOUS", 'oswald', 48, (220, 230, 235, 255), 0, track=6, shadow=4), W / 2, 260, 1, eo((t - .1) / .3))
     slam(im, 'ABANDONED', t, .15, 400, 210, col=(255, 60, 50))
@@ -346,7 +354,7 @@ def sc_hook(A, t):  # 0 – 5.3
 
 def sc_reclaim(A, t):  # 5.3 – 11.8
     if t < 8.5:
-        im = shot(A, ['ross0', 'ross1', 'loc_kalaupapa'], t, 5.3, 8.5, 1.05, 1.3, .5, .5); topshade(im)
+        im = shot(A, ['loc_hosp1'], t, 5.3, 8.5, 1.05, 1.3, .5, .5); topshade(im)
         slam(im, 'NATURE', t, 5.6, 330, 170); slam(im, 'TOOK IT BACK', t, 6.25, 490, 150, col=(150, 220, 160))
         if t > 7.1: label(im, 'GHOST TOWNS', 640, t, 7.2, size=56, col=(255, 255, 255))
     elif t < 10.0:
@@ -354,7 +362,7 @@ def sc_reclaim(A, t):  # 5.3 – 11.8
         slam(im, 'DESOLATE', t, 8.54, 330, 170); slam(im, 'HOSPITALS', t, 8.8, 490, 170, col=(150, 220, 200))
         tag(im, t, 'ABANDONED HOSPITAL · ELLIS ISLAND · LOC', 8.5)
     else:
-        im = shot(A, ['ross2', 'ross1', 'ross0'], t, 10.0, 11.8, 1.2, 1.0, .5, .5); topshade(im)
+        im = shot(A, ['met_capriccio'], t, 10.0, 11.8, 1.2, 1.0, .6, .45); topshade(im)
         slam(im, 'FORBIDDEN', t, 10.04, 330, 180, col=(255, 60, 50)); slam(im, 'RUINS', t, 10.5, 500, 200)
     flicker(im, t); scan(im, t)
     flash(im, max(pulse(t, 5.3, 5.45), pulse(t, 8.5, 8.6), pulse(t, 10.0, 10.1)))
@@ -377,13 +385,13 @@ def sc_hashima(A, t):  # 11.8 – 31.6
         keys = ['gunkan0', 'gunkan1', 'gunkan20', 'gunkan2', 'gunkan21', 'loc_hall']
         if t < 25.4: im = shot(A, keys, t, 23.3, 25.4, 1.1, 1.35, .5, .5)
         elif t < 27.2: im = shot(A, ['loc_hall', 'gunkan1', 'gunkan21', 'gunkan0'], t, 25.4, 27.2, 1.0, 1.3, .5, .5)
-        else: im = shot(A, ['gunkan20', 'gunkan2', 'hashima2', 'hashima0'], t, 27.2, 28.7, 1.15, 1.35, .5, .5)
+        else: im = shot(A, ['hashima1'], t, 27.2, 28.7, 1.4, 1.7, .4, .45)
         topshade(im); flicker(im, t, .12)
         if t < 25.4: slam(im, 'LEFT BEHIND', t, 23.4, 330, 160, col=(255, 230, 200))
         elif t < 27.2: slam(im, 'EMPTY HALLWAYS', t, 25.44, 330, 140)
         else: slam(im, 'CRUMBLING', t, 27.32, 330, 180, col=(255, 60, 50))
     else:
-        im = shot(A, ['hashima2', 'hashima0', 'hashima1'], t, 28.7, 31.6, 1.1, 1.3, .5, .6); topshade(im)
+        im = shot(A, ['met_wave'], t, 28.7, 31.6, 1.05, 1.25, .3, .5, .38, .5); topshade(im)
         waves(im, t)
         slam(im, 'BATTERED BY', t, 29.1, 330, 140); slam(im, 'THE WAVES', t, 29.86, 480, 180, col=(150, 210, 240))
         dx, dy = shake(t, 29.9, 14, .6)
@@ -394,20 +402,20 @@ def sc_hashima(A, t):  # 11.8 – 31.6
 
 def sc_poveglia(A, t):  # 31.6 – 45.9
     if t < 34.3:
-        im = shot(A, ['poveglia2', 'poveglia1', 'poveglia0'], t, 31.6, 34.3, 1.3, 1.05, .5, .5); darken(im, .25)
+        im = shot(A, ['met_tower'], t, 31.6, 34.3, 1.3, 1.05, .78, .45); tag(im, t, 'F. GUARDI · VENETIAN LAGOON, 18TH C.', 31.7); darken(im, .25)
         pin(im, t, 32.38, 'POVEGLIA', 'VENICE LAGOON · ITALY', 360)
     elif t < 40.2:
-        k1 = ['poveglia3', 'poveglia0'] if t < 36.2 else ['poveglia0', 'loc_hosp1', 'poveglia1']
+        k1 = ['met_plague'] if t < 36.2 else ['met_plague2']
         im = shot(A, k1, t, 34.3 if t < 36.2 else 36.2, 36.2 if t < 36.2 else 40.2, 1.05, 1.3, .5, .5); topshade(im); flicker(im, t, .1)
         if t < 36.2:
             slam(im, 'PLAGUE', t, 35.08, 330, 220, col=(255, 60, 50)); label(im, 'QUARANTINE STATION', 480, t, 34.42, size=52)
-            tag(im, t, 'PLAGUE INSCRIPTION · POVEGLIA', 34.3)
+            tag(im, t, 'TIEPOLO · THE PLAGUE-STRICKEN, 1759', 34.3)
         else:
             slam(im, 'MENTAL ASYLUM', t, 36.6, 330, 150, out=37.9)
             if t > 37.9: slam(im, 'THOUSANDS', t, 37.92, 330, 190, col=(255, 60, 50)); slam(im, 'SUFFERED', t, 38.48, 490, 170)
-            tag(im, t, 'ABANDONED HOSPITAL · POVEGLIA', 36.2)
+            tag(im, t, 'VAN DYCK · PLAGUE OF PALERMO, 1624', 36.2)
     else:
-        im = shot(A, ['poveglia4', 'poveglia1', 'poveglia2'], t, 40.2, 45.9, 1.05, 1.35, .5, .5); topshade(im); flicker(im, t, .12)
+        im = shot(A, ['met_sangiacomo'], t, 40.2, 45.9, 1.05, 1.4, .5, .5); darken(im, .2); topshade(im); flicker(im, t, .12)
         if t < 43.6:
             slam(im, 'HAUNTED', t, 42.74, 330, 220, col=(255, 60, 50)); label(im, 'THE SOIL ITSELF', 500, t, 41.6, size=56)
         else:
@@ -417,7 +425,7 @@ def sc_poveglia(A, t):  # 31.6 – 45.9
     return im
 
 def sc_spirito(A, t):  # 45.9 – 49.95
-    im = shot(A, ['sanspirito0', 'sanspirito1', 'sanspirito2', 'poveglia2'], t, 45.9, 49.95, 1.3, 1.05, .5, .5); darken(im, .25)
+    im = shot(A, ['met_sanmichele'], t, 45.9, 49.95, 1.3, 1.05, .5, .5); darken(im, .25)
     if t > 48.9: pin(im, t, 48.98, 'SAN SPIRITO', 'VENICE · ITALY', 360)
     else: slam(im, 'FURTHER SOUTH…', t, 45.95, 330, 130)
     scan(im, t); flash(im, pulse(t, 45.9, 46.05))
@@ -425,19 +433,18 @@ def sc_spirito(A, t):  # 45.9 – 49.95
 
 def sc_ross(A, t):  # 49.95 – 57.7
     if t < 53.9:
-        im = shot(A, ['ross0', 'ross1'], t, 49.95, 53.9, 1.35, 1.05, .5, .5); darken(im, .2)
+        im = shot(A, ['loc_hosp1'], t, 49.95, 53.9, 1.35, 1.05, .4, .5); waves(im, t, .6); darken(im, .2)
         if t > 53.2: pin(im, t, 53.24, 'ROSS ISLAND', 'ANDAMAN · INDIA', 360)
         else: slam(im, 'DEEP IN THE OCEAN…', t, 50.6, 330, 120)
     else:
-        im = shot(A, ['ross1', 'ross2', 'ross0'], t, 53.9, 57.7, 1.05, 1.35, .5, .5); topshade(im); flicker(im, t, .1)
+        im = shot(A, ['loc_hall'], t, 53.9, 57.7, 1.05, 1.35, .5, .5); bars(im, t, 55.9); topshade(im); flicker(im, t, .1)
         slam(im, 'ROTTING REMAINS', t, 54.5, 330, 140, out=55.6)
         if t > 55.6: slam(im, 'PENAL', t, 56.06, 330, 220, col=(255, 60, 50)); slam(im, 'COLONY', t, 56.44, 520, 200)
-        tag(im, t, 'COLONIAL RUINS · ROSS ISLAND', 53.9)
     scan(im, t); flash(im, max(pulse(t, 49.95, 50.1), pulse(t, 53.9, 54.0)))
     return im
 
 def sc_question(A, t):  # 57.7 – 63.9 : rapid montage
-    keys = [k for k in ['hashima0', 'poveglia0', 'ross0', 'gunkan0', 'poveglia3', 'hashima1', 'ross2', 'loc_hall'] if k in A] or ['_none']
+    keys = [k for k in ['hashima0', 'met_tower', 'loc_hosp1', 'gunkan0', 'met_plague', 'hashima1', 'met_sangiacomo', 'loc_hall'] if k in A] or ['_none']
     i = int((t - 57.7) / .45) % len(keys)
     im = shot(A, [keys[i]], t, 57.7 + i * .45, 57.7 + i * .45 + .45, 1.25, 1.1, .5, .5); darken(im, .45)
     slam(im, 'WHAT ARE THEY', t, 57.8, 330, 150, out=60.9); slam(im, 'HIDING?', t, 59.62, 500, 220, col=(255, 60, 50), out=60.9)
@@ -447,7 +454,7 @@ def sc_question(A, t):  # 57.7 – 63.9 : rapid montage
     return im
 
 def sc_end(A, t):  # 63.9 – end
-    im = shot(A, ['hashima0', 'hashima1', 'poveglia2'], t, 63.9, DUR, 1.35, 1.1, .5, .5); darken(im, .45)
+    im = shot(A, ['hashima0'], t, 63.9, DUR, 1.35, 1.1, .5, .5); darken(im, .45)
     slam(im, 'WHAT DO', t, 63.95, 330, 150)
     slam(im, 'YOU THINK?', t, 64.2, 480, 200, col=(255, 60, 50))
     a = back((t - 64.4) / .45)
