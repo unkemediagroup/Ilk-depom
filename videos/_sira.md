@@ -10,4 +10,4 @@
 | 7 | What If All the Oceans Disappeared? | 7.video ses | videos/no-oceans | bitti → 7.video.mp4 |
 | 8 | What If Humans Could Read Minds? | 8.video ses | videos/mind-read | bitti → 8.video.mp4 |
 | 9 | What If AI Controlled the Entire World? | 9.video ses | videos/ai-rule | bitti → 9.video.mp4 |
-| 10 | What If the Sun Disappeared for 24 Hours? | 10.video ses | videos/sun-gone | sırada |
+| 10 | What If the Sun Disappeared for 24 Hours? | 10.video ses | videos/sun-gone | bitti → 10.video.mp4 |
