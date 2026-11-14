@@ -46,3 +46,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - gbro-collage-broll skill eklendi (MIT, Gemini API anahtarı gerekir).
 - HyperFrames eklentisi eklendi (Apache-2.0).
 - 2026-11-14: What If Shorts kanalı başladı (branch `claude/adoring-rubin-zhzsfa`). Diğer sohbetlerin yetenekleri (ana karakter hariç) aktarıldı: `finans-shorts` skill + kit, yeni `whatif-shorts` skill (kit + finans/body-hacks/tarih referansları), genel tercihler ve dersler CLAUDE.md'de. Whisper + Canvas render hattı test edildi. Pexels anahtarı geçersiz (401).
+- 2026-11-14: What If #1: `videos/moon-gone/1.video.mp4` — "What If the Moon Suddenly Disappeared?" (35.5 sn, kullanıcının sesi, müziksiz; çatlayıp parçalanan ay hook, kopan çapa, gelgit kabuğu çalkalanır, 1 mil tsunami şehri yutar, dünya çapı kıyı alarmları, 23.4° eksen → topaç gibi sallanma, buz/ateş bölünmüş iklim + CHAOS, ay'sız gökte yalnız insan, yorum balonları + SUBSCRIBE + The Void Scenario kara delik logosu).
