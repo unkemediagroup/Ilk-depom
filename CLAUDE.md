@@ -80,4 +80,6 @@ Ayrıntılı geçmiş: `NOTLAR.md`
   **"ana karakter" yeteneği KULLANILMAZ.**
 - Çıktılar: `videos/<konu>/` altında.
 - **Video bitince açıklama YAPMA**; yalnızca videoyu gönder. Bir şey başarısız olduysa sadece onu yaz.
+- **Çalışırken de aşama/ilerleme anlatma, ara mesaj yazma** (kullanıcı tekrar uyardı). Yalnızca yapılamayan bir şey olursa kısa mesaj.
+- Görsel kaynakları: LOC (Catherwood 1844 vb.), Met Open Access, NOAA Ocean Exploration (wp-json media araması, video klipler dahil). Wikimedia 429 veriyor; Pexels yeni anahtar vermiyor.
 - Kullanıcı videonun başlığını ayrıca verebilir (hook/kapak yazısında kullan).
