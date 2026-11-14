@@ -54,3 +54,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-14: What If #6: `videos/money-zero/6.video.mp4` — "What If Money Suddenly Became Worthless?" (40 sn).
 - 2026-11-14: What If #7: `videos/no-oceans/7.video.mp4` — "What If All the Oceans Disappeared?" (37 sn).
 - 2026-11-14: What If #8: `videos/mind-read/8.video.mp4` — "What If Humans Could Read Minds?" (34 sn).
+- 2026-11-14: What If #9: `videos/ai-rule/9.video.mp4` — "What If AI Controlled the Entire World?" (41 sn).
