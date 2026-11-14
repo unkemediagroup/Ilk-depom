@@ -1,6 +1,7 @@
 # Proje Notları (Claude için)
 
 ## Kullanıcı tercihleri
+- **Video sonrası açıklama YOK (2026-11-14):** Video bitince sahne listesi/uzun özet yazma; gerekmedikçe yalnızca dosya + tek satır.
 - **Çalışırken anlatma:** Video/iş yaparken adım adım açıklama yazma; sadece bitince kısa özet.
 - **Müzik:** Videolara müzik KOYMA (kullanıcı sonradan ekler); kendi seslendirmesini verirse onu kullan. Foley/cızırtı yok.
 - **Tam ekran video:** Görüntü ekranın TAMAMINI kaplasın; kenar boşluğu/çerçeve yok. Altyazılar görüntü üzerinde, okunur.
