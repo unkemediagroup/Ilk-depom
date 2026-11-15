@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
+<body><canvas id="logo" width="1600" height="1600"></canvas><canvas id="banner" width="2560" height="1440"></canvas>
+<script type="module">
+import { drawNeon as ayaz, POSE, sparks, emberGround } from './ayaz.js';
+const RED = '#ff2a3c', GOLD = '#ffb81f';
+const hash = n => { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+function base(g, W, H, cx, cy, r, k = 1) {
+  g.fillStyle = '#050508'; g.fillRect(0, 0, W, H);
+  const rg = g.createRadialGradient(cx, cy, 0, cx, cy, r); rg.addColorStop(0, `rgba(255,30,52,${.55 * k})`); rg.addColorStop(.5, `rgba(160,10,30,${.22 * k})`); rg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = rg; g.fillRect(0, 0, W, H);
+}
+function embers(g, W, H, n, seed = 0) { for (let i = 0; i < n; i++) { const x = hash(i + seed) * W, y = hash(i + seed + 50) * H, s = 2 + 5 * hash(i + seed + 9); g.fillStyle = hash(i + seed + 3) > .7 ? `rgba(255,184,31,${.3 + .5 * hash(i + 7)})` : `rgba(255,70,90,${.2 + .5 * hash(i + 7)})`; g.save(); g.translate(x, y); g.rotate(.8); g.fillRect(-s / 2, -s / 2, s, s); g.restore(); } }
+function rays(g, cx, cy, r0, r1, n, a) { g.save(); g.globalCompositeOperation = 'lighter'; for (let i = 0; i < n; i++) { const an = i / n * Math.PI * 2 + .1, w = .03 + .03 * hash(i); g.fillStyle = `rgba(255,42,60,${a * (.4 + .6 * hash(i + 4))})`; g.beginPath(); g.moveTo(cx + Math.cos(an - w) * r0, cy + Math.sin(an - w) * r0); g.lineTo(cx + Math.cos(an) * r1, cy + Math.sin(an) * r1); g.lineTo(cx + Math.cos(an + w) * r0, cy + Math.sin(an + w) * r0); g.fill(); } g.restore(); }
+function text(g, t, x, y, size, col, glow = 0, align = 'center', font = 'Anton', ls = 0) { g.save(); g.font = `${size}px ${font}`; g.textAlign = align; g.textBaseline = 'middle'; if (ls) g.letterSpacing = ls + 'px'; if (glow) { g.shadowColor = col; g.shadowBlur = glow; } g.fillStyle = col; g.fillText(t, x, y); g.restore(); }
+
+await Promise.all(['150px Anton', '900 96px Montserrat', '700 60px Montserrat'].map(f => document.fonts.load(f)));
+const Q = new URLSearchParams(location.search);
+// ---------------- LOGO (1600², circle-safe) ----------------
+{ const c = document.getElementById('logo'), g = c.getContext('2d'), W = 1600;
+  base(g, W, W, 800, 760, 900, 1.15); rays(g, 800, 800, 380, 1100, 28, .10); embers(g, W, W, 70, 3);
+  g.save(); g.lineWidth = 22; g.strokeStyle = RED; g.shadowColor = RED; g.shadowBlur = 60; g.beginPath(); g.arc(800, 800, 730, 0, 7); g.stroke(); g.lineWidth = 5; g.strokeStyle = GOLD; g.shadowColor = GOLD; g.shadowBlur = 20; g.beginPath(); g.arc(800, 800, 690, 0, 7); g.stroke(); g.restore();
+  const pose = { ...POSE.stand, head: 0, lean: 0, a1: .55, a2: -.5, f1: .2, f2: -.3 }, s = +(Q.get('ls') || 3.0), k = ayaz(g, -9e5, -9e5, s, pose, { t: 1, mode: 'kor' });
+  g.save(); g.beginPath(); g.arc(800, 800, 676, 0, 7); g.clip();
+  ayaz(g, 800 - k.head[0] * s + +(Q.get('lx') || 0), 560 - k.head[1] * s + +(Q.get('ly') || 0), s, pose, { t: 1, mode: 'kor', glow: 1.5, wind: .5 }); g.restore(); }
+// ---------------- BANNER (2560×1440, safe area 1546×423 centred) ----------------
+{ const c = document.getElementById('banner'), g = c.getContext('2d'), W = 2560, H = 1440;
+  base(g, W, H, 900, 760, 1500, 1.0); rays(g, 880, 720, 300, 1900, 36, .07); embers(g, W, H, 220, 11);
+  // far crowd silhouettes along the bottom (TV-only area)
+  for (let i = 0; i < 26; i++) if (Math.abs(60 + i * 100 - 760) > 230) ayaz(g, 60 + i * 100 + 30 * hash(i), 1362, .34 + .1 * hash(i + 5), POSE.stand, { col: { rim: '#2a2a33', hot: '#3a3a45', glow: 'rgba(60,60,80,' }, glow: .3, flip: i % 2 });
+  // giant faded AYAZ behind (TV / desktop wide)
+  // hero in the safe area: bust crop
+  const s = +(Q.get('bs') || 1.32); g.strokeStyle = 'rgba(255,255,255,.25)'; g.lineWidth = 3; g.beginPath(); g.moveTo(0, 1362); g.lineTo(W, 1362); g.stroke();
+  emberGround(g, 760, 1360, s, 1, { mode: 'kor' }); ayaz(g, 760, 1360, s, POSE.hero, { t: 1, mode: 'kor', glow: 1.6, wind: .7 });
+  // tagline
+  text(g, 'DISCIPLINE', 1500, 612, 124, '#f6f7fb', 18); text(g, 'OVER MOTIVATION', 1500, 742, 124, RED, 44);
+  g.fillStyle = GOLD; g.fillRect(1120, 838, 760, 5); text(g, 'MOTIVATION  SHORTS', 1500, 880, 42, GOLD, 10, 'center', '700 44px Montserrat'.replace('700 44px ', ''), 14);
+  if (Q.get('guide')) { g.strokeStyle = '#0f0'; g.lineWidth = 4; g.strokeRect(507, 508, 1546, 423); g.strokeStyle = '#ff0'; g.strokeRect(0, 508, 2560, 423); }
+}
+window.READY = true;
+</script></body></html>
