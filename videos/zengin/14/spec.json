@@ -1,0 +1,305 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Hitman.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../14.video.mp4",
+ "hook": {
+  "text": "WHAT DOES A $50,000|TRAIN TICKET BUY?",
+  "gold": [
+   "$50,000",
+   "TRAIN"
+  ],
+  "end": 3.9
+ },
+ "highlight": [
+  "BILLIONAIRES",
+  "BILLIONAIRE",
+  "MILLION",
+  "BILLION",
+  "TRILLION",
+  "ISLAND?",
+  "ISLAND",
+  "LUXURY.",
+  "ELLISON",
+  "BRANSON",
+  "PAGE",
+  "LANAI",
+  "HAWAII,",
+  "NECKER",
+  "FIJI,",
+  "AZZAM,",
+  "ECLIPSE",
+  "ABRAMOVICH'S",
+  "BEZOS",
+  "KORU,",
+  "STADIUMS.",
+  "SUBMARINE.",
+  "5",
+  "MICHELIN",
+  "JETS",
+  "POWER",
+  "NEW",
+  "YORK",
+  "146",
+  "SHENZHEN,",
+  "SHANGHAI,",
+  "BEIJING",
+  "LONDON",
+  "MUMBAI.",
+  "MONACO,",
+  "MONACO",
+  "MONACO?",
+  "MILLIONAIRE.",
+  "ZERO",
+  "TAX,",
+  "LIECHTENSTEIN",
+  "LUXEMBOURG,",
+  "SINGAPORE",
+  "OIL",
+  "GAS,",
+  "EMIRATES",
+  "BAHAMAS,",
+  "CAYMAN",
+  "TAX-FREE",
+  "SECRETS.",
+  "SECRETS",
+  "POLYNESIA",
+  "VIRGIN",
+  "ANTARCTICA",
+  "GREENLAND",
+  "SWITZERLAND",
+  "VENICE-SIMPLON",
+  "ORIENT",
+  "EXPRESS,",
+  "$50,000",
+  "$45,000",
+  "SHIKI-SHIMA,",
+  "MAHARAJAS",
+  "SCOTSMAN,",
+  "NECKER",
+  "MUSHA",
+  "PRIX",
+  "$100,000",
+  "$1,000",
+  "$25,000",
+  "LOTTERY"
+ ],
+ "replace": {
+  "Venice-Simplan": "Venice-Simplon",
+  "Shikishima,": "Shiki-shima,",
+  "Mushake": "Musha Cay",
+  "Azam,": "Azzam,",
+  "Kourou,": "Koru,",
+  "Sarai": "Palace"
+ },
+ "cta": {
+  "start": 62.9,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/venice_simplon_orient_express_1.jpg",
+   "start": 0,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3
+  },
+  {
+   "src": "src/1828944.jpg",
+   "start": 4.0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/132414.jpg",
+   "start": 6.4,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/venice_simplon_orient_express_2.jpg",
+   "start": 10.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "VENICE SIMPLON-ORIENT-EXPRESS"
+  },
+  {
+   "src": "src/orient_express_carriage_interior_0.jpg",
+   "start": 16.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "1920s ART DECO CARRIAGES"
+  },
+  {
+   "src": "src/342800.jpg",
+   "start": 19.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "PRIVATE MARBLE BATHROOMS"
+  },
+  {
+   "src": "src/6685.jpg",
+   "start": 21.8,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "24-HOUR PERSONAL STEWARDS"
+  },
+  {
+   "src": "src/170366.jpg",
+   "start": 23.7,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "UNLIMITED CHAMPAGNE"
+  },
+  {
+   "src": "src/680811.jpg",
+   "start": 25.6,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "PARIS → ISTANBUL"
+  },
+  {
+   "src": "src/orient_express_carriage_interior_1.jpg",
+   "start": 28.3,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "$45,000+ PER TRAVELER"
+  },
+  {
+   "src": "src/209798.jpg",
+   "start": 31.1,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "JAPAN"
+  },
+  {
+   "src": "src/train_suite_shiki_shima_0.jpg",
+   "start": 33.8,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "TRAIN SUITE SHIKI-SHIMA"
+  },
+  {
+   "src": "src/train_suite_shiki_shima_1.jpg",
+   "start": 37.1,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "ONLY 34 GUESTS"
+  },
+  {
+   "src": "src/534116.jpg",
+   "start": 40.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "CYPRESS-WOOD SOAKING TUBS"
+  },
+  {
+   "src": "src/39634.jpg",
+   "start": 42.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "MICHELIN-CALIBER DINING"
+  },
+  {
+   "src": "src/69866.jpg",
+   "start": 44.6,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "TICKETS BY LOTTERY"
+  },
+  {
+   "src": "src/maharajas_express_0.jpg",
+   "start": 48.7,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "MAHARAJAS' EXPRESS · INDIA"
+  },
+  {
+   "src": "src/royal_scotsman_train_1.jpg",
+   "start": 51.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "BELMOND ROYAL SCOTSMAN"
+  },
+  {
+   "src": "src/67898.jpg",
+   "start": 53.4,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/maharajas_express_1.jpg",
+   "start": 57.7,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3
+  },
+  {
+   "src": "src/venice_simplon_orient_express_1.jpg",
+   "start": 62.9,
+   "zoom": [
+    1.1,
+    1.0
+   ],
+   "mode": "fit",
+   "fit_w": 1.3
+  }
+ ]
+}

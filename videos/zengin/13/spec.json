@@ -1,0 +1,291 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Local Forecast - Elevator.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../13.video.mp4",
+ "hook": {
+  "text": "THE WORLD'S MOST EXPENSIVE|VACATIONS",
+  "gold": [
+   "EXPENSIVE",
+   "VACATIONS"
+  ],
+  "end": 4.4
+ },
+ "highlight": [
+  "BILLIONAIRES",
+  "BILLIONAIRE",
+  "MILLION",
+  "BILLION",
+  "TRILLION",
+  "ISLAND?",
+  "ISLAND",
+  "LUXURY.",
+  "ELLISON",
+  "BRANSON",
+  "PAGE",
+  "LANAI",
+  "HAWAII,",
+  "NECKER",
+  "FIJI,",
+  "AZZAM,",
+  "ECLIPSE",
+  "ABRAMOVICH'S",
+  "BEZOS",
+  "KORU,",
+  "STADIUMS.",
+  "SUBMARINE.",
+  "5",
+  "MICHELIN",
+  "JETS",
+  "POWER",
+  "NEW",
+  "YORK",
+  "146",
+  "SHENZHEN,",
+  "SHANGHAI,",
+  "BEIJING",
+  "LONDON",
+  "MUMBAI.",
+  "MONACO,",
+  "MONACO",
+  "MONACO?",
+  "MILLIONAIRE.",
+  "ZERO",
+  "TAX,",
+  "LIECHTENSTEIN",
+  "LUXEMBOURG,",
+  "SINGAPORE",
+  "OIL",
+  "GAS,",
+  "EMIRATES",
+  "BAHAMAS,",
+  "CAYMAN",
+  "TAX-FREE",
+  "SECRETS.",
+  "SECRETS",
+  "POLYNESIA",
+  "VIRGIN",
+  "ANTARCTICA",
+  "GREENLAND",
+  "SWITZERLAND",
+  "VENICE-SIMPLON",
+  "ORIENT",
+  "EXPRESS,",
+  "$50,000",
+  "$45,000",
+  "SHIKI-SHIMA,",
+  "MAHARAJAS",
+  "SCOTSMAN,",
+  "NECKER",
+  "MUSHA",
+  "PRIX",
+  "$100,000",
+  "$1,000",
+  "$25,000",
+  "LOTTERY"
+ ],
+ "replace": {
+  "Venice-Simplan": "Venice-Simplon",
+  "Shikishima,": "Shiki-shima,",
+  "Mushake": "Musha Cay",
+  "Azam,": "Azzam,",
+  "Kourou,": "Koru,",
+  "Sarai": "Palace"
+ },
+ "cta": {
+  "start": 55.5,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/bora_bora_overwater_bungalows_0.jpg",
+   "start": 0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/427650.jpg",
+   "start": 5.3,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/french_polynesia_aerial_0.jpg",
+   "start": 9.2,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "FRENCH POLYNESIA"
+  },
+  {
+   "src": "src/british_virgin_islands_aerial_0.jpg",
+   "start": 13.8,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "BRITISH VIRGIN ISLANDS"
+  },
+  {
+   "src": "src/bora_bora_overwater_bungalows_1.jpg",
+   "start": 15.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "OVERWATER VILLAS"
+  },
+  {
+   "src": "src/superyacht_1.jpg",
+   "start": 17.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "YACHT CHARTERS"
+  },
+  {
+   "src": "src/french_polynesia_aerial_2.jpg",
+   "start": 18.6,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "SECLUDED ISLAND RESORTS"
+  },
+  {
+   "src": "src/french_polynesia_aerial_1.jpg",
+   "start": 20.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "$1,000+ PER NIGHT"
+  },
+  {
+   "src": "src/antarctica_ship_2.jpg",
+   "start": 23.6,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "ANTARCTICA"
+  },
+  {
+   "src": "src/greenland_icebergs_ilulissat_1.jpg",
+   "start": 27.2,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "GREENLAND"
+  },
+  {
+   "src": "src/4797.jpg",
+   "start": 29.7,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "$25,000+ PER TRIP"
+  },
+  {
+   "src": "src/antarctica_icebreaker_cruise_1.jpg",
+   "start": 33.8,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "PRIVATE ICEBREAKER CRUISES"
+  },
+  {
+   "src": "src/1799.jpg",
+   "start": 37.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "TOTAL ISOLATION"
+  },
+  {
+   "src": "src/zermatt_matterhorn_0.jpg",
+   "start": 38.8,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "SWITZERLAND"
+  },
+  {
+   "src": "src/st_moritz_winter_0.jpg",
+   "start": 41.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "ST. MORITZ"
+  },
+  {
+   "src": "src/64503.jpg",
+   "start": 43.6,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/95632.jpg",
+   "start": 45.9,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/bora_bora_overwater_bungalows_0.jpg",
+   "start": 48.7,
+   "zoom": [
+    1.2,
+    1.05
+   ]
+  },
+  {
+   "src": "src/1239478.jpg",
+   "start": 51.0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/427650.jpg",
+   "start": 55.5,
+   "zoom": [
+    1.15,
+    1.0
+   ]
+  }
+ ]
+}

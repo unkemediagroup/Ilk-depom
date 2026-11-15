@@ -1,0 +1,270 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Sneaky Snitch.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../15.video.mp4",
+ "hook": {
+  "text": "VACATIONS ONLY|MILLIONAIRES CAN AFFORD",
+  "gold": [
+   "MILLIONAIRES"
+  ],
+  "end": 4.5
+ },
+ "highlight": [
+  "BILLIONAIRES",
+  "BILLIONAIRE",
+  "MILLION",
+  "BILLION",
+  "TRILLION",
+  "ISLAND?",
+  "ISLAND",
+  "LUXURY.",
+  "ELLISON",
+  "BRANSON",
+  "PAGE",
+  "LANAI",
+  "HAWAII,",
+  "NECKER",
+  "FIJI,",
+  "AZZAM,",
+  "ECLIPSE",
+  "ABRAMOVICH'S",
+  "BEZOS",
+  "KORU,",
+  "STADIUMS.",
+  "SUBMARINE.",
+  "5",
+  "MICHELIN",
+  "JETS",
+  "POWER",
+  "NEW",
+  "YORK",
+  "146",
+  "SHENZHEN,",
+  "SHANGHAI,",
+  "BEIJING",
+  "LONDON",
+  "MUMBAI.",
+  "MONACO,",
+  "MONACO",
+  "MONACO?",
+  "MILLIONAIRE.",
+  "ZERO",
+  "TAX,",
+  "LIECHTENSTEIN",
+  "LUXEMBOURG,",
+  "SINGAPORE",
+  "OIL",
+  "GAS,",
+  "EMIRATES",
+  "BAHAMAS,",
+  "CAYMAN",
+  "TAX-FREE",
+  "SECRETS.",
+  "SECRETS",
+  "POLYNESIA",
+  "VIRGIN",
+  "ANTARCTICA",
+  "GREENLAND",
+  "SWITZERLAND",
+  "VENICE-SIMPLON",
+  "ORIENT",
+  "EXPRESS,",
+  "$50,000",
+  "$45,000",
+  "SHIKI-SHIMA,",
+  "MAHARAJAS",
+  "SCOTSMAN,",
+  "NECKER",
+  "MUSHA",
+  "PRIX",
+  "$100,000",
+  "$1,000",
+  "$25,000",
+  "LOTTERY"
+ ],
+ "replace": {
+  "Venice-Simplan": "Venice-Simplon",
+  "Shikishima,": "Shiki-shima,",
+  "Mushake": "Musha Cay",
+  "Azam,": "Azzam,",
+  "Kourou,": "Koru,",
+  "Sarai": "Palace"
+ },
+ "cta": {
+  "start": 48.4,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/french_polynesia_aerial_0.jpg",
+   "start": 0,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3
+  },
+  {
+   "src": "src/1828944.jpg",
+   "start": 4.6,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/427650.jpg",
+   "start": 6.6,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/597147.jpg",
+   "start": 8.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "TOTAL PRIVACY"
+  },
+  {
+   "src": "src/70441.jpg",
+   "start": 12.6,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/necker_island_1.jpg",
+   "start": 14.2,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "NECKER ISLAND"
+  },
+  {
+   "src": "src/913100.jpg",
+   "start": 17.2,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "PRIVATE ISLAND RENTALS"
+  },
+  {
+   "src": "src/784633.jpg",
+   "start": 20.9,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "PRIVATE CHEFS"
+  },
+  {
+   "src": "src/mega_yacht_monaco_1.jpg",
+   "start": 22.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3
+  },
+  {
+   "src": "src/gulfstream_g700_1.jpg",
+   "start": 24.5,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "PRIVATE JET WORLD TOURS"
+  },
+  {
+   "src": "src/3586.jpg",
+   "start": 27.8,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "SUPERYACHT CHARTERS"
+  },
+  {
+   "src": "src/monaco_grand_prix_0.jpg",
+   "start": 29.6,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "MONACO GRAND PRIX"
+  },
+  {
+   "src": "src/antarctica_icebreaker_cruise_1.jpg",
+   "start": 31.8,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "SIX-FIGURE ICEBREAKER JOURNEYS"
+  },
+  {
+   "src": "src/antarctica_ship_2.jpg",
+   "start": 35.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "ANTARCTICA"
+  },
+  {
+   "src": "src/1239478.jpg",
+   "start": 37.0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/bora_bora_overwater_bungalows_1.jpg",
+   "start": 40.2,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/122244.jpg",
+   "start": 43.7,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/bora_bora_overwater_bungalows_0.jpg",
+   "start": 48.4,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  }
+ ]
+}
