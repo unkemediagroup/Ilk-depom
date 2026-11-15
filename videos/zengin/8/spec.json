@@ -1,0 +1,232 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Galactic Rap.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../8.video.mp4",
+ "hook": {
+  "text": "A NORMAL DAY IN A|BILLIONAIRE'S LIFE",
+  "gold": [
+   "NORMAL",
+   "DAY",
+   "BILLIONAIRE'S"
+  ],
+  "end": 3.3
+ },
+ "highlight": [
+  "BILLIONAIRES",
+  "BILLIONAIRE",
+  "MILLION",
+  "BILLION",
+  "TRILLION",
+  "ISLAND?",
+  "ISLAND",
+  "LUXURY.",
+  "ELLISON",
+  "BRANSON",
+  "PAGE",
+  "LANAI",
+  "HAWAII,",
+  "NECKER",
+  "FIJI,",
+  "AZZAM,",
+  "ECLIPSE",
+  "ABRAMOVICH'S",
+  "BEZOS",
+  "KORU,",
+  "STADIUMS.",
+  "SUBMARINE.",
+  "5",
+  "MICHELIN",
+  "JETS",
+  "POWER",
+  "NEW",
+  "YORK",
+  "146",
+  "SHENZHEN,",
+  "SHANGHAI,",
+  "BEIJING",
+  "LONDON",
+  "MUMBAI.",
+  "MONACO,",
+  "MONACO",
+  "MONACO?",
+  "MILLIONAIRE.",
+  "ZERO",
+  "TAX,",
+  "LIECHTENSTEIN",
+  "LUXEMBOURG,",
+  "SINGAPORE",
+  "OIL",
+  "GAS,",
+  "EMIRATES",
+  "BAHAMAS,",
+  "CAYMAN",
+  "TAX-FREE",
+  "SECRETS.",
+  "SECRETS"
+ ],
+ "replace": {
+  "Azam,": "Azzam,",
+  "Kourou,": "Koru,",
+  "Sarai": "Palace"
+ },
+ "cta": {
+  "start": 44.4,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/60015.jpg",
+   "start": 0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/34584.jpg",
+   "start": 3.8,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "UP BEFORE 5 AM"
+  },
+  {
+   "src": "src/414029.jpg",
+   "start": 7.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "PRIVATE TRAINERS"
+  },
+  {
+   "src": "src/5952.jpg",
+   "start": 8.6,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "BIOHACKED BREAKFAST"
+  },
+  {
+   "src": "src/784633.jpg",
+   "start": 10.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "PERSONAL CHEFS"
+  },
+  {
+   "src": "src/3243.jpg",
+   "start": 11.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "ZERO CHORES"
+  },
+  {
+   "src": "src/47856.jpg",
+   "start": 14.2,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "5-MINUTE INCREMENTS"
+  },
+  {
+   "src": "src/gulfstream_g700_1.jpg",
+   "start": 17.7,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "THE PLANE WAITS FOR THEM"
+  },
+  {
+   "src": "src/237436.jpg",
+   "start": 20.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "MULTI-MILLION $ DECISIONS"
+  },
+  {
+   "src": "src/327540.jpg",
+   "start": 22.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "GLOBAL LEADERS"
+  },
+  {
+   "src": "src/39634.jpg",
+   "start": 24.1,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "MICHELIN-STARRED CHEFS"
+  },
+  {
+   "src": "src/290339.jpg",
+   "start": 27.7,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "EXCLUSIVE NETWORKING"
+  },
+  {
+   "src": "src/32870.jpg",
+   "start": 29.6,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "STAFFED AROUND THE CLOCK"
+  },
+  {
+   "src": "src/68432.jpg",
+   "start": 32.7,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/gulfstream_cabin_1.jpg",
+   "start": 35.0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/1488267.jpg",
+   "start": 38.9,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/3941.jpg",
+   "start": 44.4,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  }
+ ]
+}

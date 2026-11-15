@@ -1,0 +1,334 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Investigations.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../12.video.mp4",
+ "hook": {
+  "text": "WHY SOME COUNTRIES HAVE|NO INCOME TAX",
+  "gold": [
+   "NO",
+   "INCOME",
+   "TAX"
+  ],
+  "end": 3.3
+ },
+ "highlight": [
+  "BILLIONAIRES",
+  "BILLIONAIRE",
+  "MILLION",
+  "BILLION",
+  "TRILLION",
+  "ISLAND?",
+  "ISLAND",
+  "LUXURY.",
+  "ELLISON",
+  "BRANSON",
+  "PAGE",
+  "LANAI",
+  "HAWAII,",
+  "NECKER",
+  "FIJI,",
+  "AZZAM,",
+  "ECLIPSE",
+  "ABRAMOVICH'S",
+  "BEZOS",
+  "KORU,",
+  "STADIUMS.",
+  "SUBMARINE.",
+  "5",
+  "MICHELIN",
+  "JETS",
+  "POWER",
+  "NEW",
+  "YORK",
+  "146",
+  "SHENZHEN,",
+  "SHANGHAI,",
+  "BEIJING",
+  "LONDON",
+  "MUMBAI.",
+  "MONACO,",
+  "MONACO",
+  "MONACO?",
+  "MILLIONAIRE.",
+  "ZERO",
+  "TAX,",
+  "LIECHTENSTEIN",
+  "LUXEMBOURG,",
+  "SINGAPORE",
+  "OIL",
+  "GAS,",
+  "EMIRATES",
+  "BAHAMAS,",
+  "CAYMAN",
+  "TAX-FREE",
+  "SECRETS.",
+  "SECRETS"
+ ],
+ "replace": {
+  "Azam,": "Azzam,",
+  "Kourou,": "Koru,",
+  "Sarai": "Palace"
+ },
+ "cta": {
+  "start": 80.5,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/325193.jpg",
+   "start": 0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/237436.jpg",
+   "start": 3.3,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/45110.jpg",
+   "start": 6.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "PAYCHECKS VANISH"
+  },
+  {
+   "src": "src/6397.jpg",
+   "start": 8.7,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/87236.jpg",
+   "start": 11.3,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/abu_dhabi_skyline_1.jpg",
+   "start": 14.7,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "UAE & GULF STATES"
+  },
+  {
+   "src": "src/offshore_oil_platform_0.jpg",
+   "start": 18.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "OIL & GAS RESERVES"
+  },
+  {
+   "src": "src/255552.jpg",
+   "start": 21.7,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "STATE ENERGY BILLIONS"
+  },
+  {
+   "src": "src/337897.jpg",
+   "start": 25.7,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/692103.jpg",
+   "start": 28.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "NO NEED TO TAX SALARIES"
+  },
+  {
+   "src": "src/monaco_harbour_aerial_0.jpg",
+   "start": 32.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "MONACO"
+  },
+  {
+   "src": "src/913100.jpg",
+   "start": 36.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "BAHAMAS"
+  },
+  {
+   "src": "src/george_town_cayman_islands_1.jpg",
+   "start": 37.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "CAYMAN ISLANDS"
+  },
+  {
+   "src": "src/1287216.jpg",
+   "start": 40.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "A DELIBERATE STRATEGY"
+  },
+  {
+   "src": "src/733843.jpg",
+   "start": 44.2,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "TAX-FREE PARADISE"
+  },
+  {
+   "src": "src/47856.jpg",
+   "start": 47.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "THE WORLD'S WEALTHIEST"
+  },
+  {
+   "src": "src/50631.jpg",
+   "start": 49.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "GLOBAL CORPORATIONS"
+  },
+  {
+   "src": "src/386318.jpg",
+   "start": 50.2,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "MASSIVE CAPITAL INFLOWS"
+  },
+  {
+   "src": "src/572226.jpg",
+   "start": 52.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "LUXURY TOURISM"
+  },
+  {
+   "src": "src/14721.jpg",
+   "start": 56.7,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "HIGH-END REAL ESTATE"
+  },
+  {
+   "src": "src/1181395.jpg",
+   "start": 58.8,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "CORPORATE FEES"
+  },
+  {
+   "src": "src/3941.jpg",
+   "start": 60.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "VAT ON CONSUMPTION"
+  },
+  {
+   "src": "src/monaco_skyline_1.jpg",
+   "start": 62.8,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "SMALL POPULATIONS"
+  },
+  {
+   "src": "src/6397.jpg",
+   "start": 65.5,
+   "zoom": [
+    1.2,
+    1.05
+   ]
+  },
+  {
+   "src": "src/290597.jpg",
+   "start": 69.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "TOP-TIER PUBLIC SERVICES"
+  },
+  {
+   "src": "src/842961.jpg",
+   "start": 73.2,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "RELOCATE YOUR TAX RESIDENCE"
+  },
+  {
+   "src": "src/912876.jpg",
+   "start": 78.4,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/70441.jpg",
+   "start": 80.5,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  }
+ ]
+}

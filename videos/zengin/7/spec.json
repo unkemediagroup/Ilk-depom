@@ -1,0 +1,253 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Movement Proposition.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../7.video.mp4",
+ "hook": {
+  "text": "THE WORLD'S BIGGEST|SUPERYACHTS",
+  "gold": [
+   "BIGGEST",
+   "SUPERYACHTS"
+  ],
+  "end": 3.4
+ },
+ "highlight": [
+  "BILLIONAIRES",
+  "BILLIONAIRE",
+  "MILLION",
+  "BILLION",
+  "TRILLION",
+  "ISLAND?",
+  "ISLAND",
+  "LUXURY.",
+  "ELLISON",
+  "BRANSON",
+  "PAGE",
+  "LANAI",
+  "HAWAII,",
+  "NECKER",
+  "FIJI,",
+  "AZZAM,",
+  "ECLIPSE",
+  "ABRAMOVICH'S",
+  "BEZOS",
+  "KORU,",
+  "STADIUMS.",
+  "SUBMARINE.",
+  "5",
+  "MICHELIN",
+  "JETS",
+  "POWER",
+  "NEW",
+  "YORK",
+  "146",
+  "SHENZHEN,",
+  "SHANGHAI,",
+  "BEIJING",
+  "LONDON",
+  "MUMBAI.",
+  "MONACO,",
+  "MONACO",
+  "MONACO?",
+  "MILLIONAIRE.",
+  "ZERO",
+  "TAX,",
+  "LIECHTENSTEIN",
+  "LUXEMBOURG,",
+  "SINGAPORE",
+  "OIL",
+  "GAS,",
+  "EMIRATES",
+  "BAHAMAS,",
+  "CAYMAN",
+  "TAX-FREE",
+  "SECRETS.",
+  "SECRETS"
+ ],
+ "replace": {
+  "Azam,": "Azzam,",
+  "Kourou,": "Koru,",
+  "Sarai": "Palace"
+ },
+ "cta": {
+  "start": 47.3,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/azzam_yacht_0.jpg",
+   "start": 0,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3
+  },
+  {
+   "src": "src/superyacht_1.jpg",
+   "start": 3.7,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/mega_yacht_monaco_1.jpg",
+   "start": 5.3,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3
+  },
+  {
+   "src": "src/9771.jpg",
+   "start": 7.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "LONGER THAN A STADIUM"
+  },
+  {
+   "src": "src/azzam_yacht_1.jpg",
+   "start": 10.0,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "AZZAM"
+  },
+  {
+   "src": "src/azzam_yacht_2.jpg",
+   "start": 13.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "591 FT · 180 M"
+  },
+  {
+   "src": "src/61135.jpg",
+   "start": 17.2,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "≈ 2 SOCCER FIELDS"
+  },
+  {
+   "src": "src/azzam_yacht_0.jpg",
+   "start": 20.2,
+   "zoom": [
+    1.15,
+    1.3
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "MISSILE DEFENSE SYSTEM"
+  },
+  {
+   "src": "src/roman_abramovich_1.jpg",
+   "start": 24.1,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "tag": "ROMAN ABRAMOVICH"
+  },
+  {
+   "src": "src/eclipse_superyacht_1.jpg",
+   "start": 26.0,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "ECLIPSE · 533 FT"
+  },
+  {
+   "src": "src/41174.jpg",
+   "start": 29.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "2 HELICOPTER PADS"
+  },
+  {
+   "src": "src/eclipse_superyacht_2.jpg",
+   "start": 30.8,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "DISCO HALL + MINI-SUB"
+  },
+  {
+   "src": "src/jeff_bezos_0.jpg",
+   "start": 34.2,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "focus": [
+    0.5,
+    0.2
+   ],
+   "tag": "JEFF BEZOS"
+  },
+  {
+   "src": "src/koru_yacht_0.jpg",
+   "start": 36.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "KORU · 413 FT"
+  },
+  {
+   "src": "src/koru_yacht_1.jpg",
+   "start": 40.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "+ ITS OWN SUPPORT VESSEL"
+  },
+  {
+   "src": "src/3586.jpg",
+   "start": 43.2,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/276602.jpg",
+   "start": 47.3,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  }
+ ]
+}

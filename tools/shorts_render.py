@@ -33,7 +33,7 @@ F_CTA2 = font("Montserrat.ttf", 50, 800)
 
 words = []
 for w in json.load(open(P(spec["words"]))):  # "$50" ",000" / "multi" "-million" -> tek kelime
-    if words and re.match(r"^[,.\-]\w", w[2]): words[-1] = [words[-1][0], w[1], words[-1][2] + w[2]]
+    if words and (re.match(r"^[,.\-]\w", w[2]) or re.match(r"^%", w[2])): words[-1] = [words[-1][0], w[1], words[-1][2] + w[2]]
     else: words.append(list(w))
 for w in words: w[2] = spec.get("replace", {}).get(w[2], w[2])
 dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", P(spec["voice"])], capture_output=True, text=True).stdout) + 0.6
@@ -204,7 +204,7 @@ af = (f"[0:a]loudnorm=I=-14:TP=-1.5:LRA=11,apad=pad_dur=0.6,asplit=2[v][vs];"
       f"[1:a]volume={md}dB,afade=t=in:d=0.8,afade=t=out:st={dur-1.6:.2f}:d=1.6[m];"
       f"[m][vs]sidechaincompress=threshold=0.05:ratio=6:attack=20:release=350[md];"
       f"[v][md]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]")
-subprocess.run([FFMPEG, "-v", "error", "-y", "-i", P(spec["voice"]), "-ss", str(spec.get("music_start", 0)), "-i", P(spec["music"]), "-i", tmp_video,
+subprocess.run([FFMPEG, "-v", "error", "-y", "-i", P(spec["voice"]), "-stream_loop", "-1", "-ss", str(spec.get("music_start", 0)), "-i", P(spec["music"]), "-i", tmp_video,
                 "-filter_complex", af, "-map", "2:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
                 "-t", f"{dur:.2f}", "-movflags", "+faststart", P(spec["out"])], check=True)
 os.remove(tmp_video); print("OK", P(spec["out"]), f"{dur:.2f}s")

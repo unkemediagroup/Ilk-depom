@@ -1,0 +1,229 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Cool Vibes.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../11.video.mp4",
+ "hook": {
+  "text": "WHAT IS THE RICHEST|COUNTRY IN THE WORLD?",
+  "gold": [
+   "RICHEST",
+   "COUNTRY"
+  ],
+  "end": 3.0
+ },
+ "highlight": [
+  "BILLIONAIRES",
+  "BILLIONAIRE",
+  "MILLION",
+  "BILLION",
+  "TRILLION",
+  "ISLAND?",
+  "ISLAND",
+  "LUXURY.",
+  "ELLISON",
+  "BRANSON",
+  "PAGE",
+  "LANAI",
+  "HAWAII,",
+  "NECKER",
+  "FIJI,",
+  "AZZAM,",
+  "ECLIPSE",
+  "ABRAMOVICH'S",
+  "BEZOS",
+  "KORU,",
+  "STADIUMS.",
+  "SUBMARINE.",
+  "5",
+  "MICHELIN",
+  "JETS",
+  "POWER",
+  "NEW",
+  "YORK",
+  "146",
+  "SHENZHEN,",
+  "SHANGHAI,",
+  "BEIJING",
+  "LONDON",
+  "MUMBAI.",
+  "MONACO,",
+  "MONACO",
+  "MONACO?",
+  "MILLIONAIRE.",
+  "ZERO",
+  "TAX,",
+  "LIECHTENSTEIN",
+  "LUXEMBOURG,",
+  "SINGAPORE",
+  "OIL",
+  "GAS,",
+  "EMIRATES",
+  "BAHAMAS,",
+  "CAYMAN",
+  "TAX-FREE",
+  "SECRETS.",
+  "SECRETS"
+ ],
+ "replace": {
+  "Azam,": "Azzam,",
+  "Kourou,": "Koru,",
+  "Sarai": "Palace"
+ },
+ "cta": {
+  "start": 44.7,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/6397.jpg",
+   "start": 0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/45110.jpg",
+   "start": 3.0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/united_states_capitol_0.jpg",
+   "start": 5.3,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "UNITED STATES"
+  },
+  {
+   "src": "src/164660.jpg",
+   "start": 9.8,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "$32 TRILLION ECONOMY"
+  },
+  {
+   "src": "src/913200.jpg",
+   "start": 12.8,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "WEALTH PER PERSON"
+  },
+  {
+   "src": "src/vaduz_liechtenstein_0.jpg",
+   "start": 15.5,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "EUROPEAN MICROSTATES"
+  },
+  {
+   "src": "src/276602.jpg",
+   "start": 19.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "#1 MONACO"
+  },
+  {
+   "src": "src/1287216.jpg",
+   "start": 22.1,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "~$300,000 PER RESIDENT"
+  },
+  {
+   "src": "src/vaduz_liechtenstein_1.jpg",
+   "start": 25.7,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "LIECHTENSTEIN"
+  },
+  {
+   "src": "src/luxembourg_city_1.jpg",
+   "start": 26.6,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "LUXEMBOURG"
+  },
+  {
+   "src": "src/386318.jpg",
+   "start": 29.4,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "ZERO-TAX PERKS"
+  },
+  {
+   "src": "src/68432.jpg",
+   "start": 32.1,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/290597.jpg",
+   "start": 35.2,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "SINGAPORE"
+  },
+  {
+   "src": "src/singapore_marina_bay_sands_1.jpg",
+   "start": 37.3,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3
+  },
+  {
+   "src": "src/842961.jpg",
+   "start": 39.8,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/52495.jpg",
+   "start": 44.7,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  }
+ ]
+}

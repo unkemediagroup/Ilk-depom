@@ -1,0 +1,221 @@
+{
+ "voice": "ses.mp3",
+ "words": "words.json",
+ "music": "../../../assets/music/Funk Game Loop.mp3",
+ "music_db": -19,
+ "music_start": 0,
+ "out": "../9.video.mp4",
+ "hook": {
+  "text": "WHERE DO BILLIONAIRES|ACTUALLY LIVE?",
+  "gold": [
+   "BILLIONAIRES",
+   "LIVE?"
+  ],
+  "end": 2.9
+ },
+ "highlight": [
+  "BILLIONAIRES",
+  "BILLIONAIRE",
+  "MILLION",
+  "BILLION",
+  "TRILLION",
+  "ISLAND?",
+  "ISLAND",
+  "LUXURY.",
+  "ELLISON",
+  "BRANSON",
+  "PAGE",
+  "LANAI",
+  "HAWAII,",
+  "NECKER",
+  "FIJI,",
+  "AZZAM,",
+  "ECLIPSE",
+  "ABRAMOVICH'S",
+  "BEZOS",
+  "KORU,",
+  "STADIUMS.",
+  "SUBMARINE.",
+  "5",
+  "MICHELIN",
+  "JETS",
+  "POWER",
+  "NEW",
+  "YORK",
+  "146",
+  "SHENZHEN,",
+  "SHANGHAI,",
+  "BEIJING",
+  "LONDON",
+  "MUMBAI.",
+  "MONACO,",
+  "MONACO",
+  "MONACO?",
+  "MILLIONAIRE.",
+  "ZERO",
+  "TAX,",
+  "LIECHTENSTEIN",
+  "LUXEMBOURG,",
+  "SINGAPORE",
+  "OIL",
+  "GAS,",
+  "EMIRATES",
+  "BAHAMAS,",
+  "CAYMAN",
+  "TAX-FREE",
+  "SECRETS.",
+  "SECRETS"
+ ],
+ "replace": {
+  "Azam,": "Azzam,",
+  "Kourou,": "Koru,",
+  "Sarai": "Palace"
+ },
+ "cta": {
+  "start": 40.3,
+  "text": "SUBSCRIBE",
+  "sub": "BEYOND LUXURY STYLE"
+ },
+ "shots": [
+  {
+   "src": "src/132713.jpg",
+   "start": 0,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/733843.jpg",
+   "start": 3.2,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/6397.jpg",
+   "start": 5.7,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "GLOBAL POWER HUBS"
+  },
+  {
+   "src": "src/325193.jpg",
+   "start": 7.8,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/164660.jpg",
+   "start": 10.1,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "#1 NEW YORK CITY"
+  },
+  {
+   "src": "src/132713.jpg",
+   "start": 14.5,
+   "zoom": [
+    1.2,
+    1.05
+   ],
+   "tag": "146 BILLIONAIRES"
+  },
+  {
+   "src": "src/wall_street_new_york_0.jpg",
+   "start": 17.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "WALL STREET"
+  },
+  {
+   "src": "src/1170262.jpg",
+   "start": 19.9,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "CHINA'S TECH BOOM"
+  },
+  {
+   "src": "src/shenzhen_futian_skyline_1.jpg",
+   "start": 22.7,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "mode": "fit",
+   "fit_w": 1.3,
+   "tag": "SHENZHEN"
+  },
+  {
+   "src": "src/19885.jpg",
+   "start": 23.5,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "SHANGHAI"
+  },
+  {
+   "src": "src/1143705.jpg",
+   "start": 24.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "BEIJING"
+  },
+  {
+   "src": "src/50631.jpg",
+   "start": 27.3,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "LONDON"
+  },
+  {
+   "src": "src/633631.jpg",
+   "start": 28.8,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tag": "MUMBAI"
+  },
+  {
+   "src": "src/68432.jpg",
+   "start": 31.6,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/1287216.jpg",
+   "start": 35.9,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "src": "src/52495.jpg",
+   "start": 40.3,
+   "zoom": [
+    1.0,
+    1.1
+   ]
+  }
+ ]
+}
