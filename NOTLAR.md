@@ -62,3 +62,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-11: Body Hacks 'Are Our Bones Stronger Than Steel?' (kullanıcının sesi, müziksiz, 38 sn, teaser: yutkunurken nefes): `videos/bone-steel/`.
 - 2026-11-11: Body Hacks 'Why Can't You Breathe While Swallowing?' (kullanıcının sesi, müziksiz, 39 sn, teaser: buzlu su yüz): `videos/swallow/`.
 - 2026-11-11: Body Hacks 'Why Do Your Joints Make Popping Sounds?' + bulaşıcı esneme (kullanıcının sesi, müziksiz, 54 sn): `videos/joints-pop/`.
+- 2026-11-16: wounds-heal için kapak görselleri: `videos/wounds-heal/cover/` (Shorts 1080×1920 + YouTube 1280×720; üretim: node cover/make.cjs).
