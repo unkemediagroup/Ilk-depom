@@ -83,6 +83,7 @@
   Gerçek resim şart değil; kodla çizilmiş, heyecanlı, izleyiciyi sıkmayan animasyonlar yeterli.
 - **Sıra (kullanıcı kuralı):** metinler atıldıkları sırayla işlenir (ilk atılan metin = 1.video, ikincisi = 2.video …).
 - **İsimlendirme (kullanıcı kuralı):** video, ses dosyasının adını alır: "1.video ses" → `1.video.mp4`, "2.video ses" → `2.video.mp4`.
+- **Kapak (YT Shorts thumbnail):** istenirse video klasöründe `cover.js` + `cover.html` (fin.js + whatif.js) ile 1080×1920 tek kare çizilir → `N.video-kapak.jpg`. Örnek: `videos/moon-gone/`.
 - Pexels bağlı görünüyor ama anahtar geçersiz (401, 2026-11-14); varsayılan görsel kaynağı kodla çizim.
 
 ## Video dersleri (diğer kanallardan, genel — tekrarlama)
