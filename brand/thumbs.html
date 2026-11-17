@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -58,6 +58,22 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   text(g, 'YOUR', 300, 260, 150, WHITE, 16, -.03); text(g, '20s', 690, 250, 300, RED, 50, -.03);
   g.save(); g.translate(540, 480); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-470, -72, 940, 144); g.restore();
   text(g, 'ARE YOUR FOUNDATION', 540, 480, 112, '#0a0000', 0, -.03);
+}
+{ const g = document.getElementById('compare').getContext('2d');
+  g.fillStyle = '#050508'; g.fillRect(0, 0, 1080, 1920);
+  // lanes in perspective: grey lanes left and right, his own red lane in the middle
+  const vx = 540, vy = 760; for (let i = -3; i <= 4; i++) { const xb = 540 + (i - .5) * 330, mid = i === 0 || i === 1; g.strokeStyle = mid ? '#ff2a3c' : 'rgba(150,150,170,.35)'; g.lineWidth = mid ? 7 : 3; if (mid) { g.shadowColor = '#ff2a3c'; g.shadowBlur = 30; } g.beginPath(); g.moveTo(vx + (xb - vx) * .05, vy); g.lineTo(xb, 1920); g.stroke(); g.shadowBlur = 0; }
+  g.save(); g.globalCompositeOperation = 'lighter'; const lg = g.createLinearGradient(0, 760, 0, 1920); lg.addColorStop(0, 'rgba(255,40,60,0)'); lg.addColorStop(1, 'rgba(255,40,60,.35)'); g.fillStyle = lg; g.beginPath(); g.moveTo(vx - 8, vy); g.lineTo(vx + 8, vy); g.lineTo(540 + 165, 1920); g.lineTo(540 - 165, 1920); g.fill(); g.restore();
+  const r = g.createRadialGradient(540, 760, 0, 540, 760, 500); r.addColorStop(0, 'rgba(255,60,80,.5)'); r.addColorStop(1, 'rgba(255,60,80,0)'); g.fillStyle = r; g.fillRect(0, 0, 1080, 1920);
+  // grey figures in the other lanes, heads bowed into glowing phones
+  [[150, 1640, .75, false], [930, 1640, .75, true], [300, 1180, .5, false], [790, 1180, .5, true]].forEach(([x, y, sc, fl]) => { const k = ayaz(g, x, y, sc, { ...POSE.stand, head: .75, lean: .12, a1: -.45, a2: -1.55, f1: -.35, f2: -1.6 }, { col: CROWD, glow: .4, flip: fl });
+    const wr = k.A1.wr, hx = x + (fl ? -1 : 1) * wr[0] * sc, hy = y + wr[1] * sc; g.save(); g.shadowColor = '#cfe0ff'; g.shadowBlur = 30; g.fillStyle = '#dfe8ff'; g.fillRect(hx - 18 * sc, hy - 48 * sc, 36 * sc, 62 * sc); g.restore(); });
+  // AYAZ walking his own lane, away into the light
+  emberGround(g, 540, 1560, 1.05, 1, { mode: 'kor' }); ayaz(g, 540, 1560, 1.05, mixPose(POSE.walkA, POSE.hero, .2), { t: 1, mode: 'kor', glow: 1.7, wind: .7 });
+  embers(g, 50, 41, 600, 1700); vignette(g);
+  text(g, 'STOP', 540, 230, 250, RED, 50, -.03); text(g, 'COMPARING', 540, 420, 160, WHITE, 16, -.03);
+  g.save(); g.translate(540, 580); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-470, -70, 940, 140); g.restore();
+  text(g, 'YOUR LIFE TO OTHERS', 540, 580, 112, '#0a0000', 0, -.03);
 }
 window.READY = true;
 </script></body></html>

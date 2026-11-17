@@ -72,3 +72,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-15: `brand/` — kanal logosu (800×800) ve banner'ı (2560×1440, güvenli alan 1546×423) AYAZ ile yapıldı; kanal adı bilinmediği için yazılmadı, istenirse eklenir.
 - 2026-11-16: Shorts kapakları — "Nobody Is Coming to Save You" ve "Discipline Over Motivation" (`brand/cover-*.png`, 1080×1920).
 - 2026-11-17: Shorts kapağı — "Your 20s Are Your Foundation" (`brand/cover-twenties-1080x1920.png`).
+- 2026-11-17: Shorts kapağı — "Stop Comparing Your Life to Others" (`brand/cover-compare-1080x1920.png`). Not: ayaz.js pozlarında a1/a2 = yakın kolun omuz/dirseği, f1/f2 = uzak kolun omuz/dirseği (A1/A2 bilekleri).
