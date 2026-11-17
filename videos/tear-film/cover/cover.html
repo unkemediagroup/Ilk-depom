@@ -9,11 +9,11 @@ window.cover = function (Wd, Hd) {
   // render two scenes on the main 1080x1920 canvas, copy to offscreen
   const snap = (segIdx, t, z, x, y) => { const sg = SEG[segIdx]; ctx.setTransform(1,0,0,1,0,0); ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.fillRect(0, 0, 1080, 1920); ctx.save(); ctx.translate(540, 960); ctx.scale(z, z); ctx.translate(-x, -y); sg.fn(1, t, sg.o); ctx.restore(); const c2 = document.createElement('canvas'); c2.width = 1080; c2.height = 1920; c2.getContext('2d').drawImage(cv, 0, 0); return c2; };
   cv.width = 1080; cv.height = 1920;
-  const skin = snap(1, 1.5, 1.25, 560, 960), micro = snap(3, 2.0, .68, 640, 900);
+  const skin = snap(1, 1.5, 1.25, 560, 960), micro = snap(3, 2.0, .58, 640, 900), micro2 = snap(5, 2.0, .68, 640, 900);
   cv.width = Wd; cv.height = Hd; const c = cv.getContext('2d');
   const vertical = Hd > Wd;
-  if (vertical) { c.drawImage(skin, 0, 480, 1080, 960, 0, 0, 1080, 960); c.drawImage(micro, 0, 480, 1080, 960, 0, 960, 1080, 960); }
-  else { c.drawImage(skin, 60, 420, 960, 1080, 0, 0, 640, 720); c.drawImage(micro, 60, 420, 960, 1080, 640, 0, 640, 720); }
+  if (vertical) { c.drawImage(skin, 0, 480, 1080, 960, 0, 0, 1080, 960); c.drawImage(micro, 0, 380, 1080, 960, 0, 960, 1080, 960); }
+  else { c.drawImage(skin, 60, 420, 960, 1080, 0, 0, 640, 720); c.drawImage(micro2, 60, 420, 960, 1080, 640, 0, 640, 720); }
   // magnifier ring between halves
   const mx = vertical ? 540 : 540, my = vertical ? 960 : 360, mr = vertical ? 0 : 0;
   // grade
