@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css">
+<style>html,body{margin:0;background:#000}</style>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="../words.js"></script><script src="../main.js"></script>
+<script>
+window.cover = function (Wd, Hd) {
+  const cv = document.getElementById('c'); cv.width = Wd; cv.height = Hd;
+  const off = document.createElement('canvas'); off.width = 1080; off.height = 1920; const o2 = off.getContext('2d');
+  // render two scenes on the main 1080x1920 canvas, copy to offscreen
+  const snap = (segIdx, t, z, x, y) => { const sg = SEG[segIdx]; ctx.setTransform(1,0,0,1,0,0); ctx.globalAlpha = 1; ctx.save(); ctx.translate(540, 960); ctx.scale(z, z); ctx.translate(-x, -y); sg.fn(1, t, sg.o); ctx.restore(); const c2 = document.createElement('canvas'); c2.width = 1080; c2.height = 1920; c2.getContext('2d').drawImage(cv, 0, 0); return c2; };
+  cv.width = 1080; cv.height = 1920;
+  const skin = snap(10, 1.5, 1.15, 700, 1000), micro = snap(9, 2.0, 1.05, 540, 880);
+  cv.width = Wd; cv.height = Hd; const c = cv.getContext('2d');
+  const vertical = Hd > Wd;
+  if (vertical) { c.drawImage(skin, 0, 480, 1080, 960, 0, 0, 1080, 960); c.drawImage(micro, 0, 200, 1080, 960, 0, 960, 1080, 960); }
+  else { c.drawImage(skin, 60, 420, 960, 1080, 0, 0, 640, 720); c.drawImage(micro, 60, 330, 960, 1080, 640, 0, 640, 720); }
+  // magnifier ring between halves
+  const mx = vertical ? 540 : 540, my = vertical ? 960 : 360, mr = vertical ? 0 : 0;
+  // grade
+  const v = c.createRadialGradient(Wd/2, Hd/2, Math.min(Wd,Hd)*.3, Wd/2, Hd/2, Math.max(Wd,Hd)*.75); v.addColorStop(0,'rgba(0,0,0,0)'); v.addColorStop(1,'rgba(10,0,4,.75)'); c.fillStyle = v; c.fillRect(0,0,Wd,Hd);
+  c.fillStyle = '#fff'; if (vertical) c.fillRect(0, 956, 1080, 8); else c.fillRect(636, 0, 8, 720);
+  const T = (str, x, y, size, fill, stroke, sw, fam = 'Anton', w = '400') => { c.font = `${w} ${size}px ${fam}`; c.textAlign = 'center'; c.lineJoin = 'round'; c.lineWidth = sw; c.strokeStyle = stroke; c.strokeText(str, x, y); c.fillStyle = fill; c.fillText(str, x, y); };
+  if (vertical) {
+    const bg = c.createLinearGradient(0, 640, 0, 1300); bg.addColorStop(0,'rgba(0,0,0,0)'); bg.addColorStop(.3,'rgba(0,0,0,.55)'); bg.addColorStop(.7,'rgba(0,0,0,.55)'); bg.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = bg; c.fillRect(0, 640, 1080, 660);
+    c.save(); c.translate(540, 0); c.rotate(-.03); c.translate(-540, 0);
+    T('WHY DO FINGERS', 540, 830, 130, '#fff', '#000', 22); T('WRINKLE', 540, 1000, 190, '#fff', '#000', 26); T('IN WATER?!', 540, 1180, 170, '#ffd23f', '#8c0e18', 28);
+    c.restore();
+    c.fillStyle = 'rgba(8,4,6,.7)'; c.beginPath(); c.roundRect(60, 120, 330, 80, 40); c.fill(); T('BODY HACKS', 225, 178, 52, '#fff', 'rgba(0,0,0,0)', 0);
+  } else {
+    const bg = c.createLinearGradient(0, 0, 0, 720); bg.addColorStop(0,'rgba(0,0,0,.1)'); bg.addColorStop(.5,'rgba(0,0,0,.5)'); bg.addColorStop(1,'rgba(0,0,0,.1)'); c.fillStyle = bg; c.fillRect(0,0,1280,720);
+    c.save(); c.translate(640, 360); c.rotate(-.03); T('WHY DO FINGERS WRINKLE', 0, -40, 98, '#fff', '#000', 18); T('IN WATER?!', 0, 120, 150, '#ffd23f', '#8c0e18', 26); c.restore();
+  }
+  return cv.toDataURL('image/png');
+};
+</script>
