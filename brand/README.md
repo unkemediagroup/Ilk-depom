@@ -5,4 +5,4 @@
   TV görünümünde tam boy AYAZ + gri kalabalık görünür.
 - Kaynak: `brand.html` (Canvas, `ayaz.js`), render: `NODE_PATH=$(npm root -g) node render.cjs .`
 - Kanal adı henüz yazılmadı (bilinmiyor); banner'da slogan var: DISCIPLINE OVER MOTIVATION / MOTIVATION SHORTS.
-- `cover-nobody-1080x1920.png`, `cover-discipline-1080x1920.png` — Shorts kapakları (kaynak `thumbs.html`, render: `NODE_PATH=$(npm root -g) node render_thumbs.cjs .`).
+- `cover-nobody-1080x1920.png`, `cover-discipline-1080x1920.png`, `cover-twenties-1080x1920.png` — Shorts kapakları (kaynak `thumbs.html`, render: `NODE_PATH=$(npm root -g) node render_thumbs.cjs .`).

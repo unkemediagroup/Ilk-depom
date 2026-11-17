@@ -71,3 +71,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-13: `videos/results/` — "Let Your Results Speak" (45.4 sn, AYAZ kırmızı, 19 sahne: çatıda haykırış hook, patlayan övünme balonları, boş PROMISE kutusu, dişli makine motifi, PRESSURE presi, SUCCESS monoliti, zemin dalgası, eleştirmen sözleri geri yutulur, final: kollar kavuşmuş sessiz AYAZ).
 - 2026-11-15: `brand/` — kanal logosu (800×800) ve banner'ı (2560×1440, güvenli alan 1546×423) AYAZ ile yapıldı; kanal adı bilinmediği için yazılmadı, istenirse eklenir.
 - 2026-11-16: Shorts kapakları — "Nobody Is Coming to Save You" ve "Discipline Over Motivation" (`brand/cover-*.png`, 1080×1920).
+- 2026-11-17: Shorts kapağı — "Your 20s Are Your Foundation" (`brand/cover-twenties-1080x1920.png`).

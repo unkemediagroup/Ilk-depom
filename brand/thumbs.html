@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -42,6 +42,22 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   text(g, 'OVER', 540, 450, 110, WHITE, 14, -.03);
   g.save(); g.translate(540, 590); g.rotate(-.03); text(g, 'MOTIVATION', 0, 0, 150, '#7a7a86', 0); g.strokeStyle = RED; g.lineWidth = 16; g.shadowColor = RED; g.shadowBlur = 20; g.beginPath(); g.moveTo(-400, 10); g.lineTo(400, -10); g.stroke(); g.restore();
   text(g, 'MOTIVATION', 250, 800, 46, '#8a8a96', 0, 0); text(g, 'DISCIPLINE', 820, 800, 46, GOLD, 16, 0);
+}
+{ const g = document.getElementById('twenties').getContext('2d');
+  g.fillStyle = '#050508'; g.fillRect(0, 0, 1080, 1920);
+  const r = g.createRadialGradient(540, 1250, 0, 540, 1250, 1000); r.addColorStop(0, 'rgba(255,30,52,.5)'); r.addColorStop(1, 'rgba(255,30,52,0)'); g.fillStyle = r; g.fillRect(0, 0, 1080, 1920);
+  // the future, still a blueprint: a dashed grey skyline rising from the foundation
+  g.save(); g.setLineDash([18, 14]); g.strokeStyle = 'rgba(180,185,205,.35)'; g.lineWidth = 4;
+  [[140, 760, 180], [330, 640, 150], [490, 560, 130], [630, 680, 170], [810, 800, 150]].forEach(([x, top, w]) => { g.strokeRect(x, top, w, 1250 - top); for (let y = top + 50; y < 1200; y += 90) { g.strokeRect(x + 30, y, 40, 45); g.strokeRect(x + w - 70, y, 40, 45); } }); g.restore();
+  // foundation: three courses of red glowing blocks, the middle block engraved 20s
+  for (let row = 0; row < 3; row++) for (let i = 0; i < 6; i++) { const w = 190, x = 15 + i * 180 - (row % 2) * 90, y = 1250 + row * 115; g.save(); g.shadowColor = '#ff2a3c'; g.shadowBlur = 24; g.strokeStyle = '#ff2a3c'; g.lineWidth = 6; g.fillStyle = 'rgba(40,6,12,.95)'; g.fillRect(x + 6, y + 6, w - 12, 103); g.strokeRect(x + 6, y + 6, w - 12, 103); g.restore(); }
+  text(g, '20s', 540, 1430, 120, GOLD, 30);
+  g.strokeStyle = 'rgba(255,255,255,.35)'; g.lineWidth = 3; g.beginPath(); g.moveTo(0, 1250); g.lineTo(1080, 1250); g.stroke();
+  emberGround(g, 540, 1250, 1.0, 1, { mode: 'kor' }); ayaz(g, 540, 1250, 1.0, POSE.hero, { t: 1, mode: 'kor', glow: 1.7, wind: .7 });
+  embers(g, 60, 33, 500, 1700); vignette(g);
+  text(g, 'YOUR', 300, 260, 150, WHITE, 16, -.03); text(g, '20s', 690, 250, 300, RED, 50, -.03);
+  g.save(); g.translate(540, 480); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-470, -72, 940, 144); g.restore();
+  text(g, 'ARE YOUR FOUNDATION', 540, 480, 112, '#0a0000', 0, -.03);
 }
 window.READY = true;
 </script></body></html>
