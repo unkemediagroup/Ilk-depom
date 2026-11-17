@@ -62,3 +62,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-14: What If #14: `videos/multiverse/14.video.mp4` — "What If Parallel Universes Were Real?" (35 sn).
 - 2026-11-16: 1.video için YT Shorts kapağı: `videos/moon-gone/1.video-kapak.jpg` (cover.js).
 - 2026-11-16: 2.video kapağı: `videos/earth-stop/2.video-kapak.jpg`.
+- 2026-11-17: 3.video kapağı: `videos/no-sleep/3.video-kapak.jpg`. Not: kit index.html zaten whatif.js içerir; cover.html'de sadece main.js→cover.js değiştir.
