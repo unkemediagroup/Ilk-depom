@@ -83,3 +83,12 @@ Ayrıntılı geçmiş: `NOTLAR.md`
 - **Çalışırken de aşama/ilerleme anlatma, ara mesaj yazma** (kullanıcı tekrar uyardı). Yalnızca yapılamayan bir şey olursa kısa mesaj.
 - Görsel kaynakları: LOC (Catherwood 1844 vb.), Met Open Access, NOAA Ocean Exploration (wp-json media araması, video klipler dahil). Wikimedia 429 veriyor; Pexels yeni anahtar vermiyor.
 - Kullanıcı videonun başlığını ayrıca verebilir (hook/kapak yazısında kullan).
+
+### Video kalite profili (2026-11-19, kullanıcı onayladı — yeni videolarda uygula, eskileri yeniden render ETME)
+- Build: `videos/_tools_build.sh <proje>` → 60 fps, hafif gren, ara parçalar CRF 14, final **1440×2560** (lanczos + hafif keskinleştirme), ~35 Mbps, AAC 256k.
+- Küçük arşiv görselleri otomatik **Real-ESRGAN x4** ile büyütülür (`videos/_tools_upscale.py`, ONNX/CPU; model `videos/_models/realesrgan_x4.onnx`,
+  git'e girmez — yoksa: huggingface.co/imgdesignart/realesrgan-x4-onnx/resolve/main/onnx/model.onnx, `pip install onnxruntime`).
+- Kapak: `videos/_tools_cover.py`. Müzik: `videos/_tools_genmix.py` (render.py'den otomatik).
+- Gemini (kullanıcının ücretli üyeliği var): arşivde görsel yoksa ve kodla çizim zayıf kalacaksa Gemini görsel üretimi kullanılabilir; kararı Claude verir.
+  Gerçek olay/kişi için arşiv fotoğrafı öncelikli; YZ görsellerine küçük "AI ILLUSTRATION" etiketi; YouTube'da "altered/synthetic content" beyanı hatırlatılır.
+
