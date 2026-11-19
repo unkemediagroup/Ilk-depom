@@ -64,3 +64,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-16: 2.video kapağı: `videos/earth-stop/2.video-kapak.jpg`.
 - 2026-11-17: 3.video kapağı: `videos/no-sleep/3.video-kapak.jpg`. Not: kit index.html zaten whatif.js içerir; cover.html'de sadece main.js→cover.js değiştir.
 - 2026-11-17: 4.video kapağı: `videos/dinosaurs/4.video-kapak.jpg`.
+- 2026-11-19: 5.video kapağı: `videos/mars-life/5.video-kapak.jpg`.
