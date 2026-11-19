@@ -108,3 +108,5 @@ Tüm Shorts kanallarında (Tarih, Finans, What If, Body Hacks, Beyond, Motivasyo
   HTML/CSS/GSAP ile blur, 3B dönüş, gölge, glow, ışık efektleriyle render et — "düz şablon" görünümünden kaçın.
 - Analizde bulunanlar: kanallar 2–4 Mbps/1080p/30fps yüklüyordu (bantlaşma, yumuşama); Motivasyon `obsession.mp4`'te ses izi YOK;
   Finans sesi −16.7 LUFS (kısık). Örnek test: `videos/_tools/demo_parallax.mp4`.
+
+- **Hook yeteneği:** `.claude/skills/shorts-hook/` — HER kanalda, HER videoda zorunlu: ilk 3 saniye kanca tasarımı + render sonrası kontrol listesi.
