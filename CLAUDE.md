@@ -92,3 +92,19 @@ jenerik olmasın; (7) tam render'dan ÖNCE kritik sahneyi kare şeridiyle (0.1�
 - Branch'ler: motivasyon `claude/node-version-check-dka4rk`, body hacks `claude/nifty-pascal-8uibtw`, finans `claude/adoring-lamport-m5jvyj`. PR yalnızca istenirse aç.
 
 Ayrıntılı geçmiş: `NOTLAR.md`
+
+## Ortak video kalite araçları (2026-11-19, kullanıcı tüm kanallar için onayladı)
+Tüm Shorts kanallarında (Tarih, Finans, What If, Body Hacks, Beyond, Motivasyon) GEREKTİĞİNDE kullan. Klasör: `videos/_tools/`
+- İlk kullanımda: `bash videos/_tools/setup.sh` (onnxruntime, rembg, opencv + modeller → `videos/_models/`, git'e girmez).
+- **finalize.sh** — HER videonun son adımı: `bash videos/_tools/finalize.sh in.mp4 out.mp4` → 1440×2560 (YouTube 1440p+ yüklemelere
+  VP9/AV1 verir, görüntü belirgin netleşir), gradfun bantlaşma önleme, ses −14 LUFS (2 geçiş), ~35 Mbps. Ses izi yoksa uyarır.
+  Kendi motorunda mümkünse 60 fps render et (finalize kaynak fps'i korur).
+- **upscale.py** — düşük çözünürlüklü foto/arşiv görseli (genişlik < 1500 px) → Real-ESRGAN x4: `python3 videos/_tools/upscale.py in.jpg out.jpg`.
+- **depth.py + parallax.py** — Depth-Anything-V2-Small (Apache-2.0) ile derinlik → fotoğrafa 2.5D "3D foto" kamera hareketi
+  (push/pan/orbit). Fotoğraf/stok görsel kullanan sahnelerde düz zoom yerine bunu kullan:
+  `python3 videos/_tools/parallax.py foto.jpg klip.mp4 4 push` veya Python'da `Parallax(img).frame(k, W, H, move)`.
+- **cutout.py** — rembg (MIT) ile nesne/kişi dekupe (RGBA): öne çıkarma, gölge, ayrı parallax katmanı için.
+- **HyperFrames** (eklenti kurulu, `npx hyperframes`): düz vektör grafiklerde (Finans/What If/Body Hacks) derinlik için
+  HTML/CSS/GSAP ile blur, 3B dönüş, gölge, glow, ışık efektleriyle render et — "düz şablon" görünümünden kaçın.
+- Analizde bulunanlar: kanallar 2–4 Mbps/1080p/30fps yüklüyordu (bantlaşma, yumuşama); Motivasyon `obsession.mp4`'te ses izi YOK;
+  Finans sesi −16.7 LUFS (kısık). Örnek test: `videos/_tools/demo_parallax.mp4`.
