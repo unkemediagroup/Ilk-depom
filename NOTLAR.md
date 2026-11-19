@@ -60,3 +60,10 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 
 ## Mariana Shorts (videos/mariana/) — "What Lies at the Deepest Point of the Ocean?"
 - Wikimedia hâlâ 429; tamamen kodla çizildi (Everest kıyası, basınç göstergesi, ezilen denizaltı, canlılar, volkan, bacalar).
+
+## 2026-11-19 — Kalite profili ve ortak araçlar (tüm sabitlenmiş kanallar)
+- Kalite: 1440×2560, 60 fps (mümkünse), ~35 Mbps, ses −14 LUFS, az gren. Eski videolar yeniden render EDİLMEZ, sadece yeniler.
+- Ortak araçlar `videos/_tools/` (setup.sh, finalize.sh, upscale.py, depth.py, parallax.py, cutout.py) + HyperFrames;
+  6 kanalın branch'ine (Tarih, Finans, What If, Body Hacks, Beyond, Motivasyon) eklendi, CLAUDE.md'lerine talimat yazıldı.
+- Gemini API anahtarı ortamda kayıtlı (x-goog-api-key); görsel üretimi için faturalandırma henüz açılmadı (kullanıcı sonra açacak).
+- Wikimedia ara sıra açılıyor (429); açıkken yavaş istekle indir.
