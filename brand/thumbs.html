@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -74,6 +74,24 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   text(g, 'STOP', 540, 230, 250, RED, 50, -.03); text(g, 'COMPARING', 540, 420, 160, WHITE, 16, -.03);
   g.save(); g.translate(540, 580); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-470, -70, 940, 140); g.restore();
   text(g, 'YOUR LIFE TO OTHERS', 540, 580, 112, '#0a0000', 0, -.03);
+}
+{ const g = document.getElementById('alone').getContext('2d');
+  g.fillStyle = '#040406'; g.fillRect(0, 0, 1080, 1920);
+  // huge red moon behind him; the noisy grey crowd far below, its chatter scribbled in the air
+  const mr = g.createRadialGradient(540, 1080, 0, 540, 1080, 700); mr.addColorStop(0, 'rgba(255,40,60,.45)'); mr.addColorStop(1, 'rgba(255,40,60,0)'); g.fillStyle = mr; g.fillRect(0, 0, 1080, 1920);
+  g.save(); g.shadowColor = RED; g.shadowBlur = 80; g.fillStyle = '#2a0509'; g.beginPath(); g.arc(540, 1080, 330, 0, 7); g.fill(); g.strokeStyle = RED; g.lineWidth = 8; g.stroke(); g.restore();
+  for (let i = 0; i < 12; i++) { g.strokeStyle = 'rgba(255,60,80,.12)'; g.lineWidth = 3; g.beginPath(); g.arc(540, 1080, 360 + i * 40, 0, 7); g.stroke(); }
+  // the rock pinnacle he sits on
+  g.fillStyle = '#0a0a0e'; g.strokeStyle = '#6a6a76'; g.lineWidth = 5; g.beginPath(); g.moveTo(330, 1920); g.lineTo(420, 1500); g.lineTo(470, 1420); g.lineTo(640, 1410); g.lineTo(690, 1480); g.lineTo(780, 1920); g.closePath(); g.fill(); g.stroke();
+  // crowd far below left and right, with scribble noise above them
+  for (let i = 0; i < 9; i++) { const x = i < 4 ? 40 + i * 70 : 760 + (i - 4) * 65; ayaz(g, x, 1880, .28, mixPose(POSE.walkA, POSE.walkB, hash(i)), { col: CROWD, glow: .4, flip: i % 2 }); }
+  for (const cx of [170, 900]) { g.strokeStyle = 'rgba(160,160,175,.5)'; g.lineWidth = 3; g.beginPath(); for (let k = 0; k < 30; k++) { const x = cx - 120 + hash(k + cx) * 240, y = 1640 + hash(k + cx + 4) * 120; g[k ? 'lineTo' : 'moveTo'](x, y); } g.stroke(); }
+  // AYAZ seated on the summit, calm, silhouetted against the moon
+  emberGround(g, 555, 1412, .95, .6, { mode: 'kor' });
+  ayaz(g, 555, 1412, .95, { ...POSE.sitFloor, lean: .1, head: .05, a1: -.4, a2: -.9, f1: -.5, f2: -.9 }, { t: 1, mode: 'kor', glow: 1.8, wind: .6 });
+  embers(g, 45, 51, 600, 1700); vignette(g);
+  text(g, 'THE POWER OF', 540, 230, 130, WHITE, 16, -.03);
+  text(g, 'BEING', 540, 420, 230, RED, 50, -.03); text(g, 'ALONE', 540, 630, 230, RED, 50, -.03);
 }
 window.READY = true;
 </script></body></html>
