@@ -73,6 +73,7 @@ Ayrıntılı geçmiş: `NOTLAR.md`
 ## Tarih Shorts serisi (YT Shorts)
 - Kullanıcı tarih olayları üzerine **metin + ses dosyası** verir; görselleri Claude bulur/üretir ve 9:16 (1080×1920)
   YT Shorts videosu hazırlar. Seri adları: "Gizemli Tarih" / "İmparatorluklara N'oldu".
+- **Hook yeteneği:** `.claude/skills/shorts-hook/` — HER kanalda, HER videoda zorunlu (tasarım + render sonrası kontrol listesi).
 - **İlk 3 saniye hook şart:** izleyiciyi kilitleyen, merak uyandıran güçlü giriş (çarpıcı görsel + büyük kanca yazısı).
 - Sıkmayan, seyir zevki yüksek kurgu: hızlı tempo, sürekli hareket (zoom/pan/geçiş), sese senkron altyazı, temiz ses
   (foley yok; anlatım + müzik ön planda).
