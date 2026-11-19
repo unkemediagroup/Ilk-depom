@@ -90,5 +90,7 @@ Ayrıntılı geçmiş: `NOTLAR.md`
   git'e girmez — yoksa: huggingface.co/imgdesignart/realesrgan-x4-onnx/resolve/main/onnx/model.onnx, `pip install onnxruntime`).
 - Kapak: `videos/_tools_cover.py`. Müzik: `videos/_tools_genmix.py` (render.py'den otomatik).
 - Gemini (kullanıcının ücretli üyeliği var): arşivde görsel yoksa ve kodla çizim zayıf kalacaksa Gemini görsel üretimi kullanılabilir; kararı Claude verir.
+  Anahtar ortamda kayıtlı (network secret, host generativelanguage.googleapis.com, header x-goog-api-key). Araç: `videos/_tools_gemini_img.py`.
+  2026-11-19: görsel modelleri 429 (ücretsiz kota 0) — API projesinde faturalandırma açılınca çalışır.
   Gerçek olay/kişi için arşiv fotoğrafı öncelikli; YZ görsellerine küçük "AI ILLUSTRATION" etiketi; YouTube'da "altered/synthetic content" beyanı hatırlatılır.
 
