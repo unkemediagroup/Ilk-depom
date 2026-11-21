@@ -65,3 +65,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-16: wounds-heal için kapak görselleri: `videos/wounds-heal/cover/` (Shorts 1080×1920 + YouTube 1280×720; üretim: node cover/make.cjs).
 - 2026-11-17: fingers-wrinkle kapakları: `videos/fingers-wrinkle/cover/`.
 - 2026-11-17: tear-film kapakları: `videos/tear-film/cover/`.
+- 2026-11-21: yawning kapakları: `videos/yawning/cover/`.
