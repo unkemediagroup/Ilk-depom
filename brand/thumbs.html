@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -92,6 +92,26 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   embers(g, 45, 51, 600, 1700); vignette(g);
   text(g, 'THE POWER OF', 540, 230, 130, WHITE, 16, -.03);
   text(g, 'BEING', 540, 420, 230, RED, 50, -.03); text(g, 'ALONE', 540, 630, 230, RED, 50, -.03);
+}
+{ const g = document.getElementById('oneyear').getContext('2d');
+  g.fillStyle = '#040406'; g.fillRect(0, 0, 1080, 1920);
+  const cx = 540, cy = 1230, R = 400;
+  const rg = g.createRadialGradient(cx, cy, 0, cx, cy, 800); rg.addColorStop(0, 'rgba(255,40,60,.35)'); rg.addColorStop(1, 'rgba(255,40,60,0)'); g.fillStyle = rg; g.fillRect(0, 0, 1080, 1920);
+  // one orbit = one year: the trail grows from grey (start, bottom-left) to burning red (now, top-right)
+  for (let i = 0; i < 120; i++) { const a0 = Math.PI * .75 + i / 120 * Math.PI * 1.75, a1 = a0 + Math.PI * 1.75 / 120, u = i / 119;
+    g.strokeStyle = u < .35 ? `rgba(130,130,145,${.4 + u})` : `rgba(255,${Math.round(150 - 108 * u)},${Math.round(160 - 100 * u)},${.5 + .5 * u})`; g.lineWidth = 6 + 14 * u; if (u > .5) { g.shadowColor = RED; g.shadowBlur = 30 * u; }
+    g.beginPath(); g.arc(cx, cy, R, a0, a1 + .01); g.stroke(); g.shadowBlur = 0; }
+  for (let m = 0; m < 12; m++) { const a = Math.PI * .75 + m / 11 * Math.PI * 1.75, u = m / 11; g.fillStyle = u < .35 ? '#8a8a96' : RED; g.beginPath(); g.arc(cx + Math.cos(a) * R, cy + Math.sin(a) * R, 10 + 8 * u, 0, 7); g.fill(); }
+  // day 1: a small grey figure where the trail starts; day 365: AYAZ in the centre, standing tall
+  const a0 = Math.PI * .75; ayaz(g, cx + Math.cos(a0) * R, cy + Math.sin(a0) * R + 20, .3, { ...POSE.stand, head: .5, lean: .2 }, { col: CROWD, glow: .4 });
+  text(g, 'DAY 1', cx + Math.cos(a0) * R, cy + Math.sin(a0) * R + 70, 46, '#9a9aa6', 0);
+  const a9 = Math.PI * .75 + Math.PI * 1.75; text(g, 'DAY 365', cx, cy + R + 80, 58, GOLD, 20);
+  g.strokeStyle = 'rgba(255,255,255,.3)'; g.lineWidth = 3; g.beginPath(); g.moveTo(240, 1500); g.lineTo(840, 1500); g.stroke();
+  sparks(g, cx, 880, .45, { seed: 3, scale: 1.3, n: 120, life: 1.3 }); emberGround(g, cx, 1500, .95, 1, { mode: 'kor' }); ayaz(g, cx, 1500, .95, POSE.victory, { t: 1, mode: 'kor', glow: 1.8, wind: .7, hourglass: .5 });
+  embers(g, 45, 61, 600, 1800); vignette(g);
+  text(g, 'ONE YEAR', 540, 240, 230, RED, 50, -.03); text(g, 'CAN CHANGE', 540, 440, 150, WHITE, 16, -.03);
+  g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-420, -72, 840, 144); g.restore();
+  text(g, 'EVERYTHING', 540, 600, 130, '#0a0000', 0, -.03);
 }
 window.READY = true;
 </script></body></html>
