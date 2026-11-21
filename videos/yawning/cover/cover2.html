@@ -1,0 +1,56 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css">
+<style>html,body{margin:0;background:#000}</style><canvas id="c"></canvas>
+<script>
+const TAU = Math.PI * 2;
+function face(c, x, y, s, skin, hair, open, rot) {
+  c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s);
+  // neck + shoulders
+  c.fillStyle = skin[2]; c.beginPath(); c.moveTo(-70, 200); c.lineTo(70, 200); c.lineTo(80, 300); c.lineTo(-80, 300); c.fill();
+  c.fillStyle = '#2c3e57'; c.beginPath(); c.moveTo(-260, 420); c.quadraticCurveTo(-240, 280, -80, 270); c.lineTo(80, 270); c.quadraticCurveTo(240, 280, 260, 420); c.closePath(); c.fill();
+  // ears
+  c.fillStyle = skin[1]; for (const d of [-1, 1]) { c.beginPath(); c.ellipse(d * 180, 10, 34, 56, 0, 0, TAU); c.fill(); }
+  // head
+  const g = c.createRadialGradient(-50, -80, 30, 0, 0, 260); g.addColorStop(0, skin[0]); g.addColorStop(.7, skin[1]); g.addColorStop(1, skin[2]);
+  c.fillStyle = g; c.beginPath(); c.ellipse(0, 0, 180, 235, 0, 0, TAU); c.fill();
+  // hair
+  c.fillStyle = hair; c.beginPath(); c.ellipse(0, -120, 190, 150, 0, Math.PI, TAU); c.bezierCurveTo(200, -60, 170, -30, 160, -70); c.bezierCurveTo(60, -140, -60, -150, -160, -70); c.bezierCurveTo(-180, -30, -200, -60, -190, -120); c.fill();
+  // eyebrows raised
+  c.strokeStyle = hair; c.lineWidth = 14; c.lineCap = 'round'; for (const d of [-1, 1]) { c.beginPath(); c.moveTo(d * 40, -95); c.quadraticCurveTo(d * 80, -125, d * 125, -100); c.stroke(); }
+  // closed squinting eyes + yawn tears
+  c.strokeStyle = '#3a2218'; c.lineWidth = 9; for (const d of [-1, 1]) { c.beginPath(); c.moveTo(d * 45, -45); c.quadraticCurveTo(d * 82, -30, d * 120, -50); c.stroke(); for (let i = 0; i < 4; i++) { c.lineWidth = 5; c.beginPath(); c.moveTo(d * (60 + i * 16), -38); c.lineTo(d * (58 + i * 18), -24); c.stroke(); } c.lineWidth = 9;
+    const tg = c.createRadialGradient(d * 120 - 4, -20, 2, d * 120, -16, 16); tg.addColorStop(0, 'rgba(255,255,255,.95)'); tg.addColorStop(1, 'rgba(170,215,240,.7)'); c.fillStyle = tg; c.beginPath(); c.moveTo(d * 120, -40); c.quadraticCurveTo(d * 136, -14, d * 120, -2); c.quadraticCurveTo(d * 104, -14, d * 120, -40); c.fill(); }
+  // nose
+  c.strokeStyle = 'rgba(120,70,50,.55)'; c.lineWidth = 7; c.beginPath(); c.moveTo(-6, -20); c.quadraticCurveTo(-24, 30, 0, 38); c.quadraticCurveTo(18, 40, 26, 30); c.stroke();
+  // cheeks blush
+  c.fillStyle = 'rgba(220,110,100,.25)'; for (const d of [-1, 1]) { c.beginPath(); c.ellipse(d * 110, 40, 40, 26, 0, 0, TAU); c.fill(); }
+  // mouth (open yawn)
+  const mh = 40 + 95 * open, mw = 70 + 12 * open;
+  c.fillStyle = '#b9545e'; c.beginPath(); c.ellipse(0, 120 + mh * .25, mw + 12, mh + 12, 0, 0, TAU); c.fill();
+  const ig = c.createRadialGradient(0, 130 + mh * .4, 10, 0, 120, mh + 20); ig.addColorStop(0, '#2a080c'); ig.addColorStop(1, '#6a1c24'); c.fillStyle = ig; c.beginPath(); c.ellipse(0, 120 + mh * .25, mw, mh, 0, 0, TAU); c.fill();
+  c.save(); c.beginPath(); c.ellipse(0, 120 + mh * .25, mw, mh, 0, 0, TAU); c.clip(); c.fillStyle = '#f3ede2'; c.fillRect(-mw, 120 + mh * .25 - mh - 2, mw * 2, 22); c.fillStyle = '#d4707a'; c.beginPath(); c.ellipse(0, 120 + mh * 1.1, mw * .8, mh * .45, 0, 0, TAU); c.fill(); c.fillStyle = '#e8909a'; c.beginPath(); c.ellipse(0, 120 - mh * .5, 12, 20 * open + 6, 0, 0, TAU); c.fill(); c.restore();
+  c.restore();
+}
+window.cover = function (W, H) {
+  const cv = document.getElementById('c'); cv.width = W; cv.height = H; const c = cv.getContext('2d');
+  const bg = c.createRadialGradient(W * .5, H * .45, 50, W * .5, H * .5, Math.max(W, H) * .8); bg.addColorStop(0, '#2b5c7a'); bg.addColorStop(.6, '#13293d'); bg.addColorStop(1, '#070d14'); c.fillStyle = bg; c.fillRect(0, 0, W, H);
+  for (let i = 0; i < 26; i++) { const a = i / 26 * TAU; c.fillStyle = i % 2 ? 'rgba(255,255,255,.035)' : 'rgba(255,255,255,0)'; c.beginPath(); c.moveTo(W / 2, H * .5); c.arc(W / 2, H * .5, Math.max(W, H), a, a + TAU / 26); c.fill(); }
+  const V = H > W, T = (str, x, y, size, fill, stroke, sw) => { c.font = `400 ${size}px Anton`; c.textAlign = 'center'; c.lineJoin = 'round'; c.lineWidth = sw; c.strokeStyle = stroke; c.strokeText(str, x, y); c.fillStyle = fill; c.fillText(str, x, y); };
+  const tag = (str, x, y, size, col) => { c.font = `900 ${size}px Montserrat`; const w = c.measureText(str).width + 50; c.fillStyle = col; c.beginPath(); c.roundRect(x - w / 2, y - size * .95, w, size * 1.35, size * .6); c.fill(); c.fillStyle = '#111'; c.textAlign = 'center'; c.fillText(str, x, y); };
+  const arrow = (x1, y1, cx, cy, x2, y2, lw) => { c.strokeStyle = '#ffd23f'; c.lineWidth = lw; c.lineCap = 'round'; c.setLineDash([lw * 1.4, lw * 1.1]); c.beginPath(); c.moveTo(x1, y1); c.quadraticCurveTo(cx, cy, x2, y2); c.stroke(); c.setLineDash([]); const a = Math.atan2(y2 - cy, x2 - cx); c.fillStyle = '#ffd23f'; c.beginPath(); c.moveTo(x2 + Math.cos(a) * lw * 2.4, y2 + Math.sin(a) * lw * 2.4); c.lineTo(x2 + Math.cos(a + 2.4) * lw * 2.4, y2 + Math.sin(a + 2.4) * lw * 2.4); c.lineTo(x2 + Math.cos(a - 2.4) * lw * 2.4, y2 + Math.sin(a - 2.4) * lw * 2.4); c.fill(); };
+  if (V) {
+    face(c, 300, 520, .9, ['#f2c6a8', '#d99b7c', '#b67858'], '#3b2618', .75, -.1);
+    face(c, 760, 1540, 1.0, ['#c98f6a', '#a86d4c', '#83503a'], '#1c1410', 1, .08);
+    arrow(560, 400, 1040, 560, 960, 1270, 16);
+    tag('SOMEONE', 300, 250, 50, '#fff'); tag('YOU', 760, 1880, 56, '#ffd23f');
+    c.save(); c.translate(540, 0); c.rotate(-.04); T('WHY ARE', 0, 930, 120, '#fff', '#000', 20); T('YAWNS', 0, 1080, 170, '#fff', '#000', 24); T('CONTAGIOUS?!', 0, 1230, 140, '#ffd23f', '#8c0e18', 24); c.restore();
+    c.fillStyle = 'rgba(8,4,6,.7)'; c.beginPath(); c.roundRect(640, 100, 380, 84, 42); c.fill(); c.font = '400 54px Anton'; c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText('BODY HACKS', 830, 162);
+  } else {
+    face(c, 190, 400, .82, ['#f2c6a8', '#d99b7c', '#b67858'], '#3b2618', .75, -.12);
+    face(c, 1090, 420, .9, ['#c98f6a', '#a86d4c', '#83503a'], '#1c1410', 1, .1);
+    arrow(330, 140, 640, -20, 930, 150, 14);
+    tag('SOMEONE', 190, 690, 38, '#fff'); tag('YOU', 1090, 700, 44, '#ffd23f');
+    c.save(); c.translate(640, 0); c.rotate(-.03); T('WHY ARE YAWNS', 0, 380, 104, '#fff', '#000', 18); T('CONTAGIOUS?!', 0, 530, 130, '#ffd23f', '#8c0e18', 22); c.restore();
+  }
+  return cv.toDataURL('image/png');
+};
+</script>
