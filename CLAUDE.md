@@ -88,3 +88,12 @@ Tüm Shorts kanallarında (Tarih, Finans, What If, Body Hacks, Beyond, Motivasyo
   Finans sesi −16.7 LUFS (kısık). Örnek test: `videos/_tools/demo_parallax.mp4`.
 
 - **Hook yeteneği:** `.claude/skills/shorts-hook/` — HER kanalda, HER videoda zorunlu: ilk 3 saniye kanca tasarımı + render sonrası kontrol listesi.
+
+## Caveman (token tasarrufu, 2026-11-23, kullanıcı tüm oturumlara istedi)
+- Kaynak: https://github.com/JuliusBrussee/caveman (commit b89752f, Apache-2.0; LICENSE/NOTICE `.claude/skills/caveman/` içinde).
+- Kurulu skill'ler: `.claude/skills/{caveman,ultracave,megacave,caveman-commit,caveman-review,caveman-compress,caveman-help}`.
+- **Varsayılan açık:** Her oturumda yanıtları caveman kurallarıyla ver (önce cevap, dolgu yok, her teknik bilgi korunur,
+  kod/komut/yol/sayı birebir). Türkçe yanıtlara da uygula. Güvenlik uyarısı / geri alınamaz işlem / kafası karışan kullanıcı
+  → tam cümle. Kapatma: "stop caveman" / "normal mode". Daha kısa: `/caveman ultra`.
+- Tam paket (`npx @caveman-ai/cli`: yerel proxy, Auto model seçimi, tool-output sıkıştırma) bilgisayara kurulur; bulut
+  container geçici olduğu için kurulmadı.
