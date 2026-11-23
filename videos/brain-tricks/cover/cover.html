@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css">
+<style>html,body{margin:0;background:#000}</style><canvas id="c" width="1920" height="1080"></canvas>
+<script src="../words.js"></script><script src="../base.js"></script><script src="../scenes.js"></script><script src="../timeline.js"></script>
+<script>
+window.cover = function () {
+  ctx.setTransform(1,0,0,1,0,0); ctx.fillStyle = '#000'; ctx.fillRect(0,0,W,H);
+  ctx.save(); ctx.translate(W/2 + 330, H/2); ctx.scale(1.05, 1.05); ctx.translate(-CX, -CY); hook(0, 1.2, {}); ctx.restore();
+  const sh = ctx.createLinearGradient(0, 0, 1100, 0); sh.addColorStop(0, 'rgba(0,0,0,.85)'); sh.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = sh; ctx.fillRect(0, 0, 1300, H);
+  post(0);
+  ctx.save(); ctx.translate(80, 0); ctx.textAlign = 'left';
+  txt('YOUR BRAIN', 0, 330, 190, '#fff', '#000', 22, '400', 'Anton'); txt('IS LYING', 0, 540, 220, '#ffd23f', '#8c0e18', 26, '400', 'Anton'); txt('TO YOU', 0, 750, 220, '#ffd23f', '#8c0e18', 26, '400', 'Anton');
+  ctx.fillStyle = '#e0303a'; ctx.beginPath(); ctx.roundRect(0, 820, 620, 120, 24); ctx.fill(); txt('10 BRAIN TRICKS', 30, 905, 84, '#fff', 'rgba(0,0,0,0)', 0, '400', 'Anton');
+  ctx.restore();
+  return document.getElementById('c').toDataURL('image/png');
+};
+</script>
