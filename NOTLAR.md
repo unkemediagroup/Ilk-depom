@@ -66,3 +66,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-17: fingers-wrinkle kapakları: `videos/fingers-wrinkle/cover/`.
 - 2026-11-17: tear-film kapakları: `videos/tear-film/cover/`.
 - 2026-11-21: yawning kapakları: `videos/yawning/cover/`.
+- 2026-11-23: hiccups kapakları: `videos/hiccups/cover/` (karakter + diyafram paneli).

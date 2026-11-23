@@ -1,0 +1,46 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css">
+<style>html,body{margin:0;background:#000}</style>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="../words.js"></script><script src="../main.js"></script>
+<script>
+function faceHic(c, x, y, s, rot) {
+  const skin = ['#f0c2a2', '#d99b7c', '#b67858'], hair = '#2e1d14';
+  c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s);
+  c.fillStyle = '#7a2a33'; c.beginPath(); c.moveTo(-270, 440); c.quadraticCurveTo(-250, 280, -80, 270); c.lineTo(80, 270); c.quadraticCurveTo(250, 280, 270, 440); c.closePath(); c.fill();
+  c.fillStyle = skin[2]; c.fillRect(-70, 190, 140, 100);
+  c.fillStyle = skin[1]; for (const d of [-1, 1]) { c.beginPath(); c.ellipse(d * 180, 10, 34, 56, 0, 0, TAU); c.fill(); }
+  const g = c.createRadialGradient(-50, -80, 30, 0, 0, 260); g.addColorStop(0, skin[0]); g.addColorStop(.7, skin[1]); g.addColorStop(1, skin[2]); c.fillStyle = g; c.beginPath(); c.ellipse(0, 0, 180, 235, 0, 0, TAU); c.fill();
+  c.fillStyle = hair; c.beginPath(); c.ellipse(0, -120, 190, 150, 0, Math.PI, TAU); c.bezierCurveTo(200, -60, 170, -30, 160, -70); c.bezierCurveTo(60, -150, -60, -150, -160, -70); c.bezierCurveTo(-180, -30, -200, -60, -190, -120); c.fill();
+  c.strokeStyle = hair; c.lineWidth = 14; c.lineCap = 'round'; for (const d of [-1, 1]) { c.beginPath(); c.moveTo(d * 35, -105); c.quadraticCurveTo(d * 80, -150, d * 125, -115); c.stroke(); }
+  for (const d of [-1, 1]) { c.fillStyle = '#fff'; c.beginPath(); c.ellipse(d * 80, -40, 46, 52, 0, 0, TAU); c.fill(); c.strokeStyle = '#3a2218'; c.lineWidth = 5; c.stroke(); c.fillStyle = '#5a3a22'; c.beginPath(); c.arc(d * 80, -36, 24, 0, TAU); c.fill(); c.fillStyle = '#0a0606'; c.beginPath(); c.arc(d * 80, -36, 12, 0, TAU); c.fill(); c.fillStyle = '#fff'; c.beginPath(); c.arc(d * 80 - 8, -46, 7, 0, TAU); c.fill(); }
+  c.strokeStyle = 'rgba(120,70,50,.55)'; c.lineWidth = 7; c.beginPath(); c.moveTo(-6, -10); c.quadraticCurveTo(-24, 40, 0, 48); c.quadraticCurveTo(18, 50, 26, 40); c.stroke();
+  c.fillStyle = 'rgba(225,100,95,.45)'; for (const d of [-1, 1]) { c.beginPath(); c.ellipse(d * 112, 60, 48, 32, 0, 0, TAU); c.fill(); }
+  c.fillStyle = '#b9545e'; c.beginPath(); c.ellipse(0, 130, 34, 30, 0, 0, TAU); c.fill(); c.fillStyle = '#4a0f16'; c.beginPath(); c.ellipse(0, 130, 22, 19, 0, 0, TAU); c.fill();
+  // hand on chest
+  c.fillStyle = skin[1]; c.beginPath(); c.ellipse(-120, 360, 90, 60, -.3, 0, TAU); c.fill(); for (let i = 0; i < 4; i++) { c.beginPath(); c.ellipse(-70 + i * 6, 320 + i * 26, 50, 16, -.2, 0, TAU); c.fill(); }
+  c.restore();
+}
+window.cover = function (Wd, Hd) {
+  const cv = document.getElementById('c'); cv.width = 1080; cv.height = 1920;
+  const sg = SEG[0]; ctx.setTransform(1,0,0,1,0,0); ctx.fillStyle = '#000'; ctx.fillRect(0,0,1080,1920); ctx.save(); ctx.translate(540, 960); ctx.scale(1.0, 1.0); ctx.translate(-540, -1000); sg.fn(1, .12, { nohic: 1, labels: 1 }); ctx.restore();
+  const an = document.createElement('canvas'); an.width = 1080; an.height = 1920; an.getContext('2d').drawImage(cv, 0, 0);
+  cv.width = Wd; cv.height = Hd; const c = cv.getContext('2d'); const V = Hd > Wd;
+  const bg = c.createRadialGradient(Wd * .5, Hd * .3, 50, Wd * .5, Hd * .4, Math.max(Wd, Hd) * .8); bg.addColorStop(0, '#ffcf4a'); bg.addColorStop(.55, '#f08a24'); bg.addColorStop(1, '#a8331a'); c.fillStyle = bg; c.fillRect(0, 0, Wd, Hd);
+  for (let i = 0; i < 26; i++) { const a = i / 26 * TAU; c.fillStyle = i % 2 ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,0)'; c.beginPath(); c.moveTo(Wd / 2, V ? 560 : 360); c.arc(Wd / 2, V ? 560 : 360, Math.max(Wd, Hd) * 1.2, a, a + TAU / 26); c.fill(); }
+  const T = (str, x, y, size, fill, stroke, sw, rot = 0) => { c.save(); c.translate(x, y); c.rotate(rot); c.font = `400 ${size}px Anton`; c.textAlign = 'center'; c.lineJoin = 'round'; c.lineWidth = sw; c.strokeStyle = stroke; c.strokeText(str, 0, 0); c.fillStyle = fill; c.fillText(str, 0, 0); c.restore(); };
+  if (V) {
+    // anatomy panel bottom (rounded card)
+    c.save(); c.beginPath(); c.roundRect(60, 1250, 960, 610, 40); c.clip(); c.drawImage(an, 0, 820, 1080, 686, 60, 1250, 960, 610); c.restore();
+    c.strokeStyle = '#fff'; c.lineWidth = 10; c.beginPath(); c.roundRect(60, 1250, 960, 610, 40); c.stroke();
+    faceHic(c, 540, 520, 1.15, -.08);
+    T('HIC!', 860, 300, 170, '#fff', '#8c0e18', 24, .2); T('HIC!', 190, 360, 110, '#fff', '#8c0e18', 18, -.25);
+    T('WHY DO WE GET', 540, 1010, 110, '#fff', '#000', 20, -.03); T('HICCUPS?!', 540, 1190, 200, '#ffffff', '#8c0e18', 30, -.03);
+    c.fillStyle = 'rgba(8,4,6,.75)'; c.beginPath(); c.roundRect(40, 60, 330, 80, 40); c.fill(); c.font = '400 52px Anton'; c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText('BODY HACKS', 205, 118);
+  } else {
+    c.save(); c.beginPath(); c.roundRect(860, 60, 380, 600, 30); c.clip(); c.drawImage(an, 120, 350, 840, 1326, 860, 60, 380, 600); c.restore(); c.strokeStyle = '#fff'; c.lineWidth = 8; c.beginPath(); c.roundRect(860, 60, 380, 600, 30); c.stroke();
+    faceHic(c, 200, 400, .95, -.08); T('HIC!', 380, 140, 110, '#fff', '#8c0e18', 18, .2);
+    T('WHY DO WE GET', 610, 330, 92, '#fff', '#000', 16, -.03); T('HICCUPS?!', 600, 500, 160, '#fff', '#8c0e18', 24, -.03);
+  }
+  return cv.toDataURL('image/png');
+};
+</script>
