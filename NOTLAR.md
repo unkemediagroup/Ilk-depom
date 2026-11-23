@@ -75,3 +75,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-17: Shorts kapağı — "Stop Comparing Your Life to Others" (`brand/cover-compare-1080x1920.png`). Not: ayaz.js pozlarında a1/a2 = yakın kolun omuz/dirseği, f1/f2 = uzak kolun omuz/dirseği (A1/A2 bilekleri).
 - 2026-11-19: Shorts kapağı — "The Power of Being Alone" (`brand/cover-alone-1080x1920.png`).
 - 2026-11-21: Shorts kapağı — "One Year Can Change Everything" (`brand/cover-oneyear-1080x1920.png`).
+- 2026-11-23: Shorts kapağı — "Your Habits Create Your Future" (`brand/cover-habits-1080x1920.png`, büyüyen domino zinciri).

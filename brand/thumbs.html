@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -112,6 +112,25 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   text(g, 'ONE YEAR', 540, 240, 230, RED, 50, -.03); text(g, 'CAN CHANGE', 540, 440, 150, WHITE, 16, -.03);
   g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-420, -72, 840, 144); g.restore();
   text(g, 'EVERYTHING', 540, 600, 130, '#0a0000', 0, -.03);
+}
+{ const g = document.getElementById('habits').getContext('2d');
+  g.fillStyle = '#040406'; g.fillRect(0, 0, 1080, 1920);
+  const rg = g.createRadialGradient(820, 1200, 0, 820, 1200, 900); rg.addColorStop(0, 'rgba(255,40,60,.45)'); rg.addColorStop(1, 'rgba(255,40,60,0)'); g.fillStyle = rg; g.fillRect(0, 0, 1080, 1920);
+  const fy = 1560; g.strokeStyle = 'rgba(255,255,255,.3)'; g.lineWidth = 3; g.beginPath(); g.moveTo(0, fy); g.lineTo(1080, fy); g.stroke();
+  // dominoes: each one ~1.5x the last — tiny daily habits toppling into a giant FUTURE
+  const pose = { ...POSE.kneel, lean: .45, head: .6, a1: -.55, a2: .15 }, s = .75, k = ayaz(g, -9e5, -9e5, s, pose, { t: 1 }), ax = 210, hx = ax + k.A1.wr[0] * s, hy = fy + k.A1.wr[1] * s;
+  let x = hx + 10, h = Math.max(60, fy - hy + 14); const D = [];
+  for (let i = 0; i < 6; i++) { D.push([x, h]); x += h * .42 + 30; h *= 1.45; }
+  D.forEach(([dx, dh], i) => { const w = dh * .26, tilt = i === 0 ? .35 : 0, last = i === D.length - 1; g.save(); g.translate(dx, fy); g.rotate(tilt); g.shadowColor = RED; g.shadowBlur = 20 + i * 6; g.fillStyle = 'rgba(40,6,12,.95)'; g.strokeStyle = RED; g.lineWidth = 3 + i; g.fillRect(-w / 2, -dh, w, dh); g.strokeRect(-w / 2, -dh, w, dh);
+    g.fillStyle = GOLD; g.shadowColor = GOLD; for (const yy of [.25, .75]) { g.beginPath(); g.arc(0, -dh * yy, w * .14, 0, 7); g.fill(); } g.restore();
+    if (last) { g.save(); g.translate(dx, fy - dh / 2); g.rotate(-Math.PI / 2); g.font = `${Math.round(w * .55)}px Anton`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = WHITE; g.shadowColor = WHITE; g.shadowBlur = 20; g.fillText('FUTURE', 0, 0); g.restore(); } });
+  // AYAZ crouched, one finger tipping the first tiny domino
+  emberGround(g, ax, fy, s, 1, { mode: 'kor' }); ayaz(g, ax, fy, s, pose, { t: 1, mode: 'kor', glow: 1.7, wind: .5 });
+  text(g, 'DAY 1', D[0][0], fy + 70, 44, '#9a9aa6', 0);
+  embers(g, 45, 71, 700, 1700); vignette(g);
+  text(g, 'YOUR', 210, 250, 120, WHITE, 16, -.03); text(g, 'HABITS', 650, 235, 220, RED, 50, -.03); text(g, 'CREATE', 540, 430, 150, WHITE, 16, -.03);
+  g.save(); g.translate(540, 590); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-420, -72, 840, 144); g.restore();
+  text(g, 'YOUR FUTURE', 540, 590, 130, '#0a0000', 0, -.03);
 }
 window.READY = true;
 </script></body></html>
