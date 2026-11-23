@@ -64,3 +64,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-17: print-money kapağı: 'PRINT MORE MONEY = RICH?' + para basma makinesi + grileşen banknotlar + $100→$5 değer rozeti (covers/print-money-cover.png).
 - 2026-11-17: card-fees kapağı: 'PAID IN FULL? THE BANK STILL PROFITS' + mor kredi kartı + bankaya akan sikkeler + $100→$97 mağaza/$3 banka rozeti (covers/card-fees-cover.png).
 - 2026-11-19: inflation kapağı: 'YOUR SAVINGS ARE MELTING' + içinde $100 donmuş eriyen buz + kırmızı fiyat okları + alım gücü 100%→91% / market $100→$110 rozeti (covers/inflation-cover.png).
+- 2026-11-23: trust kapağı: 'THE RICH OWN NOTHING (ON PAPER)' + kalkan kubbesi altında malikane + altın, sekip giden LAWSUITS/TAXES, ON PAPER $0 / IN REALITY BILLIONS rozeti (covers/trust-cover.png).
