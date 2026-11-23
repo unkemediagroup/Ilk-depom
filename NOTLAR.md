@@ -66,3 +66,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-17: 4.video kapağı: `videos/dinosaurs/4.video-kapak.jpg`.
 - 2026-11-19: 5.video kapağı: `videos/mars-life/5.video-kapak.jpg`.
 - 2026-11-21: 6.video kapağı: `videos/money-zero/6.video-kapak.jpg`.
+- 2026-11-23: 7.video kapağı: `videos/no-oceans/7.video-kapak.jpg`.
