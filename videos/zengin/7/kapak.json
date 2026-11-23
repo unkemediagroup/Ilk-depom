@@ -1,0 +1,39 @@
+{
+ "hero": "src/azzam_yacht_1.jpg",
+ "hero_focus": [
+  0.45,
+  0.5
+ ],
+ "hero_h": 1150,
+ "bg": "src/276602.jpg",
+ "bg_focus": [
+  0.5,
+  0.5
+ ],
+ "bg_bright": 0.35,
+ "lines": [
+  [
+   "HOW MASSIVE ARE",
+   "white",
+   140
+  ],
+  [
+   "THE WORLD'S BIGGEST",
+   "white",
+   150
+  ],
+  [
+   "SUPERYACHTS?",
+   "gold",
+   230
+  ]
+ ],
+ "text_y": 1160,
+ "badge": "180 METERS LONG",
+ "badge_y": 1000,
+ "out": "../kapaklar/7.kapak.jpg",
+ "hero_mode": "fit",
+ "fit_w": 1.9,
+ "fit_y": 0,
+ "fit_dx": -60
+}

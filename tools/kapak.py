@@ -15,7 +15,13 @@ def cover(im, w, h, f):
     x = int((im.width - w) * f[0]); y = int((im.height - h) * f[1]); return im.crop((x, y, x + w, y + h))
 canvas = ImageEnhance.Brightness(cover(Image.open(P(c["bg"])).convert("RGB"), W, H, c.get("bg_focus", [.5, .6]))).enhance(c.get("bg_bright", .55))
 hh = c.get("hero_h", 1250)
-m = cover(Image.open(P(c["hero"])).convert("RGB"), W, hh, c.get("hero_focus", [.5, .2]))
+hi = Image.open(P(c["hero"])).convert("RGB")
+if c.get("hero_mode") == "fit":  # yatay görsel: bulanık zemin + tam genişlik görsel
+    m = ImageEnhance.Brightness(cover(hi, W, hh, [.5, .5]).filter(ImageFilter.GaussianBlur(28))).enhance(.6)
+    fw = int(W * c.get("fit_w", 1.25)); fh = int(hi.height * fw / hi.width); fg = hi.resize((fw, fh), Image.LANCZOS)
+    m.paste(fg, ((W - fw) // 2 + int(c.get("fit_dx", 0)), int(c.get("fit_y", hh * .5 - fh / 2))))
+else:
+    m = cover(hi, W, hh, c.get("hero_focus", [.5, .2]))
 m = ImageEnhance.Contrast(m).enhance(1.08).filter(ImageFilter.UnsharpMask(2, 80, 2))
 ys = np.arange(hh)[:, None] * np.ones((1, W)); mask = (255 * np.clip((hh - ys) / 380, 0, 1)).astype("uint8")
 canvas.paste(m, (0, 0), Image.fromarray(mask))
