@@ -1,35 +1,40 @@
-// YT Shorts kapak — "What If Humans Could Read Minds?" (1080×1920)
-const NEON = '#c86bff', CYAN = '#5ff0ff';
-// profil kafa (sağa bakar), (x,y) = boyun tabanı, s = yükseklik
-function head(x, y, s, dir = 1, o = {}) {
-  ctx.save(); ctx.translate(x, y); ctx.scale(dir * s, s);
-  ctx.beginPath(); ctx.moveTo(-.18, 0); ctx.lineTo(-.2, -.25); ctx.bezierCurveTo(-.42, -.35, -.45, -.85, -.12, -1); ctx.bezierCurveTo(.2, -1.08, .38, -.85, .36, -.62);
-  ctx.lineTo(.44, -.48); ctx.lineTo(.37, -.45); ctx.lineTo(.38, -.36); ctx.lineTo(.34, -.33); ctx.lineTo(.35, -.26); ctx.bezierCurveTo(.3, -.2, .18, -.2, .12, -.2); ctx.lineTo(.12, 0); ctx.closePath();
-  ctx.fillStyle = o.fill || '#0d0a18'; ctx.fill(); if (o.line) { ctx.strokeStyle = o.line; ctx.lineWidth = .012; ctx.shadowColor = o.line; ctx.shadowBlur = 25; ctx.stroke(); ctx.shadowBlur = 0; }
-  if (o.brain) { const g = ctx.createRadialGradient(-.02, -.68, .02, -.02, -.68, .3); g.addColorStop(0, o.brain); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(-.02, -.68, .28, .22, 0, 0, TAU); ctx.fill();
-    ctx.strokeStyle = o.brain; ctx.lineWidth = .01; for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.ellipse(-.02, -.68, .2 - i * .03, .15 - i * .02, i * .5, 0, Math.PI * 1.3); ctx.stroke(); } }
-  ctx.restore();
-}
-function bubble(s, x, y, size, p, col = '#fff', ink = '#111') { if (p <= 0) return; const e = eback(clamp(p)); ctx.save(); ctx.translate(x, y); ctx.scale(e, e); ctx.font = `800 ${size}px Montserrat`; const w = ctx.measureText(s).width + size * 1.2, h = size * 2;
-  ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(-w / 2, -h / 2, w, h, h / 2); ctx.fill(); ctx.beginPath(); ctx.arc(-w * .3, h * .7, size * .25, 0, TAU); ctx.arc(-w * .38, h * 1.05, size * .14, 0, TAU); ctx.fill();
-  txt(s, 0, 2, size, ink, { align: 'center', weight: 800, stroke: 0 }); ctx.restore(); }
-function waves(x0, y0, x1, y1, t, col, n = 5) { const d = Math.hypot(x1 - x0, y1 - y0), a = Math.atan2(y1 - y0, x1 - x0); ctx.save(); ctx.translate(x0, y0); ctx.rotate(a);
-  for (let i = 0; i < n; i++) { const q = ((t * .9 + i / n) % 1); ctx.strokeStyle = col; ctx.globalAlpha = Math.sin(q * Math.PI); ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(q * d, 0, 60 + 40 * Math.sin(q * Math.PI), -.7, .7); ctx.stroke(); } ctx.restore(); }
-function darkBg(t, c1 = '#0b0618', c2 = '#1a0b2e') { const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, c1); g.addColorStop(1, c2); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  const R = RN(3); for (let i = 0; i < 50; i++) { ctx.fillStyle = `rgba(200,140,255,${.15 + R() * .25})`; ctx.beginPath(); ctx.arc(R() * W, (R() * H - t * 30 * (1 + R())) % H + (R() < 0 ? H : 0), 1 + R() * 3, 0, TAU); ctx.fill(); } }
-
-
+// YT Shorts kapak v2 — "What If Humans Could Read Minds?" (1080×1920)
 window.draw = function (t) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
-  darkBg(t);
-  // iki kafa, aralarında zihin dalgaları
-  head(250, 1000, 820, 1, { line: NEON, brain: 'rgba(200,107,255,.9)' });
-  head(830, 1000, 820, -1, { line: CYAN, brain: 'rgba(95,240,255,.9)' });
-  waves(300, 620, 780, 620, t, NEON); waves(780, 660, 300, 660, t + .5, CYAN);
-  bubble('?', 260, 250, 110, 1, NEON, '#fff'); bubble('!', 820, 250, 110, 1, CYAN, '#111');
-  // başlık
-  txt('WHAT IF HUMANS', W / 2, 1290, 120, '#fff', { align: 'center', font: 'Anton', weight: 400, stroke: 14 });
-  txt('COULD READ', W / 2, 1440, 130, '#fff', { align: 'center', font: 'Anton', weight: 400, stroke: 18 });
-  ctx.save(); ctx.translate(W / 2, 1640); ctx.rotate(-.03); txt('MINDS?', 0, 0, 280, NEON, { align: 'center', font: 'Anton', weight: 400, stroke: 26, glow: NEON, blur: 55 }); ctx.restore();
-  vignette(.5);
+  const cx = W / 2, cy = 900, R = 470;
+  // arka plan: koyu kırmızı-siyah
+  const bg = ctx.createRadialGradient(cx, cy, 80, cx, cy, 1100); bg.addColorStop(0, '#2a0610'); bg.addColorStop(1, '#030106');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // arka planda dönen ışın
+  ctx.save(); ctx.translate(cx, cy); for (let i = 0; i < 18; i++) { ctx.rotate(TAU / 18); ctx.fillStyle = i % 2 ? 'rgba(255,60,90,.07)' : 'rgba(180,90,255,.06)'; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(1400, -140); ctx.lineTo(1400, 140); ctx.fill(); } ctx.restore();
+  // göz (badem)
+  const w = 1000, h = 520;
+  ctx.save(); ctx.beginPath(); ctx.moveTo(cx - w / 2, cy); ctx.quadraticCurveTo(cx, cy - h * 1.05, cx + w / 2, cy); ctx.quadraticCurveTo(cx, cy + h * 1.05, cx - w / 2, cy); ctx.closePath(); ctx.clip();
+  const sc = ctx.createRadialGradient(cx, cy, 200, cx, cy, 560); sc.addColorStop(0, '#fff7f0'); sc.addColorStop(1, '#c9b8b0'); ctx.fillStyle = sc; ctx.fillRect(0, 0, W, H);
+  // damar
+  ctx.strokeStyle = 'rgba(200,40,60,.55)'; ctx.lineWidth = 3; const Rn = RN(11);
+  for (let i = 0; i < 26; i++) { const a = Rn() * TAU, r0 = 320; ctx.beginPath(); let x = cx + Math.cos(a) * r0, y = cy + Math.sin(a) * r0 * .5; ctx.moveTo(x, y); for (let k = 0; k < 4; k++) { x += Math.cos(a + (Rn() - .5)) * 40; y += Math.sin(a + (Rn() - .5)) * 25; ctx.lineTo(x, y); } ctx.stroke(); }
+  // iris
+  const ir = 300, ig = ctx.createRadialGradient(cx - 60, cy - 60, 40, cx, cy, ir); ig.addColorStop(0, '#d9a2ff'); ig.addColorStop(.55, '#7a3cff'); ig.addColorStop(1, '#0fd6ff');
+  ctx.fillStyle = ig; ctx.beginPath(); ctx.arc(cx, cy, ir, 0, TAU); ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 4; for (let i = 0; i < 40; i++) { const a = i / 40 * TAU; ctx.beginPath(); ctx.moveTo(cx + Math.cos(a) * 130, cy + Math.sin(a) * 130); ctx.lineTo(cx + Math.cos(a) * ir, cy + Math.sin(a) * ir); ctx.stroke(); }
+  // iris içinde dönen düşünce kelimeleri
+  const words = ['I\'M BORED', 'LIE?', 'WHO FARTED', 'HELP', 'PIZZA', 'NICE SHIRT'];
+  ctx.save(); ctx.translate(cx, cy); ctx.rotate(t * .4);
+  for (let i = 0; i < words.length; i++) { const a = i / words.length * TAU; ctx.save(); ctx.rotate(a); ctx.translate(0, -205); ctx.rotate(Math.PI / 2); txt(words[i], 0, 0, 30, '#fff', { align: 'center', font: 'Anton', weight: 400, stroke: 6 }); ctx.restore(); }
+  ctx.restore();
+  // bebek
+  ctx.fillStyle = '#05000a'; ctx.beginPath(); ctx.arc(cx, cy, 120, 0, TAU); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.beginPath(); ctx.arc(cx - 50, cy - 60, 26, 0, TAU); ctx.fill();
+  // üst kirpik
+  ctx.strokeStyle = '#120408'; ctx.lineWidth = 22; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(cx - w / 2 - 10, cy + 2); ctx.quadraticCurveTo(cx, cy - h * 1.05 - 10, cx + w / 2 + 10, cy + 2); ctx.stroke();
+  ctx.restore();
+  // alt kirpik kalın çizgi
+  ctx.strokeStyle = '#120408'; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(cx - w / 2, cy); ctx.quadraticCurveTo(cx, cy + h * 1.05, cx + w / 2, cy); ctx.stroke();
+  // kanca metni (üst güvenli alan altında)
+  txt('NO SECRETS', W / 2, 330, 170, '#fff', { align: 'center', font: 'Anton', weight: 400, stroke: 20 });
+  txt('LEFT.', W / 2, 500, 210, '#ff2e45', { align: 'center', font: 'Anton', weight: 400, stroke: 24, glow: '#ff2e45', blur: 50 });
+  // alt etiket
+  ctx.save(); ctx.translate(W / 2, 1420); ctx.rotate(-.04); ctx.fillStyle = '#ffc83d'; ctx.beginPath(); ctx.roundRect(-300, -66, 600, 132, 40); ctx.fill(); txt('READ MINDS?', 0, 4, 96, '#111', { align: 'center', font: 'Anton', weight: 400, stroke: 0 }); ctx.restore();
+  vignette(.55);
 };
