@@ -76,3 +76,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-19: Shorts kapağı — "The Power of Being Alone" (`brand/cover-alone-1080x1920.png`).
 - 2026-11-21: Shorts kapağı — "One Year Can Change Everything" (`brand/cover-oneyear-1080x1920.png`).
 - 2026-11-23: Shorts kapağı — "Your Habits Create Your Future" (`brand/cover-habits-1080x1920.png`, büyüyen domino zinciri).
+- 2026-11-24: Shorts kapağı — "Why Successful People Wake Up Early" (`brand/cover-early-1080x1920.png`, 3:45 saat + şafak).
