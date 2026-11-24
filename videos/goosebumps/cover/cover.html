@@ -4,30 +4,49 @@
 <script src="../words.js"></script><script src="../main.js"></script>
 <script>
 window.cover = function (Wd, Hd) {
-  const cv = document.getElementById('c');
+  const TAU = Math.PI * 2, cv = document.getElementById('c');
   cv.width = 1080; cv.height = 1920; ctx.setTransform(1,0,0,1,0,0); ctx.globalAlpha = 1;
   goose(1, 2.6, { k: () => 1 });
   const skin = document.createElement('canvas'); skin.width = 1080; skin.height = 1920; skin.getContext('2d').drawImage(cv, 0, 0);
   ctx.fillStyle = '#000'; ctx.fillRect(0, 0, 1080, 1920);
   follicle(1, 2.6, { k: () => 1 });
   const fol = document.createElement('canvas'); fol.width = 1080; fol.height = 1920; fol.getContext('2d').drawImage(cv, 0, 0);
+
   cv.width = Wd; cv.height = Hd; const c = cv.getContext('2d'); const V = Hd > Wd;
-  const T = (str, x, y, size, fill, stroke, sw) => { c.font = `400 ${size}px Anton`; c.textAlign = 'center'; c.lineJoin = 'round'; c.lineWidth = sw; c.strokeStyle = stroke; c.strokeText(str, x, y); c.fillStyle = fill; c.fillText(str, x, y); };
-  const tag = (x, y) => { c.fillStyle = 'rgba(8,4,6,.75)'; c.beginPath(); c.roundRect(x, y, 330, 80, 40); c.fill(); c.font = '400 52px Anton'; c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText('BODY HACKS', x + 165, y + 58); };
+  let seed = 7; const R = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const T = (str, x, y, size, fill, stroke, sw, rot = 0) => { c.save(); c.translate(x, y); c.rotate(rot); c.font = `400 ${size}px Anton`; c.textAlign = 'center'; c.lineJoin = 'round'; c.lineWidth = sw; c.strokeStyle = stroke; c.strokeText(str, 0, 0); c.fillStyle = fill; c.fillText(str, 0, 0); c.restore(); };
+  const flake = (x, y, r, a) => { c.save(); c.translate(x, y); c.strokeStyle = `rgba(255,255,255,${a})`; c.lineWidth = Math.max(2, r * .16); c.lineCap = 'round';
+    for (let i = 0; i < 6; i++) { c.rotate(Math.PI / 3); c.beginPath(); c.moveTo(0, 0); c.lineTo(0, -r); c.moveTo(0, -r * .55); c.lineTo(r * .3, -r * .8); c.moveTo(0, -r * .55); c.lineTo(-r * .3, -r * .8); c.stroke(); } c.restore(); };
+  const inset = (sx, sy, sw, sh, cx, cy, r) => { c.save(); c.shadowColor = 'rgba(0,0,0,.5)'; c.shadowBlur = 30; c.fillStyle = '#fff'; c.beginPath(); c.arc(cx, cy, r + 10, 0, TAU); c.fill(); c.restore();
+    c.save(); c.beginPath(); c.arc(cx, cy, r, 0, TAU); c.clip(); c.drawImage(fol, sx, sy, sw, sh, cx - r, cy - r, 2 * r, 2 * r); c.restore(); };
+  const callout = (bx, by, px, py, str) => { c.font = '900 40px Montserrat'; const w = c.measureText(str).width + 50;
+    c.strokeStyle = '#ffd23f'; c.lineWidth = 6; c.beginPath(); c.moveTo(bx, by); c.lineTo(px, py); c.stroke(); c.fillStyle = '#ffd23f'; c.beginPath(); c.arc(px, py, 11, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(8,4,6,.85)'; c.beginPath(); c.roundRect(bx - w / 2, by - 36, w, 62, 16); c.fill(); c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText(str, bx, by + 6); };
+  const tag = () => { c.fillStyle = 'rgba(8,4,6,.8)'; c.beginPath(); c.roundRect(40, 40, 340, 84, 42); c.fill(); c.font = '400 52px Anton'; c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText('BODY HACKS', 210, 100); };
+
   if (V) {
     c.drawImage(skin, 0, 0, 1080, 1920, 0, 0, Wd, Hd);
-    const bg = c.createLinearGradient(0, 880, 0, Hd); bg.addColorStop(0, 'rgba(0,0,0,0)'); bg.addColorStop(.45, 'rgba(0,0,0,.6)'); bg.addColorStop(1, 'rgba(0,0,0,.88)'); c.fillStyle = bg; c.fillRect(0, 880, Wd, Hd - 880);
+    const top = c.createLinearGradient(0, 0, 0, Hd * .66); top.addColorStop(0, 'rgba(30,120,185,.97)'); top.addColorStop(.7, 'rgba(60,150,205,.7)'); top.addColorStop(1, 'rgba(60,150,205,0)'); c.fillStyle = top; c.fillRect(0, 0, Wd, Hd * .66);
+    const bot = c.createLinearGradient(0, Hd * .68, 0, Hd); bot.addColorStop(0, 'rgba(10,6,12,0)'); bot.addColorStop(1, 'rgba(10,6,12,.8)'); c.fillStyle = bot; c.fillRect(0, Hd * .68, Wd, Hd * .32);
+    for (let i = 0; i < 46; i++) flake(R() * Wd, R() * Hd * .6, 8 + R() * 20, .4 + R() * .5);
     c.save(); c.translate(540, 0); c.rotate(-.03);
-    T('WHY DO WE GET', 0, 1010, 120, '#fff', '#000', 20); T('GOOSEBUMPS?!', 0, 1180, 158, '#ffd23f', '#8c0e18', 26); T('WHEN COLD?', 0, 1310, 120, '#fff', '#000', 20);
-    c.restore(); tag(60, 60);
+    T('WHY DO WE GET', 0, 330, 120, '#fff', '#0a2a3a', 18); T('GOOSEBUMPS', 0, 510, 190, '#ffd23f', '#8c0e18', 26); T('WHEN COLD?!', 0, 650, 130, '#fff', '#0a2a3a', 18);
+    c.restore();
+    inset(240, 380, 560, 560, 540, 1330, 300);
+    callout(190, 1180, 330, 1120, 'HAIR');
+    callout(880, 1500, 752, 1550, 'TINY MUSCLE');
+    T('ONE TINY MUSCLE PER HAIR', 540, 1800, 64, '#ffd23f', '#000', 14);
+    tag();
   } else {
-    c.drawImage(skin, 0, 360, 1080, 1200, 0, 0, 640, 720);
-    c.drawImage(fol, 0, 420, 1080, 1200, 640, 0, 640, 720);
-    c.fillStyle = '#fff'; c.fillRect(636, 0, 8, 720);
-    c.fillStyle = 'rgba(0,0,0,.5)'; c.fillRect(0, 210, Wd, 300);
-    c.save(); c.translate(640, 0); c.rotate(-.02);
-    T('WHY DO WE GET GOOSEBUMPS', 0, 330, 92, '#fff', '#000', 16); T('WHEN COLD?!', 0, 470, 150, '#ffd23f', '#8c0e18', 24);
-    c.restore(); tag(40, 40);
+    c.drawImage(skin, 0, 360, 1080, 1200, 0, 0, Wd, Hd);
+    const lp = c.createLinearGradient(0, 0, Wd * .55, 0); lp.addColorStop(0, 'rgba(30,120,185,.97)'); lp.addColorStop(.8, 'rgba(60,150,205,.85)'); lp.addColorStop(1, 'rgba(60,150,205,0)'); c.fillStyle = lp; c.fillRect(0, 0, Wd, Hd);
+    for (let i = 0; i < 26; i++) flake(R() * Wd * .5, R() * Hd, 7 + R() * 16, .4 + R() * .5);
+    c.save(); c.translate(300, 0); c.rotate(-.03);
+    T('WHY DO WE GET', 0, 200, 90, '#fff', '#0a2a3a', 16); T('GOOSEBUMPS', 0, 350, 112, '#ffd23f', '#8c0e18', 22); T('WHEN COLD?!', 0, 480, 96, '#fff', '#0a2a3a', 16);
+    c.restore();
+    inset(240, 380, 560, 560, 990, 380, 200);
+    callout(830, 630, 900, 560, 'TINY MUSCLE');
+    tag();
   }
   return cv.toDataURL('image/png');
 };
