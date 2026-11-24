@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css">
+<style>html,body{margin:0;background:#000}</style>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="../words.js"></script><script src="../main.js"></script>
+<script>
+window.cover = function (Wd, Hd) {
+  const cv = document.getElementById('c');
+  cv.width = 1080; cv.height = 1920; ctx.setTransform(1,0,0,1,0,0); ctx.globalAlpha = 1;
+  goose(1, 2.6, { k: () => 1 });
+  const skin = document.createElement('canvas'); skin.width = 1080; skin.height = 1920; skin.getContext('2d').drawImage(cv, 0, 0);
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, 1080, 1920);
+  follicle(1, 2.6, { k: () => 1 });
+  const fol = document.createElement('canvas'); fol.width = 1080; fol.height = 1920; fol.getContext('2d').drawImage(cv, 0, 0);
+  cv.width = Wd; cv.height = Hd; const c = cv.getContext('2d'); const V = Hd > Wd;
+  const T = (str, x, y, size, fill, stroke, sw) => { c.font = `400 ${size}px Anton`; c.textAlign = 'center'; c.lineJoin = 'round'; c.lineWidth = sw; c.strokeStyle = stroke; c.strokeText(str, x, y); c.fillStyle = fill; c.fillText(str, x, y); };
+  const tag = (x, y) => { c.fillStyle = 'rgba(8,4,6,.75)'; c.beginPath(); c.roundRect(x, y, 330, 80, 40); c.fill(); c.font = '400 52px Anton'; c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText('BODY HACKS', x + 165, y + 58); };
+  if (V) {
+    c.drawImage(skin, 0, 0, 1080, 1920, 0, 0, Wd, Hd);
+    const bg = c.createLinearGradient(0, 880, 0, Hd); bg.addColorStop(0, 'rgba(0,0,0,0)'); bg.addColorStop(.45, 'rgba(0,0,0,.6)'); bg.addColorStop(1, 'rgba(0,0,0,.88)'); c.fillStyle = bg; c.fillRect(0, 880, Wd, Hd - 880);
+    c.save(); c.translate(540, 0); c.rotate(-.03);
+    T('WHY DO WE GET', 0, 1010, 120, '#fff', '#000', 20); T('GOOSEBUMPS?!', 0, 1180, 158, '#ffd23f', '#8c0e18', 26); T('WHEN COLD?', 0, 1310, 120, '#fff', '#000', 20);
+    c.restore(); tag(60, 60);
+  } else {
+    c.drawImage(skin, 0, 360, 1080, 1200, 0, 0, 640, 720);
+    c.drawImage(fol, 0, 420, 1080, 1200, 640, 0, 640, 720);
+    c.fillStyle = '#fff'; c.fillRect(636, 0, 8, 720);
+    c.fillStyle = 'rgba(0,0,0,.5)'; c.fillRect(0, 210, Wd, 300);
+    c.save(); c.translate(640, 0); c.rotate(-.02);
+    T('WHY DO WE GET GOOSEBUMPS', 0, 330, 92, '#fff', '#000', 16); T('WHEN COLD?!', 0, 470, 150, '#ffd23f', '#8c0e18', 24);
+    c.restore(); tag(40, 40);
+  }
+  return cv.toDataURL('image/png');
+};
+</script>
