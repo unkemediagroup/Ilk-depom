@@ -68,3 +68,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-21: 6.video kapağı: `videos/money-zero/6.video-kapak.jpg`.
 - 2026-11-23: 7.video kapağı: `videos/no-oceans/7.video-kapak.jpg`.
 - 2026-11-23: Caveman skill'leri kuruldu (kullanıcı: 'her code kanalına kur'), kaynak branch claude/magical-mccarthy-tcjaz8 a61130e.
+- 2026-11-24: 8.video kapağı: `videos/mind-read/8.video-kapak.jpg`.
