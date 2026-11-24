@@ -1,40 +1,23 @@
-// YT Shorts kapak v2 — "What If Humans Could Read Minds?" (1080×1920)
+// YT Shorts kapak v3 — "What If Humans Could Read Minds?" (1080×1920)
 window.draw = function (t) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
-  const cx = W / 2, cy = 900, R = 470;
-  // arka plan: koyu kırmızı-siyah
-  const bg = ctx.createRadialGradient(cx, cy, 80, cx, cy, 1100); bg.addColorStop(0, '#2a0610'); bg.addColorStop(1, '#030106');
-  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-  // arka planda dönen ışın
-  ctx.save(); ctx.translate(cx, cy); for (let i = 0; i < 18; i++) { ctx.rotate(TAU / 18); ctx.fillStyle = i % 2 ? 'rgba(255,60,90,.07)' : 'rgba(180,90,255,.06)'; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(1400, -140); ctx.lineTo(1400, 140); ctx.fill(); } ctx.restore();
-  // göz (badem)
-  const w = 1000, h = 520;
-  ctx.save(); ctx.beginPath(); ctx.moveTo(cx - w / 2, cy); ctx.quadraticCurveTo(cx, cy - h * 1.05, cx + w / 2, cy); ctx.quadraticCurveTo(cx, cy + h * 1.05, cx - w / 2, cy); ctx.closePath(); ctx.clip();
-  const sc = ctx.createRadialGradient(cx, cy, 200, cx, cy, 560); sc.addColorStop(0, '#fff7f0'); sc.addColorStop(1, '#c9b8b0'); ctx.fillStyle = sc; ctx.fillRect(0, 0, W, H);
-  // damar
-  ctx.strokeStyle = 'rgba(200,40,60,.55)'; ctx.lineWidth = 3; const Rn = RN(11);
-  for (let i = 0; i < 26; i++) { const a = Rn() * TAU, r0 = 320; ctx.beginPath(); let x = cx + Math.cos(a) * r0, y = cy + Math.sin(a) * r0 * .5; ctx.moveTo(x, y); for (let k = 0; k < 4; k++) { x += Math.cos(a + (Rn() - .5)) * 40; y += Math.sin(a + (Rn() - .5)) * 25; ctx.lineTo(x, y); } ctx.stroke(); }
-  // iris
-  const ir = 300, ig = ctx.createRadialGradient(cx - 60, cy - 60, 40, cx, cy, ir); ig.addColorStop(0, '#d9a2ff'); ig.addColorStop(.55, '#7a3cff'); ig.addColorStop(1, '#0fd6ff');
-  ctx.fillStyle = ig; ctx.beginPath(); ctx.arc(cx, cy, ir, 0, TAU); ctx.fill();
-  ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 4; for (let i = 0; i < 40; i++) { const a = i / 40 * TAU; ctx.beginPath(); ctx.moveTo(cx + Math.cos(a) * 130, cy + Math.sin(a) * 130); ctx.lineTo(cx + Math.cos(a) * ir, cy + Math.sin(a) * ir); ctx.stroke(); }
-  // iris içinde dönen düşünce kelimeleri
-  const words = ['I\'M BORED', 'LIE?', 'WHO FARTED', 'HELP', 'PIZZA', 'NICE SHIRT'];
-  ctx.save(); ctx.translate(cx, cy); ctx.rotate(t * .4);
-  for (let i = 0; i < words.length; i++) { const a = i / words.length * TAU; ctx.save(); ctx.rotate(a); ctx.translate(0, -205); ctx.rotate(Math.PI / 2); txt(words[i], 0, 0, 30, '#fff', { align: 'center', font: 'Anton', weight: 400, stroke: 6 }); ctx.restore(); }
-  ctx.restore();
-  // bebek
-  ctx.fillStyle = '#05000a'; ctx.beginPath(); ctx.arc(cx, cy, 120, 0, TAU); ctx.fill();
-  ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.beginPath(); ctx.arc(cx - 50, cy - 60, 26, 0, TAU); ctx.fill();
-  // üst kirpik
-  ctx.strokeStyle = '#120408'; ctx.lineWidth = 22; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(cx - w / 2 - 10, cy + 2); ctx.quadraticCurveTo(cx, cy - h * 1.05 - 10, cx + w / 2 + 10, cy + 2); ctx.stroke();
-  ctx.restore();
-  // alt kirpik kalın çizgi
-  ctx.strokeStyle = '#120408'; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(cx - w / 2, cy); ctx.quadraticCurveTo(cx, cy + h * 1.05, cx + w / 2, cy); ctx.stroke();
-  // kanca metni (üst güvenli alan altında)
-  txt('NO SECRETS', W / 2, 330, 170, '#fff', { align: 'center', font: 'Anton', weight: 400, stroke: 20 });
-  txt('LEFT.', W / 2, 500, 210, '#ff2e45', { align: 'center', font: 'Anton', weight: 400, stroke: 24, glow: '#ff2e45', blur: 50 });
-  // alt etiket
-  ctx.save(); ctx.translate(W / 2, 1420); ctx.rotate(-.04); ctx.fillStyle = '#ffc83d'; ctx.beginPath(); ctx.roundRect(-300, -66, 600, 132, 40); ctx.fill(); txt('READ MINDS?', 0, 4, 96, '#111', { align: 'center', font: 'Anton', weight: 400, stroke: 0 }); ctx.restore();
-  vignette(.55);
+  const bg = ctx.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#0a0a24'); bg.addColorStop(1, '#020208'); ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = 860;
+  // radar halkaları
+  for (let i = 0; i < 4; i++) { ctx.strokeStyle = `rgba(95,240,255,${.35 - i * .06})`; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(cx, cy, 380 + i * 110, 0, TAU); ctx.stroke(); }
+  // beyin ağı: beyin benzeri elips içinde düğümler
+  const R = RN(21), nodes = [];
+  while (nodes.length < 70) { const x = (R() - .5) * 2, y = (R() - .5) * 2; if (x * x / .85 + y * y / .6 <= 1) nodes.push([cx + x * 420, cy + y * 360]); }
+  ctx.lineWidth = 3; nodes.forEach((a, i) => nodes.slice(i + 1).forEach(b => { const d = Math.hypot(a[0] - b[0], a[1] - b[1]); if (d < 150) { ctx.strokeStyle = `rgba(95,240,255,${.45 * (1 - d / 150)})`; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); } }));
+  nodes.forEach(([x, y], i) => { const p = .5 + .5 * Math.sin(t * 3 + i); ctx.fillStyle = i % 5 === 0 ? '#ff2e45' : '#c8f7ff'; ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = 18; ctx.beginPath(); ctx.arc(x, y, 6 + p * 4, 0, TAU); ctx.fill(); }); ctx.shadowBlur = 0;
+  // hedef düğüm: kırmızı halka
+  const tgt = nodes[0]; ctx.strokeStyle = '#ff2e45'; ctx.lineWidth = 12; ctx.shadowColor = '#ff2e45'; ctx.shadowBlur = 40; ctx.beginPath(); ctx.arc(tgt[0], tgt[1], 80, 0, TAU); ctx.stroke(); ctx.shadowBlur = 0;
+  ctx.save(); ctx.translate(tgt[0] + 240, tgt[1] - 200); ctx.rotate(-.1); ctx.fillStyle = '#ffc83d'; ctx.beginPath(); ctx.roundRect(-190, -54, 380, 108, 30); ctx.fill(); txt('YOUR SECRET', 0, 3, 64, '#111', { align: 'center', font: 'Anton', weight: 400, stroke: 0 }); ctx.restore();
+  ctx.strokeStyle = '#ffc83d'; ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(tgt[0] + 170, tgt[1] - 150); ctx.lineTo(tgt[0] + 90, tgt[1] - 60); ctx.stroke();
+  // kanca metni
+  txt('THEY CAN', W / 2, 330, 170, '#fff', { align: 'center', font: 'Anton', weight: 400, stroke: 20 });
+  txt('HEAR YOU', W / 2, 510, 200, '#5ff0ff', { align: 'center', font: 'Anton', weight: 400, stroke: 24, glow: '#5ff0ff', blur: 45 });
+  // alt başlık
+  ctx.save(); ctx.translate(W / 2, 1480); ctx.rotate(.02); txt('WHAT IF MINDS ARE PUBLIC?', 0, 0, fit('WHAT IF MINDS ARE PUBLIC?', 74, 960, 'Anton', 400), '#fff', { align: 'center', font: 'Anton', weight: 400, stroke: 14 }); ctx.restore();
+  vignette(.5);
 };
