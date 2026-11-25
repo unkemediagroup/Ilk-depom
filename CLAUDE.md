@@ -110,3 +110,17 @@ Tüm Shorts kanallarında (Tarih, Finans, What If, Body Hacks, Beyond, Motivasyo
   Finans sesi −16.7 LUFS (kısık). Örnek test: `videos/_tools/demo_parallax.mp4`.
 
 - **Hook yeteneği:** `.claude/skills/shorts-hook/` — HER kanalda, HER videoda zorunlu: ilk 3 saniye kanca tasarımı + render sonrası kontrol listesi.
+## Caveman (token tasarrufu, 2026-11-23, kullanıcı tüm oturumlara istedi)
+- Kaynak: https://github.com/JuliusBrussee/caveman (commit b89752f, Apache-2.0; LICENSE/NOTICE `.claude/skills/caveman/` içinde).
+- Kurulu skill'ler: `.claude/skills/{caveman,ultracave,megacave,caveman-commit,caveman-review,caveman-compress,caveman-help}`.
+- **Varsayılan açık:** Her oturumda yanıtları caveman kurallarıyla ver (önce cevap, dolgu yok, her teknik bilgi korunur,
+  kod/komut/yol/sayı birebir). Türkçe yanıtlara da uygula. Güvenlik uyarısı / geri alınamaz işlem / kafası karışan kullanıcı
+  → tam cümle. Kapatma: "stop caveman" / "normal mode". Daha kısa: `/caveman ultra`.
+- Tam paket (`npx @caveman-ai/cli`: yerel proxy, Auto model seçimi, tool-output sıkıştırma) bilgisayara kurulur; bulut
+  container geçici olduğu için kurulmadı.
+
+## Shorts seri üretim kuralı (2026-11-25, kullanıcı)
+- Kullanıcı ses + metin sırayla yollar; videoları ATILMA SIRASIYLA hazırla.
+- Çıktı adı = ses dosyasının adı: "1.video ses" → `1.video.mp4` (render ve gönderim bu isimle).
+- YT Shorts 1080×1920 kaynak, yüksek kalite; son adım `videos/_tools/finalize.sh` (1440×2560). Gönderim ≤400 MB.
+- Kullanıcıya yazarken caveman tarzı (kısa).
