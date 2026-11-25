@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas><canvas id="early" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas><canvas id="early" width="1080" height="1920"></canvas><canvas id="fear" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -156,6 +156,24 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   text(g, 'WHY SUCCESSFUL', 540, 220, 120, WHITE, 16, -.03); text(g, 'PEOPLE', 540, 380, 170, RED, 50, -.03);
   g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-440, -72, 880, 144); g.restore();
   text(g, 'WAKE UP EARLY', 540, 600, 128, '#0a0000', 0, -.03);
+}
+{ const g = document.getElementById('fear').getContext('2d');
+  g.fillStyle = '#040406'; g.fillRect(0, 0, 1080, 1920);
+  const rg = g.createRadialGradient(640, 1100, 0, 640, 1100, 800); rg.addColorStop(0, 'rgba(255,40,60,.35)'); rg.addColorStop(1, 'rgba(255,40,60,0)'); g.fillStyle = rg; g.fillRect(0, 0, 1080, 1920);
+  // the ghost of fear: a pale sheet with a scalloped hem, looming over the ground
+  g.save(); g.translate(640, 1420); g.scale(1.35, 1.35);
+  const gp = () => { g.beginPath(); g.moveTo(-150, 0); g.lineTo(-150, -380); g.arc(0, -380, 150, Math.PI, 0); g.lineTo(150, 0); for (let i = 0; i < 6; i++) { const x0 = 150 - i * 50; g.quadraticCurveTo(x0 - 25, 40, x0 - 50, 0); } g.closePath(); };
+  g.shadowColor = '#cfd3e0'; g.shadowBlur = 40; gp(); g.fillStyle = 'rgba(190,196,215,.16)'; g.fill(); g.lineWidth = 8; g.strokeStyle = '#cfd3e0'; g.stroke(); g.shadowBlur = 0;
+  g.fillStyle = '#000'; g.beginPath(); g.ellipse(-55, -430, 22, 30, 0, 0, 7); g.ellipse(55, -430, 22, 30, 0, 0, 7); g.fill(); g.beginPath(); g.ellipse(0, -330, 20, 26, 0, 0, 7); g.fill();
+  g.restore();
+  // wisps trailing off the ghost
+  for (let i = 0; i < 6; i++) { g.strokeStyle = 'rgba(207,211,224,.22)'; g.lineWidth = 4; g.beginPath(); const y0 = 1000 + i * 70; g.moveTo(980, y0); g.quadraticCurveTo(900 + hash(i) * 60, y0 - 40, 820 - hash(i + 3) * 80, y0 + 30); g.stroke(); }
+  // AYAZ on the ground, facing the ghost
+  emberGround(g, 300, 1560, 1.0, 1, { mode: 'kor' }); ayaz(g, 300, 1560, 1.0, POSE.hero, { t: 1, mode: 'kor', glow: 1.7, wind: .6 });
+  embers(g, 40, 91, 600, 1700); vignette(g);
+  text(g, 'OVERCOMING', 540, 230, 130, WHITE, 16, -.03); text(g, 'FEAR', 540, 400, 200, RED, 50, -.03);
+  g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-400, -72, 800, 144); g.restore();
+  text(g, 'OF FAILURE', 540, 600, 128, '#0a0000', 0, -.03);
 }
 window.READY = true;
 </script></body></html>
