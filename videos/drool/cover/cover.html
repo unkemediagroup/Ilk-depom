@@ -1,0 +1,47 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../fonts.css">
+<style>html,body{margin:0;background:#000}</style>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="../words.js"></script><script src="../main.js"></script>
+<script>
+window.cover = function (Wd, Hd) {
+  const TAU = Math.PI * 2, cv = document.getElementById('c');
+  cv.width = 1080; cv.height = 1920; ctx.setTransform(1,0,0,1,0,0); ctx.globalAlpha = 1;
+  sleeper(1, 1.6, { drip: 1, zzz: 1, rot: 1.25 });
+  const scene = document.createElement('canvas'); scene.width = 1080; scene.height = 1920; scene.getContext('2d').drawImage(cv, 0, 0);
+  cv.width = Wd; cv.height = Hd; const c = cv.getContext('2d'); const V = Hd > Wd;
+  let seed = 11; const R = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const T = (str, x, y, size, fill, stroke, sw) => { c.font = `400 ${size}px Anton`; c.textAlign = 'center'; c.lineJoin = 'round'; c.lineWidth = sw; c.strokeStyle = stroke; c.strokeText(str, x, y); c.fillStyle = fill; c.fillText(str, x, y); };
+  const callout = (bx, by, px, py, str) => { c.font = '900 40px Montserrat'; const w = c.measureText(str).width + 50;
+    c.strokeStyle = '#ffd23f'; c.lineWidth = 6; c.beginPath(); c.moveTo(bx, by); c.lineTo(px, py); c.stroke(); c.fillStyle = '#ffd23f'; c.beginPath(); c.arc(px, py, 11, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(8,12,20,.9)'; c.beginPath(); c.roundRect(bx - w / 2, by - 36, w, 62, 16); c.fill(); c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText(str, bx, by + 6); };
+  const tag = () => { c.fillStyle = 'rgba(8,12,20,.8)'; c.beginPath(); c.roundRect(40, 40, 340, 84, 42); c.fill(); c.font = '400 52px Anton'; c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText('BODY HACKS', 210, 100); };
+  const stars = () => { for (let i = 0; i < 130; i++) { const x = R() * Wd, y = R() * Hd * .6, r = .8 + R() * 2.2; c.fillStyle = `rgba(230,240,255,${.3 + R() * .6})`; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill(); } };
+  const moon = (x, y, r) => { const h = c.createRadialGradient(x, y, r * .8, x, y, r * 3); h.addColorStop(0, 'rgba(200,220,255,.35)'); h.addColorStop(1, 'rgba(200,220,255,0)'); c.fillStyle = h; c.fillRect(x - r * 3, y - r * 3, r * 6, r * 6); c.fillStyle = '#f2f4ff'; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill(); };
+
+  if (V) {
+    const g = c.createLinearGradient(0, 0, 0, Hd); g.addColorStop(0, '#0a1220'); g.addColorStop(.6, '#1b2a44'); g.addColorStop(1, '#0a0f18'); c.fillStyle = g; c.fillRect(0, 0, Wd, Hd);
+    stars(); moon(900, 110, 60);
+    c.drawImage(scene, 0, 700, 1080, 1000, 0, 760, 1080, 1000);
+    const tf = c.createLinearGradient(0, 740, 0, 1000); tf.addColorStop(0, 'rgba(20,32,56,1)'); tf.addColorStop(1, 'rgba(20,32,56,0)'); c.fillStyle = tf; c.fillRect(0, 740, Wd, 260);
+    const bf = c.createLinearGradient(0, 1620, 0, 1750); bf.addColorStop(0, 'rgba(11,19,34,0)'); bf.addColorStop(1, 'rgba(11,19,34,1)'); c.fillStyle = bf; c.fillRect(0, 1620, Wd, 130); c.fillStyle = 'rgba(11,19,34,1)'; c.fillRect(0, 1750, Wd, Hd - 1750);
+    const bot = c.createLinearGradient(0, 1480, 0, Hd); bot.addColorStop(0, 'rgba(8,12,20,0)'); bot.addColorStop(1, 'rgba(8,12,20,.88)'); c.fillStyle = bot; c.fillRect(0, 1480, Wd, Hd - 1480);
+    c.save(); c.translate(540, 0); c.rotate(-.03);
+    T('WHY DOES SALIVA', 0, 300, 120, '#fff', '#0a1a2a', 18); T('FLOW WHILE', 0, 460, 150, '#fff', '#0a1a2a', 20); T('SLEEPING?!', 0, 640, 190, '#ffd23f', '#8c0e18', 26);
+    c.restore();
+    callout(800, 1520, 513, 1245, 'WET PILLOW?');
+    T('GLANDS KEEP WORKING ALL NIGHT', 540, 1800, 60, '#ffd23f', '#000', 14);
+    tag();
+  } else {
+    const g = c.createLinearGradient(0, 0, Wd, 0); g.addColorStop(0, '#0a1220'); g.addColorStop(1, '#1b2a44'); c.fillStyle = g; c.fillRect(0, 0, Wd, Hd);
+    stars(); moon(1220, 80, 36);
+    c.drawImage(scene, 120, 600, 830, 830, 560, 0, 720, 720);
+    const edge = c.createLinearGradient(560, 0, 680, 0); edge.addColorStop(0, 'rgba(16,26,44,1)'); edge.addColorStop(1, 'rgba(16,26,44,0)'); c.fillStyle = edge; c.fillRect(560, 0, 120, Hd);
+    c.save(); c.translate(280, 0); c.rotate(-.03);
+    T('WHY DOES', 0, 240, 100, '#fff', '#0a1a2a', 16); T('SALIVA FLOW', 0, 370, 92, '#fff', '#0a1a2a', 16); T('WHILE', 0, 490, 100, '#fff', '#0a1a2a', 16); T('SLEEPING?!', 0, 620, 110, '#ffd23f', '#8c0e18', 22);
+    c.restore();
+    callout(1000, 200, 901, 508, 'WET PILLOW?');
+    tag();
+  }
+  return cv.toDataURL('image/png');
+};
+</script>

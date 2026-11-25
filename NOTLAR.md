@@ -69,3 +69,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-23: hiccups kapakları: `videos/hiccups/cover/` (karakter + diyafram paneli).
 - 2026-11-23: UZUN VİDEO (16:9) 'Brain Tricks: 10 Mind-Bending Illusions' — `videos/brain-tricks/` (bölüm kartları, sese bölüm aralarına duraklama, 60 fps, 2560×1440 master, youtube-chapters.txt, kapak). Render: node render.cjs a b (60 fps).
 - 2026-11-24: goosebumps kapakları: `videos/goosebumps/cover/`.
+- 2026-11-25: drool kapakları: `videos/drool/cover/`.
