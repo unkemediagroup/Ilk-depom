@@ -1,0 +1,41 @@
+// ===== 4.video — BRAIN FREEZE (portrait world 1080×1920) =====
+function headPath() { ctx.beginPath(); ctx.moveTo(480, 420); ctx.bezierCurveTo(640, 400, 760, 470, 790, 600); ctx.bezierCurveTo(800, 660, 800, 700, 815, 740); ctx.bezierCurveTo(880, 820, 920, 850, 900, 875); ctx.bezierCurveTo(880, 900, 840, 895, 830, 915); ctx.bezierCurveTo(845, 945, 840, 965, 825, 975); ctx.bezierCurveTo(840, 1000, 835, 1030, 815, 1045); ctx.bezierCurveTo(820, 1110, 800, 1150, 740, 1170); ctx.bezierCurveTo(680, 1190, 640, 1220, 620, 1500); ctx.lineTo(360, 1500); ctx.bezierCurveTo(350, 1300, 250, 1150, 230, 900); ctx.bezierCurveTo(220, 620, 330, 440, 480, 420); ctx.closePath(); }
+function headSide(u, s, o) {
+  const g = ctx.createLinearGradient(0, 0, 0, 1920); g.addColorStop(0, o.cold ? '#0e2a40' : '#1a1420'); g.addColorStop(1, '#06080e'); ctx.fillStyle = g; ctx.fillRect(-2200, -2200, 5600, 6600);
+  headPath(); const sk = ctx.createLinearGradient(230, 500, 900, 1200); sk.addColorStop(0, '#d8a080'); sk.addColorStop(1, '#a86a50'); ctx.fillStyle = sk; ctx.fill();
+  ctx.fillStyle = '#2a1c14'; ctx.beginPath(); ctx.moveTo(480, 410); ctx.bezierCurveTo(660, 390, 770, 470, 780, 560); ctx.bezierCurveTo(640, 500, 480, 520, 400, 640); ctx.bezierCurveTo(330, 760, 330, 900, 300, 1060); ctx.bezierCurveTo(200, 900, 220, 520, 480, 410); ctx.fill();
+  ctx.fillStyle = '#b77656'; ctx.beginPath(); ctx.ellipse(420, 880, 50, 80, 0, 0, TAU); ctx.fill();
+  const squint = o.pain ? 1 : 0; ctx.strokeStyle = '#3a2218'; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(700, 735 - squint * 6); ctx.quadraticCurveTo(735, 750 + squint * 10, 770, 735); ctx.stroke(); ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(680, 690 + squint * 18); ctx.lineTo(780, 680 - squint * 6); ctx.stroke();
+  if (o.cut) { ctx.save(); headPath(); ctx.clip();
+    ctx.fillStyle = '#5a1a24'; ctx.beginPath(); ctx.moveTo(560, 915); ctx.lineTo(825, 915); ctx.quadraticCurveTo(840, 990, 820, 1030); ctx.lineTo(560, 1030); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#e8b0b4'; ctx.beginPath(); ctx.moveTo(520, 905); ctx.quadraticCurveTo(680, 880, 830, 912); ctx.lineTo(830, 925); ctx.quadraticCurveTo(680, 900, 520, 925); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#d4707a'; ctx.beginPath(); ctx.ellipse(680, 1020, 150, 60, -.05, Math.PI, TAU); ctx.fill();
+    const cold = o.chill ? clamp(u * 1.5) : 0, vc = o.vessel ? o.vessel(u, s) : 0, w = 30 * (1 + vc * .6);
+    tube([[400, 860], [520, 870], [640, 878], [760, 872]], w + 12, mix('#e6a7a0', '#a8c8e0', cold * .7)); tube([[400, 860], [520, 870], [640, 878], [760, 872]], w, mix('#c41c26', '#5a4aa0', cold));
+    if (o.cream) { ctx.fillStyle = '#f8e4ec'; ctx.beginPath(); ctx.ellipse(760, 945, 60, 32, 0, 0, TAU); ctx.fill(); ctx.fillStyle = '#e8a8c0'; ctx.beginPath(); ctx.ellipse(745, 952, 30, 14, 0, 0, TAU); ctx.fill(); for (let i = 0; i < 10; i++) { const ph = (s * .8 + i / 10) % 1; ctx.fillStyle = `rgba(200,230,255,${1 - ph})`; ctx.beginPath(); ctx.arc(760 + Math.sin(i * 2) * 50, 930 - ph * 70, 5, 0, TAU); ctx.fill(); } }
+    if (o.nerve) { const gx = 470, gy = 800, br = [[[gx, gy], [600, 700], [720, 600]], [[gx, gy], [620, 830], [790, 860]], [[gx, gy], [600, 980], [740, 1110]]]; for (const p of br) { tube(p, 16, '#efd9a2'); } spark(gx, gy, 60, .8);
+      for (let k = 0; k < 3; k++) { const p = br[k], ph = (s * 1.4 + k * .33) % 1, q = ph < .5 ? [lerp(p[0][0], p[1][0], ph * 2), lerp(p[0][1], p[1][1], ph * 2)] : [lerp(p[1][0], p[2][0], ph * 2 - 1), lerp(p[1][1], p[2][1], ph * 2 - 1)]; spark(q[0], q[1], 70, 1, k === 0 ? '255,120,120' : '255,240,200'); } }
+    ctx.restore(); }
+  if (o.pain) { const k = .6 + .4 * Math.sin(s * 10); spark(740, 600, 280, k, '255,70,60'); ctx.strokeStyle = `rgba(255,230,120,${k})`; ctx.lineWidth = 9; for (let i = 0; i < 5; i++) { const a = -2.4 + i * .45, r0 = 150, x0 = 740 + Math.cos(a) * r0, y0 = 600 + Math.sin(a) * r0; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + Math.cos(a) * 40 + 15, y0 + Math.sin(a) * 40); ctx.lineTo(x0 + Math.cos(a) * 80, y0 + Math.sin(a) * 80); ctx.stroke(); } }
+  if (o.cold) { const R = RN(4); for (let i = 0; i < 40; i++) { const x = R() * 1080, y = (R() * 2000 + s * 40 * (1 + R())) % 2000 - 40; ctx.fillStyle = `rgba(220,240,255,${.3 + R() * .5})`; ctx.beginPath(); ctx.arc(x, y, 3 + R() * 5, 0, TAU); ctx.fill(); } }
+  if (o.labels) { ctx.textAlign = 'left'; for (const [t, x, y, c] of o.labels) txt(t, x, y, 40, c || '#fff', 'rgba(0,0,0,.9)', 9); }
+  if (o.text) { ctx.textAlign = 'center'; txt(o.text, o.tx || 540, o.ty || 330, o.ts || 100, '#ffd23f', '#000', 16, '400', 'Anton'); }
+}
+function iceCream(u, s, o) {
+  const g = ctx.createLinearGradient(0, 0, 0, 1920); g.addColorStop(0, '#8ec8e8'); g.addColorStop(1, '#2a5a80'); ctx.fillStyle = g; ctx.fillRect(-2200, -2200, 5600, 6600);
+  const R = RN(2); for (let i = 0; i < 50; i++) { const x = R() * 1080, y = (R() * 2000 + s * 60) % 2000; ctx.fillStyle = 'rgba(255,255,255,.6)'; ctx.beginPath(); ctx.arc(x, y, 3 + R() * 6, 0, TAU); ctx.fill(); }
+  ctx.fillStyle = '#d8a060'; ctx.beginPath(); ctx.moveTo(380, 1000); ctx.lineTo(700, 1000); ctx.lineTo(540, 1700); ctx.closePath(); ctx.fill(); ctx.save(); ctx.beginPath(); ctx.moveTo(380, 1000); ctx.lineTo(700, 1000); ctx.lineTo(540, 1700); ctx.closePath(); ctx.clip(); ctx.strokeStyle = '#b07a3a'; ctx.lineWidth = 6; for (let i = -8; i < 10; i++) { ctx.beginPath(); ctx.moveTo(300 + i * 50, 1000); ctx.lineTo(600 + i * 50, 1700); ctx.moveTo(800 - i * 50, 1000); ctx.lineTo(500 - i * 50, 1700); ctx.stroke(); } ctx.restore();
+  const bite = o.bite ? clamp(s / .4) : 0;
+  for (const [x, y, r, c] of [[540, 920, 210, '#f6d6e2'], [450, 760, 170, '#fff4e4'], [630, 760, 170, '#e88aa8'], [540, 600, 150, '#f8e8c8']]) { const gg = ctx.createRadialGradient(x - r * .3, y - r * .3, r * .1, x, y, r); gg.addColorStop(0, '#ffffff'); gg.addColorStop(.4, c); gg.addColorStop(1, mix(c, '#806070', .35)); ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); }
+  if (bite > 0) { ctx.fillStyle = g; for (let k = 0; k < 6; k++) { ctx.beginPath(); ctx.arc(700 + Math.cos(k) * 20, 560 + k * 40, 90 * bite, 0, TAU); ctx.fill(); } ctx.fillStyle = 'rgba(255,255,255,.5)'; for (let k = 0; k < 6; k++) { ctx.beginPath(); ctx.arc(620 + Math.cos(k) * 10, 560 + k * 40, 8 * bite, 0, TAU); ctx.fill(); } }
+  if (o.bite) { ctx.textAlign = 'center'; txt('CHOMP!', 540, 1820, 110, '#fff', '#2a5a80', 18, '400', 'Anton'); }
+}
+function vesselPulse(u, s, o) {                                                // vessel cross-section: constrict → dilate, pressure spike
+  bgDeep(s, ['#2a1018', '#0c0408']); const ph = o.phase === 'dilate' ? 1 : 0, k = eio(clamp(u * 1.4)), rl = o.phase === 'dilate' ? lerp(140, 330, k) : lerp(300, 120, k), cx = 960, cy = 520;
+  ctx.fillStyle = '#e2b2a2'; ctx.beginPath(); ctx.arc(cx, cy, rl + 150, 0, TAU); ctx.fill(); ctx.fillStyle = '#b8525e'; ctx.beginPath(); ctx.arc(cx, cy, rl + 90, 0, TAU); ctx.fill(); ctx.fillStyle = '#f2b8ae'; ctx.beginPath(); ctx.arc(cx, cy, rl + 12, 0, TAU); ctx.fill();
+  const lg = ctx.createRadialGradient(cx, cy, 10, cx, cy, rl); lg.addColorStop(0, o.phase === 'dilate' ? '#e0303a' : '#8a3a5a'); lg.addColorStop(1, '#6a0a14'); ctx.fillStyle = lg; ctx.beginPath(); ctx.arc(cx, cy, rl, 0, TAU); ctx.fill();
+  const R = RN(3); ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, rl, 0, TAU); ctx.clip(); for (let i = 0; i < 16; i++) { const a = R() * TAU + s * (o.phase === 'dilate' ? 1.2 : .2), d = R() * rl; rbc(cx + Math.cos(a) * d, cy + Math.sin(a) * d, 34, i + s, .6, o.phase === 'dilate' ? 1 : .4); } ctx.restore();
+  for (let i = 0; i < 6; i++) { const a = i / 6 * TAU + .3, inw = o.phase !== 'dilate', r1 = rl + 230, r2 = rl + 170; ctx.save(); ctx.translate(cx + Math.cos(a) * (inw ? r1 : r2), cy + Math.sin(a) * (inw ? r1 : r2)); ctx.rotate(a + (inw ? Math.PI : 0)); ctx.fillStyle = inw ? '#8ec8f0' : '#ff6a5a'; ctx.beginPath(); ctx.moveTo(40, 0); ctx.lineTo(-20, -30); ctx.lineTo(-20, 30); ctx.closePath(); ctx.fill(); ctx.fillRect(-70, -10, 55, 20); ctx.restore(); }
+  ctx.textAlign = 'center'; txt(o.phase === 'dilate' ? 'DILATE!' : 'CONSTRICT', cx, 900, 100, o.phase === 'dilate' ? '#ff6a5a' : '#8ec8f0', '#000', 16, '400', 'Anton');
+  if (o.spike && u > .4) txt('PRESSURE SPIKE ↑', cx, 120, 84, '#ffd23f', '#000', 14, '400', 'Anton');
+}
