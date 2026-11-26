@@ -46,7 +46,7 @@ function s1(t) {
   const tk = Math.max(0, Math.sin(t * 14)) * seg(t, .3, 3.4);
   cam({ zoom: 1.12 - .08 * eo(seg(t, 0, 3.5)), t, shake: 2 + 8 * seg(t, 2.0, 2.3) * (1 - seg(t, 2.3, 2.8)) }, () => {
     ctx.fillStyle = '#8a5a2a'; for (let i = 0; i < 8; i++) ctx.fillRect(i * 150, 1150, 20, 200); ctx.fillRect(0, 1190, W, 16); ctx.fillRect(0, 1260, W, 16);
-    cow(470, 1450, 900, t, tk);
+    cow(360, 1450, 820, t, tk);
   });
   say('HELLO, HUMAN.', 640, 590, 64, seg(t, .3, .6), '#fff', '#111', -120);
   if (t > 2.0) say('WE NEED TO TALK.', 600, 760, 52, seg(t, 2.0, 2.3), GOLD, '#111', -120);
