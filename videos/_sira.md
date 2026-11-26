@@ -25,7 +25,7 @@
 | 2 | What If the Sun Suddenly Went Out? | videos/s2-sun-out | bitti → 2.video.mp4 |
 | 3 | What If Humans Became Immortal? | videos/s2-immortal | bitti → 3.video.mp4 |
 | 4 | What If Gravity Doubled on Earth? | videos/s2-gravity | bitti → 4.video.mp4 |
-| 5 | What If Everyone Could Read Minds? | videos/s2-mindread | sırada |
+| 5 | What If Everyone Could Read Minds? | videos/s2-mindread | bitti → 5.video.mp4 |
 | 6 | What If Animals Could Talk? | videos/s2-animals | sırada |
 | 7 | What If the Internet Shut Down Forever? | videos/s2-internet | sırada |
 | 8 | What If All Humans Vanished Today? | videos/s2-humans-gone | sırada |
