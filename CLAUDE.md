@@ -124,3 +124,6 @@ Tüm Shorts kanallarında (Tarih, Finans, What If, Body Hacks, Beyond, Motivasyo
 - Çıktı adı = ses dosyasının adı: "1.video ses" → `1.video.mp4` (render ve gönderim bu isimle).
 - YT Shorts 1080×1920 kaynak, yüksek kalite; son adım `videos/_tools/finalize.sh` (1440×2560). Gönderim ≤400 MB.
 - Kullanıcıya yazarken caveman tarzı (kısa).
+
+## Disk yeri kuralı (2026-11-26, kullanıcı)
+- Yer kalmazsa: tüm kanallarda EN ESKİ 6–7 videonun çıktı dosyalarını (mp4, out/) silme izni var. Önce yalnızca gerekirse.
