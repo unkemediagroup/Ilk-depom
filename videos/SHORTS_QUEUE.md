@@ -4,14 +4,11 @@ Sahne yapısı: `<x>_scenes.js` + `seg.js`; main.js = b_head.js(DUR) + ear-ring/
 
 | # | klasör | durum |
 |---|--------|-------|
-| 1-10 | … | gönderildi |
-| 11 | foot-asleep (42.4) | render |
-| 12 | deja-vu | words hazır, sahne yazılacak |
-| 13 | own-voice | words hazır |
-| 14 | butterflies | words hazır |
-| 15 | dark-circles | words hazır |
-| 16 | teeth-chatter | words hazır |
-| 17 | spicy-hot | words |
-| 18 | dehydration-headache | words |
-| 19 | nail-spots | words |
-| 20 | hold-sneeze | words |
+| 1-13 | … | gönderildi |
+| 14 | butterflies (41.6) | render |
+| 15 | dark-circles (41.0) | sahne hazır |
+| 16 | teeth-chatter (40.3) | sahne hazır |
+| 17 | spicy-hot (42.3) | sahne hazır |
+| 18 | dehydration-headache (44.4) | sahne hazır |
+| 19 | nail-spots (38.8) | sahne hazır |
+| 20 | hold-sneeze (40.7) | sahne hazır |
