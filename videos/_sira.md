@@ -40,3 +40,4 @@
 | 17 | What If Every Human Had the Same Face? | videos/s2-same-face | sırada |
 | 18 | What If the Earth's Core Cooled Down? | videos/s2-core-cool | sırada |
 | 19 | What If Humans Could Teleport? | videos/s2-teleport | sırada |
+| 20 | What If Time Moved Backwards for One Day? | videos/s2-time-back | sırada |
