@@ -1,0 +1,143 @@
+1
+00:00:00,000 --> 00:00:01,100
+The moment the global
+
+2
+00:00:01,100 --> 00:00:02,180
+internet went dark,
+
+3
+00:00:02,860 --> 00:00:04,160
+modern civilization would freeze
+
+4
+00:00:04,160 --> 00:00:04,880
+in its tracks.
+
+5
+00:00:05,900 --> 00:00:06,560
+Within hours,
+
+6
+00:00:07,120 --> 00:00:08,220
+global stock markets would
+
+7
+00:00:08,220 --> 00:00:08,720
+crash,
+
+8
+00:00:09,400 --> 00:00:10,520
+banking systems would lock
+
+9
+00:00:10,520 --> 00:00:10,860
+up,
+
+10
+00:00:11,440 --> 00:00:12,780
+and ATMs would stop
+
+11
+00:00:12,780 --> 00:00:13,800
+dispensing cash.
+
+12
+00:00:14,860 --> 00:00:16,260
+Supply chains rely entirely
+
+13
+00:00:16,260 --> 00:00:17,460
+on digital tracking,
+
+14
+00:00:17,980 --> 00:00:19,260
+meaning grocery stores and
+
+15
+00:00:19,260 --> 00:00:20,820
+pharmacies would run completely
+
+16
+00:00:20,820 --> 00:00:22,260
+empty within three days.
+
+17
+00:00:23,220 --> 00:00:24,460
+Hospitals would lose access
+
+18
+00:00:24,460 --> 00:00:25,840
+to digital patient records,
+
+19
+00:00:25,840 --> 00:00:27,300
+while power grids and
+
+20
+00:00:27,300 --> 00:00:28,660
+water treatment plants struggle
+
+21
+00:00:28,660 --> 00:00:30,040
+to operate without remote
+
+22
+00:00:30,040 --> 00:00:30,940
+network controls.
+
+23
+00:00:32,220 --> 00:00:33,140
+Without social media,
+
+24
+00:00:33,440 --> 00:00:33,800
+streaming,
+
+25
+00:00:34,220 --> 00:00:35,100
+or instant messaging,
+
+26
+00:00:36,020 --> 00:00:36,800
+billions of people would
+
+27
+00:00:36,800 --> 00:00:38,440
+face sudden isolation and
+
+28
+00:00:38,440 --> 00:00:38,860
+panic.
+
+29
+00:00:39,820 --> 00:00:40,940
+Over the following years,
+
+30
+00:00:41,480 --> 00:00:42,480
+humanity would be forced
+
+31
+00:00:42,480 --> 00:00:43,760
+to rebuild an analog
+
+32
+00:00:43,760 --> 00:00:45,140
+world powered by paper
+
+33
+00:00:45,140 --> 00:00:45,680
+records,
+
+34
+00:00:46,120 --> 00:00:46,760
+local cash,
+
+35
+00:00:47,220 --> 00:00:47,900
+and face -to -face
+
+36
+00:00:47,900 --> 00:00:48,320
+communities.
