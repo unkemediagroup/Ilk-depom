@@ -30,4 +30,4 @@
 | 7 | What If the Internet Shut Down Forever? | videos/s2-internet | bitti → 7.video.mp4 |
 | 8 | What If All Humans Vanished Today? | videos/s2-humans-gone | bitti → 8.video.mp4 |
 | 9 | What If You Never Felt Pain? | videos/s2-no-pain | bitti → 9.video.mp4 |
-| 10 | What If Earth Had Two Moons? | videos/s2-two-moons | sırada |
+| 10 | What If Earth Had Two Moons? | videos/s2-two-moons | bitti → 10.video.mp4 |
