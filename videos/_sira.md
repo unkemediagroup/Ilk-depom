@@ -34,3 +34,8 @@
 | 11 | What If All Trees Disappeared? | videos/s2-no-trees | sırada |
 | 12 | What If Humans Never Aged Past 25? | videos/s2-age25 | sırada |
 | 13 | What If a Black Hole Entered Our Solar System? | videos/s2-blackhole | sırada |
+| 14 | What If Humans Could Breathe Underwater? | videos/s2-gills | sırada |
+| 15 | What If All Electricity Stopped Working? | videos/s2-electricity | sırada |
+| 16 | What If Pangea Never Broke Apart? | videos/s2-pangea | sırada |
+| 17 | What If Every Human Had the Same Face? | videos/s2-same-face | sırada |
+| 18 | What If the Earth's Core Cooled Down? | videos/s2-core-cool | sırada |
