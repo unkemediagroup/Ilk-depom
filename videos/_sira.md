@@ -39,3 +39,4 @@
 | 16 | What If Pangea Never Broke Apart? | videos/s2-pangea | sırada |
 | 17 | What If Every Human Had the Same Face? | videos/s2-same-face | sırada |
 | 18 | What If the Earth's Core Cooled Down? | videos/s2-core-cool | sırada |
+| 19 | What If Humans Could Teleport? | videos/s2-teleport | sırada |
