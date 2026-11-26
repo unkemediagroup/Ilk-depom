@@ -1,0 +1,36 @@
+// ===== 14.video — BUTTERFLIES IN YOUR STOMACH (portrait world 1080×1920); needs stomach-growl sg_scenes =====
+function butterfly(x, y, sc, s, col, ph = 0) { const f = Math.abs(Math.sin(s * 14 + ph)); ctx.save(); ctx.translate(x, y); ctx.scale(sc, sc); ctx.fillStyle = col;
+  for (const d of [-1, 1]) { ctx.save(); ctx.scale(d * (.25 + .75 * f), 1); ctx.beginPath(); ctx.ellipse(34, -22, 36, 30, -.5, 0, TAU); ctx.fill(); ctx.beginPath(); ctx.ellipse(26, 22, 24, 20, .5, 0, TAU); ctx.fill(); ctx.restore(); }
+  ctx.fillStyle = '#2a1a22'; ctx.beginPath(); ctx.ellipse(0, 0, 7, 32, 0, 0, TAU); ctx.fill(); ctx.restore(); }
+function swarm(cx, cy, rx, ry, n, s, a = 1) { const R = RN(4), cols = ['#ffd23f', '#ff8ab0', '#8ad0ff', '#c08aff', '#ffa060']; for (let i = 0; i < n; i++) { const p = R() * TAU, sp = .6 + R() * .8, x = cx + Math.cos(s * sp + p) * rx * (.4 + R() * .6), y = cy + Math.sin(s * sp * 1.3 + p) * ry * (.4 + R() * .6); ctx.save(); ctx.globalAlpha = a; butterfly(x, y, .8 + R() * .7, s, cols[i % 5], i); ctx.restore(); } }
+function belly(u, s, o) {                                                        // person front view; translucent belly full of butterflies
+  bgDeep(s, o.hue || ['#2a1a3a', '#0e0818']); const cx = 540; ctx.save(); ctx.translate(0, 150);
+  ctx.fillStyle = '#d9a07a'; ctx.beginPath(); ctx.arc(cx, 470, 120, 0, TAU); ctx.fill(); ctx.fillStyle = '#2a1a12'; ctx.beginPath(); ctx.arc(cx, 445, 124, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+  ctx.strokeStyle = '#3a2216'; ctx.lineWidth = 8; ctx.lineCap = 'round'; for (const d of [-1, 1]) { ctx.beginPath(); ctx.arc(cx + d * 42, 470, 11, 0, TAU); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(cx - 30, 530); ctx.quadraticCurveTo(cx, 515 + Math.sin(s * 8) * 6, cx + 30, 530); ctx.stroke();
+  ctx.fillStyle = '#3a7ac8'; ctx.beginPath(); ctx.roundRect(cx - 230, 610, 460, 760, 120); ctx.fill(); tube([[cx - 210, 660], [cx - 300, 980], [cx - 280, 1240]], 80, '#3a7ac8'); tube([[cx + 210, 660], [cx + 300, 980], [cx + 280, 1240]], 80, '#3a7ac8');
+  const g = ctx.createRadialGradient(cx, 1060, 30, cx, 1060, 260); g.addColorStop(0, 'rgba(255,200,220,.55)'); g.addColorStop(1, 'rgba(255,200,220,.08)'); ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(cx, 1060, 220, 230, 0, 0, TAU); ctx.fill();
+  ctx.save(); ctx.beginPath(); ctx.ellipse(cx, 1060, 210, 220, 0, 0, TAU); ctx.clip(); swarm(cx, 1060, 170, 170, o.n || 9, s); ctx.restore();
+  ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(cx, 1060, 220, 230, 0, 0, TAU); ctx.stroke();
+  if (o.icons) { const k = eo(clamp(u * 3)); ctx.save(); ctx.globalAlpha = k; ctx.fillStyle = '#ff5a7a'; for (const [x, y, r] of [[190, 760, 1], [150, 900, .7]]) { ctx.save(); ctx.translate(x, y + Math.sin(s * 3 + x) * 10); ctx.scale(r, r); ctx.beginPath(); ctx.moveTo(0, 30); ctx.bezierCurveTo(-70, -20, -30, -70, 0, -35); ctx.bezierCurveTo(30, -70, 70, -20, 0, 30); ctx.fill(); ctx.restore(); }
+    ctx.fillStyle = '#f2ece4'; ctx.save(); ctx.translate(900, 800); ctx.rotate(.12 + Math.sin(s * 2) * .05); ctx.fillRect(-70, -90, 140, 180); ctx.fillStyle = '#c03a3a'; ctx.textAlign = 'center'; txt('A+', 0, 20, 60, '#c03a3a', 'rgba(0,0,0,0)', 0, '400', 'Anton'); ctx.restore(); ctx.restore(); }
+  ctx.restore();
+}
+// body outline with blood routing; o.stress: blood diverted from stomach to heart & muscles
+function bloodRoute(u, s, o) {
+  bgDeep(s, ['#2a1018', '#0e0608']); const cx = 540, k = o.stress ? eio(clamp(u * 2)) : 0;
+  ctx.fillStyle = 'rgba(255,255,255,.07)'; ctx.beginPath(); ctx.arc(cx, 470, 110, 0, TAU); ctx.fill(); ctx.beginPath(); ctx.roundRect(cx - 200, 600, 400, 640, 110); ctx.fill(); tube([[cx - 190, 650], [cx - 330, 980], [cx - 320, 1260]], 90, 'rgba(255,255,255,.07)'); tube([[cx + 190, 650], [cx + 330, 980], [cx + 320, 1260]], 90, 'rgba(255,255,255,.07)'); tube([[cx - 90, 1220], [cx - 110, 1700]], 120, 'rgba(255,255,255,.07)'); tube([[cx + 90, 1220], [cx + 110, 1700]], 120, 'rgba(255,255,255,.07)');
+  ctx.fillStyle = '#e8a0b0'; ctx.beginPath(); ctx.ellipse(cx, 460, 80, 64, 0, 0, TAU); ctx.fill();
+  const hb = 1 + .08 * Math.max(0, Math.sin(s * (6 + 6 * k))); ctx.save(); ctx.translate(cx + 40, 780); ctx.scale(hb * (1 + .2 * k), hb * (1 + .2 * k)); ctx.fillStyle = '#e03a4a'; ctx.beginPath(); ctx.moveTo(0, 60); ctx.bezierCurveTo(-110, -10, -50, -100, 0, -45); ctx.bezierCurveTo(50, -100, 110, -10, 0, 60); ctx.fill(); ctx.restore();
+  const st = 1 - k * .6; ctx.fillStyle = `rgb(${Math.round(lerp(150, 220, st))},${Math.round(lerp(150, 120, st))},${Math.round(lerp(160, 110, st))})`; ctx.beginPath(); ctx.ellipse(cx - 30, 1040, 120 * (1 - .12 * k), 90 * (1 - .12 * k), -.3, 0, TAU); ctx.fill();
+  const musc = [[cx - 320, 1100], [cx + 320, 1100], [cx - 105, 1500], [cx + 105, 1500]]; for (const [x, y] of musc) { ctx.fillStyle = `rgba(220,70,80,${.35 + .55 * k})`; ctx.beginPath(); ctx.ellipse(x, y, 55 + 15 * k, 110 + 20 * k, 0, 0, TAU); ctx.fill(); if (k > .3) spark(x, y, 150, .4 * k, '255,90,100'); }
+  const R = RN(6); for (let i = 0; i < 46; i++) { const toSt = R() > k * .9, tgt = toSt ? [cx - 30 + (R() - .5) * 160, 1040 + (R() - .5) * 120] : (R() < .25 ? [cx + 40, 780] : musc[Math.floor(R() * 4)]), ph = (s * (.35 + R() * .3) + R()) % 1, x = lerp(cx + 40, tgt[0], ph), y = lerp(780, tgt[1], ph); ctx.fillStyle = '#ff4a5a'; ctx.beginPath(); ctx.ellipse(x, y, 13, 9, ph * 4, 0, TAU); ctx.fill(); }
+  ctx.textAlign = 'left'; label('STOMACH', cx - 30 - 160, 1180, 44, k > .5 ? '#9aa0ac' : '#ffb0a0', 'left'); label('HEART', cx + 130, 790, 44, '#ff8a9a', 'left'); if (k > .3) { ctx.textAlign = 'center'; label('MUSCLES', cx + 320, 1270, 40, '#ff8a9a'); }
+}
+function secondBrain(u, s) { gut(u, s); ctx.textAlign = 'center'; const k = eo(clamp(u * 2.5 - .4)); ctx.save(); ctx.globalAlpha = k; txt('2ND BRAIN', 540, 560, 150, '#ffd23f', '#000', 20, '400', 'Anton'); ctx.restore(); txt('MILLIONS OF NEURONS', 540, 1300, 70, '#fff', '#000', 12, '400', 'Anton'); }
+function tightGut(u, s, o) {                                                     // stomach lining vessels & muscle squeeze rapidly
+  const q = .5 + .5 * Math.sin(s * 11), sq = (o.k || 1) * q; ctx.save(); ctx.translate(540, 1000); ctx.scale(1 - .05 * sq, 1 - .07 * sq); ctx.translate(-540, -1000); stomachOrgan(u, s, {}); ctx.restore();
+  ctx.save(); stomachPath(); ctx.clip(); for (let i = 0; i < 9; i++) { const p = wavy(260, 680 + i * 95, .15, 700, 18 * (1 - sq * .6), 5); tube(p, 14 - 8 * sq, `rgba(160,20,40,${.6 + .3 * sq})`); } ctx.restore();
+  for (const [x, y, a] of [[230, 900, Math.PI], [880, 1050, 0], [560, 1560, Math.PI / 2]]) { ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.strokeStyle = `rgba(255,210,63,${.5 + .5 * sq})`; ctx.lineWidth = 12; ctx.beginPath(); ctx.moveTo(60, -40); ctx.lineTo(0, 0); ctx.lineTo(60, 40); ctx.stroke(); ctx.restore(); }
+  if (o.nerve) { const R = RN(3); for (let i = 0; i < 14; i++) { const x = 330 + R() * 450, y = 700 + R() * 750, f = .5 + .5 * Math.sin(s * 9 + i * 1.7); spark(x, y, 80, .9 * f, '255,240,160'); } swarm(560, 1060, 220, 300, 6, s, eo(clamp(u * 3 - .5)) * .9); }
+  ctx.textAlign = 'center'; txt(o.text || 'SQUEEZE!', 540 + Math.sin(s * 30) * 4, 500, 110, '#ffd23f', '#000', 16, '400', 'Anton');
+}
