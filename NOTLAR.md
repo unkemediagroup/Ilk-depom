@@ -70,3 +70,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-23: Caveman skill'leri kuruldu (kullanıcı: 'her code kanalına kur'), kaynak branch claude/magical-mccarthy-tcjaz8 a61130e.
 - 2026-11-24: 8.video kapağı: `videos/mind-read/8.video-kapak.jpg`.
 - 2026-11-25: 9.video kapağı: `videos/ai-rule/9.video-kapak.jpg` (metne göre).
+- 2026-11-26: Seri2 #1 `videos/s2-oxygen/1.video.mp4` (60fps, 1440p finalize; mp4 git dışı, raw.mp4 da). Not: finalize çıktısı ~200MB > GitHub 100MB sınırı.
