@@ -4,11 +4,4 @@ Sahne yapısı: `<x>_scenes.js` + `seg.js`; main.js = b_head.js(DUR) + ear-ring/
 
 | # | klasör | durum |
 |---|--------|-------|
-| 1-13 | … | gönderildi |
-| 14 | butterflies (41.6) | render |
-| 15 | dark-circles (41.0) | sahne hazır |
-| 16 | teeth-chatter (40.3) | sahne hazır |
-| 17 | spicy-hot (42.3) | sahne hazır |
-| 18 | dehydration-headache (44.4) | sahne hazır |
-| 19 | nail-spots (38.8) | sahne hazır |
-| 20 | hold-sneeze (40.7) | sahne hazır |
+| 1-20 | … | HEPSİ gönderildi |
