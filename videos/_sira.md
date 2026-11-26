@@ -27,7 +27,7 @@
 | 4 | What If Gravity Doubled on Earth? | videos/s2-gravity | bitti → 4.video.mp4 |
 | 5 | What If Everyone Could Read Minds? | videos/s2-mindread | bitti → 5.video.mp4 |
 | 6 | What If Animals Could Talk? | videos/s2-animals | bitti → 6.video.mp4 |
-| 7 | What If the Internet Shut Down Forever? | videos/s2-internet | sırada |
+| 7 | What If the Internet Shut Down Forever? | videos/s2-internet | bitti → 7.video.mp4 |
 | 8 | What If All Humans Vanished Today? | videos/s2-humans-gone | sırada |
 | 9 | What If You Never Felt Pain? | videos/s2-no-pain | sırada |
 | 10 | What If Earth Had Two Moons? | videos/s2-two-moons | sırada |
