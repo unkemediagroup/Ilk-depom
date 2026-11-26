@@ -25,7 +25,7 @@ function s1(t) {
 // ---------- S2 3.44–6.64: Dünya ayak izimizi siler ----------
 function s2(t) {
   const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#9fd8ff'); g.addColorStop(1, '#6ab84a'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  const er = eio(seg(t, 4.64, 6.4));
+  const er = eio(seg(t, 5.2, 6.6));
   cam({ zoom: 1.04, t, shake: 2 }, () => {
     ctx.fillStyle = '#5a9a3a'; ctx.fillRect(-300, 600, W + 600, 1400);
     // betondan ayak izi
@@ -125,7 +125,7 @@ function s7(t) {
     ctx.fillStyle = '#d89a5a'; ctx.beginPath(); ctx.moveTo(-300, H); for (let x = -300; x <= W + 300; x += 30) ctx.lineTo(x, 1200 + Math.sin(x * .006) * 50); ctx.lineTo(W + 300, H); ctx.fill();
     if (!late) { const R = RN(4); for (let i = 0; i < 7; i++) { const x = 60 + i * 150, h = (400 + R() * 400) * (1 - cr), w = 120; if (h > 5) { ctx.fillStyle = 'rgba(110,100,90,.9)'; ctx.fillRect(x, 1200 - h, w, h); } }
       if (cr > 0) { const R2 = RN(7); for (let i = 0; i < 200; i++) { const x = R2() * W, y0 = 500 + R2() * 700, q = clamp(cr * 1.4 - R2() * .4); ctx.fillStyle = `rgba(110,100,90,${1 - q})`; ctx.fillRect(x, y0 + q * q * 600, 10, 10); } } }
-    else { pyramid(330, 1210, 560 * eback(seg(t, 44.6, 45.0))); pyramid(560, 1210, 380 * eback(seg(t, 44.8, 45.2))); rushmore(830, 1210, 440 * eback(seg(t, 45.6, 46.0))); }
+    else { pyramid(300, 1230, 720 * eback(seg(t, 44.6, 45.0))); pyramid(600, 1230, 440 * eback(seg(t, 44.8, 45.2))); rushmore(820, 1230, 560 * eback(seg(t, 45.6, 46.0))); }
   });
   ctx.save(); ctx.fillStyle = 'rgba(0,0,0,.45)'; ctx.beginPath(); ctx.roundRect(220, 300, 640, 170, 40); ctx.fill(); ctx.restore();
   txt('YEAR ' + Math.round(10000 * eo(seg(t, 36.74, 37.8))).toLocaleString('en-US'), W / 2, 385, 110, '#fff', { align: 'center', font: 'Anton', weight: 400 });
