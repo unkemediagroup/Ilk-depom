@@ -127,3 +127,6 @@ Tüm Shorts kanallarında (Tarih, Finans, What If, Body Hacks, Beyond, Motivasyo
 
 ## Disk yeri kuralı (2026-11-26, kullanıcı)
 - Yer kalmazsa: tüm kanallarda EN ESKİ 6–7 videonun çıktı dosyalarını (mp4, out/) silme izni var. Önce yalnızca gerekirse.
+
+## Parçalı gönderim (2026-11-27, kullanıcı)
+- İstenirse her videoyu `ffmpeg -c copy -f segment` ile 3 parçaya böl (≤~80 MB), adı `N.video parça K.mp4`. Kalite aynı; sıkıştırılmış küçük sürüm İSTEMİYOR. Numara sırasıyla gönder.
