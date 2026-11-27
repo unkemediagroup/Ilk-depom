@@ -68,3 +68,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-24: millionaire kapağı: 'YOU DON'T NEED $1,000,000 JUST TIME' + büyüme eğrisi $1M bayrağı + YOU $216K / MARKET $800K rozeti (covers/millionaire-cover.png).
 - 2026-11-25: debt kapağı: 'DEBT IS A BURDEN / A TOOL FOR THE RICH' + sol gri zincir/ağırlık vs sağ altın külçe (LEVERAGE) + TAX-FREE LOAN $0 / STOCK IS COLLATERAL rozeti (covers/debt-cover.png).
 - 2026-11-27: billionaire-broke kapağı: 'LOSE IT ALL? THEY LOSE OTHER PEOPLE'S MONEY' + ortada sağlam kasa (UNTOUCHED) + alt solda yanan başkalarının banknotları + COMPANY BANKRUPT / PERSONAL UNTOUCHED rozeti (covers/billionaire-broke-cover.png).
+- 2026-11-27: petrodollar kapağı: 'HOW DID THE DOLLAR BECOME KING?' + taçlı petrol varili üzerinde yeşil $ etiketi + retro güneş ışınları + OIL SOLD IN / ONLY $ rozeti (covers/petrodollar-cover.png).
