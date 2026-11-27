@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas><canvas id="early" width="1080" height="1920"></canvas><canvas id="fear" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas><canvas id="early" width="1080" height="1920"></canvas><canvas id="fear" width="1080" height="1920"></canvas><canvas id="drip" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -174,6 +174,28 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   text(g, 'OVERCOMING', 540, 230, 130, WHITE, 16, -.03); text(g, 'FEAR', 540, 400, 200, RED, 50, -.03);
   g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-400, -72, 800, 144); g.restore();
   text(g, 'OF FAILURE', 540, 600, 128, '#0a0000', 0, -.03);
+}
+{ const g = document.getElementById('drip').getContext('2d');
+  g.fillStyle = '#040406'; g.fillRect(0, 0, 1080, 1920);
+  const rg = g.createRadialGradient(800, 1100, 0, 800, 1100, 800); rg.addColorStop(0, 'rgba(255,40,60,.3)'); rg.addColorStop(1, 'rgba(255,40,60,0)'); g.fillStyle = rg; g.fillRect(0, 0, 1080, 1920);
+  // the rock face: a dark cliff the drops keep hitting
+  const rock = () => { g.beginPath(); g.moveTo(500, 1562); g.lineTo(560, 1100); g.lineTo(600, 960); g.lineTo(700, 840); g.lineTo(790, 760); g.lineTo(860, 780); g.lineTo(960, 900); g.lineTo(1000, 1150); g.lineTo(1080, 1250); g.lineTo(1080, 1562); g.closePath(); };
+  rock(); g.fillStyle = '#0d0d12'; g.fill(); g.strokeStyle = '#6a6a76'; g.lineWidth = 5; g.stroke();
+  // a channel the drops have worn into the stone
+  g.save(); g.shadowColor = RED; g.shadowBlur = 24; g.strokeStyle = 'rgba(255,42,60,.75)'; g.lineWidth = 9; g.beginPath(); g.moveTo(800, 800); for (let y = 800; y <= 1500; y += 30) g.lineTo(800 + Math.sin(y * .05) * 6, y); g.stroke(); g.restore();
+  g.strokeStyle = 'rgba(160,160,175,.35)'; g.lineWidth = 3; g.beginPath(); g.moveTo(720, 1000); g.lineTo(760, 1080); g.lineTo(735, 1180); g.moveTo(905, 1000); g.lineTo(870, 1120); g.stroke();
+  // the drop about to fall, plus a smaller one below it
+  const drop = (x, y, r, a) => { g.save(); g.globalAlpha = a; g.beginPath(); g.moveTo(x, y - 2 * r); g.quadraticCurveTo(x + 1.1 * r, y - .2 * r, x, y + r); g.quadraticCurveTo(x - 1.1 * r, y - .2 * r, x, y - 2 * r); g.shadowColor = RED; g.shadowBlur = 30; g.fillStyle = RED; g.fill(); g.restore(); };
+  drop(800, 800, 30, 1); drop(800, 1000, 14, .8);
+  // puddle at the base with ripples
+  g.save(); g.fillStyle = 'rgba(255,42,60,.35)'; g.strokeStyle = RED; g.lineWidth = 4; g.beginPath(); g.ellipse(800, 1562, 190, 30, 0, 0, 7); g.fill(); g.stroke(); g.restore();
+  for (let i = 0; i < 3; i++) { g.strokeStyle = `rgba(255,42,60,${.5 - i * .15})`; g.lineWidth = 3; g.beginPath(); g.ellipse(800, 1562, 190 + i * 50, 30 + i * 12, 0, 0, 7); g.stroke(); }
+  // AYAZ calm on the ground, facing the rock, not moving
+  emberGround(g, 330, 1560, 1.0, 1, { mode: 'kor' }); ayaz(g, 330, 1560, 1.0, POSE.stand, { t: 1, mode: 'kor', glow: 1.7, wind: .4 });
+  embers(g, 40, 101, 600, 1700); vignette(g);
+  text(g, 'THE SILENT POWER', 540, 230, 120, WHITE, 16, -.03); text(g, 'CONSISTENCY', 540, 400, 175, RED, 50, -.03);
+  g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-420, -72, 840, 144); g.restore();
+  text(g, 'DROP BY DROP', 540, 600, 128, '#0a0000', 0, -.03);
 }
 window.READY = true;
 </script></body></html>

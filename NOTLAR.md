@@ -78,3 +78,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-23: Shorts kapağı — "Your Habits Create Your Future" (`brand/cover-habits-1080x1920.png`, büyüyen domino zinciri).
 - 2026-11-24: Shorts kapağı — "Why Successful People Wake Up Early" (`brand/cover-early-1080x1920.png`, 3:45 saat + şafak).
 - 2026-11-25: Shorts kapağı — 9. video "Overcoming Fear of Failure" (`brand/cover-fear-1080x1920.png`, hayalet + AYAZ).
+- 2026-11-27: Shorts kapağı — 11. video "The Silent Power of Consistency" (`brand/cover-drip-1080x1920.png`, damla + kaya). 10. video (Perfect Moment) henüz yapılmadı.
