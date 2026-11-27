@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas><canvas id="early" width="1080" height="1920"></canvas><canvas id="fear" width="1080" height="1920"></canvas><canvas id="drip" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas><canvas id="early" width="1080" height="1920"></canvas><canvas id="fear" width="1080" height="1920"></canvas><canvas id="drip" width="1080" height="1920"></canvas><canvas id="comfort" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -196,6 +196,27 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   text(g, 'THE SILENT POWER', 540, 230, 120, WHITE, 16, -.03); text(g, 'CONSISTENCY', 540, 400, 175, RED, 50, -.03);
   g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-420, -72, 840, 144); g.restore();
   text(g, 'DROP BY DROP', 540, 600, 128, '#0a0000', 0, -.03);
+}
+{ const g = document.getElementById('comfort').getContext('2d');
+  g.fillStyle = '#040406'; g.fillRect(0, 0, 1080, 1920);
+  const rg = g.createRadialGradient(540, 1180, 0, 540, 1180, 700); rg.addColorStop(0, 'rgba(255,40,60,.12)'); rg.addColorStop(1, 'rgba(255,40,60,0)'); g.fillStyle = rg; g.fillRect(0, 0, 1080, 1920);
+  // the comfort zone: a soft grey dome of cushions with a dashed boundary
+  const cx = 540, cy = 1180, R = 400;
+  g.fillStyle = 'rgba(120,112,124,.10)'; g.beginPath(); g.arc(cx, cy, R, 0, 7); g.fill();
+  g.save(); g.setLineDash([28, 22]); g.strokeStyle = '#8a8a96'; g.lineWidth = 10; g.beginPath(); g.arc(cx, cy, R, 0, 7); g.stroke(); g.restore();
+  // a few soft cushions inside the zone
+  for (let i = 0; i < 5; i++) { const a = -Math.PI * .9 + i * .45; g.save(); g.translate(cx + Math.cos(a) * 200, cy + Math.sin(a) * 120 + 300); g.fillStyle = 'rgba(70,64,74,.9)'; g.strokeStyle = '#6a6470'; g.lineWidth = 4; g.beginPath(); g.roundRect(-70, -34, 140, 68, 30); g.fill(); g.stroke(); g.restore(); }
+  // AYAZ breaks out: his arm reaches through the boundary, the ring cracks where his hand lands
+  const sc = 1.1, ax = 700, ay = 1580, pose = { ...POSE.hero, lean: .15, a1: -1.9, a2: -.3 };
+  const k = ayaz(g, -9e5, -9e5, sc, pose, { t: 1 }), wx = ax + k.A1.wr[0] * sc, wy = ay + k.A1.wr[1] * sc, ang = Math.atan2(wy - cy, wx - cx);
+  g.save(); g.setLineDash([]); g.shadowColor = RED; g.shadowBlur = 40; g.strokeStyle = RED; g.lineWidth = 12; g.beginPath(); g.arc(cx, cy, R, ang - .32, ang + .32); g.stroke(); g.restore();
+  for (let i = -1; i <= 1; i++) { g.strokeStyle = 'rgba(255,42,60,.85)'; g.lineWidth = 3; g.beginPath(); g.moveTo(cx + Math.cos(ang + i * .12) * (R - 60), cy + Math.sin(ang + i * .12) * (R - 60)); g.lineTo(cx + Math.cos(ang + i * .12) * (R + 60), cy + Math.sin(ang + i * .12) * (R + 60)); g.stroke(); }
+  emberGround(g, ax, ay, sc, 1, { mode: 'kor' }); ayaz(g, ax, ay, sc, pose, { t: 1, mode: 'kor', glow: 1.7, wind: .6 });
+  sparks(g, wx, wy, .3, { seed: 7, scale: 1.1, n: 110, life: 1.1 });
+  embers(g, 40, 111, 600, 1700); vignette(g);
+  text(g, 'YOUR COMFORT ZONE', 540, 230, 120, WHITE, 16, -.03); text(g, 'BIGGEST', 540, 400, 200, RED, 50, -.03);
+  g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-420, -72, 840, 144); g.restore();
+  text(g, 'IS YOUR ENEMY', 540, 600, 128, '#0a0000', 0, -.03);
 }
 window.READY = true;
 </script></body></html>
