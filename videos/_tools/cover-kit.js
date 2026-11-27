@@ -1,15 +1,16 @@
 // YT Shorts kapak kiti: videonun kendi sahnesini (yazısız) arka plan olarak çizer + büyük başlık.
 // cover.html sırası: words.js fin.js whatif.js main.js ../_tools/cover-kit.js cover.js
 const _MAIN = window.draw;
-function cleanScene(t) {
-  const keep = { kinetic, bigText, stampText, pill, subs, counter, glitch, motionStreak };
-  const no = () => {}; kinetic = bigText = stampText = pill = subs = counter = glitch = motionStreak = no;
-  try { _MAIN(t); } finally { ({ kinetic, bigText, stampText, pill, subs, counter, glitch, motionStreak } = keep); }
+function cleanScene(t, noTxt) {
+  const keep = { kinetic, bigText, stampText, pill, subs, counter, glitch, motionStreak, txt };
+  const no = () => {}; kinetic = bigText = stampText = pill = subs = counter = glitch = motionStreak = no; if (noTxt) txt = no;
+  try { _MAIN(t); } finally { ({ kinetic, bigText, stampText, pill, subs, counter, glitch, motionStreak, txt } = keep); }
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 // o: { t, top, big, bot, col, badge, badgeCol, y }
 function coverPage(o) {
-  cleanScene(o.t);
+  cleanScene(o.t, o.noTxt);
+  if (o.pre) o.pre();
   const y = o.y || 1180;
   const g = ctx.createLinearGradient(0, y - 520, 0, y + 420); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.35, 'rgba(0,0,0,.62)'); g.addColorStop(.75, 'rgba(0,0,0,.62)'); g.addColorStop(1, 'rgba(0,0,0,0)');
   ctx.fillStyle = g; ctx.fillRect(0, y - 520, W, 940);
