@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="fonts.css"><style>body{margin:0;background:#111}</style></head>
-<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas><canvas id="early" width="1080" height="1920"></canvas><canvas id="fear" width="1080" height="1920"></canvas><canvas id="drip" width="1080" height="1920"></canvas><canvas id="comfort" width="1080" height="1920"></canvas>
+<body><canvas id="nobody" width="1080" height="1920"></canvas><canvas id="discipline" width="1080" height="1920"></canvas><canvas id="twenties" width="1080" height="1920"></canvas><canvas id="compare" width="1080" height="1920"></canvas><canvas id="alone" width="1080" height="1920"></canvas><canvas id="oneyear" width="1080" height="1920"></canvas><canvas id="habits" width="1080" height="1920"></canvas><canvas id="early" width="1080" height="1920"></canvas><canvas id="fear" width="1080" height="1920"></canvas><canvas id="drip" width="1080" height="1920"></canvas><canvas id="comfort" width="1080" height="1920"></canvas><canvas id="kid" width="1080" height="1920"></canvas>
 <script type="module">
 import { drawNeon as ayaz, POSE, mixPose, emberGround, sparks } from './ayaz.js';
 const RED = '#ff2a3c', GOLD = '#ffb81f', WHITE = '#f6f7fb';
@@ -217,6 +217,25 @@ await Promise.all(['150px Anton', '700 60px Montserrat'].map(f => document.fonts
   text(g, 'YOUR COMFORT ZONE', 540, 230, 120, WHITE, 16, -.03); text(g, 'BIGGEST', 540, 400, 200, RED, 50, -.03);
   g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-420, -72, 840, 144); g.restore();
   text(g, 'IS YOUR ENEMY', 540, 600, 128, '#0a0000', 0, -.03);
+}
+{ const g = document.getElementById('kid').getContext('2d');
+  g.fillStyle = '#040406'; g.fillRect(0, 0, 1080, 1920);
+  const rg = g.createRadialGradient(700, 1100, 0, 700, 1100, 800); rg.addColorStop(0, 'rgba(255,40,60,.32)'); rg.addColorStop(1, 'rgba(255,40,60,0)'); g.fillStyle = rg; g.fillRect(0, 0, 1080, 1920);
+  const gy = 1580;
+  g.strokeStyle = 'rgba(255,255,255,.25)'; g.lineWidth = 3; g.beginPath(); g.moveTo(0, gy); g.lineTo(1080, gy); g.stroke();
+  // the younger self: small, looking up at the grown version
+  const ks = .55, kx = 330, kp = { ...POSE.stand, head: -.6, lean: -.05, a1: -.3, a2: -.2 };
+  const kk = ayaz(g, -9e5, -9e5, ks, kp, { t: 1 }); const kHead = [kx + kk.head[0] * ks, gy + kk.head[1] * ks];
+  // a red path of light from the small one's head up toward the grown one
+  g.save(); g.setLineDash([14, 12]); g.strokeStyle = 'rgba(255,42,60,.8)'; g.lineWidth = 5; g.shadowColor = RED; g.shadowBlur = 20; g.beginPath(); g.moveTo(kHead[0] + 30, kHead[1] - 40); g.quadraticCurveTo(540, 880, 700, 760); g.stroke(); g.restore();
+  // the grown version: taller, stepping forward, arm raised
+  const bs = 1.1, bx = 740, bp = { ...POSE.hero, lean: .05, a1: -1.6, a2: -.4 };
+  emberGround(g, bx, gy, bs, 1, { mode: 'kor' }); ayaz(g, kx, gy, ks, kp, { t: 1, mode: 'kor', glow: 1.2, wind: .3 });
+  ayaz(g, bx, gy, bs, bp, { t: 1, mode: 'kor', glow: 1.7, wind: .6 });
+  embers(g, 40, 121, 600, 1700); vignette(g);
+  text(g, 'BECOME SOMEONE', 540, 230, 120, WHITE, 16, -.03); text(g, 'YOUR YOUNGER SELF', 540, 390, 118, RED, 40, -.03);
+  g.save(); g.translate(540, 600); g.rotate(-.03); g.fillStyle = RED; g.shadowColor = RED; g.shadowBlur = 40; g.fillRect(-420, -72, 840, 144); g.restore();
+  text(g, 'WOULD ADMIRE', 540, 600, 128, '#0a0000', 0, -.03);
 }
 window.READY = true;
 </script></body></html>

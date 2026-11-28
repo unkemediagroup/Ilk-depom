@@ -80,3 +80,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-25: Shorts kapağı — 9. video "Overcoming Fear of Failure" (`brand/cover-fear-1080x1920.png`, hayalet + AYAZ).
 - 2026-11-27: Shorts kapağı — 11. video "The Silent Power of Consistency" (`brand/cover-drip-1080x1920.png`, damla + kaya). 10. video (Perfect Moment) henüz yapılmadı.
 - 2026-11-27: Shorts kapağı — "Your Comfort Zone Is Your Biggest Enemy" (`brand/cover-comfort-1080x1920.png`, kesikli konfor çemberini kıran AYAZ).
+- 2026-11-28: Shorts kapağı — "Become Someone Your Younger Self Would Admire" (`brand/cover-kid-1080x1920.png`, küçük ve büyük AYAZ).
