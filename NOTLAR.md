@@ -69,3 +69,4 @@ ve her sağlayıcının kullanım şartlarına uymanız gerekir.
 - 2026-11-25: debt kapağı: 'DEBT IS A BURDEN / A TOOL FOR THE RICH' + sol gri zincir/ağırlık vs sağ altın külçe (LEVERAGE) + TAX-FREE LOAN $0 / STOCK IS COLLATERAL rozeti (covers/debt-cover.png).
 - 2026-11-27: billionaire-broke kapağı: 'LOSE IT ALL? THEY LOSE OTHER PEOPLE'S MONEY' + ortada sağlam kasa (UNTOUCHED) + alt solda yanan başkalarının banknotları + COMPANY BANKRUPT / PERSONAL UNTOUCHED rozeti (covers/billionaire-broke-cover.png).
 - 2026-11-27: petrodollar kapağı: 'HOW DID THE DOLLAR BECOME KING?' + taçlı petrol varili üzerinde yeşil $ etiketi + retro güneş ışınları + OIL SOLD IN / ONLY $ rozeti (covers/petrodollar-cover.png).
+- 2026-11-28: swiss-banks kapağı: 'SWISS BANKS / KEEP IT SECRET' + kırmızı İsviçre bayrağı + altın kilit + Alp silueti + NAME CLASSIFIED / NUMBER ONLY 7409285 rozeti (covers/swiss-banks-cover.png).
